@@ -19,6 +19,9 @@ id_array_publisher = []
 bias_array_publisher = []
 url_publisher = []
 
+hypart_all = []
+id_all =[]
+url_all = []
 # =======================================================================================================================
 
 # Getter-Methods

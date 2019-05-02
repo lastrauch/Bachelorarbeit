@@ -175,20 +175,21 @@ def url(df, ids, size):
     return (urls, url_index)
 
 
-def url_all(df, size, publisher):
+def url_all(df,df2, size, publisher, titelcsv, titlehtml):
     urls = []
     url_index = []
     for i in range(size):
+        hyp = df2.loc[i, 'Hyperpartisan']
         url = df.loc[i, 'Url']
-        if url not in urls:
-            urls.append(url)
-            url_index.append(1)
-        else:
-            index = urls.index(url)
-            url_index[index] += 1
-    url_toTable('/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Article2016_All.html',
-            '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Article2016_All.csv', urls,
-            urlindex, publisher)
+        if hyp:
+            if url not in urls:
+                urls.append(url)
+                url_index.append(1)
+            else:
+                index = urls.index(url)
+                url_index[index] += 1
+
+    url_toTable(titlehtml, titelcsv, urls, url_index, publisher)
 
 
 def urls(publisher, df, df2):
@@ -245,28 +246,18 @@ def url_toTable(titleTable, titleCsv, url, urlindex, publisher):
     url_num = []
     for i in range(len(url)):
         if publisher:
-            if urlindex[i] > 500:
+            if urlindex[i] > 10000:
                 urls.append(url[i])
                 url_num.append(urlindex[i])
         else:
-            if urlindex[i] > 2:
+            if urlindex[i] > 6:
                 urls.append(url[i])
                 url_num.append(urlindex[i])
     col = {'URL': urls,
            'Amount': url_num}
     tf = pd.DataFrame(col)
-    tf.to_html(titleTable, index=False)
-    tf.to_csv(titleCsv, encoding='utf-8', index=False)
-    # urls = []
-    # url_num = []
-    # for i in range(len(url)):
-    #     urls.append(url[i])
-    #     url_num.append(urlindex[i])
-    # col = {'URL': urls,
-    #        'Amount': url_num}
-    # tf = pd.DataFrame(col)
-    # tf.to_html(titleTable, index=False)
-    # tf.to_csv(titleCsv, encoding='utf-8', index=False)
+    tf.to_html(titleCsv, index=False)
+    tf.to_csv(titleTable, encoding='utf-8', index=False)
 
 
 def map_hyperpartisan_bias(df):
@@ -347,13 +338,15 @@ def piediagramBias():
 def main():
     df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByArticle.csv')
     df2 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Url_by_Article.csv')
-    df3 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByPublisher.csv')
-    df4 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Url_by_Publisher.csv')
+    # df3 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByPublisher.csv')
+    # df4 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Url_by_Publisher.csv')
 
     # urls(False, df, df2)
     # urls(True, df3, df4)
-    url_all(df2, 645, False)
-    url_all(df4, 600000, True)
+    url_all(df2, df, 645, False, '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Article_All.html',
+            '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Article_All.csv')
+    # url_all(df4, df3, 600000, True, '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Publisher_All.html',
+    #         '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Publisher_All.csv')
 
     # initialize()
     # readData()
