@@ -124,7 +124,6 @@ def mapPubishedYear(df, size, publisher):
     for i in range(size):
         pub = df.loc[i, 'PublishedAt']
         hyp = df.loc[i, 'Hyperpartisan']
-        id1 = df.loc[i, 'ArticleID']
         if hyp:
             str_pub = str(pub)
             year = str_pub[0:4]
@@ -158,13 +157,11 @@ def mapPubishedYear(df, size, publisher):
         return ids13, ids16_p, ids17_p, ids18_p
 
 
-
 def url(df, ids, size):
     urls = []
     url_index = []
-    str_urls = []
     for i in range(size):
-        id = df.loc[i, 'ArticleID']
+        id = df.loc[i, 'Article_ID']
         url = df.loc[i, 'Url']
         for j in range(len(ids)):
             if ids[j] == id:
@@ -178,46 +175,62 @@ def url(df, ids, size):
     return (urls, url_index)
 
 
+def url_all(df, size, publisher):
+    urls = []
+    url_index = []
+    for i in range(size):
+        url = df.loc[i, 'Url']
+        if url not in urls:
+            urls.append(url)
+            url_index.append(1)
+        else:
+            index = urls.index(url)
+            url_index[index] += 1
+    url_toTable('/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Article2016_All.html',
+            '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Article2016_All.csv', urls,
+            urlindex, publisher)
+
+
 def urls(publisher, df, df2):
     if not publisher:
         ids16a, ids17a, ids18a = mapPubishedYear(df, 645, False)
         urls, urlindex = url(df2, ids16a, 645)
         url_toTable(
-            '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Article2016_Groesser.html',
-            '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Article2016_Groesser.csv', urls,
-            urlindex)
+            '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Article2016.html',
+            '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Article2016.csv', urls,
+            urlindex, False)
         urls, urlindex = url(df2, ids17a, 645)
         url_toTable(
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Article2017_Groesser.html',
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Article2017_Groesser.csv', urls,
-            urlindex)
+            urlindex, False)
         urls, urlindex = url(df2, ids18a, 645)
         url_toTable(
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Article2018_Groesser.html',
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Article2018_Groesser.csv', urls,
-            urlindex)
+            urlindex, False)
     else:
         ids13, ids16p, ids17p, ids18p = mapPubishedYear(df, 600000, True)
         urls, urlindex = url(df2, ids13, 600000)
         url_toTable(
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Publisher2013_Groesser.html',
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Publisher2013_Groesser.csv', urls,
-            urlindex)
+            urlindex, True)
         urls, urlindex = url(df2, ids16p, 600000)
         url_toTable(
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Publisher2016_Groesser.html',
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Publisher2016_Groesser.csv', urls,
-            urlindex)
+            urlindex, True)
         urls, urlindex = url(df2, ids17p, 600000)
         url_toTable(
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Publisher2017_Groesser.html',
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Publisher2017_Groesser.csv', urls,
-            urlindex)
+            urlindex, True)
         urls, urlindex = url(df2, ids18p, 600000)
         url_toTable(
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/HTMLTable_Url_Publisher2018_Groesser.html',
             '/home/lstrauch/Bachelorarbeit/env/DataAnalysis/Csv_Url_Publisher2018_Groesser.csv', urls,
-            urlindex)
+            urlindex, True)
 
 
 def toTable(published, published_num):
@@ -337,8 +350,10 @@ def main():
     df3 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByPublisher.csv')
     df4 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Url_by_Publisher.csv')
 
-    urls(False, df, df2)
-    urls(True, df3, df4)
+    # urls(False, df, df2)
+    # urls(True, df3, df4)
+    url_all(df2, 645, False)
+    url_all(df4, 600000, True)
 
     # initialize()
     # readData()
