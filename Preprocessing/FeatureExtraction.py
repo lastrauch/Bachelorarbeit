@@ -60,10 +60,14 @@ def parse_features(content, publisher):
                     title_array_article.append(value)
             elem.clear()
 
-    # if publisher:
-    #     for _ in range(600000 - len(published_at_array_publisher)):
-    #         published_at_array_publisher.append('/')
-    # else:
-    #     for _ in range(645 - len(published_at_array_article)):
-    #         published_at_array_article.append('/')
+#------------------------------Comment this part for te Validation Data-------------------------------------------------
+
+    if publisher:
+        for _ in range(600000 - len(published_at_array_publisher)):
+            published_at_array_publisher.append('/')
+    else:
+        for _ in range(645 - len(published_at_array_article)):
+            published_at_array_article.append('/')
+
+#-----------------------------------------------------------------------------------------------------------------------
 

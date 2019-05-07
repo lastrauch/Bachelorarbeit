@@ -3,11 +3,16 @@ from gensim.models import KeyedVectors
 import pandas as pd
 import numpy as np
 from sklearn.neural_network import MLPClassifier
+from sklearn.model_selection import GridSearchCV
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 
 
 def load_fasttext():
     model = KeyedVectors.load_word2vec_format('/home/lstrauch/Bachelorarbeit/env/SVM/wiki-news-300d-1M.vec/wiki-news-300d-1M.vec')
 
+    print 'done loading'
     return model
 
 
@@ -36,50 +41,82 @@ def sent_vectorizer(sent, model):
 
 
 def split_dataset(sentences, model, df):
-    V = []
+    v = []
     for sentence in sentences:
-        V.append(sent_vectorizer(sentence, model))
+        v.append(sent_vectorizer(sentence, model))
 
-    V2 = df['Hyperpartisan'].factorize()[0]
+    v2 = df.Hyperpartisan.factorize()[0]
 
-    X_train = V[0:516]
-    X_test = V[516:645]
-    print X_test
-
-    y_train = V2[0:516]
-    y_test = V2[516:645]
-    print y_test
-
-    return X_train, X_test, y_train, y_test
+    return v, v2
 
 
-def classify(X_train, X_test, Y_train, Y_test):
-    classifier = MLPClassifier(alpha=0.7, max_iter=400)
-    classifier.fit(X_train, Y_train)
+def classify(features, target):
+    parameter_candidates = {'n_estimators': [100, 300, 500, 800, 1000],
+                            'criterion': ['gini', 'entropy'],
+                            'bootstrap': [True, False],
+                            "max_depth": [3,8,15],
+                            "min_samples_leaf": [1,2,4],
+                            "random_state": [0,1,2]}
+    clf = GridSearchCV(estimator=RandomForestClassifier(), param_grid=parameter_candidates, scoring= 'accuracy', n_jobs=-1, cv=10)
+    print 'done  clf1'
+    clf2 = GridSearchCV(estimator=RandomForestClassifier(), param_grid=parameter_candidates, scoring='precision', n_jobs=-1, cv=10)
+    print 'done  clf2'
+    clf3 = GridSearchCV(estimator=RandomForestClassifier(), param_grid=parameter_candidates, scoring='recall', n_jobs=-1, cv=10)
+    print 'done  clf3'
+    clf4 = GridSearchCV(estimator=RandomForestClassifier(), param_grid=parameter_candidates, scoring='f1', n_jobs=-1, cv=10)
+    print 'done  clf4'
+    clf.fit(features, target)
+    print 'done  clf1.fit'
+    clf2.fit(features, target)
+    print 'done  clf2.fit'
+    clf3.fit(features, target)
+    print 'done  clf3.fit'
+    clf4.fit(features, target)
+    print 'done  clf4.fit'
+    print 'Best Parameters Accuracy:', clf.best_params_
+    print 'Best Result Accuracy:', clf.best_score_
+    print 'Best Parameters Precision: ', clf2.best_params_
+    print 'Best Result Precision:', clf2.best_score_
+    print 'Best Parameters Recall: ', clf3.best_params_
+    print 'Best Result Recall:', clf3.best_score_
+    print 'Best Parameters F1: ', clf4.best_params_
+    print 'Best Result F1:', clf4.best_score_
 
-    df_results = pd.DataFrame(data=np.zeros(shape=(1, 3)), columns=['classifier', 'train_score', 'test_score'])
-    train_score = classifier.score(X_train, Y_train)
-    test_score = classifier.score(X_test, Y_test)
-
-    print(classifier.predict_proba(X_test))
-    print(classifier.predict(X_test))
-
-    df_results.loc[1, 'classifier'] = "MLP"
-    df_results.loc[1, 'train_score'] = train_score
-    df_results.loc[1, 'test_score'] = test_score
-    df_results.loc[1].to_csv('WodEmbeddings_MLPC.txt', encoding='utf-8')
-    print(df_results.loc[1])
+    f = open('/home/lstrauch/Bachelorarbeit/env/Predictions/GridSearch_RandomForest_Article.txt', 'w')
+    f.write('Best Parameters in Accuracy:')
+    f.write(str(clf.best_params_))
+    f.write("\n")
+    f.write('Best Result in Accuracy:')
+    f.write(str(clf.best_score_))
+    f.write("\n")
+    f.write('Best Parameters in Precision:')
+    f.write(str(clf2.best_params_))
+    f.write("\n")
+    f.write('Best Result in Precision:')
+    f.write(str(clf2.best_score_))
+    f.write("\n")
+    f.write('Best Parameters in Recall:')
+    f.write(str(clf3.best_params_))
+    f.write("\n")
+    f.write('Best Result in Recall:')
+    f.write(str(clf3.best_score_))
+    f.write("\n")
+    f.write('Best Parameters in F1:')
+    f.write(str(clf4.best_params_))
+    f.write("\n")
+    f.write('Best Result in F1:')
+    f.write(str(clf4.best_score_))
+    f.close
 
 
 def main():
-    df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByPublisher.csv', encoding='utf-8',
+    df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle.csv', encoding='utf-8',
                      engine='python')
     df.fillna("")
     model = load_fasttext()
     load_modelVocablulary(model)
-    split_dataset(df['Content'], model, df)
-    X_train, X_test, y_train, y_test = split_dataset(df['Content'], model, df)
-    classify(X_train, X_test, y_train, y_test)
+    features, target = split_dataset(df.Content, model, df)
+    classify(features, target)
 
 
 if __name__ == '__main__':

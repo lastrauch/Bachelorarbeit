@@ -44,8 +44,8 @@ def remove_stop(df):
     df['Title'] = df['Title'].apply(lambda x: ' '.join([item for item in x.split() if item not in stop]))
     df['Content'] = df['Content'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", ' ', x))
     df['Title'] = df['Title'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", ' ', x))
-    #df["Title"] = df["Title"].apply(nltk.word_tokenize)
-    #df["Content"] = df["Content"].apply(nltk.word_tokenize)
+    df["Title"] = df["Title"].apply(nltk.word_tokenize)
+    df["Content"] = df["Content"].apply(nltk.word_tokenize)
     df['Content'] = df['Content'].apply(lambda x: [stemmer.stem(y) for y in x])
 
 
@@ -57,13 +57,13 @@ def main():
     df1 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByArticle.csv', encoding='utf-8')
     str_lower(df1)
     remove_stop(df1)
-    to_csv(df1, '/home/lstrauch/Bachelorarbeit/env/Data/NoTokens_ByArticle.csv')
+    to_csv(df1, '/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle.csv')
     print 'Done: "byArticle"'
 
     df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByPublisher.csv', encoding='utf-8')
     str_lower(df)
     remove_stop(df)
-    to_csv(df, '/home/lstrauch/Bachelorarbeit/env/Data/No_Tokens_ByPublisher.csv')
+    to_csv(df, '/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByPublisher.csv')
     print 'done "ByPublisher'
 
 
