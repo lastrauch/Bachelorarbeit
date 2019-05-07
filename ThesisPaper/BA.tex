@@ -10,6 +10,12 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{subfigure}
+\usepackage{verbatim}
+\usepackage{listings} 
+\lstset{language=Python,
+		basicstyle=\ttfamily\scriptsize,
+	    breaklines=true}             
+
 
 \usepackage{ntheorem}
 
@@ -120,7 +126,7 @@
 \section{Related Work}
 
 
-\chapter{Data Analysis}
+\chapter{Data}
 \label{cha:theory}
 
 
@@ -154,7 +160,7 @@
 As mentioned above, this dataset consists of a total of 750,000 articles and is divided into a training record consisting of 600,000 articles and a validation set consisting of 150,000 articles. Summarizing these two sets of data, a total of 375,000 were labelled as 'Hyperpartisan' and 375,000 were not – which corresponds to a 50:50 distribution. But even individually, this distribution does not change. 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Hypeprartisan_LabeledByPublisher.png}
+	\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/HypeprartisanLabeledByPublisher.png}
 	\caption{Distribution of as Hyperpartisan labelled articles by publisher}
 	\label{fig:example}
 \end{figure}
@@ -165,8 +171,10 @@ As mentioned above, this dataset consists of a total of 750,000 articles and is 
 \noindent The other 50\% are split between the remaining bias, with 'Least' owning the largest share at 37\%.\\
 The publicity data is distributed over the years 1964-2018, with most of the data coming from 2012-2018.
 \begin{figure}[h]
-	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Bias_Distribution.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Distribution_PublishedAt_Publisher_AllYears.png}} 
+	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/Bias_Distribution.png}} 
+	\begin{comment}
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/Distribution_PublishedAt_Publisher_AllYears.png}} 
+	\end{comment}
 \end{figure}
 
 
@@ -174,8 +182,8 @@ The publicity data is distributed over the years 1964-2018, with most of the dat
 
 The dataset labelled by Article is a little different to the larger one labelled by publisher. Here the articles were individually labelled by hand. Accordingly, the distributions of this dataset are completely different. This becomes quiet obvious if we look at how the distribution of the Hyperpartisan labelled articles is here.
 \begin{figure}[h]
-	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Hypeprartisan_LabeledByArticle.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Distribution_PublishedAt_Article}} 
+	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/Hypeprartisan_LabeledByArticle.png}} 
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/Distribution_Published-At_ByArticle}} 
 \end{figure}
 \noindent Here we can see that there is no 50:50 distribution left. Only 36.9\% were defined here as Hyperpartisan as shown in figure 2.4.\\
 \noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 2.5. Altogether all 645 articles date from the years 1902-2018.
@@ -183,17 +191,109 @@ The dataset labelled by Article is a little different to the larger one labelled
 \section{Data Analysis}
 
 Hyperpartisan means "extremely partisan; extremely biased in favor of a political party." [definition]. This often materializes in relation to significant political events. As a result, in the following chapter, I will discuss in detail the direct link between the various features, especially the correlations between publication dates and label, as well as the connections between publisher and label.\\
-\begin{figure}[h]
+\begin{comment}
+	\begin{figure}[h]
 	\subfigure[Publisher with the highest amounts of Hyperpartisan Articles labelled by Article]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/env/HyperpartisanNewsDetection/DataAnalysis/Url_Article.png}} 
 	\subfigure[Publisher with the highest amounts of Hyperpartisan Articles labelled by Publisher]{\includegraphics[width=0.465\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/env/HyperpartisanNewsDetection/DataAnalysis/Url_Publisher.png}} 
-\end{figure}
+	\end{figure}
+\end{comment}
+
 \noindent The two figures e and f list the publisher who produced the highest amount of hyperpartisan articles in the respective dataset. To keep track, only those publishers who have publisher more than 7 hyperpartisan articles in the dataset 'labelled by article' and who have published more than 10.000 hyperpartisan articles in the dataset 'labelled by publisher' are included in the tables. However, a problem here is the dataset 'Labelled by Publisher', since this record, as previously described, has been labelled by the overall bias of the publisher. Meaning, for the further development, we can not include the publishers, since each article of a publishing house has the same label. What I would like to discuss later, however, is the connection between whether or not one of the publishers listed in Table x published more articles in important political years.
 
-  
+
+\section{Data Preparation}
+In order to be able to work with the existing data in the further course of this project, several preprocessing steps are necessary. In the preprocessation phase of my bachelor's thesis, the data therefore went through the following steps:
+\begin{enumerate}
+	\item Read the XML files. 
+	\item Filter out the important information.
+	\item Merge the Groundtruth- and Training datasets into a csv file.
+	\item Remove special characters and stop words.
+	\item Tokenization and stemming of the datasets.
+\end{enumerate}	
+\noindent As a result, in the following section, I will go further into detail how I preprocessed my data.
 
 
+\subsection{Read the XML files}
+Since it is difficult to work with the given data in an XML format, it is necessary to bring them into a format with which it’ll be easier to work with. The particular challenge hereby is the size of the dataset labelled by publisher. A standard algorithm for reading XML files is provided by pythons DOM library ElementTree, called “ElementTree.parse”. This method returns an ElemenTree type, which "is a flexible container object, designed to store hierarchical data structures in memory" [ http://effbot.org/zone/element.htm]. Meaning, that this library forms the entire model in the memory which can pose a problem with very large files, such as ours. As a substitute,I therefore use the method “ElemenTree.iterparse”, which can process XML documents in a streaming fashion, retaining in memory only the most recently examined parts of the tree. 
 
 
+\subsection{Filter out the important information}
+As mentioned in Chapter 2.1 Data Description, the XML files include varoius fetatures, which will play an important role in the further course of this work. It is now necessary to filter these features out of the XML format so the can be better worked with later. In order to be able to do this, we pass an algorithm the, by the iterparse method read content, which then passes thorugh this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. 
+\begin{lstlisting}[frame=single]
+def parse_features(content, publisher):
+  for event, elem in content:
+    for key, value, in elem.items():
+      if publisher:
+        if key == 'id':
+          id_array_publisher.append(str(value))
+        elif key == 'published-at':
+          published_at_array_publisher.append(value)
+        elif key == 'title':
+          title_array_publisher.append(value)
+      else:
+        if key == 'id':
+          id_array_article.append(str(value))
+        elif key == 'published-at':
+          published_at_array_article.append(value)
+        elif key == 'title':
+          title_array_article.append(value)
+      elem.clear()
+\end{lstlisting}
+
+
+\subsection{Merge the Groundtruth- and Training datasets into a csv file}
+Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library pandas to write the two files into one csv file. This, and espacially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.
+\begin{lstlisting}[frame=single]
+feature_extraction.parse_features(xml_training, publisher)
+groundtruth_parser.parse_groundtruth(xml_gt, publisher)
+content = content_parser.parse_content(content_training)
+
+a_id = feature_extraction.get_id_array(publisher)
+published = feature_extraction.get_published_at_array(publisher)
+title = feature_extraction.get_title_array(publisher)
+bias = groundtruth_parser.get_bias_array(publisher)
+hyperpartisan = groundtruth_parser.get_hyperpartisan_array(publisher)
+
+columns = {"ArticleID": a_id,
+           "PublishedAt": published,
+           "Title": title,
+           "Bias": bias,
+           "Content": content,
+           "Hyperpartisan": hyperpartisan}
+
+tf = Pd.DataFrame(columns)
+tf = tf[['ArticleID','Published', Title','Bias','Content','Hyperpartisan']]
+tf.to_csv(titlecsv,encoding='utf-8',index=False)
+\end{lstlisting}
+
+
+\subsection{Remove special characters and stop words}
+Now that we have merged both files and written them into a csv file, we now need to remove special characters and stop words. Especially the removal of stopwords is necessary to shrink our corpus and due to the fact that words such as "the," "a," etc. do not influence the classification of our content in the further course.
+\begin{lstlisting}[frame=single]
+stop = stopwords.words('english')
+
+df['Content'] = df['Content'].apply(lambda x: ''.join([item for item in x.split() if item not in stop]))
+df['Title'] = df['Title'].apply(lambda x: ''.join([item for item in x.split() if item not in stop]))
+df['Content'] = df['Content'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", '', x))
+df['Title'] = df['Title'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", '', x))
+\end{lstlisting}
+\noindent Here it becomes obvious that using pandas was a good choice, as we can now specifically access the 'Content' and 'Title' columns in order to perform this step of preprocessing on only these two and not the whole file.
+
+
+\subsection{Tokenization and Stemming of the datasets}
+After cleaning the dataset, the words are tokenized in order to convert them into numerical vectors so that a classifier is able to work with them. Tokenization is definied as "The process of demarcating and possibly classifying sections of a string of input characters. The resulting tokens are then passed on to some other form of processing. The process can be considered a sub-task of parsing input".\\
+\noindent Stemming is the procedure of reducing the word to its grammatical (morpho-syntatctic) root. The result is not necessarily a valid word of the language. For example, "recognized" would be converted to "recogniz". Still, the basic word almost always contains the very meaning of the word. Stemming is advantageous in that the algorithm used later now only has to fall back on a few different words and not many, all of which have the same meaning.\\
+\\
+\noindent In order to implement Stemming and Tokenization, only 2 lines of python code are necessary, due to the Pandas dataframe. 
+\begin{lstlisting}[frame=single]
+df["Content"] = df["Content"].apply(nltk.word_tokenize)
+df['Content'] = df['Content'].apply(lambda x: [stemmer.stem(y) for y in x])
+\end{lstlisting}
+This will transform our output file in the following way:
+\begin{figure}[h]
+	\subfigure[Csv file before Stemming and Tokenization]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/csvOhne.png}} 
+	\subfigure[Csv file after Stemming and Tokenization]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/csvmit.png}} 
+\end{figure}
 
 \newpage
 
