@@ -5,3 +5,5 @@
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Distribution of publishing years}}}{4}% 
 \contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Distribution of Hyperpartisan labelled articles}}}{4}% 
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Distribution of publishing years}}}{4}% 
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Csv file before Stemming and Tokenization}}}{8}% 
+\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Csv file after Stemming and Tokenization}}}{8}% 
