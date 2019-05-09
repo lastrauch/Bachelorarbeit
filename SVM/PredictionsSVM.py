@@ -12,6 +12,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.svm import LinearSVC
 from sklearn.externals import joblib
 from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
 
 
 def tf_id(X_train, X_test):
@@ -90,30 +91,33 @@ def main():
 
 
     #Train the Model
-    # trained_model1 = classifier(LinearSVC(), train_x, train_y)
-    # trained_model2 = classifier(RandomForestClassifier(n_estimators=200, max_depth=3, random_state=0), train_x, train_y)
-    trained_model3 = classifier(MultinomialNB(alpha=0.5, fit_prior=True), train_x, train_y)
-    predictions3 = trained_model3.predict(test_x)
-    # trained_model4 = classifier(LogisticRegression(random_state=0, solver='liblinear'), train_x, train_y)
+    trained_model1 = classifier(SVC(kernel='rbf', C=10, gamma=1), train_x, train_y)
+    trained_model2 = classifier(RandomForestClassifier(bootstrap=False, min_samples_leaf=2, n_estimators=100, random_state=2, criterion='entropy', max_depth=8), train_x, train_y)
+    trained_model3 = classifier(MultinomialNB(alpha=1.3, fit_prior=False), train_x, train_y)
+    trained_model4 = classifier(LogisticRegression(penalty='l1', C=0.03359818286283781, solver='liblinear'), train_x, train_y)
+    trained_model5 = classifier(LogisticRegression(penalty='l2', C=0.0006951927961775605, solver='newton-cg'), train_x, train_y)
     #
-    # save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_LinearSVC.sav', trained_model1)
-    # save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_RandomForest.sav', trained_model2)
-    save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_MultinomialNB_PubArt.sav', trained_model3)
-    # save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_LogisticRegression.sav', trained_model4)
+    save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_SVC_Article_PubArt_GridSearchFeature.sav', trained_model1)
+    save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_RandomForest_PubArt_GridSearchFeature.sav', trained_model2)
+    save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_MultinomialNB_PubArt_GridSearchFeature.sav', trained_model3)
+    save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_LogisticRegression-Liblinear_PubArt_GridSearchFeature.sav', trained_model4)
+    save_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_LogisticRegression-NoL1_PubArt_GridSearchFeature.sav', trained_model5)
 
 
     #Load the trained model and make predictions
-    # predictions1 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_LinearSVC.sav').predict(test_y)
-    # predictions2 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_RandomForest.sav').predict(test_y)
-    predictions3 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_MultinomialNB_PubArt.sav').predict(test_x)
-    # predictions4 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_LogisticRegression.sav').predict(test_y)
+    predictions1 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_SVC_PubArt_GridSearchFeature.sav').predict(test_x)
+    predictions2 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_RandomForest_PubArt_GridSearchFeature.sav').predict(test_x)
+    predictions3 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_MultinomialNB_PubArt_GridSearchFeature.sav').predict(test_x)
+    predictions4 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_LogisticRegression-Liblinear_PubArt_GridSearchFeature.sav').predict(test_x)
+    predictions5 = load_trained_model('/home/lstrauch/Bachelorarbeit/env/Data/TrainedModel_LogisticRegression-NoL1_PubArt_GridSearchFeature.sav').predict(test_x)
 
 
     #Write the predictions into a text file
-    # writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/LinearSVC_Predictions.txt', 600000, predictions1)
-    # writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/RandomForestClassifier_Predictions.txt', 600000, predictions2)
-    writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/MultinomialNB_PubArt_Predictions.txt', 645, predictions3)
-    # writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/LogisticRegression_Predictions.txt', 600000, predictions4)
+    writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/Predictions_SVC_PubArt_GridSearchFeature.txt', 600000, predictions1)
+    writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/Predictions_RandomForestClassifier_PubArt_GridSearchFeature.txt', 600000, predictions2)
+    writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/Predictions_MultinomialNB__PubArt_GridSearchFeature.txt', 645, predictions3)
+    writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/Predictions_LogisticRegression-Liblinear_PubArt_GridSearchFeature.txt', 645, predictions4)
+    writetotxt(df, '/home/lstrauch/Bachelorarbeit/env/Predictions/Predictions_LogisticRegression-NoL1_PubArt_GridSearchFeature.txt', 645, predictions5)
 
 
 if __name__ == '__main__':

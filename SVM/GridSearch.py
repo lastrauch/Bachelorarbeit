@@ -12,21 +12,14 @@ from sklearn.feature_extraction.text import TfidfTransformer
 import numpy as np
 
 
-def to_tfidf(df):
-    df.fillna("")
-    df['category_id'] = df['Hyperpartisan'].factorize()[0]
-    category_id_df = df[['Hyperpartisan', 'category_id']].sort_values('category_id')
-    category_to_id = dict(category_id_df.values)
-    id_to_category = dict(category_id_df[['category_id', 'Hyperpartisan']].values)
-    df.head()
+def to_tfidf(data):
+    count_vect = CountVectorizer()
+    tfidf_transformer = TfidfTransformer()
 
-    tfidf = TfidfVectorizer(sublinear_tf=True, min_df=5, norm='l2', encoding='utf-8', ngram_range=(1, 2))
-    features = tfidf.fit_transform(df.Content)
-    labels = df.category_id
-    features.shape
-    #features = preprocessing.scale(features,with_mean=False)
+    x_train_counts = count_vect.fit_transform(data)
+    features = tfidf_transformer.fit_transform(x_train_counts)
 
-    return features, labels
+    return features
 
 
 def random_forest(features, target):
@@ -114,7 +107,7 @@ def svc(features, target):
     print 'Best Result Recall:', clf3.best_score_
     print 'Best Parameters F1: ', clf4.best_params_
     print 'Best Result F1:', clf4.best_score_
-    f = open('/home/lstrauch/Bachelorarbeit/env/Predictions/GridSearch_SVC_Publisher.txt', 'w')
+    f = open('/home/lstrauch/Bachelorarbeit/env/Predictions/TEST_GridSearch_SVC_Article.txt', 'w')
     f.write('Best Parameters in Accuracy:')
     f.write(str(clf.best_params_))
     f.write("\n")
@@ -244,10 +237,14 @@ def logisticregression(features, target):
 
 
 def main():
-    #df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle.csv', encoding='utf-8', engine='python')
-    df2 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByPublisher.csv', encoding='utf-8', engine='python')
+    df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle.csv', encoding='utf-8', engine='python')
+    #df2 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByPublisher.csv', encoding='utf-8', engine='python')
     #features, labels = to_tfidf(df)
-    features, labels = to_tfidf(df2)
+    features = to_tfidf(df.Content)
+    labels = df['Hyperpartisan'].factorize()[0]
+
+    # features = to_tfidf(df2.Content)
+    # labels = df2.Content.factorize[0]
 
     svc(features, labels)
     #multinomialnb(features, labels)
