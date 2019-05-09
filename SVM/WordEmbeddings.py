@@ -51,12 +51,10 @@ def split_dataset(sentences, model, df):
 
 
 def classify(features, target):
-    parameter_candidates = {'n_estimators': [100, 300, 500, 800, 1000],
+    parameter_candidates = {'n_estimators': [100, 500, 1000],
                             'criterion': ['gini', 'entropy'],
-                            'bootstrap': [True, False],
                             "max_depth": [3,8,15],
-                            "min_samples_leaf": [1,2,4],
-                            "random_state": [0,1,2]}
+                            "min_samples_leaf": [1,2,4]}
     clf = GridSearchCV(estimator=RandomForestClassifier(), param_grid=parameter_candidates, scoring= 'accuracy', n_jobs=-1, cv=10)
     print 'done  clf1'
     clf2 = GridSearchCV(estimator=RandomForestClassifier(), param_grid=parameter_candidates, scoring='precision', n_jobs=-1, cv=10)
@@ -82,7 +80,7 @@ def classify(features, target):
     print 'Best Parameters F1: ', clf4.best_params_
     print 'Best Result F1:', clf4.best_score_
 
-    f = open('/home/lstrauch/Bachelorarbeit/env/Predictions/GridSearch_RandomForest_Article.txt', 'w')
+    f = open('/home/lstrauch/Bachelorarbeit/env/Predictions/GridSearch_RandomForest_Publisher_WordEmbeddings.txt', 'w')
     f.write('Best Parameters in Accuracy:')
     f.write(str(clf.best_params_))
     f.write("\n")
@@ -110,12 +108,14 @@ def classify(features, target):
 
 
 def main():
-    df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle.csv', encoding='utf-8',
+    # df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle.csv', encoding='utf-8',
+    #                  engine='python')
+    df2 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByPublisher.csv', encoding='utf-8',
                      engine='python')
-    df.fillna("")
+    df2.fillna("")
     model = load_fasttext()
     load_modelVocablulary(model)
-    features, target = split_dataset(df.Content, model, df)
+    features, target = split_dataset(df2.Content, model, df2)
     classify(features, target)
 
 

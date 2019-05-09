@@ -88,7 +88,8 @@ def random_forest(features, target):
 
 def svc(features, target):
     parameter_candidates = {'C': [10, 100, 1000],
-                            'gamma': [1, 0.1, 0.001, 0.0001]}
+                            'gamma': [1, 0.001, 0.0001],
+                            'kernel': ['linear', 'rbf', 'sigmoid']}
     clf = GridSearchCV(estimator=SVC(), param_grid=parameter_candidates, scoring = 'accuracy', n_jobs=-1, cv=10)
     print 'done  clf1'
     clf2 = GridSearchCV(estimator=SVC(), param_grid=parameter_candidates, scoring = 'precision', n_jobs=-1, cv=10)
@@ -248,9 +249,9 @@ def main():
     #features, labels = to_tfidf(df)
     features, labels = to_tfidf(df2)
 
-    #svc(features, labels)
+    svc(features, labels)
     #multinomialnb(features, labels)
-    random_forest(features, labels)
+    #random_forest(features, labels)
     #logisticregression(features, labels)
 
 
