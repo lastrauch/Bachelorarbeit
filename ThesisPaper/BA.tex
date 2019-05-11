@@ -77,7 +77,7 @@
 \begin{titlepage}
 	\vspace*{2cm}
   \begin{center}
-   {\Large The Extremes of Good and Evil\\}
+   {\Large Hyperpartisan News Detection\\}
    \vspace{2cm} 
    {Bachelor Thesis\\}
    \vspace{2cm}
@@ -90,7 +90,7 @@
     Data and Web Science Group\\
     Prof.\ Dr.\ Ponzetto\\
     University of Mannheim\\} \vspace{2cm}
-   {August 2014}
+   {Juli 2014}
   \end{center}
 \end{titlepage} 
 
@@ -132,7 +132,7 @@
 
 
 \section{Data Description}
- The given data, on which we want to build our model on, was provided by zenodo.org as part of SemEvals Task 4 and consists of 2 independent datasets, which in turn have been divided into a GroundTruth-, Training- and Validation set.
+ The given data, on which we want to build our model on, was provided by zenodo.org as part of SemEvals Task 4 [Link zu Task hinzufügen]and consists of 2 independent datasets, which in turn have been divided into a GroundTruth-, Training- and Validation set.
  
  \noindent The first dataset, recognizable by the term 'byPublisher', reflects the publisher's general bias set forth by BuzzFeed journalists or MediaBiasFastCheck.com beforehand. It consists of a total of 750,000 items, of which 600,000 belong to the Training- and 150,000 to the Validation set.
  
@@ -161,8 +161,12 @@
 As mentioned above, this dataset consists of a total of 750,000 articles and is divided into a training record consisting of 600,000 articles and a validation set consisting of 150,000 articles. Summarizing these two sets of data, a total of 375,000 were labelled as 'Hyperpartisan' and 375,000 were not – which corresponds to a 50:50 distribution. But even individually, this distribution does not change. 
 \begin{figure}[h]
 	\centering
+	%Arbeit:
 	%\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/HypeprartisanLabeledByPublisher.png}
-	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	%PC:
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	%Lap Top:
+	\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	\caption{Distribution of as Hyperpartisan labelled articles by publisher}
 	\label{fig:example}
 \end{figure}
@@ -173,9 +177,14 @@ As mentioned above, this dataset consists of a total of 750,000 articles and is 
 \noindent The other 50\% are split between the remaining bias, with 'Least' owning the largest share at 37\%.\\
 The publicity data is distributed over the years 1964-2018, with most of the data coming from 2012-2018.
 \begin{figure}[h]
+	%Arbeit:
 	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/Bias_Distribution.png}} 
-	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
+	%PC:
+	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
+	%Lap Top:
+	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
 \end{figure}
 
 
@@ -183,11 +192,15 @@ The publicity data is distributed over the years 1964-2018, with most of the dat
 
 The dataset labelled by Article is a little different to the larger one labelled by publisher. Here the articles were individually labelled by hand. Accordingly, the distributions of this dataset are completely different. This becomes quiet obvious if we look at how the distribution of the Hyperpartisan labelled articles is here.
 \begin{figure}[h]
+	%Arbeit:
 	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/Hypeprartisan_LabeledByArticle.png}} 
 	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/Distribution_Published-At_ByArticle}} 
-
-	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
+	%PC:
+	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
+	%Lap Top:
+	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
 \end{figure}
 \noindent Here we can see that there is no 50:50 distribution left. Only 36.9\% were defined here as Hyperpartisan as shown in figure 2.4.\\
 \noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 2.5. Altogether all 645 articles date from the years 1902-2018.
@@ -195,55 +208,47 @@ The dataset labelled by Article is a little different to the larger one labelled
 \section{Data Analysis}
 
 Hyperpartisan means "extremely partisan; extremely biased in favor of a political party." [definition]. This often materializes in relation to significant political events. As a result, in the following chapter, I will discuss in detail the direct link between the various features, especially the correlations between publication dates and label, as well as the connections between publisher and label.\\
-\begin{tabular}{ll}
-\begin{table}
-	\begin{tabular}{ccc}
+\begin{table}[h]
+\begin{minipage}{.4\textwidth}
+		\begin{tabular}{ccc}
 		\toprule
 		Publisher & Amount \\
 		\midrule
 		The Gateway Pundit & 17 \\
-
+		
 		OpsLens & 14 \\
-
+		
 		RealClearPolitics & 13 \\
-
+		
 		New York Post & 10 \\
-
+		
 		Salon & 8 \\
-
-		OdEpNews & 7 \\
-
-		Express & 7 \\
 		\bottomrule
-	\label{tab:toll1} 
 	\end{tabular}
-	&
-	\begin{tabular}{ccc}
-	\toprule
-	Publisher & Bias & Amount \\
-	\midrule
-	Fox Business & Left & 96175 \\
-	
-	CounterPunch & Left & 39832 \\
-	
-	Mother Jones & Left & 36730 \\
-	
-	Truthdig & Left & 25056 \\
-	
-	Daily Wire & Right & 18570 \\
-	\bottomrule
-	\label{tab:toll1} 
-\end{tabular}
-\end{tabular}	
+	\caption{Publsihers who have published more than 7 Hyperpartisan Articles}
+\end{minipage}
+\hspace{0,8cm}
+\begin{minipage}{.4\textwidth}
+		\begin{tabular}{ccc}
+		\toprule
+		Publisher & Bias & Amount \\
+		\midrule
+		Fox Business & Left & 96175 \\
+		
+		CounterPunch & Left & 39832 \\
+		
+		Mother Jones & Left & 36730 \\
+		
+		Truthdig & Left & 25056 \\
+		
+		Daily Wire & Right & 18570 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Publishers who have published more than 10.000 Hyperpartisan articles}
+\end{minipage}
 \end{table}
-\begin{comment}
-	\begin{figure}[h]
-	\subfigure[Publisher with the highest amounts of Hyperpartisan Articles labelled by Article]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/env/HyperpartisanNewsDetection/DataAnalysis/Url_Article.png}} 
-	\subfigure[Publisher with the highest amounts of Hyperpartisan Articles labelled by Publisher]{\includegraphics[width=0.465\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/env/HyperpartisanNewsDetection/DataAnalysis/Url_Publisher.png}} 
-	\end{figure}
-\end{comment}
 
-\noindent The two figures e and f list the publisher who produced the highest amount of hyperpartisan articles in the respective dataset. To keep track, only those publishers who have publisher more than 7 Hyperpartisan articles in the dataset 'labelled by article' and who have published more than 10.000 hyperpartisan articles in the dataset 'labelled by publisher' are included in the tables. However, a problem here is the dataset 'Labelled by Publisher', since this record, as previously described, has been labelled by the overall bias of the publisher. Meaning, for the further development, we can not include the publishers, since each article of a publishing house has the same label. What I would like to discuss later, however, is the connection between whether or not one of the publishers listed in Table x published more articles in important political years.
+\noindent The two tables 2.1 and 2.2 list the publisher who produced the highest amount of Hyperpartisan articles in the respective dataset. To keep track, only those publishers who have published more than 7 Hyperpartisan articles in the dataset 'labelled by article' and who have published more than 10.000 hyperpartisan articles in the dataset 'labelled by publisher' are included in the tables. However, a problem here is the dataset 'Labelled by Publisher', since this record, as previously described, has been labelled by the overall bias of the publisher. Meaning, for the further development, we can not include the publishers, since each article of a publishing house has the same label. What I would like to discuss later, however, is the connection between whether or not one of the publishers listed in Table 2.2 published more articles in important political years.
 
 
 \section{Data Preparation}
@@ -336,8 +341,12 @@ df['Content'] = df['Content'].apply(lambda x: [stemmer.stem(y) for y in x])
 \end{lstlisting}
 This will transform our output file in the following way:
 \begin{figure}[h]
-	\subfigure[Csv file before Stemming and Tokenization]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/csvOhne.png}} 
-	\subfigure[Csv file after Stemming and Tokenization]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/csvmit.png}} 
+	%PC:
+	%\subfigure[Csv file before Stemming and Tokenization]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/csvOhne.png}} 
+	%\subfigure[Csv file after Stemming and Tokenization]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/csvmit.png}} 
+	%Lap Top:
+	\subfigure[Csv file before Stemming and Tokenization]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/csvOhne.png}} 
+	\subfigure[Csv file after Stemming and Tokenization]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/csvmit.png}} 
 \end{figure}
 
 \newpage
