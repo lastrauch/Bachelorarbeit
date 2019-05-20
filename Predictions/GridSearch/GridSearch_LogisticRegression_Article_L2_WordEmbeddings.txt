@@ -1,0 +1,2 @@
+Best Parameters in Accuracy:{'penalty': 'l2', 'C': 206.913808111479, 'solver': 'liblinear'}
+Best Result in Accuracy:0.6356589147286822

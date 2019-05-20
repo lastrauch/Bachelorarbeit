@@ -1,3 +1,0 @@
-classifier,MLP
-train_score,0.5135658914728682
-test_score,0.5271317829457365

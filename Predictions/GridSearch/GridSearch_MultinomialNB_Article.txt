@@ -1,0 +1,2 @@
+Best Parameters in Accuracy:{'alpha': 0.7, 'fit_prior': False}
+Best Result in Accuracy:0.662015503875969

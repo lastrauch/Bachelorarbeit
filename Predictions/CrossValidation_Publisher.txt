@@ -1,31 +1,27 @@
 Accuracy:
 model_name
-LinearSVC                 0.921563
-LogisticRegression        0.908643
-MultinomialNB             0.825867
-RandomForestClassifier    0.756382
+LogisticRegression        0.887745
+MultinomialNB             0.800105
+RandomForestClassifier    0.796323
 Name: accuracy, dtype: float64
 
 Precision:
 model_name
-LinearSVC                 0.926936
-LogisticRegression        0.915553
-MultinomialNB             0.861105
-RandomForestClassifier    0.742471
+LogisticRegression        0.881902
+MultinomialNB             0.774104
+RandomForestClassifier    0.784524
 Name: precision, dtype: float64
 
 Recall:
 model_name
-LinearSVC                 0.915273
-LogisticRegression        0.900330
-MultinomialNB             0.777077
-RandomForestClassifier    0.786487
+LogisticRegression        0.895397
+MultinomialNB             0.847540
+RandomForestClassifier    0.814970
 Name: recall, dtype: float64
 
 F1-Score:
 model_name
-LinearSVC                 0.921065
-LogisticRegression        0.907877
-MultinomialNB             0.816935
-RandomForestClassifier    0.763159
+LogisticRegression        0.888597
+MultinomialNB             0.809158
+RandomForestClassifier    0.799832
 Name: f1, dtype: float64

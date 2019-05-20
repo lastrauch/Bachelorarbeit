@@ -1,3 +1,0 @@
-SVC:
-Best Parameters:{'kernel': 'sigmoid', 'C': 100, 'gamma': 0.01}
-Best Result Accuracy:0.6496124031007752

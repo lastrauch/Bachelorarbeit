@@ -1,0 +1,2 @@
+Best Parameters in Accuracy:{'penalty': 'l2', 'C': 1438.44988828766, 'max_iter': 10000, 'solver': 'lbfgs'}
+Best Result in Accuracy:0.6015366666666667
