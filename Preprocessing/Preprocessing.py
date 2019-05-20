@@ -12,17 +12,6 @@ import re
 from nltk.stem.snowball import SnowballStemmer
 stemmer = SnowballStemmer("english")
 
-
-
-publisher = []
-article = []
-tokenize_publisherT = []
-tokenize_articleT = []
-tokenize_publisherP = []
-tokenize_articleP = []
-
-lower_line = []
-
 # =======================================================================================================================
 
 
@@ -54,17 +43,22 @@ def to_csv(df, output):
 
 
 def main():
-    df1 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByArticle.csv', encoding='utf-8')
-    str_lower(df1)
-    remove_stop(df1)
-    to_csv(df1, '/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle.csv')
-    print 'Done: "byArticle"'
+    # df1 = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByArticle.csv', encoding='utf-8')
+    # str_lower(df1)
+    # remove_stop(df1)
+    # to_csv(df1, '/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle_NoTokens.csv')
+    # print 'Done: "byArticle"'
+    #
+    # df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByPublisher.csv', encoding='utf-8')
+    # str_lower(df)
+    # remove_stop(df)
+    # to_csv(df, '/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByPublisher_NoTokens.csv')
+    # print 'done "ByPublisher'
 
-    df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/ByPublisher.csv', encoding='utf-8')
+    df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Validation.csv', encoding='utf-8')
     str_lower(df)
     remove_stop(df)
-    to_csv(df, '/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByPublisher.csv')
-    print 'done "ByPublisher'
+    to_csv(df, '/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_Validation.csv')
 
 
 if __name__ == '__main__':

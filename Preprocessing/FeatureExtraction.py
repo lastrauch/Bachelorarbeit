@@ -1,6 +1,4 @@
 # coding=utf-8
-import xml.etree.ElementTree as ET
-from lxml import etree
 
 # Feature Atributes Article
 id_array_article = []
@@ -62,12 +60,12 @@ def parse_features(content, publisher):
 
 #------------------------------Comment this part for te Validation Data-------------------------------------------------
 
-    if publisher:
-        for _ in range(600000 - len(published_at_array_publisher)):
-            published_at_array_publisher.append('/')
-    else:
-        for _ in range(645 - len(published_at_array_article)):
-            published_at_array_article.append('/')
+    # if publisher:
+    #     for _ in range(600000 - len(published_at_array_publisher)):
+    #         published_at_array_publisher.append('/')
+    # else:
+    #     for _ in range(645 - len(published_at_array_article)):
+    #         published_at_array_article.append('/')
 
 #-----------------------------------------------------------------------------------------------------------------------
 

@@ -24,7 +24,7 @@ import getopt
 import sys
 import xml.sax
 
-evaluationOutputFileName = "evaluation.prototext"
+evaluationOutputFileName = "Evaluation_RandomForest_Publisher-Validation_GridSearchFeature.prototext"
 
 
 def parse_options():

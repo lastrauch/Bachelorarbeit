@@ -1,0 +1,27 @@
+Accuracy:
+model_name
+LogisticRegression        0.678530
+MultinomialNB             0.661986
+RandomForestClassifier    0.654392
+Name: accuracy, dtype: float64
+
+Precision:
+model_name
+LogisticRegression        0.619993
+MultinomialNB             0.612262
+RandomForestClassifier    0.692500
+Name: precision, dtype: float64
+
+Recall:
+model_name
+LogisticRegression        0.346830
+MultinomialNB             0.231159
+RandomForestClassifier    0.121558
+Name: recall, dtype: float64
+
+F1-Score:
+model_name
+LogisticRegression        0.439210
+MultinomialNB             0.330075
+RandomForestClassifier    0.212976
+Name: f1, dtype: float64

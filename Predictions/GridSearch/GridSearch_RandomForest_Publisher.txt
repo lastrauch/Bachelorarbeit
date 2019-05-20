@@ -1,2 +1,0 @@
-Best Parameters in Accuracy:{'n_estimators': 500, 'criterion': 'gini', 'max_depth': 15, 'min_samples_leaf': 1}
-Best Result in Accuracy:0.6589147286821705

@@ -1,2 +1,0 @@
-Best Parameters in Accuracy:{'penalty': 'l2', 'C': 1438.44988828766, 'solver': 'newton-cg'}
-Best Result in Accuracy:0.6012633333333334

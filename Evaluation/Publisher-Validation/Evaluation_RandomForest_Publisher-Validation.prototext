@@ -1,0 +1,16 @@
+measure{
+  key: "accuracy"
+  value: "0.551926666667"
+}
+measure{
+  key: "precision"
+  value: "0.536540969609"
+}
+measure{
+  key: "recall"
+  value: "0.762453333333"
+}
+measure{
+  key: "f1"
+  value: "0.629852571057"
+}

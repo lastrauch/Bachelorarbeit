@@ -1,8 +1,0 @@
-Best Parameters in Accuracy:{'alpha': 0.5, 'fit_prior': True}
-Best Result in Accuracy:0.828825
-Best Parameters in Precision:{'alpha': 0.5, 'fit_prior': True}
-Best Result in Precision:0.861614842480503
-Best Parameters in Recall:{'alpha': 0.5, 'fit_prior': True}
-Best Result in Recall:0.78349
-Best Parameters in F1:{'alpha': 0.5, 'fit_prior': True}
-Best Result in F1:0.8206960218764787

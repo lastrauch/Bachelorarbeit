@@ -66,12 +66,12 @@ def parse_groundtruth(content, publisher):
         for _ in range(645):
             bias_array_article.append('/')
 
-    url_netloc = []
-    for i in range(645):
-        u = urlparse(url_article[i])
-        url_netloc.append(u.netloc)
-
-    print url_netloc
+    # url_netloc = []
+    # for i in range(645):
+    #     u = urlparse(url_article[i])
+    #     url_netloc.append(u.netloc)
+    #
+    # print url_netloc
 
 
 

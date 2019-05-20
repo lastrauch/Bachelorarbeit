@@ -1,0 +1,2 @@
+Best Parameters in Accuracy:{'kernel': 'rbf', 'C': 10, 'gamma': 1}
+Best Result in Accuracy:0.6759689922480621

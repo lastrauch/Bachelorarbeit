@@ -16,20 +16,20 @@ path_validation_training = '/home/lstrauch/Bachelorarbeit/env/Data/articles-vali
 
 
 def write_to_csv_articles(titlecsv, publisher):
-    if publisher:
-        xml_gt = etree.iterparse(path_publisher_gt, tag='article')
-        xml_training = etree.iterparse(path_publisher_training, tag='article')
-        content_training = etree.iterparse(path_publisher_training, tag='article')
-    else:
-        xml_gt = etree.iterparse(path_article_gt, tag='article')
-        xml_training = etree.iterparse(path_article_training, tag='article')
-        content_training = etree.iterparse(path_article_training, tag='article')
+    # if publisher:
+    #     xml_gt = etree.iterparse(path_publisher_gt, tag='article')
+    #     xml_training = etree.iterparse(path_publisher_training, tag='article')
+    #     content_training = etree.iterparse(path_publisher_training, tag='article')
+    # else:
+    #     xml_gt = etree.iterparse(path_article_gt, tag='article')
+    #     xml_training = etree.iterparse(path_article_training, tag='article')
+    #     content_training = etree.iterparse(path_article_training, tag='article')
 
 #------------------Uncomment this to parse the Validation-Datasets------------------------------------------------------
 
-    # xml_gt = etree.iterparse(path_validation_gt, tag='article')
-    # xml_training = etree.iterparse(path_validation_training, tag='article')
-    # content_training = etree.iterparse(path_validation_training, tag='article')
+    xml_gt = etree.iterparse(path_validation_gt, tag='article')
+    xml_training = etree.iterparse(path_validation_training, tag='article')
+    content_training = etree.iterparse(path_validation_training, tag='article')
 
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -45,9 +45,9 @@ def write_to_csv_articles(titlecsv, publisher):
 
 #------------------Uncomment this to for the Validation-Datasets--------------------------------------------------------
 
-    # published = []
-    # for _ in range(150000-len(published)):
-    #     published.append('/')
+    published = []
+    for _ in range(150000-len(published)):
+        published.append('/')
 
 #-----------------------------------------------------------------------------------------------------------------------
 
@@ -66,13 +66,13 @@ def write_to_csv_articles(titlecsv, publisher):
 
 def main():
     #Article Dataset
-    write_to_csv_articles('/home/lstrauch/Bachelorarbeit/env/Data/ByArticle.csv', False)
+    # write_to_csv_articles('/home/lstrauch/Bachelorarbeit/env/Data/ByArticle.csv', False)
 
     #Publisher Dataset
     # write_to_csv_articles('/home/lstrauch/Bachelorarbeit/env/Data/ByPublisher.csv', True)
 
     #Validationset
-    #write_to_csv_articles('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_Validation.csv', True)
+    write_to_csv_articles('/home/lstrauch/Bachelorarbeit/env/Data/Validation.csv', True)
 
 
 if __name__ == '__main__':
