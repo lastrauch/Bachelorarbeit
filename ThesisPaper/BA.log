@@ -1,0 +1,621 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.16)  27 MAY 2019 10:05
+entering extended mode
+**./BA.tex
+(BA.tex
+LaTeX2e <2018-12-01>
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\book.cls"
+Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\bk11.clo"
+File: bk11.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\times.st
+y"
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphi
+cx.sty"
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval
+.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphi
+cs.sty"
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.s
+ty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\gr
+aphics.cfg"
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pd
+ftex.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\latexsym.s
+ty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath
+.sty"
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amstext
+.sty"
+Package: amstext 2000/06/29 v2.01 AMS text
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.
+sty"
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks15
+\ex@=\dimen105
+))
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.
+sty"
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen106
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.
+sty"
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count89
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count90
+\leftroot@=\count91
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count92
+\DOTSCASE@=\count93
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
+\dotsspace@=\muskip10
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
+\tag@help=\toks16
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
+\andhelp@=\toks17
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks18
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssym
+b.sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfon
+ts.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfi
+gure.sty"
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip46
+\subfigcapskip=\skip47
+\subfigcaptopadj=\dimen114
+\subfigbottomskip=\skip48
+\subfigcapmargin=\dimen115
+\subfiglabelskip=\skip49
+\c@subfigure=\count101
+\c@lofdepth=\count102
+\c@subtable=\count103
+\c@lotdepth=\count104
+
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/subfigure\subfi
+gure.cfg")
+\subfig@top=\skip50
+\subfig@bottom=\skip51
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\verbatim.
+sty"
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks20
+\verbatim@line=\toks21
+\verbatim@in@stream=\read1
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listin
+gs.sty"
+\lst@mode=\count105
+\lst@gtempboxa=\box29
+\lst@token=\toks22
+\lst@length=\count106
+\lst@currlwidth=\dimen116
+\lst@column=\count107
+\lst@pos=\count108
+\lst@lostspace=\dimen117
+\lst@width=\dimen118
+\lst@newlines=\count109
+\lst@lineno=\count110
+\lst@maxwidth=\dimen119
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmis
+c.sty"
+File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+\c@lstnumber=\count111
+\lst@skipnumbers=\count112
+\lst@framebox=\box30
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listin
+gs.cfg"
+File: listings.cfg 2019/02/27 1.8b listings configuration
+))
+Package: listings 2019/02/27 1.8b (Carsten Heinz)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/booktabs\bookta
+bs.sty"
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen120
+\lightrulewidth=\dimen121
+\cmidrulewidth=\dimen122
+\belowrulesep=\dimen123
+\belowbottomsep=\dimen124
+\aboverulesep=\dimen125
+\abovetopsep=\dimen126
+\cmidrulesep=\dimen127
+\cmidrulekern=\dimen128
+\defaultaddspace=\dimen129
+\@cmidla=\count113
+\@cmidlb=\count114
+\@aboverulesep=\dimen130
+\@belowrulesep=\dimen131
+\@thisruleclass=\count115
+\@lastruleclass=\count116
+\@thisrulewidth=\dimen132
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstlan
+g1.sty"
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ntheorem\ntheor
+em.sty"
+Style `ntheorem', Version 1.33 <2011/08/15>
+Package: ntheorem 2011/08/15 1.33
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.sty
+"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\theorem@style=\toks23
+\theorem@@style=\toks24
+\theorembodyfont=\toks25
+\theoremnumbering=\toks26
+\theorempreskipamount=\skip52
+\theorempostskipamount=\skip53
+\theoremframepreskipamount=\skip54
+\theoremframepostskipamount=\skip55
+\theoreminframepreskipamount=\skip56
+\theoreminframepostskipamount=\skip57
+\theorem@preskip=\toks27
+\theorem@postskip=\toks28
+\theorem@framepreskip=\toks29
+\theorem@framepostskip=\toks30
+\theorem@inframepreskip=\toks31
+\theorem@inframepostskip=\toks32
+\theoremindent=\dimen133
+\theorem@indent=\dimen134
+\theoremrightindent=\dimen135
+\theorem@rightindent=\dimen136
+\theoremheaderfont=\toks33
+\theoremseparator=\toks34
+\theoremprework=\toks35
+\theorempostwork=\toks36
+\theoremsymbol=\toks37
+\qedsymbol=\toks38
+\theoremkeyword=\toks39
+\qedsymbol=\toks40
+\thm@topsep=\skip58
+\thm@topsepadd=\skip59
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\tabularx.
+sty"
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty
+"
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
+\col@sep=\dimen137
+\ar@mcellbox=\box31
+\extrarowheight=\dimen138
+\NC@list=\toks41
+\extratabsurround=\skip60
+\backup@length=\skip61
+\ar@cellbox=\box32
+)
+\TX@col@width=\dimen139
+\TX@old@table=\dimen140
+\TX@old@col=\dimen141
+\TX@target=\dimen142
+\TX@delta=\dimen143
+\TX@cols=\count117
+\TX@ftn=\toks42
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algo
+rithm.sty"
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
+nment
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/float\float.sty
+"
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count118
+\float@exts=\toks43
+\float@box=\box33
+\@float@everytoks=\toks44
+\@floatcapt=\box34
+)
+\@float@every@algorithm=\toks45
+\c@algorithm=\count119
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/algorithms\algo
+rithmic.sty"
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+\c@ALC@unique=\count120
+\c@ALC@line=\count121
+\c@ALC@rem=\count122
+\c@ALC@depth=\count123
+\ALC@tlm=\skip62
+\algorithmicindent=\skip63
+)
+\c@definition=\count124
+\c@proposition=\count125
+ (BA.aux)
+\openout1 = `BA.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
+LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 73.
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1ptm.f
+d"
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\sup
+p-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count126
+\scratchdimen=\dimen144
+\scratchbox=\box35
+\nofMPsegments=\count127
+\nofMParguments=\count128
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count129
+\MPscratchDim=\dimen145
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
+\everyMPtoPDFconversion=\toks47
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstop
+df-base.sty"
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infw
+arerr.sty"
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext
+.sty"
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvde
+finekeys.sty"
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxc
+mds.sty"
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+)))
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvopti
+ons.sty"
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvse
+tkeys.sty"
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etex
+cmds.sty"
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\iflu
+atex.sty"
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+))))
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdft
+excmds.sty"
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpd
+f.sty"
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+)
+\c@lstlisting=\count132
+ [1
+
+
+{C:/Users/lastrauc/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 98.
+ (BA.toc
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 2.
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 2.
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.f
+d"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 2.
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.f
+d"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+))
+\tf@toc=\write3
+\openout3 = `BA.toc'.
+
+ [1
+
+] (BA.loa)
+\tf@loa=\write4
+\openout4 = `BA.loa'.
+
+ [2
+
+] (BA.lof)
+\tf@lof=\write5
+\openout5 = `BA.lof'.
+
+ [3
+
+] (BA.lot)
+\tf@lot=\write6
+\openout6 = `BA.lot'.
+
+ [4
+
+]
+Chapter 1.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 117.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 119.
+[1
+
+]
+Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 139--142
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 143.
+
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\omsptm.f
+d"
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 143.
+ [2
+
+]
+Overfull \hbox (15.64673pt too wide) in paragraph at lines 153--154
+[]\OT1/ptm/m/n/10.95 Id: A unique id, which is the same as the cor-re-spond-ing
+ en-try in the GroundTruth
+ []
+
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 160.
+<H:/Uni/Bachelorarbeit/HypeprartisanLabeledByPublisher.png, id=27, 462.528pt x 
+346.896pt>
+File: H:/Uni/Bachelorarbeit/HypeprartisanLabeledByPublisher.png Graphic file (t
+ype png)
+<use H:/Uni/Bachelorarbeit/HypeprartisanLabeledByPublisher.png>
+Package pdftex.def Info: H:/Uni/Bachelorarbeit/HypeprartisanLabeledByPublisher.
+png  used on input line 165.
+(pdftex.def)             Requested size: 180.0pt x 135.00305pt.
+<C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png, id
+=29, 462.528pt x 346.896pt>
+File: C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.pn
+g Graphic file (type png)
+<use C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png
+>
+Package pdftex.def Info: C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/B
+ias_Distribution.png  used on input line 181.
+(pdftex.def)             Requested size: 180.0pt x 135.00305pt.
+<C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_PublishedAt_
+Publisher_AllYears.png, id=30, 462.528pt x 346.896pt>
+File: C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Publish
+edAt_Publisher_AllYears.png Graphic file (type png)
+<use C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Publishe
+dAt_Publisher_AllYears.png>
+Package pdftex.def Info: C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/D
+istribution_PublishedAt_Publisher_AllYears.png  used on input line 182.
+(pdftex.def)             Requested size: 180.0pt x 135.00305pt.
+
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 181--189
+[][] []
+ []
+
+[3 <H:/Uni/Bachelorarbeit/HypeprartisanLabeledByPublisher.png>]
+<C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByAr
+ticle.png, id=36, 462.528pt x 346.896pt>
+File: C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_Labele
+dByArticle.png Graphic file (type png)
+<use C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_Labeled
+ByArticle.png>
+Package pdftex.def Info: C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/H
+ypeprartisan_LabeledByArticle.png  used on input line 197.
+(pdftex.def)             Requested size: 180.0pt x 135.00305pt.
+<C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Published-At
+_ByArticle.png, id=37, 462.528pt x 346.896pt>
+File: C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Publish
+ed-At_ByArticle.png Graphic file (type png)
+<use C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Publishe
+d-At_ByArticle.png>
+Package pdftex.def Info: C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/D
+istribution_Published-At_ByArticle.png  used on input line 198.
+(pdftex.def)             Requested size: 180.0pt x 135.00305pt.
+
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 197--205
+[][] []
+ []
+
+[4 <C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png>
+ <C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_PublishedAt
+_Publisher_AllYears.png> <C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/
+Hypeprartisan_LabeledByArticle.png> <C:/Users/lastrauc/Documents/Git/ThesisPape
+r/Pictures/Distribution_Published-At_ByArticle.png>]
+Overfull \hbox (5.53185pt too wide) in paragraph at lines 214--229
+[][] 
+ []
+
+
+Overfull \hbox (14.89293pt too wide) in paragraph at lines 233--248
+[][] 
+ []
+
+[5]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 273.
+
+
+("C:\Users\lastrauc\AppData\Local\Programs\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.f
+d"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 274.
+ [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 335--339
+
+ []
+
+[8]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 356--357
+
+ []
+
+[9
+
+] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 376--385
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 376--385
+
+ []
+
+\tf@thm=\write7
+\openout7 = `BA.thm'.
+
+[11] (BA.aux) ) 
+Here is how much of TeX's memory you used:
+ 5209 strings out of 492945
+ 73144 string characters out of 3124920
+ 418067 words of memory out of 3000000
+ 8979 multiletter control sequences out of 15000+200000
+ 26407 words of font info for 62 fonts, out of 3000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 41i,10n,40p,890b,1794s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/lastrauc/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/d
+vips/base/8r.enc}<C:/Users/lastrauc/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb><C:/Users/lastrauc/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Users/lastrauc/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/lastrauc/AppData/L
+ocal/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/lastrauc/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/last
+rauc/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
+Output written on BA.pdf (16 pages, 191676 bytes).
+PDF statistics:
+ 90 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+

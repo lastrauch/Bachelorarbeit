@@ -1,9 +1,8 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Distribution of as Hyperpartisan labelled articles by publisher}}{3}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of Bias}}}{4}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Distribution of publishing years}}}{4}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Distribution of Hyperpartisan labelled articles}}}{4}
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Distribution of publishing years}}}{4}
-\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Csv file before Stemming and Tokenization}}}{9}
-\contentsline {subfigure}{\numberline {(f)}{\ignorespaces {Csv file after Stemming and Tokenization}}}{9}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Distribution of as Hyperpartisan labelled articles by publisher}}{3}% 
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Distribution of Bias}}}{4}% 
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Distribution of Bias}}}{4}% 
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Distribution of Hyperpartisan labelled articles}}}{4}% 
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Distribution of publishing years}}}{4}% 
+\addvspace {10\p@ }
