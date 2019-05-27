@@ -319,7 +319,7 @@ tf.to_csv(titlecsv,encoding='utf-8',index=False)
 
 
 \subsection{Remove special characters and stop words}
-Now that we have merged both files and written them into a csv file, we now need to remove special characters and stop words. Especially the removal of stopwords is necessary to shrink our corpus and due to the fact that words such as "the," "a," etc. do not influence the classification of our content in the further course.
+Now that we have merged both files and written them into a csv file, we need to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles [TextClassificationUsingMachineLearning] are useful for training a classifier. It also decreases our corpus which makes it easier to classify later on. (Warum?)
 \begin{lstlisting}[frame=single]
 stop = stopwords.words('english')
 
@@ -357,7 +357,20 @@ As already mentioned in Chapter "Introduction", we build our classifier model by
 
 \section{Vector Representation of the Text}
 \subsection{General}
+In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a binary vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertorr for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
 \subsection{Term Frequency-Inverse Document Frequency}
+Term frequency \textit{tf(t,d)} is a measure that denotes how frequently the term \textit{t} appears in the document \textit{d}. It is computed as follows: \\
+\[
+	tf(t_i, d_j)=\frac{1+log_{10}(f_{ti,gj})}{1+log_{10}(\max_{f_{t', dj}:t'\in d_j})}
+\]
+Inverse Doucment Frequency \textit{idf(t)} points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears.\\
+\[
+	idf(t_i)=log{10}(\frac{|D|}{d' \in D : t_i \in d'})
+\]
+To compute the weight for the term $t_i$ within the document $d_j$ we simply multiply the \textit{TF} and \textit{IDF} components:
+\[
+	w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
+\]
 \subsection{Word Embeddings}
 \section{Feature Selection and/or Feature Transofrmation}
 \section{Learning Algorithms}
