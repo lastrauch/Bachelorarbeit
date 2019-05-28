@@ -3,3 +3,5 @@
 \contentsline {table}{\numberline {2.1}{\ignorespaces Publsihers who have published more than 7 Hyperpartisan Articles}}{5}% 
 \contentsline {table}{\numberline {2.2}{\ignorespaces Publishers who have published more than 10.000 Hyperpartisan articles}}{5}% 
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Top 10 terms by average \Gls {tfidf} weight (By Article)}}{11}% 
+\contentsline {table}{\numberline {3.2}{\ignorespaces Top 10 terms by average \Gls {tfidf} weight (By Publisher)}}{11}% 

@@ -1,0 +1,60 @@
+\ifglsentryexists{tfidf}{}%
+{%
+\gls@defglossaryentry{tfidf}%
+{%
+name={TF-IDF},%
+sort={TF-IDF},%
+type={main},%
+first={TF-IDF},%
+firstplural={TF-IDFs},%
+text={TF-IDF},%
+plural={TF-IDFs},%
+description={Term Frequency-Inverse Term Frequency},%
+descriptionplural={Term Frequency-Inverse Term Frequency},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{bert}{}%
+{%
+\gls@defglossaryentry{bert}%
+{%
+name={BERT},%
+sort={BERT},%
+type={main},%
+first={BERT},%
+firstplural={BERTs},%
+text={BERT},%
+plural={BERTs},%
+description={Bidirectional Encoder Representations from Transformers},%
+descriptionplural={Bidirectional Encoder Representations from Transformers},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

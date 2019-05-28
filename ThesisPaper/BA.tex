@@ -1,7 +1,7 @@
 % do not change these two lines (this is a hard requirement
 % there is one exception: you might replace oneside by twoside in case you deliver 
 % the printed version in the accordant format
-\documentclass[11pt,titlepage,oneside,openany]{book}
+\documentclass[a4paper, 11pt,titlepage,oneside,openany]{book}
 \usepackage{times}
 
 
@@ -14,10 +14,9 @@
 \usepackage{listings} 
 \usepackage{booktabs}
 \lstset{language=Python,
-		basicstyle=\ttfamily\scriptsize,
-	    breaklines=true}             
-
-
+	basicstyle=\ttfamily\scriptsize,
+	breaklines=true}    
+\usepackage{glossaries}          
 \usepackage{ntheorem}
 
 % \usepackage{paralist}
@@ -68,7 +67,7 @@
 
 
 
-
+\makeglossaries
 
 \begin{document}
 
@@ -90,7 +89,7 @@
     Data and Web Science Group\\
     Prof.\ Dr.\ Ponzetto\\
     University of Mannheim\\} \vspace{2cm}
-   {Juli 2014}
+   {Juli 2019}
   \end{center}
 \end{titlepage} 
 
@@ -103,6 +102,19 @@
 \listoffigures
 
 \listoftables
+
+\newglossaryentry{tfidf}
+{
+	name=TF-IDF,
+	description={Term Frequency-Inverse Term Frequency}
+}
+\newglossaryentry{bert}
+{
+	name=BERT,
+	description={Bidirectional Encoder Representations from Transformers}
+}
+
+\printglossaries %in cmd for printing: makeindex -s BA.ist -t BA.glg -o BA.gls BA.glo
 
 % evntuelly you might add something like this
 % \listtheorems{definition}
@@ -162,11 +174,11 @@ As mentioned above, this dataset consists of a total of 750,000 articles and is 
 \begin{figure}[h]
 	\centering
 	%Arbeit:
-	\includegraphics[width=0.5\textwidth]{H:/Uni/Bachelorarbeit/HypeprartisanLabeledByPublisher.png}
+	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%PC:
-	%\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%Lap Top:
-		%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	\caption{Distribution of as Hyperpartisan labelled articles by publisher}
 	\label{fig:example}
 \end{figure}
@@ -178,11 +190,11 @@ As mentioned above, this dataset consists of a total of 750,000 articles and is 
 The publicity data is distributed over the years 1964-2018, with most of the data coming from 2012-2018.
 \begin{figure}[h]
 	%Arbeit:
-	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
-	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}  
+	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
+	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}  
 	%PC:
-	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
+	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
 	%Lap Top:
 	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
 	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
@@ -194,11 +206,11 @@ The publicity data is distributed over the years 1964-2018, with most of the dat
 The dataset labelled by Article is a little different to the larger one labelled by publisher. Here the articles were individually labelled by hand. Accordingly, the distributions of this dataset are completely different. This becomes quiet obvious if we look at how the distribution of the Hyperpartisan labelled articles is here.
 \begin{figure}[h]
 	%Arbeit:
-	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Published-At_ByArticle}} 
+	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Published-At_ByArticle}} 
 	%PC:
-	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
+	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
 	%Lap Top:
 	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
 	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
@@ -269,7 +281,9 @@ Since it is difficult to work with the given data in an XML format, it is necess
 
 
 \subsection{Filter out the important information}
-As mentioned in Chapter 2.1 Data Description, the XML files include various features, which will play an important role in the further course of this work. It is now necessary to filter these features out of the XML format so the can be better worked with later. In order to be able to do this, we pass an algorithm the, by the iterparse method read content, which then passes through this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. 
+As mentioned in Chapter 2.1 Data Description, the XML files include various features, which will play an important role in the further course of this work. It is now necessary to filter these features out of the XML format so the can be better worked with later. In order to be able to do this, we pass an algorithm the, by the iterparse method read content, which then passes through this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. \\
+\noindent
+\begin{minipage}{\linewidth}
 \begin{lstlisting}[frame=single]
 def parse_features(content, publisher):
   for event, elem in content:
@@ -290,10 +304,12 @@ def parse_features(content, publisher):
           title_array_article.append(value)
       elem.clear()
 \end{lstlisting}
-
+\end{minipage}
 
 \subsection{Merge the Groundtruth- and Training datasets into a csv file}
-Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library pandas to write the two files into one csv file. This, and especially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.
+Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library pandas to write the two files into one csv file. This, and especially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.\\
+\noindent
+\begin{minipage}{\linewidth}
 \begin{lstlisting}[frame=single]
 feature_extraction.parse_features(xml_training, publisher)
 groundtruth_parser.parse_groundtruth(xml_gt, publisher)
@@ -316,10 +332,12 @@ tf = Pd.DataFrame(columns)
 tf = tf[['ArticleID','Published', Title','Bias','Content','Hyperpartisan']]
 tf.to_csv(titlecsv,encoding='utf-8',index=False)
 \end{lstlisting}
-
+\end{minipage}
 
 \subsection{Remove special characters and stop words}
-Now that we have merged both files and written them into a csv file, we need to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles [TextClassificationUsingMachineLearning] are useful for training a classifier. It also decreases our corpus which makes it easier to classify later on. (Warum?)
+Now that we have merged both files and written them into a csv file, we need to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles [TextClassificationUsingMachineLearning] are useful for training a classifier. It also decreases our corpus which makes it easier to classify later on. (Warum?)\\
+\noindent
+\begin{minipage}{\linewidth}
 \begin{lstlisting}[frame=single]
 stop = stopwords.words('english')
 
@@ -328,6 +346,7 @@ df['Title'] = df['Title'].apply(lambda x: ''.join([item for item in x.split() if
 df['Content'] = df['Content'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", '', x))
 df['Title'] = df['Title'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", '', x))
 \end{lstlisting}
+\end{minipage}
 \noindent Here it becomes obvious that using pandas was a good choice, as we can now specifically access the 'Content' and 'Title' columns in order to perform this step of preprocessing on only these two and not the whole file.
 
 
@@ -335,11 +354,14 @@ df['Title'] = df['Title'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", '', x))
 After cleaning the dataset, the words are tokenized in order to convert them into numerical vectors so that a classifier is able to work with them. Tokenization is definied as "The process of demarcating and possibly classifying sections of a string of input characters. The resulting tokens are then passed on to some other form of processing. The process can be considered a sub-task of parsing input".\\
 \noindent Stemming is the procedure of reducing the word to its grammatical (morpho-syntatctic) root. The result is not necessarily a valid word of the language. For example, "recognized" would be converted to "recogniz". Still, the basic word almost always contains the very meaning of the word. Stemming is advantageous in that the algorithm used later now only has to fall back on a few different words and not many, all of which have the same meaning.\\
 \\
-\noindent In order to implement Stemming and Tokenization, only 2 lines of python code are necessary, due to the Pandas dataframe. 
+\noindent In order to implement Stemming and Tokenization, only 2 lines of python code are necessary, due to the Pandas dataframe. \\
+\noindent
+\begin{minipage}{\linewidth}
 \begin{lstlisting}[frame=single]
 df["Content"] = df["Content"].apply(nltk.word_tokenize)
 df['Content'] = df['Content'].apply(lambda x: [stemmer.stem(y) for y in x])
 \end{lstlisting}
+\end{minipage}
 This will transform our output file in the following way:
 
 \chapter{Text Classification Techniques}
@@ -356,8 +378,8 @@ This will transform our output file in the following way:
 As already mentioned in Chapter "Introduction", we build our classifier model by using BERT-Embeddings. To compare how our model performs, in this chapter, I will discuss the classic methods and algorithms that I have used in order to achieve this comparison. \\	
 
 \section{Vector Representation of the Text}
-\subsection{General}
 In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a binary vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertorr for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
+
 \subsection{Term Frequency-Inverse Document Frequency}
 Term frequency \textit{tf(t,d)} is a measure that denotes how frequently the term \textit{t} appears in the document \textit{d}. It is computed as follows: \\
 \[
@@ -371,8 +393,78 @@ To compute the weight for the term $t_i$ within the document $d_j$ we simply mul
 \[
 	w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
 \]
+Therefore, \Gls{tfidf} indicates how important a word is to a document in a collection or corpus. It is often used as a weighting factor in Information Retrieval and Text Mining. The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others. (umschreiben?) \\
+\noindent \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between 2 terms. However, TF-IDF is based on the bag-of-words (BoW) model, which is why it disregards aspects such as text position, semantics and co-occurrence.
+Many ways exist to implement \Gls{tfidf}. The one I used is as follows:\\
+
+\noindent
+\begin{minipage}{\linewidth}
+\begin{lstlisting}[frame=single]
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfTransformer
+
+def to_tf_idf(content):
+	count_vect = CountVectorizer()
+	tfidf_transformer = TfidfTransformer()
+
+	content_counts = count_vect.fit_transform(content)
+	content_tfidf = tfidf_transformer.fit_transform(content_counts)
+
+	return content_tfidf
+\end{lstlisting}
+\end{minipage}
+
+\noindent With "CountVectorizer" we convert a collection of text documents to a matrix of token counts. "TfidfTransformer" transforms a count matrix into a normalized \gls{tfidf} representation.
+\begin{table}[t]
+	\begin{minipage}{.5\textwidth}
+		\begin{tabular}{ccc}
+			\toprule
+			Term & Average \Gls{tfidf} Weight \\
+			\midrule
+			trump & 0.091165 \\
+			bannon & 0.065129 \\
+			president & 0.061829 \\
+			kimmel & 0.052415 \\
+			money & 0.051647 \\
+			americans & 0.049132 \\
+			people & 0.047342 \\
+			obamacare & 0.042512 \\
+			wall & 0.042117 \\
+			control & 0.039068 \\
+			\bottomrule
+		\end{tabular}
+		\caption{Top 10 terms by average \Gls{tfidf} weight (By Article)}
+	\end{minipage}
+	\hspace{0,8cm}
+	\begin{minipage}{.5\textwidth}
+		\begin{tabular}{ccc}
+			\toprule
+			Terms & Average \Gls{tfidf} Weight \\
+			\midrule
+			balls & 0.057251 \\
+			said & 0.051183 \\
+			medicare & 0.047450 \\
+			martin & 0.046519 \\
+			school & 0.044264 \\
+			university & 0.043572 \\
+			says & 0.042079 \\
+			trump & 0.041235 \\
+			carrier & 0.040903 \\
+			degree & 0.040704 \\
+			\bottomrule
+		\end{tabular}
+		\caption{Top 10 terms by average \Gls{tfidf} weight (By Publisher)}
+	\end{minipage}
+\end{table}
+
+
 \subsection{Word Embeddings}
-\section{Feature Selection and/or Feature Transofrmation}
+Word Embeddings are based on the approach of Harris Distributional Hypothesis from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
+\noindent A Word Embedding provides a word vector for every word. This vector has a fixed length and consists of floating point numbers. This allows computation of distance calculation. One of the most well known examples in Word Embeddings is $king-man+woman=queen"$.
+Therefore, in the following section I will go into more detail on specific implementations of Word Embeddings. 
+\subsubsection{GloVe}
+\subsubsection{Word2Vec}
+\section{Feature Selection and/or Feature Transformation}
 \section{Learning Algorithms}
 \subsection{SVM}
 \subsection{Multinomial Naive Bayes Classifier}
@@ -398,5 +490,6 @@ wird.
 
 \noindent
 Mannheim, den 31.08.2014 \hspace{4cm} Unterschrift
+
 
 \end{document}
