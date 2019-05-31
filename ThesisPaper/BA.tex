@@ -113,6 +113,12 @@
 	name=BERT,
 	description={Bidirectional Encoder Representations from Transformers}
 }
+\newglossaryentry{cbow}
+{
+	name=CBOW,
+	description={Continous Bag of Words}
+}
+
 
 \printglossaries %in cmd for printing: makeindex -s BA.ist -t BA.glg -o BA.gls BA.glo
 
@@ -378,7 +384,7 @@ This will transform our output file in the following way:
 As already mentioned in Chapter "Introduction", we build our classifier model by using BERT-Embeddings. To compare how our model performs, in this chapter, I will discuss the classic methods and algorithms that I have used in order to achieve this comparison. \\	
 
 \section{Vector Representation of the Text}
-In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a binary vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertorr for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
+In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertorr for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
 
 \subsection{Term Frequency-Inverse Document Frequency}
 Term frequency \textit{tf(t,d)} is a measure that denotes how frequently the term \textit{t} appears in the document \textit{d}. It is computed as follows: \\
@@ -460,17 +466,37 @@ def to_tf_idf(content):
 
 \subsection{Word Embeddings}
 Word Embeddings are based on the approach of Harris Distributional Hypothesis from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
-\noindent A Word Embedding provides a word vector for every word. This vector has a fixed length and consists of floating point numbers. This allows computation of distance calculation. One of the most well known examples in Word Embeddings is $king-man+woman=queen"$.
-Therefore, in the following section I will go into more detail on specific implementations of Word Embeddings. 
-\subsubsection{GloVe}
+\noindent A Word Embedding provides a word vector for every word. It takes a word and gives it a vector representation by extracting features from that word within the context that word appears in and assigns it a place within a vector space. Two similar word will occupy places which are close to each other within that vector space whereas words that are different, will have locations much further away from each other. This allows computation of distance calculation, which is why, for example, we're able to tell which word is similar to "small" in the same sense as "biggest" is similar to "big". We simply have to compute the vector \textit{X}, which is equal to $Vector_{biggest}-Vector_{big}+Vector_{small}$ and then we find the word which is closest to \textit{X} in the vector space, measured by cosine distance. [Efficient Estimation of Word Representations in Vector Space]
 \subsubsection{Word2Vec}
+Word2Vec is a "2-Model Architecture for computing continuous vector representations of words from very large dataset" [Efficient Estimation of Word Representations in Vector Space] that creates an n-dimensional vector space in which each word is represented as a vector. Word2Vecs 2 learning models are the \gls{cbow} and Skip-Gram-Model (Figure 3.1).\\
+\\
+\noindent \gls{cbow} uses the context word to predict the target word. The input is a one-hot encoded vector. The weights between the input layer and the output layer can be represented by a $V \cdot N$ matrix \textit{W} where each row of \textit{W} is the \textit{N}-dimensional vector representation $v_W$ of the input word [word2vec Parameter Learning Explained]. The hidden-layer \textit{h} is computed by multiplying the one-hot encoding vector of the input word $w_I$ with the weight matrix \textit{W}.
+\[
+	h=W_{(k, \cdot)}^{T}:=v_{w_I}^{T}
+\] 
+Next we have another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix. With these weights we can finally compute a score $u_j$ for each word in the vocabulary
+\[
+	u_{j}={v'}_{w_j}^{T}h
+\] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. Afterwards we use \textit{softamax}, which is a log-linear classification model, to obtain the posterior distribution of words.
+\[
+	p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
+\] \\
+\\
+\noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same. However in the output layer, we are now outputting \textit{C} multinomial distributions. \\
+\\
+\noindent Learning the output vector is expensive.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Cbow_skip.png}
+		\caption{The CBOW and Skip-Gram architectures}
+	\label{fig:CBOW and Skip-Gram architectures}
+\end{figure}
 \section{Feature Selection and/or Feature Transformation}
 \section{Learning Algorithms}
 \subsection{SVM}
 \subsection{Multinomial Naive Bayes Classifier}
 \subsection{Random Forest Classifier}
 \subsection{Logistic Regression Classifier}
-
 \newpage
 
 

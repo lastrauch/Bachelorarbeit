@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.23)  28 MAY 2019 20:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.23)  30 MAY 2019 15:47
 entering extended mode
 **./BA.tex
 (BA.tex
@@ -590,35 +590,35 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 129.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 135.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 131.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 137.
 [1
 
 ]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--154
+Underfull \hbox (badness 10000) in paragraph at lines 157--160
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 155.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 161.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 155.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 161.
  [2
 
 ]
-Overfull \hbox (15.64673pt too wide) in paragraph at lines 165--166
+Overfull \hbox (15.64673pt too wide) in paragraph at lines 171--172
 []\OT1/ptm/m/n/10.95 Id: A unique id, which is the same as the cor-re-spond-ing
  en-try in the GroundTruth
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 172.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 178.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan
 _LabeledByPublisher.png, id=30, 462.528pt x 346.896pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprar
@@ -626,7 +626,7 @@ tisan_LabeledByPublisher.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprart
 isan_LabeledByPublisher.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/Hypeprartisan_LabeledByPublisher.png  used on input line 179.
+r/Pictures/Hypeprartisan_LabeledByPublisher.png  used on input line 185.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribu
 tion.png, id=32, 462.528pt x 346.896pt>
@@ -635,7 +635,7 @@ tribution.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Dist
 ribution.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/Bias_Distribution.png  used on input line 196.
+r/Pictures/Bias_Distribution.png  used on input line 202.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_
 PublishedAt_Publisher_AllYears.png, id=33, 462.528pt x 346.896pt>
@@ -645,10 +645,10 @@ tion_PublishedAt_Publisher_AllYears.png Graphic file (type png)
 ion_PublishedAt_Publisher_AllYears.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
 r/Pictures/Distribution_PublishedAt_Publisher_AllYears.png  used on input line 
-197.
+203.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 196--201
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 202--207
 [][] []
  []
 
@@ -662,7 +662,7 @@ tisan_LabeledByArticle.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprart
 isan_LabeledByArticle.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/Hypeprartisan_LabeledByArticle.png  used on input line 212.
+r/Pictures/Hypeprartisan_LabeledByArticle.png  used on input line 218.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_
 PublishedAt_Article.png, id=35, 462.528pt x 346.896pt>
@@ -671,21 +671,21 @@ tion_PublishedAt_Article.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribut
 ion_PublishedAt_Article.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/Distribution_PublishedAt_Article.png  used on input line 213.
+r/Pictures/Distribution_PublishedAt_Article.png  used on input line 219.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 212--217
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 218--223
 [][] []
  []
 
 [3 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprarti
 san_LabeledByPublisher.png>]
-Overfull \hbox (5.53185pt too wide) in paragraph at lines 226--241
+Overfull \hbox (5.53185pt too wide) in paragraph at lines 232--247
 [][] 
  []
 
 
-Overfull \hbox (14.89293pt too wide) in paragraph at lines 245--260
+Overfull \hbox (14.89293pt too wide) in paragraph at lines 251--266
 [][] 
  []
 
@@ -698,85 +698,112 @@ Distribution_PublishedAt_Publisher_AllYears.png> <C:/Users/Laris/Documents/Bach
 elorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png> <C:/Use
 rs/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_Publish
 edAt_Article.png>] [5]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 287.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 293.
 
  ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 288.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 294.
  [6]
-Underfull \hbox (badness 10000) in paragraph at lines 354--366
+Underfull \hbox (badness 10000) in paragraph at lines 360--372
 
  []
 
 [7] [8]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 378--379
+Underfull \hbox (badness 10000) in paragraph at lines 384--385
 
  []
 
 [9
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 384--385
+Underfull \hbox (badness 10000) in paragraph at lines 390--391
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 387--389
+Underfull \hbox (badness 10000) in paragraph at lines 393--395
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 395--399
+Underfull \hbox (badness 10000) in paragraph at lines 401--405
 
  []
 
 
-Overfull \hbox (26.9233pt too wide) in paragraph at lines 419--458
+Overfull \hbox (26.9233pt too wide) in paragraph at lines 425--464
 []$[]$   $[]$ 
  []
 
-[10] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 481--490
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 471--474
+
+ []
+
+[11]
+<C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Cbow_skip.png
+, id=80, 755.82375pt x 395.4775pt>
+File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Cbow_ski
+p.png Graphic file (type png)
+<use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Cbow_skip
+.png>
+Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
+r/Pictures/Cbow_skip.png  used on input line 490.
+(pdftex.def)             Requested size: 180.0pt x 94.18033pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 483--494
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--490
+Underfull \hbox (badness 10000) in paragraph at lines 483--494
+
+ []
+
+[12 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Cbow_skip
+.png>] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 507--516
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 507--516
 
  []
 
 \tf@thm=\write10
 \openout10 = `BA.thm'.
 
-[12] (BA.aux) ) 
+[14] (BA.aux) ) 
 Here is how much of TeX's memory you used:
- 9154 strings out of 492945
- 131361 string characters out of 3135513
+ 9190 strings out of 492945
+ 132201 string characters out of 3135513
  451083 words of memory out of 3000000
- 12812 multiletter control sequences out of 15000+200000
+ 12847 multiletter control sequences out of 15000+200000
  27584 words of font info for 63 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  45i,10n,41p,1991b,1345s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fil
-es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/t
-imes/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><
-C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on BA.pdf (18 pages, 257775 bytes).
+gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fil
+es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
+public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pf
+b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
+gram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
+pe1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utm
+r8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on BA.pdf (20 pages, 288423 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
+ 141 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

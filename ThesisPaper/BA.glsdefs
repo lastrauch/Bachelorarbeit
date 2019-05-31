@@ -58,3 +58,33 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{cbow}{}%
+{%
+\gls@defglossaryentry{cbow}%
+{%
+name={CBoW},%
+sort={CBoW},%
+type={main},%
+first={CBoW},%
+firstplural={CBoWs},%
+text={CBoW},%
+plural={CBoWs},%
+description={Continous Bag of Words},%
+descriptionplural={Continous Bag of Words},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
