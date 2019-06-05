@@ -103,6 +103,16 @@
 
 \listoftables
 
+\newglossaryentry{tf}
+{
+	name=TF,
+	description={Term Frequency}
+}
+\newglossaryentry{idf}
+{
+	name=IDF,
+	description={Inverse Term Frequency}
+}
 \newglossaryentry{tfidf}
 {
 	name=TF-IDF,
@@ -144,6 +154,51 @@
 
 \section{Related Work}
 
+\chapter{Fundamentals}
+
+\section{Term Frequency-Inverse Document Frequency}
+Term frequency (\gls{tf}) is a measure that denotes how frequently a term \textit{t} appears a the document \textit{d}. One way to compute \gls{tf} is \\
+\[
+tf(t_i, d_j)=\frac{1+log_{10}(f_{ti,dj})}{1+log_{10}(\max_{f_{t', dj}:t'\in d_j})}
+\]
+where $1+log_{10}(f_{ti,dj})$ reflects how many times the term $t_i$ appears in document $d_j$ and $1+log_{10}(\max_{f_{t', dj}:t'\in d_j})$ the highest occurence of any term in document $d_i$.\\
+
+\noindent Inverse Doucment Frequency (\gls{idf}) points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears.\\
+\[
+idf(t_i)=log{10}(\frac{|D|}{d' \in D : t_i \in d'})
+\]
+Where $|D|$ is the total amount of doucments in a document set and $d' \in D : t_i \in d'$ is the amout how many times the term $t_i$ appears in the document set.\\
+
+\noindent To compute the weight for the term $t_i$ within the document $d_j$ we simply multiply the \textit{TF} and \textit{IDF} components:
+\[
+w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
+\]
+Therefore, \Gls{tfidf} indicates how important a word is to a document in a collection or corpus. It is often used as a weighting factor in Information Retrieval and Text Mining. The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others. (umschreiben?) \\
+\noindent \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between 2 terms. However, TF-IDF is based on the bag-of-words (BoW) model, which is why it disregards aspects such as text position, semantics and co-occurrence.
+\section{Word Embeddings}
+Word Embeddings are based on the approach of Harris Distributional Hypothesis from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
+\noindent A Word Embedding provides a word vector for every word. It takes a word and gives it a vector representation by extracting features from that word within the context that word appears in and assigns it a place within a vector space. Two similar word will occupy places which are close to each other within that vector space whereas words that are different, will have locations much further away from each other. This allows computation of distance calculation, which is why, for example, we're able to tell which word is similar to "small" in the same sense as "biggest" is similar to "big". We simply have to compute the vector \textit{X}, which is equal to $Vector_{biggest}-Vector_{big}+Vector_{small}$ and then we find the word which is closest to \textit{X} in the vector space, measured by cosine distance. [Efficient Estimation of Word Representations in Vector Space]
+\subsection{Word2Vec}
+Word2Vec is a "2-Model Architecture for computing continuous vector representations of words from very large dataset" [Efficient Estimation of Word Representations in Vector Space] that creates an n-dimensional vector space in which each word is represented as a vector. Word2Vecs 2 learning models are the \gls{cbow} and Skip-Gram-Model (Figure 3.1).\\
+\\
+\noindent \gls{cbow} uses the context word to predict the target word. The input is a one-hot encoded vector. The weights between the input layer and the output layer can be represented by a $V \cdot N$ matrix \textit{W} where each row of \textit{W} is the \textit{N}-dimensional vector representation $v_W$ of the input word [word2vec Parameter Learning Explained]. The hidden-layer \textit{h} is computed by multiplying the one-hot encoding vector of the input word $w_I$ with the weight matrix \textit{W}.
+\[
+h=W_{(k, \cdot)}^{T}:=v_{w_I}^{T}
+\] 
+Next we have another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix. With these weights we can finally compute a score $u_j$ for each word in the vocabulary
+\[
+u_{j}={v'}_{w_j}^{T}h
+\] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. Afterwards we use \textit{softamax}, which is a log-linear classification model, to obtain the posterior distribution of words.
+\[
+p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
+\] \\
+\\
+\noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same. However in the output layer, we are now outputting \textit{C} multinomial distributions. 
+\section{SVM}
+\section{Multinomial Naive Bayes Classifier}
+\section{Random Forest Classifier}
+\section{Logistic Regression Classifier}
+
 
 \chapter{Data}
 \label{cha:theory}
@@ -182,9 +237,9 @@ As mentioned above, this dataset consists of a total of 750,000 articles and is 
 	%Arbeit:
 	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%PC:
-	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%Lap Top:
-	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	\caption{Distribution of as Hyperpartisan labelled articles by publisher}
 	\label{fig:example}
 \end{figure}
@@ -199,11 +254,11 @@ The publicity data is distributed over the years 1964-2018, with most of the dat
 	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
 	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}  
 	%PC:
-	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
+	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
 	%Lap Top:
-	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
+	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
 \end{figure}
 
 
@@ -215,11 +270,11 @@ The dataset labelled by Article is a little different to the larger one labelled
 	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
 	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Published-At_ByArticle}} 
 	%PC:
-	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
+	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
 	%Lap Top:
-	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
+	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
 \end{figure}
 \noindent Here we can see that there is no 50:50 distribution left. Only 36.9\% were defined here as Hyperpartisan as shown in figure 2.4.\\
 \noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 2.5. Altogether all 645 articles date from the years 1902-2018.
@@ -370,7 +425,7 @@ df['Content'] = df['Content'].apply(lambda x: [stemmer.stem(y) for y in x])
 \end{minipage}
 This will transform our output file in the following way:
 
-\chapter{Text Classification Techniques}
+\chapter{Methodology}
 \noindent The main process for Text Classification includes 7 steps of which the first 4 have already been performed in Chapter 2.
 \begin{enumerate}
 	\item Read the Document.  
@@ -384,43 +439,101 @@ This will transform our output file in the following way:
 As already mentioned in Chapter "Introduction", we build our classifier model by using BERT-Embeddings. To compare how our model performs, in this chapter, I will discuss the classic methods and algorithms that I have used in order to achieve this comparison. \\	
 
 \section{Vector Representation of the Text}
-In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertorr for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
+In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertor for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
 
 \subsection{Term Frequency-Inverse Document Frequency}
-Term frequency \textit{tf(t,d)} is a measure that denotes how frequently the term \textit{t} appears in the document \textit{d}. It is computed as follows: \\
-\[
-	tf(t_i, d_j)=\frac{1+log_{10}(f_{ti,gj})}{1+log_{10}(\max_{f_{t', dj}:t'\in d_j})}
-\]
-Inverse Doucment Frequency \textit{idf(t)} points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears.\\
-\[
-	idf(t_i)=log{10}(\frac{|D|}{d' \in D : t_i \in d'})
-\]
-To compute the weight for the term $t_i$ within the document $d_j$ we simply multiply the \textit{TF} and \textit{IDF} components:
-\[
-	w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
-\]
-Therefore, \Gls{tfidf} indicates how important a word is to a document in a collection or corpus. It is often used as a weighting factor in Information Retrieval and Text Mining. The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others. (umschreiben?) \\
-\noindent \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between 2 terms. However, TF-IDF is based on the bag-of-words (BoW) model, which is why it disregards aspects such as text position, semantics and co-occurrence.
-Many ways exist to implement \Gls{tfidf}. The one I used is as follows:\\
-
+A comparative approach I used in the course of my Bachelor Thesis is Term Frequency-Inverse Term Frequency. By using \gls{tfidf}, we're able to represent our word as a vector by assigning it weight which is computed thorugh Term-Frequency devided by Inverse-Term-Frequency. Python's library \textit{sklearn} provides two ways to implement \gls{tfidf} without having to program \gls{tf} and \gls{idf} by itfself.
+In order to get a generally better overview, I will now explain the 2-step implementation, but also briefly explain how both steps can be combined in one. \\
+\\ First of all, we have to import CountVectorizer and TfidfTransformer from \textit{sklearn}, as they will later be responsible for representing our words as vectors. 
+As exmplary input data we take the first article of the byArticle csv file. \\
 \noindent
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[frame=single]
-from sklearn.feature_extraction.text import CountVectorizer
-from sklearn.feature_extraction.text import TfidfTransformer
-
-def to_tf_idf(content):
+	\begin{lstlisting}[frame=single]
+	from sklearn.feature_extraction.text import CountVectorizer
+	from sklearn.feature_extraction.text import TfidfTransformer
+	\end{lstlisting}
+\end{minipage}\\
+\noindent
+\begin{minipage}[c]{\linewidth}
+	\begin{lstlisting}[frame=single]
+	df = pd.read_csv('C:\\Users\\Larissa\\Documents\\Uni\\Bachelorarbeit\\Git\\Data\\Preprocessed_ByArticle.csv', encoding='utf-8')
+	content= [df.Content[1]]
+	\end{lstlisting}
+\end{minipage} \\
+\noindent
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+['[donald, trump, ran, many, braggadocios, largely, unrealistic, campaign, promises, one, promises, best, hugest, competent, infrastructure, president, united, states, ever, seen, trump, going, fix, every, infrastructure, problem, country, make, america, great, process, unless, brown, american, case, even, massive, natural, disaster, like, hurricane, maria, puerto, rico, debt, puerto, rican, citizens, government, would, responsibility, nothing, using, federal, emergency, disaster, funds, save, lives, american, citizens, infrastructure, certainly, mess, point, category, 5, hurricane, ripped, island, 84, percent, puerto, rican, people, currently, without, electricity, emergency, efforts, hurricanes, irma, harvey, reportedly, went, well, trump, praised, well, even, saw, disastrous, approval, ratings, tick, slightly, result, however, insufficient, response, ...]']
+\end{lstlisting}
+\end{minipage} \\
+\noindent For computing \gls{tf} as the first step we use \textit{CountVectorizer}'s method \textit{fit\_transform()} which now converts the text document into a matrix of token counts. \\
+The method simply counts how many times a term $t_i$ appears in a document $d_j$. 
+\[
+	tf(t_i,d_j)= |(tf_i, d_j)|
+\]
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[frame=single]
 	count_vect = CountVectorizer()
-	tfidf_transformer = TfidfTransformer()
-
 	content_counts = count_vect.fit_transform(content)
+	content_counts
+	\end{lstlisting}
+\end{minipage} \\
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}
+	<1x84 sparse matrix of type '<class 'numpy.int64'>'
+	with 84 stored elements in Compressed Sparse Row format>
+	\end{lstlisting}
+\end{minipage} \\
+\noindent Any term found during this method is thereby assigned a unique index corresponding to a column of the regressive matrix which can be obtained by the method \textit{toarray()}. \\
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[frame=single]
+	content_counts.toarray()
+	\end{lstlisting}
+\end{minipage} \\
+\noindent
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+array([[1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2,
+	2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 3, 1, 1, 1, 1, 1, 1, 1,
+	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 1, 1, 1, 1, 1, 1,
+	2, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 2, 1, 1, 1]],
+	dtype=int64)
+\end{lstlisting}
+\end{minipage} \\
+\\ For the second step of comptuting \gls{idf} and \gls{tfidf} we use the \textit{TfidfTransformer}'s method \textit{fit\_transform()} which converts \textit{content\_counts} into \gls{tfidf} weights. \\
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[frame=single]
+	tfidf_transformer = TfidfTransformer()
 	content_tfidf = tfidf_transformer.fit_transform(content_counts)
-
-	return content_tfidf
+	\end{lstlisting}
+\end{minipage} \\
+\noindent
+\begin{minipage}{\linewidth}
+\begin{lstlisting}
+	array([[
+	0.0860663 , 0.0860663 , 0.17213259, 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.17213259, 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.17213259, 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.17213259, 0.17213259, 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.17213259,
+	0.0860663 , 0.25819889, 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.17213259, 0.25819889,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.17213259, 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.25819889, 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
+	0.17213259, 0.0860663 , 0.0860663 , 0.0860663 ]])
 \end{lstlisting}
 \end{minipage}
-
-\noindent With "CountVectorizer" we convert a collection of text documents to a matrix of token counts. "TfidfTransformer" transforms a count matrix into a normalized \gls{tfidf} representation.
+\newpage
 \begin{table}[t]
 	\begin{minipage}{.5\textwidth}
 		\begin{tabular}{ccc}
@@ -463,34 +576,8 @@ def to_tf_idf(content):
 	\end{minipage}
 \end{table}
 
-
 \subsection{Word Embeddings}
-Word Embeddings are based on the approach of Harris Distributional Hypothesis from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
-\noindent A Word Embedding provides a word vector for every word. It takes a word and gives it a vector representation by extracting features from that word within the context that word appears in and assigns it a place within a vector space. Two similar word will occupy places which are close to each other within that vector space whereas words that are different, will have locations much further away from each other. This allows computation of distance calculation, which is why, for example, we're able to tell which word is similar to "small" in the same sense as "biggest" is similar to "big". We simply have to compute the vector \textit{X}, which is equal to $Vector_{biggest}-Vector_{big}+Vector_{small}$ and then we find the word which is closest to \textit{X} in the vector space, measured by cosine distance. [Efficient Estimation of Word Representations in Vector Space]
-\subsubsection{Word2Vec}
-Word2Vec is a "2-Model Architecture for computing continuous vector representations of words from very large dataset" [Efficient Estimation of Word Representations in Vector Space] that creates an n-dimensional vector space in which each word is represented as a vector. Word2Vecs 2 learning models are the \gls{cbow} and Skip-Gram-Model (Figure 3.1).\\
-\\
-\noindent \gls{cbow} uses the context word to predict the target word. The input is a one-hot encoded vector. The weights between the input layer and the output layer can be represented by a $V \cdot N$ matrix \textit{W} where each row of \textit{W} is the \textit{N}-dimensional vector representation $v_W$ of the input word [word2vec Parameter Learning Explained]. The hidden-layer \textit{h} is computed by multiplying the one-hot encoding vector of the input word $w_I$ with the weight matrix \textit{W}.
-\[
-	h=W_{(k, \cdot)}^{T}:=v_{w_I}^{T}
-\] 
-Next we have another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix. With these weights we can finally compute a score $u_j$ for each word in the vocabulary
-\[
-	u_{j}={v'}_{w_j}^{T}h
-\] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. Afterwards we use \textit{softamax}, which is a log-linear classification model, to obtain the posterior distribution of words.
-\[
-	p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
-\] \\
-\\
-\noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same. However in the output layer, we are now outputting \textit{C} multinomial distributions. \\
-\\
-\noindent Learning the output vector is expensive.
-\begin{figure}[t]
-	\centering
-	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Cbow_skip.png}
-		\caption{The CBOW and Skip-Gram architectures}
-	\label{fig:CBOW and Skip-Gram architectures}
-\end{figure}
+\subsubsection{Word2Vec} 
 \section{Feature Selection and/or Feature Transformation}
 \section{Learning Algorithms}
 \subsection{SVM}

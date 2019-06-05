@@ -1,3 +1,63 @@
+\ifglsentryexists{tf}{}%
+{%
+\gls@defglossaryentry{tf}%
+{%
+name={TF},%
+sort={TF},%
+type={main},%
+first={TF},%
+firstplural={TFs},%
+text={TF},%
+plural={TFs},%
+description={Term Frequency},%
+descriptionplural={Term Frequency},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{idf}{}%
+{%
+\gls@defglossaryentry{idf}%
+{%
+name={IDF},%
+sort={IDF},%
+type={main},%
+first={IDF},%
+firstplural={IDFs},%
+text={IDF},%
+plural={IDFs},%
+description={Inverse Term Frequency},%
+descriptionplural={Inverse Term Frequency},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
 \ifglsentryexists{tfidf}{}%
 {%
 \gls@defglossaryentry{tfidf}%

@@ -1,26 +1,34 @@
-\contentsline {chapter}{\numberline {1}Introduction}{1}% 
-\contentsline {section}{\numberline {1.1}Problem Statement}{1}% 
-\contentsline {section}{\numberline {1.2}Contribution}{1}% 
-\contentsline {section}{\numberline {1.3}Related Work}{1}% 
-\contentsline {chapter}{\numberline {2}Data}{2}% 
-\contentsline {section}{\numberline {2.1}Data Description}{2}% 
-\contentsline {subsection}{\numberline {2.1.1}Dataset labelled by Publisher}{3}% 
-\contentsline {subsection}{\numberline {2.1.2}Dataset labelled by Article}{3}% 
-\contentsline {section}{\numberline {2.2}Data Analysis}{4}% 
-\contentsline {section}{\numberline {2.3}Data Preparation}{5}% 
-\contentsline {subsection}{\numberline {2.3.1}Read the XML files}{5}% 
-\contentsline {subsection}{\numberline {2.3.2}Filter out the important information}{6}% 
-\contentsline {subsection}{\numberline {2.3.3}Merge the Groundtruth- and Training datasets into a csv file}{6}% 
-\contentsline {subsection}{\numberline {2.3.4}Remove special characters and stop words}{7}% 
-\contentsline {subsection}{\numberline {2.3.5}Tokenization and Stemming of the datasets}{7}% 
-\contentsline {chapter}{\numberline {3}Text Classification Techniques}{9}% 
-\contentsline {section}{\numberline {3.1}Vector Representation of the Text}{9}% 
-\contentsline {subsection}{\numberline {3.1.1}Term Frequency-Inverse Document Frequency}{10}% 
-\contentsline {subsection}{\numberline {3.1.2}Word Embeddings}{11}% 
-\contentsline {subsubsection}{Word2Vec}{11}% 
-\contentsline {section}{\numberline {3.2}Feature Selection and/or Feature Transformation}{13}% 
-\contentsline {section}{\numberline {3.3}Learning Algorithms}{13}% 
-\contentsline {subsection}{\numberline {3.3.1}SVM}{13}% 
-\contentsline {subsection}{\numberline {3.3.2}Multinomial Naive Bayes Classifier}{13}% 
-\contentsline {subsection}{\numberline {3.3.3}Random Forest Classifier}{13}% 
-\contentsline {subsection}{\numberline {3.3.4}Logistic Regression Classifier}{13}% 
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Problem Statement}{1}
+\contentsline {section}{\numberline {1.2}Contribution}{1}
+\contentsline {section}{\numberline {1.3}Related Work}{1}
+\contentsline {chapter}{\numberline {2}Fundamentals}{2}
+\contentsline {section}{\numberline {2.1}Term Frequency-Inverse Document Frequency}{2}
+\contentsline {section}{\numberline {2.2}Word Embeddings}{3}
+\contentsline {subsection}{\numberline {2.2.1}Word2Vec}{3}
+\contentsline {section}{\numberline {2.3}SVM}{4}
+\contentsline {section}{\numberline {2.4}Multinomial Naive Bayes Classifier}{4}
+\contentsline {section}{\numberline {2.5}Random Forest Classifier}{4}
+\contentsline {section}{\numberline {2.6}Logistic Regression Classifier}{4}
+\contentsline {chapter}{\numberline {3}Data}{5}
+\contentsline {section}{\numberline {3.1}Data Description}{5}
+\contentsline {subsection}{\numberline {3.1.1}Dataset labelled by Publisher}{6}
+\contentsline {subsection}{\numberline {3.1.2}Dataset labelled by Article}{6}
+\contentsline {section}{\numberline {3.2}Data Analysis}{7}
+\contentsline {section}{\numberline {3.3}Data Preparation}{8}
+\contentsline {subsection}{\numberline {3.3.1}Read the XML files}{8}
+\contentsline {subsection}{\numberline {3.3.2}Filter out the important information}{9}
+\contentsline {subsection}{\numberline {3.3.3}Merge the Groundtruth- and Training datasets into a csv file}{9}
+\contentsline {subsection}{\numberline {3.3.4}Remove special characters and stop words}{10}
+\contentsline {subsection}{\numberline {3.3.5}Tokenization and Stemming of the datasets}{10}
+\contentsline {chapter}{\numberline {4}Methodology}{12}
+\contentsline {section}{\numberline {4.1}Vector Representation of the Text}{12}
+\contentsline {subsection}{\numberline {4.1.1}Term Frequency-Inverse Document Frequency}{13}
+\contentsline {subsection}{\numberline {4.1.2}Word Embeddings}{15}
+\contentsline {subsubsection}{Word2Vec}{15}
+\contentsline {section}{\numberline {4.2}Feature Selection and/or Feature Transformation}{15}
+\contentsline {section}{\numberline {4.3}Learning Algorithms}{15}
+\contentsline {subsection}{\numberline {4.3.1}SVM}{15}
+\contentsline {subsection}{\numberline {4.3.2}Multinomial Naive Bayes Classifier}{15}
+\contentsline {subsection}{\numberline {4.3.3}Random Forest Classifier}{15}
+\contentsline {subsection}{\numberline {4.3.4}Logistic Regression Classifier}{15}
