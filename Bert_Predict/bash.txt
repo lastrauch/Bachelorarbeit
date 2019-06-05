@@ -1,0 +1,15 @@
+export BERT_BASE_DIR=/home/lstrauch/Bachelorarbeit/env/Bert_Predict/uncased_L-12_H-768_A-12
+export TRAINED_CLASSIFIER=/home/lstrauch/Bachelorarbeit/env/Bert/Output_Article/
+
+export CUDA_VISIBLE_DEVICES=3 && python Do_Predict.py \
+  --task_name=ba \
+  --do_predict=true \
+  --inputXml=/home/lstrauch/Bachelorarbeit/env/Bert_Predict/Data/articles.xml \
+  --inputGT=/home/lstrauch/Bachelorarbeit/env/Bert_Predict/Data/gt.xml \
+  --tmp_output=/home/lstrauch/Bachelorarbeit/env/Bert_Predict/Data/test.tsv \
+  --input=/home/lstrauch/Bachelorarbeit/env/Bert_Predict/Data/ \
+  --vocab_file=$BERT_BASE_DIR/vocab.txt \
+  --bert_config_file=$BERT_BASE_DIR/bert_config.json \
+  --init_checkpoint=$TRAINED_CLASSIFIER \
+  --max_seq_length=512 \
+  --output_dir=/home/lstrauch/Bachelorarbeit/env/Bert_Predict/Output/
