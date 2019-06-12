@@ -18,7 +18,8 @@
 	breaklines=true}    
 \usepackage{glossaries}          
 \usepackage{ntheorem}
-
+\usepackage{caption}
+\DeclareCaptionType{code}[Algorithm][List of Code] 
 % \usepackage{paralist}
 \usepackage{tabularx}
 
@@ -98,6 +99,7 @@
 \newpage
 
 \listofalgorithms
+\listofcodes
 
 \listoffigures
 
@@ -237,9 +239,9 @@ As mentioned above, this dataset consists of a total of 750,000 articles and is 
 	%Arbeit:
 	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%PC:
-	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%Lap Top:
-	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	\caption{Distribution of as Hyperpartisan labelled articles by publisher}
 	\label{fig:example}
 \end{figure}
@@ -254,11 +256,11 @@ The publicity data is distributed over the years 1964-2018, with most of the dat
 	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
 	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}  
 	%PC:
-	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
+	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
 	%Lap Top:
-	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
+	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
 \end{figure}
 
 
@@ -270,11 +272,11 @@ The dataset labelled by Article is a little different to the larger one labelled
 	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
 	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Published-At_ByArticle}} 
 	%PC:
-	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
+	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
 	%Lap Top:
-	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
+	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
 \end{figure}
 \noindent Here we can see that there is no 50:50 distribution left. Only 36.9\% were defined here as Hyperpartisan as shown in figure 2.4.\\
 \noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 2.5. Altogether all 645 articles date from the years 1902-2018.
@@ -344,21 +346,8 @@ Since it is difficult to work with the given data in an XML format, it is necess
 \subsection{Filter out the important information}
 As mentioned in Chapter 2.1 Data Description, the XML files include various features, which will play an important role in the further course of this work. It is now necessary to filter these features out of the XML format so the can be better worked with later. In order to be able to do this, we pass an algorithm the, by the iterparse method read content, which then passes through this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. \\
 \noindent
-\begin{algorithm}
-	\caption{Put your caption here}
-	\begin{algorithmic}[1]
-	\Procedure{Parse_Features}{$content$}
-		\For{event, elem in content}
-			\For{key, value in elem.items()}
-				\If{key == id}
-					array.append(value)
-					
-
-\end{algorithmic}
-\end{algorithm}
-
 \begin{minipage}{\linewidth}
-\begin{lstlisting}[frame=single]
+		\begin{lstlisting}[frame=single]
 def parse_features(content, publisher):
   for event, elem in content:
     for key, value, in elem.items():
@@ -377,7 +366,7 @@ def parse_features(content, publisher):
         elif key == 'title':
           title_array_article.append(value)
       elem.clear()
-\end{lstlisting}
+		\end{lstlisting}
 \end{minipage}
 
 \subsection{Merge the Groundtruth- and Training datasets into a csv file}
@@ -632,7 +621,9 @@ This would make it possible to save the already fitted models. \\
 \end{table}
 
 \subsection{Word Embeddings}
-\subsubsection{Word2Vec} 
+\subsubsection{FastText} 
+For a forther comparison and an approximation to the the later on used classification model, I did not only uf \gls{tfidf} as a Vector representation method as part of my Bachelor Thesis, but also Word Embeddings - especially the \textit{Word2Vec} model. \\
+\noindent Word2Vec represents words as vectors. Unlike the  \gls{tfidf} method, however, not only word frequencies and -priorities are considered, but also the connection of individual words to others. Again, several methods of implementation exist. On the one hand it would be possible to train a \textit{Word2Vec} model ourselfs, so that the model is trained on our corpus word contexts. However, since our datasets are relatively small I decided to uses Wikipedias Word2vec corpus, wich accoidringly was trained on millions of words which is why it will probably be better trained than a self-implemented model with our datasets could be. Downloadable is this corpus under [Link], which we in the first step have to load in our class. In the following step it is necessary to extractthe indiidual words of the corpus from the model and store them in an arry in order to work with them afterwards.
 \section{Feature Selection and/or Feature Transformation}
 \section{Learning Algorithms}
 \subsection{SVM}
