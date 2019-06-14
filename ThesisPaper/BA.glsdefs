@@ -148,3 +148,33 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{mnb}{}%
+{%
+\gls@defglossaryentry{mnb}%
+{%
+name={Multinomial NB},%
+sort={Multinomial NB},%
+type={main},%
+first={Multinomial NB},%
+firstplural={Multinomial NBs},%
+text={Multinomial NB},%
+plural={Multinomial NBs},%
+description={Multinomial Naives Bayes},%
+descriptionplural={Multinomial Naives Bayes},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

@@ -130,6 +130,11 @@
 	name=CBOW,
 	description={Continous Bag of Words}
 }
+\newglossaryentry{mnb}
+{
+	name=Multinomial NB,
+	description={Multinomial Naives Bayes}
+}
 
 
 \printglossaries %in cmd for printing: makeindex -s BA.ist -t BA.glg -o BA.gls BA.glo
@@ -198,10 +203,45 @@ p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
 \noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same. However in the output layer, we are now outputting \textit{C} multinomial distributions. 
 \section{SVM}
 \section{Multinomial Naive Bayes Classifier}
-\section{Random Forest Classifier}
+The Naive Bayes classifier is based on  Bayes' theorem, which comes from the probability calculus and describes the calculation of conditional probability. Each object in this classification approach is assigned to the class for which the highest probability was computed or for which the lowest costs arise in this assignment.  \\
+\noindent The Multinomial Naive Bayes classifiers assumes that the position of the word does not matter, as well as  that the feature probabilities $P(x_i|c_j)$ are independent given a class $c$.
+"The probability of a class value $c$ given a test document $d$ is computed as
+\[
+P(c|d)=\frac{P(c)\prod \limits_{w \in d}P(w|c)^{n_{wd}} }{P(d)}
+\]
+where $n_{wd}$ is the number of times word $w$ occurs in document $d$, $P(w|c)$ is the probability of observing word $w$ given class $c$, $P(c)$ is the prior probability of class $c$, and $P(d)$ is a constant that makes the probabilities for the different classes sum to one". [https://link.springer.com/content/pdf/10.1007\%2F11871637.pdf]
+\section{Decision Trees and Random Forest Classifier}
+
+
+The Random Forest classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. Each tree in this process may make a decision, these  votes are then aggregated to determine the final class. According to Breiman [https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf] the following algorithm should be used fo each tree in the forest: 
+\begin{algorithm}
+	\caption{Random Forest}
+	\label{save}
+	\begin{algorithmic}[1]
+		\STATE Take \textit{n} bootstrap-samples. \\
+		\noindent These sample will be used as the training set for growing the tree \\
+		\STATE Out of \textit{M} characteristics of the training data, $m<M$ features are randomly selected at each node in the tree and the best split on these \textit{m} features is used for splitting the node. \\
+		\noindent The subsequent selection of a feature from this set may be done by minimizing entropy  \\
+		\STATE The tree is fully expanded. No pruning is used \\
+	\end{algorithmic}
+\end{algorithm}
 \section{Logistic Regression Classifier}
-
-
+Logistic Regreesion is like Naive Bayes, a probabilistic classifier, and thus classifies by estimating the probability that the object belongs to a particular class. It can be derived analogously to the linear regression hypothesis, 
+\[
+h_\Theta(x)=\Theta^\tau x
+\]
+but the logistic regression hypothesis generalizes the linear one to use the logistic function
+\[
+h_\Theta(x)=g(\Theta^\tau x) \\
+\]
+\[
+g(z)=\frac{1}{1+e^{-z}}
+\]
+which results in
+\[
+h_\Theta(x)=\frac{1}{1+e^{-\Theta x}}
+\]
+where $g(z)$ is the logistic function, also know as the \textit{sigmoid function}.
 \chapter{Data}
 \label{cha:theory}
 
@@ -239,9 +279,9 @@ As mentioned above, this dataset consists of a total of 750,000 articles and is 
 	%Arbeit:
 	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%PC:
-	%\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%Lap Top:
-	\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	\caption{Distribution of as Hyperpartisan labelled articles by publisher}
 	\label{fig:example}
 \end{figure}
@@ -256,11 +296,11 @@ The publicity data is distributed over the years 1964-2018, with most of the dat
 	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
 	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}  
 	%PC:
-	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
+	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
 	%Lap Top:
-	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
+	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
 \end{figure}
 
 
@@ -272,11 +312,11 @@ The dataset labelled by Article is a little different to the larger one labelled
 	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
 	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Published-At_ByArticle}} 
 	%PC:
-	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
+	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
 	%Lap Top:
-	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
+	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
+	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
 \end{figure}
 \noindent Here we can see that there is no 50:50 distribution left. Only 36.9\% were defined here as Hyperpartisan as shown in figure 2.4.\\
 \noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 2.5. Altogether all 645 articles date from the years 1902-2018.
@@ -439,6 +479,25 @@ This will transform our output file in the following way:
 	\item Learning Algorithm.
 \end{enumerate}
 As already mentioned in Chapter "Introduction", we build our classifier model by using BERT-Embeddings. To compare how our model performs, in this chapter, I will discuss the classic methods and algorithms that I have used in order to achieve this comparison. \\	
+
+\section{Important Algorithms}
+In order to avoid the repetition of algorithms used in the same context, in this section, I will explain some recurring algorithms.
+\begin{algorithm}
+	\caption{Saving a trained model}
+	\label{save}
+	\begin{algorithmic}
+		\STATE import pickle \\
+		\STATE filename = 'finalized\_model.sav' \\
+		\STATE pickle.dump(model, open(filenname, 'wb')) \\
+	\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+	\caption{Loading a trained model}
+	\label{load}
+	\begin{algorithmic}
+		\STATE loaded\_model = pickle.load(open(filename, 'rb')) \\
+	\end{algorithmic}
+\end{algorithm}
 
 \section{Vector Representation of the Text}
 In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertor for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
@@ -621,13 +680,91 @@ This would make it possible to save the already fitted models. \\
 \end{table}
 
 \subsection{Word Embeddings}
-\subsubsection{FastText} 
+\subsubsection{Word2Vec} 
 For a forther comparison and an approximation to the the later on used classification model, I did not only uf \gls{tfidf} as a Vector representation method as part of my Bachelor Thesis, but also Word Embeddings - especially the \textit{Word2Vec} model. \\
-\noindent Word2Vec represents words as vectors. Unlike the  \gls{tfidf} method, however, not only word frequencies and -priorities are considered, but also the connection of individual words to others. Again, several methods of implementation exist. On the one hand it would be possible to train a \textit{Word2Vec} model ourselfs, so that the model is trained on our corpus word contexts. However, since our datasets are relatively small I decided to uses Wikipedias Word2vec corpus, wich accoidringly was trained on millions of words which is why it will probably be better trained than a self-implemented model with our datasets could be. Downloadable is this corpus under [Link], which we in the first step have to load in our class. In the following step it is necessary to extractthe indiidual words of the corpus from the model and store them in an arry in order to work with them afterwards.
+\noindent Word2Vec represents words as vectors. Unlike the  \gls{tfidf} method, however, not only word frequencies and -priorities are considered, but also the connection of individual words to others. Again, several methods of implementation exist. 
+As part of my Bachelor Thesis, I decided to use  the library \textit{gensim} to implement my Word2Vec model. With \textit{gensim} it is  possible to do  unsupervised semantic modelling from plain text. Thsi makes it possible to implement a Word"vec model using only a few lines of code without having to program Skip-Gram of \gls{cbow} yourself. \\
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[frame=single]
+    model = gensim.models.Word2Vec(vocab, min_count=10, window=10, size=300, iter=10)
+	\end{lstlisting}
+\end{minipage} \\
+\noindent The algorithm above shows that the implementation of the model is straightforward, as it is pretty much the only step we need to program. By default,  gensim uses \gls{cbow} which can be  changed  by adding the following parameter to the parameters list: \textit{sg=1}. As for the other parameters, 18 more exist which can be viewed at "https://radimrehurek.com/gensim/models/word2vec.html", but I decided to focus only on the important ones. \textit{Vocab} is our text corpus, which needs to be transformed into a list of tokenized sentences. \textit{Size} determines the dimension of the word vectors, \textit{window} the maximum distance between the current and predicted word within a sentence, \textit{min\_count}  how often a word must occur to be included in the vocabulary and \textit{iter} how many iterations  should be performed on the corpus. What exactly happens here is that we train a neural network with a single hidden layer on which the model is trained to predict the current word based on the context. The resulting vector consists of several features that describe the target word.\\
+\noindent 
+After the model has been trained it is possible to find out information like the similarity between 2 words. Table 4.3 shows the most similar words to "trump", which was assigned the highest \gls{tfidf} weight. \\
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}
+# similarity between identical words
+model.wv.similarity(w1="trump", w2="trump")
+1,0
+	    
+# similarity between two unrealted words
+model.wv.similarity(w1="trump", w2="explosion")
+-0.11690721
+	\end{lstlisting}
+\end{minipage} \\
+\noindent  The functionality here is that the cosine similarity is calculated between 2 words in the vector space. As the range of the cosine similarity can go from [-1 to 1], words that are completely the same are assigned the value \textit{1} and words that are not similar at all are given the value \textit{-1}.
+\begin{table}[t]
+	\begin{minipage}{.5\textwidth}
+		\begin{tabular}{cc|cc}
+			\toprule
+			By Article & Similarity  & By Publisher & Similarity \\
+			\midrule
+			president & 0.9992413520812988 & obama & 0.5890584588050842 \\
+			donald & 0.9992144107818604 & clinton & 0.5385712385177612 \\
+			election & 0.9980630874633789 & bannon & 0.5277745127677917 \\
+			presidential & 0.9978925585746765 & priebus & 0.5117671489715576 \\
+			campaign & 0.9978247880935669 & hillary &  0.48596829175949097 \\
+			\bottomrule
+		\end{tabular}
+		\caption{Most similar word to 'trump'}
+	\end{minipage}
+\end{table}
+Our resulting word vectors now have the dimension defined in the parameter \textit{size}. In order to be able to form features from them, I averaged the Word Embeddings of all words in a sentence.\\
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[frame=single]
+	def sent_vectorizer(sent, model):
+	    sent_vec = []
+	    numw = 0
+	    for w in sent:
+		if numw == 0:
+		    sent_vec = model[w]
+		else:
+		    sent_vec = np.add(sent_vec, model[w])
+	\end{lstlisting}
+\end{minipage} \\
+\noindent In order not to have to re-train the model every time, since this can take some time on large data sets, it is as well possible to save the trained model in order to access it again later.\\
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[frame=single]
+	word_vectors = model.wv
+	fname = "article_vectors.kv"
+	word_vectors.save(fname)
+	\end{lstlisting}
+\end{minipage} \\
 \section{Feature Selection and/or Feature Transformation}
 \section{Learning Algorithms}
+Classification is about predicting a particular outcome based on given training data. For this prediction, a classification algorithm processes the training data set, which consists of a set of features and the respective predictions. The algorithm attempts to discover relationships between given features  of the instances and the associated classes to learn a function which makes it possible to predict the correct class based on the features of an instance. Thereafter, the algorithm receive a test dataset which it has not seen before. This dataset contains the same features as the training set but not the corresponding class names. With the previously learned function, the algorithm now assigns a class name to each instance  of the test record. \\
+\noindent Classic classification algorithms include \textit{Multinomial Naive Bayes}, \textit{Support Vector Machines}, \textit{Random Forest} and \textit{Logistic Regression}, which is why, in the following chapter, I will explain the basic procedure for implementing these algorithms. In addition, I will discuss the aspect of \textit{Grid Search}, which gives us the optimal parameter assignment to a given set of data for these algorithms.
 \subsection{SVM}
 \subsection{Multinomial Naive Bayes Classifier}
+The \textit{MultinomialNB} class of the library \textit{scikit-learn} implements the Naive Bayes algorithm for multinomial distributed data and is one ot the two classic Naive Bayes variants  used in text classification. Here, the distribution is parameterized by vectors $V_y=(Y_{y1},...,Y_{yn})$ for each class $y$, where $n$ is the size of the vocabulary and $V_{yi}$ is the probability $P(x_i|y)$ of feature $i$ appearing in a sample belonging to class $y$. The parameter $V_y$ is estimated by a smoothed version of the maximum likelihood
+\[
+	\hat{V}_{yi}=\frac{N_{yi}+\alpha}{N_y + \alpha n}
+\]
+where $N_{yi}=\sum_{x \in T}x_i$ is the number of times a feature $i$ appears in a sample of class $y$ in the training set $T$ and $N_y=\sum_{i=1}^{n}N_{yi}$ is the total count of all features for class $y$. The smoothing priors $\alpha \ge 0$ accounts for features not present in the learning samples and prevents zero probabilities in further computations. \\
+\\ For implementing \gls{mnb}, the first step is to define the classifier \textit{clf = MultinomialNB()} which includes the parameters \textit{alpha}, \textit{fit\_prior} and \textit{class\_prior}. \textit{alpha} specifies $\alpha$'s value with which smoothing should be made. \textit{fit\_prior} specifies  whether the class probalilities should be leraned in advance and \textit{class\_prior} specifies the prior probabilities of the classes. After the classifier has been defined, we train it by calling the method \textit{fit()}, to which the training data \textit{X} and the associated labels \textit{y} are passed as parameters. This method then adjusts the Naive Bayes classifier according to \textit{X} and \textit{y}. \\
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}[frame=single]
+	from sklearn.naive_bayes import MultinomialNB
+	clf = MultinomialNB(alpha=1.0, fit_prior=True, class_prior=None)
+	clf.fit(X, y)
+	\end{lstlisting}
+\end{minipage} \\
 \subsection{Random Forest Classifier}
 \subsection{Logistic Regression Classifier}
 \newpage

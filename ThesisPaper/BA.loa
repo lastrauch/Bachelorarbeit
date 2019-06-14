@@ -1,1 +1,4 @@
-\contentsline {algorithm}{\numberline {1}{\ignorespaces pickle.dump\relax }}{15}
+\contentsline {algorithm}{\numberline {1}{\ignorespaces Random Forest\relax }}{5}% 
+\contentsline {algorithm}{\numberline {2}{\ignorespaces Saving a trained model\relax }}{13}% 
+\contentsline {algorithm}{\numberline {3}{\ignorespaces Loading a trained model\relax }}{14}% 
+\contentsline {algorithm}{\numberline {4}{\ignorespaces pickle.dump\relax }}{16}% 

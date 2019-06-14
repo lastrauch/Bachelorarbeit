@@ -1,8 +1,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Publsihers who have published more than 7 Hyperpartisan Articles\relax }}{8}
-\contentsline {table}{\numberline {3.2}{\ignorespaces Publishers who have published more than 10.000 Hyperpartisan articles\relax }}{8}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Publsihers who have published more than 7 Hyperpartisan Articles\relax }}{9}% 
+\contentsline {table}{\numberline {3.2}{\ignorespaces Publishers who have published more than 10.000 Hyperpartisan articles\relax }}{9}% 
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Top 10 terms by average \Gls {tfidf} weight (By Article)\relax }}{16}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Top 10 terms by average \Gls {tfidf} weight (By Publisher)\relax }}{16}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Top 10 terms by average \Gls {tfidf} weight (By Article)\relax }}{17}% 
+\contentsline {table}{\numberline {4.2}{\ignorespaces Top 10 terms by average \Gls {tfidf} weight (By Publisher)\relax }}{17}% 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Most similar word to 'trump'\relax }}{18}% 
