@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.23)  14 JUN 2019 01:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.23)  18 JUN 2019 02:43
 entering extended mode
 **./BA.tex
 (BA.tex
@@ -453,29 +453,63 @@ Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
 \TX@cols=\count150
 \TX@ftn=\toks53
 )
-("C:\Program Files\MiKTeX 2.9\tex/latex/algorithms\algorithm.sty"
-Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating enviro
-nment
+("C:\Program Files\MiKTeX 2.9\tex/latex/algorithm2e\algorithm2e.sty"
+Package: algorithm2e 2017/07/18 v5.2 algorithms environments
+\c@AlgoLine=\count151
+\algocf@hangindent=\skip75
 
-("C:\Program Files\MiKTeX 2.9\tex/latex/float\float.sty"
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count151
-\float@exts=\toks54
-\float@box=\box38
-\@float@everytoks=\toks55
-\@floatcapt=\box39
+("C:\Program Files\MiKTeX 2.9\tex/latex/ifoddpage\ifoddpage.sty"
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count152
 )
-\@float@every@algorithm=\toks56
-\c@algorithm=\count152
+("C:\Program Files\MiKTeX 2.9\tex/latex/tools\xspace.sty"
+Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-("C:\Program Files\MiKTeX 2.9\tex/latex/algorithms\algorithmic.sty"
-Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
-\c@ALC@unique=\count153
-\c@ALC@line=\count154
-\c@ALC@rem=\count155
-\c@ALC@depth=\count156
-\ALC@tlm=\skip75
-\algorithmicindent=\skip76
+("C:\Program Files\MiKTeX 2.9\tex/latex/relsize\relsize.sty"
+Package: relsize 2013/03/29 ver 4.1
+)
+\skiptotal=\skip76
+\skiplinenumber=\skip77
+\skiprule=\skip78
+\skiphlne=\skip79
+\skiptext=\skip80
+\skiplength=\skip81
+\algomargin=\skip82
+\skipalgocfslide=\skip83
+\algowidth=\dimen163
+\inoutsize=\dimen164
+\inoutindent=\dimen165
+\interspacetitleruled=\dimen166
+\interspacealgoruled=\dimen167
+\interspacetitleboxruled=\dimen168
+\algocf@ruledwidth=\skip84
+\algocf@inoutbox=\box38
+\algocf@inputbox=\box39
+\AlCapSkip=\skip85
+\AlCapHSkip=\skip86
+\algoskipindent=\skip87
+\algocf@nlbox=\box40
+\algocf@hangingbox=\box41
+\algocf@untilbox=\box42
+\algocf@skipuntil=\skip88
+\algocf@capbox=\box43
+\algocf@lcaptionbox=\skip89
+\algoheightruledefault=\skip90
+\algoheightrule=\skip91
+\algotitleheightruledefault=\skip92
+\algotitleheightrule=\skip93
+\c@algocfline=\count153
+\c@algocfproc=\count154
+\c@algocf=\count155
+\algocf@algoframe=\box44
+\algocf@algobox=\box45
+)
+("C:\Program Files\MiKTeX 2.9\tex/latex/multirow\multirow.sty"
+Package: multirow 2019/01/01 v2.4 Span multiple rows of a table
+\multirow@colwidth=\skip94
+\multirow@cntb=\count156
+\multirow@dima=\skip95
+\bigstrutjot=\dimen169
 )
 \c@definition=\count157
 \c@proposition=\count158
@@ -483,43 +517,43 @@ Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
 \glo@main@file=\write4
 \openout4 = `BA.glo'.
 
-Package glossaries Info: Writing glossary file BA.glo on input line 71.
+Package glossaries Info: Writing glossary file BA.glo on input line 84.
  (BA.aux
 
-LaTeX Warning: Label `save' multiply defined.
+LaTeX Warning: Label `fig:example' multiply defined.
 
 )
 \openout1 = `BA.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 73.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
+LaTeX Font Info:    ... okay on input line 86.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 86.
  ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1ptm.fd"
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 ("C:\Program Files\MiKTeX 2.9\tex/context/base/mkii\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count159
-\scratchdimen=\dimen163
-\scratchbox=\box40
+\scratchdimen=\dimen170
+\scratchbox=\box46
 \nofMPsegments=\count160
 \nofMParguments=\count161
-\everyMPshowfont=\toks57
+\everyMPshowfont=\toks54
 \MPscratchCnt=\count162
-\MPscratchDim=\dimen164
+\MPscratchDim=\dimen171
 \MPnumerator=\count163
 \makeMPintoPDFobject=\count164
-\everyMPtoPDFconversion=\toks58
+\everyMPtoPDFconversion=\toks55
 ) ("C:\Program Files\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -570,7 +604,6 @@ G,.JBIG2,.JB2,.eps]
 \c@lstlisting=\count165
  (BA.glsdefs)
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 [1
@@ -580,7 +613,7 @@ Package caption Info: End \AtBeginDocument code.
 
 {C:/Users/Laris/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 98.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 111.
  (BA.toc
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 1.
@@ -611,56 +644,62 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [3
 
-] (BA.locode)
-\tf@locode=\write7
-\openout7 = `BA.locode'.
+] (BA.lof)
+\tf@lof=\write7
+\openout7 = `BA.lof'.
 
  [4
 
-] (BA.lof)
-\tf@lof=\write8
-\openout8 = `BA.lof'.
-
- [5
-
 ] (BA.lot)
-\tf@lot=\write9
-\openout9 = `BA.lot'.
+\tf@lot=\write8
+\openout8 = `BA.lot'.
 
-\@gls@deffile=\write10
-\openout10 = `BA.glsdefs'.
+\@gls@deffile=\write9
+\openout9 = `BA.glsdefs'.
 
- (BA.gls [6
+ (BA.gls [5
 
-]) [7
+]) [6
 
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 152.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 163.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 154.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 165.
 [1
 
 ]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--168
+Overfull \hbox (27.29698pt too wide) in paragraph at lines 178--179
+\OT1/ptm/m/n/10.95 doc-u-ment \OT1/ptm/m/it/10.95 d\OT1/ptm/m/n/10.95 . One way
+ to com-pute []TF is [https://nlp.stanford.edu/IR-book/pdf/06vect.pdf] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 178--179
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 170--172
+Underfull \hbox (badness 10000) in paragraph at lines 181--183
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--174
+Overfull \hbox (0.5903pt too wide) in paragraph at lines 184--185
+\OT1/ptm/m/n/10.95 lec-tion in which the term appears.[https://nlp.stanford.edu
+/IR-book/pdf/06vect.pdf] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 176--178
+Underfull \hbox (badness 10000) in paragraph at lines 187--189
 
  []
 
@@ -668,69 +707,99 @@ Underfull \hbox (badness 10000) in paragraph at lines 176--178
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 188.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 199.
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--192
+Underfull \hbox (badness 10000) in paragraph at lines 200--203
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--215
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 201--204
+<C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png, 
+id=46, 397.485pt x 247.1634pt>
+File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.
+png Graphic file (type png)
+<use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.p
+ng>
+Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
+r/Pictures/sigmoid.png  used on input line 230.
+(pdftex.def)             Requested size: 180.0pt x 111.93152pt.
+ [4 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.p
+ng (PNG copy)>] [5] [6]
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 300.
+ [7]
+Underfull \hbox (badness 10000) in paragraph at lines 316--317
 
  []
 
-[4] [5]
-Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 254--257
-
+Overfull \hbox (3.29799pt too wide) in paragraph at lines 324--324
+\OT1/ptm/m/n/10.95 Negatives 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 258.
 
-("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\omsptm.fd"
+Overfull \hbox (3.29799pt too wide) in paragraph at lines 325--325
+\OT1/ptm/m/n/10.95 Negatives 
+ []
+
+[8]
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 332.
+
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 258.
- [6
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 332.
+ [9]
+Chapter 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 352--355
+
+ []
+
+[10
 
 ]
-Overfull \hbox (15.64673pt too wide) in paragraph at lines 268--269
+Overfull \hbox (15.64673pt too wide) in paragraph at lines 366--367
 []\OT1/ptm/m/n/10.95 Id: A unique id, which is the same as the cor-re-spond-ing
  en-try in the GroundTruth
  []
 
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan
-_LabeledByPublisher.png, id=59, 462.528pt x 346.896pt>
+_LabeledByPublisher.png, id=69, 462.528pt x 346.896pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprar
 tisan_LabeledByPublisher.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprart
 isan_LabeledByPublisher.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/Hypeprartisan_LabeledByPublisher.png  used on input line 282.
+r/Pictures/Hypeprartisan_LabeledByPublisher.png  used on input line 380.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribu
-tion.png, id=61, 462.528pt x 346.896pt>
+tion.png, id=71, 462.528pt x 346.896pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Dis
 tribution.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Dist
 ribution.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/Bias_Distribution.png  used on input line 299.
+r/Pictures/Bias_Distribution.png  used on input line 397.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_
-PublishedAt_Publisher_AllYears.png, id=62, 462.528pt x 346.896pt>
+PublishedAt_Publisher_AllYears.png, id=72, 462.528pt x 346.896pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribu
 tion_PublishedAt_Publisher_AllYears.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribut
 ion_PublishedAt_Publisher_AllYears.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
 r/Pictures/Distribution_PublishedAt_Publisher_AllYears.png  used on input line 
-300.
+398.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 299--304
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 397--402
 [][] []
  []
 
@@ -738,143 +807,168 @@ Overfull \hbox (2.0805pt too wide) in paragraph at lines 299--304
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan
-_LabeledByArticle.png, id=63, 462.528pt x 346.896pt>
+_LabeledByArticle.png, id=73, 462.528pt x 346.896pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprar
 tisan_LabeledByArticle.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprart
 isan_LabeledByArticle.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/Hypeprartisan_LabeledByArticle.png  used on input line 315.
+r/Pictures/Hypeprartisan_LabeledByArticle.png  used on input line 413.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_
-PublishedAt_Article.png, id=64, 462.528pt x 346.896pt>
+PublishedAt_Article.png, id=74, 462.528pt x 346.896pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribu
 tion_PublishedAt_Article.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribut
 ion_PublishedAt_Article.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/Distribution_PublishedAt_Article.png  used on input line 316.
+r/Pictures/Distribution_PublishedAt_Article.png  used on input line 414.
 (pdftex.def)             Requested size: 180.0pt x 135.00305pt.
 
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 315--320
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 413--418
 [][] []
  []
 
-[7 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprarti
-san_LabeledByPublisher.png>]
-Overfull \hbox (5.53185pt too wide) in paragraph at lines 329--344
+[11 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprart
+isan_LabeledByPublisher.png>]
+Overfull \hbox (5.53185pt too wide) in paragraph at lines 427--442
 [][] 
  []
 
 
-Overfull \hbox (14.89293pt too wide) in paragraph at lines 348--363
+Overfull \hbox (14.89293pt too wide) in paragraph at lines 446--461
 [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[8 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distr
-ibution.png> <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/
-Distribution_PublishedAt_Publisher_AllYears.png> <C:/Users/Laris/Documents/Bach
-elorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png> <C:/Use
-rs/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_Publish
-edAt_Article.png>] [9]
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 390.
+[12 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Dist
+ribution.png> <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures
+/Distribution_PublishedAt_Publisher_AllYears.png> <C:/Users/Laris/Documents/Bac
+helorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png> <C:/Us
+ers/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_Publis
+hedAt_Article.png>] [13] [14]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 552.
 
- ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 391.
- [10]
-Underfull \hbox (badness 10000) in paragraph at lines 457--469
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 553.
+
+Underfull \hbox (badness 10000) in paragraph at lines 546--558
 
  []
 
-[11] [12]
+[15] [16]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 481--482
+Underfull \hbox (badness 10000) in paragraph at lines 570--571
 
  []
 
-[13
+[17
 
 ]
-Overfull \hbox (16.23695pt too wide) in paragraph at lines 506--562
+Overfull \hbox (16.23695pt too wide) in paragraph at lines 591--628
 \OT1/ptm/m/n/10.95 A com-par-a-tive ap-proach I used in the course of my Bach-e
 -lor The-sis is Term Frequency-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 506--562
+Underfull \hbox (badness 10000) in paragraph at lines 591--628
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 506--562
-
- []
-
-[14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 613--629
-
- []
-
-[16]
-Overfull \hbox (26.9233pt too wide) in paragraph at lines 641--680
-[]$[]$   $[]$ 
- []
-
+[18] [19]
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 699.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 692.
 
-Overfull \hbox (173.47612pt too wide) in paragraph at lines 711--722
+Overfull \hbox (173.47612pt too wide) in paragraph at lines 704--715
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 684--748
+Underfull \hbox (badness 10000) in paragraph at lines 677--741
 
  []
 
-[17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 757--768
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 757--768
-
- []
-
-[19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 777--786
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 749--759
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 777--786
+Overfull \hbox (10.67403pt too wide) in paragraph at lines 749--759
+\OT1/ptm/m/n/10.95 The \OT1/ptm/m/it/10.95 Multi-no-mi-alNB \OT1/ptm/m/n/10.95 
+clas-si-fier in-cludes the pa-ram-e-ters \OT1/ptm/m/it/10.95 al-pha\OT1/ptm/m/n
+/10.95 , \OT1/ptm/m/it/10.95 fit[]prior \OT1/ptm/m/n/10.95 and \OT1/ptm/m/it/10
+.95 class[]prior\OT1/ptm/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 749--759
 
  []
 
-\tf@thm=\write11
-\openout11 = `BA.thm'.
+[22]
+Overfull \hbox (96.58678pt too wide) in paragraph at lines 771--774
+\OT1/ptm/m/n/10.95 Scikit learns Lo-gis-tic Re-gres-sion Clas-si-fier pro-vides
+ L1, L2 and Elastic-Net Regularization.[https://scikit-
+ []
 
-[21] (BA.aux)
+
+Overfull \hbox (28.85059pt too wide) in paragraph at lines 780--784
+\OT1/ptm/m/n/10.95 points out [https://scikit-learn.org/stable/modules/linear[]
+model.html#logistic-regression],
+ []
+
+[23]
+Overfull \hbox (0.74265pt too wide) in paragraph at lines 797--810
+\OT1/ptm/m/n/10.95 class \OT1/ptm/m/it/10.95 sklearn.model[]selection.GridSearc
+hCV\OT1/ptm/m/n/10.95 . This class eval-u-ates all pos-si-ble com-
+ []
+
+[24] [25]
+Chapter 5.
+[26
+
+]
+Chapter 6.
+[27
+
+]
+Chapter 7.
+[28
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 828--837
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 828--837
+
+ []
+
+\tf@thm=\write10
+\openout10 = `BA.thm'.
+
+[29] (BA.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10639 strings out of 492945
- 156963 string characters out of 3135513
- 451083 words of memory out of 3000000
- 14280 multiletter control sequences out of 15000+200000
- 28201 words of font info for 65 fonts, out of 3000000 for 9000
+ 11343 strings out of 492945
+ 169619 string characters out of 3135513
+ 362083 words of memory out of 3000000
+ 14979 multiletter control sequences out of 15000+200000
+ 29827 words of font info for 67 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,10n,92p,1991b,1345s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,18n,92p,1991b,1343s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Program Files/Mi
 KTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
@@ -890,9 +984,9 @@ er/ucrro8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C
 :/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/t
 ype1/urw/times/utmri8a.pfb>
-Output written on BA.pdf (29 pages, 321677 bytes).
+Output written on BA.pdf (36 pages, 462396 bytes).
 PDF statistics:
- 171 PDF objects out of 1000 (max. 8388607)
+ 194 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 26 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

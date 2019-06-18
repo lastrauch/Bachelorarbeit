@@ -22,10 +22,23 @@
 \DeclareCaptionType{code}[Algorithm][List of Code] 
 % \usepackage{paralist}
 \usepackage{tabularx}
-
+\usepackage{amsmath}
 % this packaes are useful for nice algorithms
-\usepackage{algorithm, algorithmic}
+%\usepackage{algorithm}%;, algorithmic}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\SetKwInput{KwIn}{Input}                % Set the Input
+\SetKwInput{KwOut}{Output}              % set the Output
 %\usepackage{algorithmic}
+\usepackage{array}
+\usepackage{multirow}
+
+\newcommand\MyBox[2]{
+	\fbox{\lower0.75cm
+		\vbox to 1.7cm{\vfil
+			\hbox to 1.7cm{\hfil\parbox{1.4cm}{#1\\#2}\hfil}
+			\vfil}%
+	}%
+}
 
 % well, when your work is concerned with definitions, proposition and so on, we suggest this
 % feel free to add Corrolary, Theorem or whatever you need
@@ -99,8 +112,6 @@
 \newpage
 
 \listofalgorithms
-\listofcodes
-
 \listoffigures
 
 \listoftables
@@ -164,27 +175,27 @@
 \chapter{Fundamentals}
 
 \section{Term Frequency-Inverse Document Frequency}
-Term frequency (\gls{tf}) is a measure that denotes how frequently a term \textit{t} appears a the document \textit{d}. One way to compute \gls{tf} is \\
+Term frequency (\gls{tf}) is a measure that denotes how frequently a term \textit{t} appears a the document \textit{d}. One way to compute \gls{tf} is [https://nlp.stanford.edu/IR-book/pdf/06vect.pdf]\\
 \[
-tf(t_i, d_j)=\frac{1+log_{10}(f_{ti,dj})}{1+log_{10}(\max_{f_{t', dj}:t'\in d_j})}
+tf(t,d)=\frac{1+\log(tf_{t,d})}{1+\log(ave_{t\in d}(tf_{t,d}))}
 \]
-where $1+log_{10}(f_{ti,dj})$ reflects how many times the term $t_i$ appears in document $d_j$ and $1+log_{10}(\max_{f_{t', dj}:t'\in d_j})$ is the highest occurrence of any term in document $d_i$.\\
+where $1+\log(tf_{t,d})$ reflects how many times the term $t$ appears in document $d$ and $1+\log(ave_{t\in d}(tf_{t,d}))$ is the highest occurrence of any term in document $d_i$.\\
 
-\noindent Inverse Doucment Frequency (\gls{idf}) points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears.\\
+\noindent Inverse Doucment Frequency (\gls{idf}) points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears.[https://nlp.stanford.edu/IR-book/pdf/06vect.pdf]\\
 \[
-idf(t_i)=log{10}(\frac{|D|}{d' \in D : t_i \in d'})
+idf(t_i)=log\frac{N}{d \in D : t \in d}
 \]
-Where $|D|$ is the total amount of doucments in a document set and $d' \in D : t_i \in d'$ is the amout how many times the term $t_i$ appears in the document set.\\
+Where $N$ is the total amount of doucments in a document set and $d \in D : t \in d$ is the amount how many times the term $t$ appears in the document set.\\
 
 \noindent To compute the weight for the term $t_i$ within the document $d_j$ we simply multiply the \textit{TF} and \textit{IDF} components:
 \[
 w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
 \]
-Therefore, \Gls{tfidf} indicates how important a word is to a document in a collection or corpus. It is often used as a weighting factor in Information Retrieval and Text Mining. The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others. (umschreiben?) \\
+Therefore, \Gls{tfidf} indicates how significant a word is to a document in a collection or corpus. It is regularly used as a weighting factor in Information Retrieval and Text Mining. The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others.\\
 \noindent \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between 2 terms. However, TF-IDF is based on the bag-of-words (BoW) model, which is why it disregards aspects such as text position, semantics and co-occurrence.
 \section{Word Embeddings}
 Word Embeddings are based on the approach of Harris Distributional Hypothesis from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
-\noindent A Word Embedding provides a word vector for every word. It takes a word and gives it a vector representation by extracting features from that word within the context that word appears in and assigns it a place within a vector space. Two similar word will occupy places which are close to each other within that vector space whereas words that are different, will have locations much further away from each other. This allows computation of distance calculation, which is why, for example, we're able to tell which word is similar to "small" in the same sense as "biggest" is similar to "big". We simply have to compute the vector \textit{X}, which is equal to $Vector_{biggest}-Vector_{big}+Vector_{small}$ and then we find the word which is closest to \textit{X} in the vector space, measured by cosine distance. [Efficient Estimation of Word Representations in Vector Space]
+\noindent A Word Embedding provides a word vector for each word. This is done by extracting features from that word within the context in which it appears and assigning it a place within the vector space. Two similar words will occupy locations areas near one another within this vector space, while words that differ will have positions much further apart. This makes it possible to calculate the distance calculation by computing cosine distance.
 \subsection{Word2Vec}
 Word2Vec is a "2-Model Architecture for computing continuous vector representations of words from very large dataset" [Efficient Estimation of Word Representations in Vector Space] that creates an n-dimensional vector space in which each word is represented as a vector. Word2Vecs 2 learning models are the \gls{cbow} and Skip-Gram-Model (Figure 3.1).\\
 \\
@@ -210,38 +221,125 @@ The Naive Bayes classifier is based on  Bayes' theorem, which comes from the pro
 P(c|d)=\frac{P(c)\prod \limits_{w \in d}P(w|c)^{n_{wd}} }{P(d)}
 \]
 where $n_{wd}$ is the number of times word $w$ occurs in document $d$, $P(w|c)$ is the probability of observing word $w$ given class $c$, $P(c)$ is the prior probability of class $c$, and $P(d)$ is a constant that makes the probabilities for the different classes sum to one". [https://link.springer.com/content/pdf/10.1007\%2F11871637.pdf]
-\section{Decision Trees and Random Forest Classifier}
-
-
-The Random Forest classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. Each tree in this process may make a decision, these  votes are then aggregated to determine the final class. According to Breiman [https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf] the following algorithm should be used fo each tree in the forest: 
-\begin{algorithm}
-	\caption{Random Forest}
-	\label{save}
-	\begin{algorithmic}[1]
-		\STATE Take \textit{n} bootstrap-samples. \\
-		\noindent These sample will be used as the training set for growing the tree \\
-		\STATE Out of \textit{M} characteristics of the training data, $m<M$ features are randomly selected at each node in the tree and the best split on these \textit{m} features is used for splitting the node. \\
-		\noindent The subsequent selection of a feature from this set may be done by minimizing entropy  \\
-		\STATE The tree is fully expanded. No pruning is used \\
-	\end{algorithmic}
-\end{algorithm}
 \section{Logistic Regression Classifier}
-Logistic Regreesion is like Naive Bayes, a probabilistic classifier, and thus classifies by estimating the probability that the object belongs to a particular class. It can be derived analogously to the linear regression hypothesis, 
+\begin{figure}[h]
+	\centering
+	%Arbeit:
+	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	%PC:
+	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
+	%Lap Top:
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	\caption{sigmoid function[Machine learning algorithms : reference guide for popular algorithms for data science and machine learning
+		]}
+	\label{fig:example}
+\end{figure}
+\noindent Logistic Regression is like Naive Bayes, a probabilistic classifier, and thus classifies by estimating the probability $P(Y|X)$ that the object belongs to a particular class.
+It can be derived analogously to the linear regression hypothesis, 
 \[
-h_\Theta(x)=\Theta^\tau x
+h_\Theta(x)=\Theta_0+\Theta_1x_1+...+\Theta_nx_n=\sum_{i=0}^{n}\Theta_ix_i=\Theta^\tau x
 \]
-but the logistic regression hypothesis generalizes the linear one to use the logistic function
+where $h_\Theta(x)$ is the predicted value, $\Theta$ is the model's parameter vector, $\Theta_0$ is the bias term and $x_i$ is a feature of feature vector. The logistic regression hypothesis generalizes the linear one to use the logistic function
 \[
-h_\Theta(x)=g(\Theta^\tau x) \\
+h_\Theta(x)=s(\sum_{i=0}^{n}\Theta_ix_i)=s(\Theta^\tau x)
+\]
+and in contrast to linear regression, in logistic regression only values between 0 and 1 are obtained, which can be attributed to the addition of the sigmoid function (Figure 2.1). 
+\[
+s(x)=\frac{1}{1+e^{-x}}
+\]
+Combining these two therefore results in
+\[
+h_\Theta(x)=\frac{1}{1+e^{-\Theta^\tau x}}
+\]
+\noindent To find the optimal $\Theta$ by which we get an $h_\Theta(x)$ that is close to 0 or 1, we maximize the log-likelihood relying upon the output class, therefore the optimization problem can be expressed, utilizing the indicator notion as the minimization of the loss function [Machine learning algorithms : reference guide for popular algorithms for data science and machine learning
+]:
+\[
+l(\Theta)=-\sum_{i=1}^{n}y_i\ln(z_i)+(1-y_i)\ln(1-z_i) \qquad ,\forall i,y_i \in {\{0,1\}} \\
+\]
+where $z=h_\Theta(x)$. \\
+\noindent This implies, if $y=0$, the first term ends up $0$ and the second $\ln(1-z)$, which results in a log-likelihood of $0$. In the event that $y=1$, the second term ends up 0 and the first one corresponds to the log-likelihood of $z$. Along these lines, both cases are integrated into a solitary articulation. \\
+\noindent A major issue in machine learning is the aspect of overfitting. Overfitting tends to adjust the model too much to the training data. This happens when a model learns the details in the training data so that the performance of the model is contrairily influenced by new data. This implies that noise or random fluctuations in the training data are recorded and learned as concepts by the model. The issue is, that these concepts do not apply to new data and negatively impact the generalization of the model. Therefore, there is the process of \textit{regularization}, which is a form of regression that decreases the coefficient estimation to $0$ and assumes that smaller weights generate simpler models and thus helps avoid overfitting. \\
+\noindent Two of the most commonly used regression techniques are \textit{Lasso Regression (L1)} and \textit{Ridge Regression (L2)}, which differ mainly in the penalty term. \\
+\noindent The \textit{L1} loss function minimizes the sum of the absolute differences between the target value and the estimated values. If input characteristics have weights closer to zero, this results in a sparse L1 standard. In the Sparse solution, most of the input features have zero weights and very few features have non-zero weights. The L1 regulation offers a function selection. This is done by associating insignificant input features with zero weights and useful features with a non-zero weight.  In the L1 control, we punish the absolute value of the weights. It is defined as:
+\[
+||w||_1=\sum_{i}^{n}|w_i|
+\]
+Which we add to the loss function:
+\[
+l_\lambda^R(\Theta)=-\sum_{i=1}^{n}y_i\ln(z_i)+(1-y_i)\ln(1-z_i)+\lambda\sum_{j=1}^{p}|w_j|
+\]
+The L2 loss function is essentially about minimizing the sum of the square of the differences between the nominal value and the estimated values.
+L2 control forces the weights to small weights, but does not make them zero and leads to a not sparse solution. In addition, L2 is not robust against outliers, since square terms inflate the error differences of the outliers and the regularization term tries to correct them by punishing the weights. It is defines as follows:
+\[
+||w||_2^2=\sum_{i}^{n}w_i^2
+\]
+,which we add as well to the loss function:
+\[
+l_\lambda^L(\Theta)=-\sum_{i=1}^{n}y_i\ln(z_i)+(1-y_i)\ln(1-z_i)+\lambda\sum_{j=1}^{p}|w_i^2|
+\]
+
+\section{Decision Trees and Random Forest Classifier}
+\subsection{Decision Trees}
+Starting from the root node of a tree, a feature is evaluated from which a branch is subsequently selected. This process is repeated until the last node in the tree (leaf) is reached, which supplies the corresponding class. Different approaches have been developed in Decision Trees. One of the first is called \textit{Iterative Dichotomizer (ID3)} and required explicit features. This condition led to the development of the \textit{C4.5} formulation, which also manages continuous (but summarized and discretized) values. In addition, C4.5 was also known for its ability to transform a tree into a series of conditional expressions. The latest development is called \textit{Classification and Regression Trees (CART)}. These kinds of trees can oversee both downright and numeric highlights, can be utilized in either characterization or relapse assignments, and don't utilize a standard set as an inner portrayal.[Machine Learning Algorithms - Second Edition].\\
+\noindent The algorithm uses impurity measures to select a particular branch from a leaf. Among others, the two most common measures are "Gini" and "Cross Entropy Index". [Machine Learning Algorithms - Second Edition -Nicht zitiert]. These impurity measures are  applied to each candidate subset, and the resulting values are combined (e.g., averaged) to provide a measure of the quality of the split,
+\[
+I_{Gini}(j)=\sum_{i}p(i|j)(1-p(i|j))
 \]
 \[
-g(z)=\frac{1}{1+e^{-z}}
+I_{Cross-entropy}(j)=-\sum_{i}p(i|j)log(p(i|j))
 \]
-which results in
-\[
-h_\Theta(x)=\frac{1}{1+e^{-\Theta x}}
-\]
-where $g(z)$ is the logistic function, also know as the \textit{sigmoid function}.
+where $j$ is a certain node, $p(i|j)$ is the probability with $i \in [1,n]$ associated with each class.\\
+\noindent The \textit{Gini} Index measures the impurity based on the likelihood of misclassification if a sample is categorized using a label randomly chosen from the node subset distribution. The minimum index (0,0) is achieved when all examples are characterized into a solitary class.\\
+\noindent \textit{Cross-Entropy} depends on information theory, and accepts invalid qualities just when samples having a place with a solitary class are available in a split, while it is greatest when there's a uniform conveyance among classes.
+
+\subsection{Random Forest Classifier}
+The Random Forest classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. Each tree in this process may make a decision, these votes are then aggregated to determine the final class. According to Breiman [https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf] the Random Forest algorithm is as follows:\\
+\noindent
+\begin{algorithm}[H]
+	\DontPrintSemicolon
+	Set the number of decision trees $N_c$\;
+	\For{$i\gets 1$ \KwTo $N_c$}
+		{Create a dataset $D_i$ sampling with replacements from the original dataset $X$}
+	Set the number of features  to consider during each split $N_f$\;
+	Set an impurity measure\;
+	Define an optimal maximum for each tree\;
+	\For{$i\gets 1$ \KwTo $N_c$}
+		{Random Forest: Train the decision tree $d_i(x)$ using the dataset $D_i$ and selecting the best split among \textit{Nf} features randomly sampled \\
+		Extra-trees:  Train the decision tree $d_i(x)$ using the dataset $D_i$ computing before each split $n$ random thresholds and selecting the one that yield the least impurity}
+	Define an output function averaging the single outputs or employing a majority vote
+	\caption{Random Forest}
+\end{algorithm}
+\section{Cross Validation}
+\textit{Cross Validation} is a model validation technique used to survey how the result of measurable statistical analysis generalizes into an independent dataset. The idea is to devide the entire dataset into a moving test and training set. The size of the test set is determined by the quantity of folds, so that at \textit{k} emphasess the test set covers the whole original dataset.\\
+\noindent A round of \text{Cross Validation} comprises of separating a sample of data into corresponding subsets, performing the analysis on the training set, and validating the analysis on the test set. To decrease fluctuation, most strategies perform several rounds of \textit{Cross Validation} utilizing various partitions and combine the validation result over the rounds to obtain an estimate of the predictive performance of the model.
+\section{Evaluation}
+In order to evaluate how well a classifier works, several procedures exist. The ones used during the competition are \textit{Accuracy}, \textit{Recall}, \textit{Precision} and \textit{F1-Score}, for which the Confusion Matrix (Table 2.1) forms the basis. Each column of the matrix represents the instances of a predicted class, while each row represents the instances of the actual class. \\
+\begin{center}
+	\renewcommand\arraystretch{1.5}
+	\setlength\tabcolsep{0pt}
+	\begin{tabular}{c >{\bfseries}r @{\hspace{0.7em}}c @{\hspace{0.4em}}c @{\hspace{0.7em}}l}
+		\multirow{10}{*}{\parbox{1.1cm}{\bfseries\raggedleft Actual\\ Class}} & 
+		& \multicolumn{2}{c}{\bfseries Predicted Class} & \\
+		& & \bfseries positive & \bfseries negative \\
+		& positive$'$ & \MyBox{True}{Positives} & \MyBox{False}{Negatives} \\[2.4em]
+		& negative$'$ & \MyBox{False}{Positives} & \MyBox{True}{Negatives} \\
+	\end{tabular}
+	\captionof{table}{Confusion Matrix}
+\end{center}
+\noindent \textit{True Positive} means that the classifier predicted a class which actually corresponds to it, whereas \textit{False Positive} means that a class was predicted that does not correspond to the actual class. In contrast, there are the \textit{False Negatives}, where the classifier predicted a class as not belonging, although the instance actually belongs to it whereas \textit{True Negative} means that the class was correctly classified as not belonging. \\
+\noindent The four evaluation metrics are computed as follows [Machine Learning Algorithms - Second Edition]:
+\begin{itemize}
+	\item Accuracy: $\frac{TP+TN}{TP+TN+FP+FN}$\\
+					Defines the correct classification to the total number of cases
+	\item Precision: $\frac{TP}{TP+FP}$\\
+	Defines the correct classification of cases predcited to be positive
+	\item Recall: $\frac{TP}{TP+FN}$\\
+	Defines the correct positive classification of cases that are actually positive
+	\item F1-Score: 2 $\cdot$ $\frac{Precision \cdot Recall}{Precision+Recall}$\\
+	Defines the average of precision and recall,
+	where an F1 value reaches its best value at 1
+	and worst at 0
+\end{itemize}
 \chapter{Data}
 \label{cha:theory}
 
@@ -341,7 +439,7 @@ Hyperpartisan means "extremely partisan; extremely biased in favor of a politica
 		Salon & 8 \\
 		\bottomrule
 	\end{tabular}
-	\caption{Publsihers who have published more than 7 Hyperpartisan Articles}
+	\caption{Publishers who have published more than 7 Hyperpartisan Articles}
 \end{minipage}
 \hspace{0,8cm}
 \begin{minipage}{.4\textwidth}
@@ -386,70 +484,61 @@ Since it is difficult to work with the given data in an XML format, it is necess
 \subsection{Filter out the important information}
 As mentioned in Chapter 2.1 Data Description, the XML files include various features, which will play an important role in the further course of this work. It is now necessary to filter these features out of the XML format so the can be better worked with later. In order to be able to do this, we pass an algorithm the, by the iterparse method read content, which then passes through this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. \\
 \noindent
-\begin{minipage}{\linewidth}
-		\begin{lstlisting}[frame=single]
-def parse_features(content, publisher):
-  for event, elem in content:
-    for key, value, in elem.items():
-      if publisher:
-        if key == 'id':
-          id_array_publisher.append(str(value))
-        elif key == 'published-at':
-          published_at_array_publisher.append(value)
-        elif key == 'title':
-          title_array_publisher.append(value)
-      else:
-        if key == 'id':
-          id_array_article.append(str(value))
-        elif key == 'published-at':
-          published_at_array_article.append(value)
-        elif key == 'title':
-          title_array_article.append(value)
-      elem.clear()
-		\end{lstlisting}
-\end{minipage}
+\begin{algorithm}[H]
+	\DontPrintSemicolon
+	\caption{Parse Ground-Truth File}
+	\KwIn{Ground-Truth File}
+	\KwOut{Trained Classifier} 
+	\For{event, elem in content}
+		{
+		\For{key, value in elem.items()}
+			{
+			\uIf{key == 'id'}
+				{id\_array.append(str(value))}
+			\uElseIf{key == 'published-at'}
+				{published\_at\_array.append(value)}
+			\uElseIf{key == 'title'}
+				{title\_array.append(value)}
+			}
+		}
+\end{algorithm}
 
 \subsection{Merge the Groundtruth- and Training datasets into a csv file}
 Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library pandas to write the two files into one csv file. This, and especially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.\\
 \noindent
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[frame=single]
-feature_extraction.parse_features(xml_training, publisher)
-groundtruth_parser.parse_groundtruth(xml_gt, publisher)
-content = content_parser.parse_content(content_training)
-
-a_id = feature_extraction.get_id_array(publisher)
-published = feature_extraction.get_published_at_array(publisher)
-title = feature_extraction.get_title_array(publisher)
-bias = groundtruth_parser.get_bias_array(publisher)
-hyperpartisan = groundtruth_parser.get_hyperpartisan_array(publisher)
-
-columns = {"ArticleID": a_id,
-           "PublishedAt": published,
-           "Title": title,
-           "Bias": bias,
-           "Content": content,
-           "Hyperpartisan": hyperpartisan}
-
-tf = Pd.DataFrame(columns)
-tf = tf[['ArticleID','Published', Title','Bias','Content','Hyperpartisan']]
-tf.to_csv(titlecsv,encoding='utf-8',index=False)
-\end{lstlisting}
-\end{minipage}
+\begin{algorithm}[H]
+	\DontPrintSemicolon
+	\caption{Merge Groundtruth- and Trainingdatasets}
+	feature\_extraction.parse\_features(xml\_training, publisher)\;
+	groundtruth\_parser.parse\_groundtruth(xml\_gt, publisher)\;
+	content = content\_parser.parse\_content(content\_training)\;
+	a\_id = feature\_extraction.get\_id\_array(publisher)\;
+	\BlankLine
+	\BlankLine
+	published = feature\_extraction.get\_published\_at\_array(publisher)\;
+	title = feature\_extraction.get\_title\_array(publisher)\;
+	bias = groundtruth\_parser.get\_bias\_array(publisher)\;
+	hyperpartisan = groundtruth\_parser.get\_hyperpartisan\_array(publisher)\;
+	columns = \{"ArticleID": a\_id,"PublishedAt": published,"Title": title,"Bias": bias,"Content": content "Hyperpartisan": hyperpartisan\}\;
+	\BlankLine
+	\BlankLine
+	tf = Pd.DataFrame(columns)\;
+	tf = tf[['ArticleID','Published', Title','Bias','Content','Hyperpartisan']]\;
+	tf.to\_csv(titlecsv,encoding='utf-8',index=False)\;
+\end{algorithm}
 
 \subsection{Remove special characters and stop words}
 Now that we have merged both files and written them into a csv file, we need to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles [TextClassificationUsingMachineLearning] are useful for training a classifier. It also decreases our corpus which makes it easier to classify later on. (Warum?)\\
 \noindent
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[frame=single]
-stop = stopwords.words('english')
-
-df['Content'] = df['Content'].apply(lambda x: ''.join([item for item in x.split() if item not in stop]))
-df['Title'] = df['Title'].apply(lambda x: ''.join([item for item in x.split() if item not in stop]))
-df['Content'] = df['Content'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", '', x))
-df['Title'] = df['Title'].map(lambda x: re.sub(r"[^a-zA-Z0-9]+", '', x))
-\end{lstlisting}
-\end{minipage}
+\begin{algorithm}[H]
+		\DontPrintSemicolon
+	stop = stopwords.words('english')\;
+	\BlankLine
+	\BlankLine
+	df['Content'] = df['Content'].apply(lambda x: ''.join([item for item in x.split() if item not in stop]))\;
+	df['Content'] = df['Content'].map(lambda x: re.sub(r"[\^ a-zA-Z0-9]+", '', x))\;
+	\caption{Remove special characters and stop words}
+\end{algorithm}
 \noindent Here it becomes obvious that using pandas was a good choice, as we can now specifically access the 'Content' and 'Title' columns in order to perform this step of preprocessing on only these two and not the whole file.
 
 
@@ -483,58 +572,41 @@ As already mentioned in Chapter "Introduction", we build our classifier model by
 \section{Important Algorithms}
 In order to avoid the repetition of algorithms used in the same context, in this section, I will explain some recurring algorithms.
 \begin{algorithm}
+	\DontPrintSemicolon
+	import pickle\;
+	filename = 'finalized\_model.sav'\;
+	pickle.dump(model, open(filename, 'wb))
 	\caption{Saving a trained model}
-	\label{save}
-	\begin{algorithmic}
-		\STATE import pickle \\
-		\STATE filename = 'finalized\_model.sav' \\
-		\STATE pickle.dump(model, open(filenname, 'wb')) \\
-	\end{algorithmic}
 \end{algorithm}
 \begin{algorithm}
+	\DontPrintSemicolon
+	loaded\_model = pickle.load(open(filename, 'rb'))
 	\caption{Loading a trained model}
-	\label{load}
-	\begin{algorithmic}
-		\STATE loaded\_model = pickle.load(open(filename, 'rb')) \\
-	\end{algorithmic}
 \end{algorithm}
 
 \section{Vector Representation of the Text}
 In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertor for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
 
 \subsection{Term Frequency-Inverse Document Frequency}
-A comparative approach I used in the course of my Bachelor Thesis is Term Frequency-Inverse Document Frequency. By using \gls{tfidf}, we're able to represent our word as a vector by assigning it weight which is computed thorugh Term-Frequency devided by Inverse-Term-Frequency. Python's library \textit{sklearn} provides two ways to implement \gls{tfidf} without having to program \gls{tf} and \gls{idf} by itfself.
+A comparative approach I used in the course of my Bachelor Thesis is Term Frequency-Inverse Document Frequency. By using \gls{tfidf}, we're able to represent a word as a vector by assigning it weight which is computed through Term-Frequency multiplied with Inverse-Term-Frequency. Table 4.1 shows the 10 terms which have been assigned the highest \gls{tfidf} weights. Python's library \textit{sklearn} provides two ways to implement \gls{tfidf} without having to program \gls{tf} and \gls{idf} by itself.
 In order to get a generally better overview, I will now explain the 2-step implementation, but also briefly explain how both steps can be combined in one. \\
-\\ Term-Frequency, as mentioned in chapter 1 -- Principles, is a measure that denotes how often a term appears in a document. Inverse Document Frequency, on the other hand, refletcs the importance of a term throughout the doucment corpus. To implemente the TF-IDF measure, sklearn provides the classes \textit{CountVectorizer} and \textit{TfidfTransformer} of the submodule \textit{sklearn.feature\_extraction.text}. Therefore, in the first step of our \gls{tfidf}-implementation, both classes must be imported. As an input example, I use the first article of the "byArticle" labelled dataset. \\
+\\ Term-Frequency, as mentioned in chapter 1 -- Principles, is a measure that denotes how often a term appears in a document. Inverse Document Frequency, on the other hand, reflects the importance of a term throughout a document corpus. To implement the TF-IDF measure, \textit{scikit-learn} provides the classes \textit{CountVectorizer} and \textit{TfidfTransformer} of the submodule \textit{sklearn.feature\_extraction.text}. Therefore, in the first step of the \gls{tfidf}-implementation, both classes must be imported. As an input example, I use the first article of the "byArticle" labelled dataset. \\
 \noindent
 \begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single]
+	\begin{lstlisting}
 	from sklearn.feature_extraction.text import CountVectorizer
 	from sklearn.feature_extraction.text import TfidfTransformer
 	\end{lstlisting}
 \end{minipage}\\
-\noindent
-\begin{minipage}[c]{\linewidth}
-	\begin{lstlisting}[frame=single]
-	df = pd.read_csv('/home/lstrauch/Bachelorarbeit/env/Data/Preprocessed_ByArticle.csv', encoding='utf-8')
-	content= [df.Content[1]]
-	\end{lstlisting}
-\end{minipage} \\
-\noindent
-\begin{minipage}{\linewidth}
-\begin{lstlisting}
-['[donald, trump, ran, many, braggadocios, largely, unrealistic, campaign, promises, one, promises, best, hugest, competent, infrastructure, president, united, states, ever, seen, trump, going, fix, every, infrastructure, problem, country, make, america, great, process, unless, brown, american, case, even, massive, natural, disaster, like, hurricane, maria, puerto, rico, debt, puerto, rican, citizens, ...]']
-\end{lstlisting}
-\end{minipage} \\
 \noindent In order to calculate our \gls{tf} measure, we use the method \textit{fit\_transform()} of the class \textit{CountVectorizer}, which we pass our document corpus as a parameter. \\
 \noindent
 \begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single]
+	\begin{lstlisting}
 	count_vect = CountVectorizer()
-	content_counts = count_vect.fit_transform(content)
+	content_counts = count_vect.fit_transform(corpus)
 	\end{lstlisting}
 \end{minipage} \\
-\noindent \textit{fit\_transform()} learns a vocabulary dictionary of all tokens [sklearn Documentation], counts how many times a term \textit{t} occurs in a document \textit{d} and converts the text document into a token matrix. \\
+\noindent \textit{fit\_transform()} learns a vocabulary dictionary of all tokens [sklearn Documentation], counts how many times a term \textit{t} occurs in a document \textit{d} and converts the text document into a token matrix, which, in this example, would result in the following output: \\
 \noindent
 \begin{minipage}{\linewidth}
 	\begin{lstlisting}
@@ -542,141 +614,62 @@ In order to get a generally better overview, I will now explain the 2-step imple
 	with 84 stored elements in Compressed Sparse Row format>
 	\end{lstlisting}
 \end{minipage} \\
-\noindent Any term found during this procedure is assigned a unique index corresponding to a column of the regressive matrix.\\
-\noindent
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single]
-	content_counts.toarray()
-	\end{lstlisting}
-\end{minipage} \\
+\noindent The calculation of the \gls{idf}-measure in the second step is similar to the calculation of the \gls{tf}-measure. Again, the method \textit{fit\_transform()} is called. In contrast to the method of the \textit{CountVectorizer}, we no longer pass the text document as a parameter, but the token matrix of \textit{CountVectorizer}. \\
 \noindent
 \begin{minipage}{\linewidth}
 	\begin{lstlisting}
-array([[1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 2,
-	2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 3, 1, 1, 1, 1, 1, 1, 1,
-	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 3, 1, 1, 1, 1, 1, 1,
-	2, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 2, 1, 1, 1]],
-	dtype=int64)
-	\end{lstlisting}
-\end{minipage} \\
-
-The calculation of the \gls{idf}-measure in the second step is similar to the calculation of the \gls{tf}-measure. Again, the method \textit{fit\_transform()} is called. In contrast to the method of the \textit{CountVectorizer}, we no longer pass our text document as a parameter, but the token matrix of \textit{CountVectorizer}. \\
-\noindent
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single]
 	tfidf_transformer = TfidfTransformer()
 	content_tfidf = tfidf_transformer.fit_transform(content_counts)
 	\end{lstlisting}
 \end{minipage} \\
-\noindent
-\begin{minipage}{\linewidth}
-\begin{lstlisting}
-	array([[
-	0.0860663 , 0.0860663 , 0.17213259, 0.0860663 , 0.0860663 ,
-	0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 , 0.0860663 ,
-	0.0860663 , 0.17213259, 0.0860663 , 0.0860663 , 0.0860663 ,
-	0.0860663 , 0.17213259, 0.0860663 , 0.0860663 , 0.0860663 ,
-	0.0860663 , 0.17213259, 0.17213259, 0.0860663 , ...]])
-\end{lstlisting}
-\end{minipage}
-
-%-------------------------------- einfügen was TfidfTransformer macht!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-\noindent It should be noted that the shape of the finalized tfidf matrix depends on the document corpus. The first time the conversion is carried out, the two objects of the respective classes learn the respective vocabulary through the keyword \textit{"fit\_"}. If we want to convert a second text document to \gls{tfidf} vectors afterwards, which is supposed to be used in connection with the already converted text document, we have to make sure to use the same \textit{CountVectorizer} and the same \textit{TfidfTransformer}. This is necessary because otherwise the error message "Dimension Mismatch" would occur in later prediction calls.
+\noindent It should be noted that the shape of the finalized \gls{tfidf} matrix depends on the document corpus. The first time the conversion is carried out, the two objects of the respective classes learn the respective vocabulary through the keyword \textit{"fit\_"}. If we want to convert a second text document to \gls{tfidf} vectors afterwards, which is supposed to be used in connection with the already converted text document, we have to make sure to use the same \textit{CountVectorizer} and the same \textit{TfidfTransformer}. This is necessary because otherwise the error message "Dimension Mismatch" would occur in later prediction calls.
 Let's take the following example: \\
-\noindent If we convert the two datasets labelled by article and publisher separately by the method described above, we obtain the following dimensions:
+\noindent If we convert the two datasets labelled by article and publisher with the same \textit{CountVectorizer} and \textit{TfidfTransformer} as in algorithm 7, we obtain the following dimensions:
 \begin{itemize}
 	\item By Publisher: (600000, 708863)
 	\item By Article: (645, 708863)	
 \end{itemize}
 
-The first number in the vectors refers to the number of rows in the document and the second, how many columns the matrix contains. As we can clearly see, the two dimensions match because the documents were converted with the same fitted models. \\
+\noindent The first number in the vectors refers to the number of rows in the document and the second, how many columns the matrix contains. As we can clearly see, the two dimensions match because the documents were converted with the same fitted models. \\
 \noindent
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single]
-	def tf_idf_forTrainingAndTesting(x_train, x_test):
-		count_vect = CountVectorizer()
-		tfidf_transformer = TfidfTransformer()
-	
-		x_train_counts = count_vect.fit_transform(x_train)
-		x_train_tfidf = tfidf_transformer.fit_transform(x_train_counts)
-	
-		x_test_counts = count_vect.transform(x_test)
-		x_test_tfidf = tfidf_transformer.transform(x_test_counts)
-	\end{lstlisting}
-\end{minipage} \\
+\begin{algorithm}[H]
+	\DontPrintSemicolon
+	count\_vect = CountVectorizer()\;
+	tfidf\_transformer = TfidfTransformer()\;
+	\BlankLine
+	x\_train\_counts = count\_vect.fit\_transform(x\_train)\;
+	x\_train\_tfidf = tfidf\_transformer.fit\_transform(x\_train\_counts)\;
+	\BlankLine
+	x\_test\_counts = count\_vect.transform(x\_test)\;
+	x\_test\_tfidf = tfidf\_transformer.transform(x\_test\_counts)\;
+	\caption{\gls{tfidf} Fitting}
+\end{algorithm}
 \noindent If we would call the methods \textit{fit\_transform()} for both datasets, \textit{CountVectorizer} and \textit{TfidfTransformer} would be initialized each time, which would result in the following dimensions:
 \begin{itemize}
 	\item By Publisher: (600000, 708863)
 	\item By Article: (645, 11485)	
 \end{itemize}
-\noindent Since it is not always possible or useful to convert the test data in the same step as the training data, the module \textit{pickle} provides an opportunity to save the already initialized \textit{CountVectorizer} and \textit{TfidfTransformer} for later use on a new body of text. \\
-\noindent
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single]
-pickle.dump(count_vect, open("/mypath/count_vect.pickle", "wb"))
-pickle.dump(tfidf_transformer, open("/mypath/tfidf.pickle", "wb"))
-	\end{lstlisting}
-\end{minipage} \\
-This would make it possible to save the already fitted models. \\
-\noindent
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single]
-	pickle.dump(count_vect, open("/mypath/count_vect.pickle", "wb"))
-	pickle.dump(tfidf_transformer, open("/mypath/tfidf.pickle", "wb"))
-	\end{lstlisting}
-\end{minipage} \\
-
-\begin{algorithm}
-	\caption{pickle.dump}
-	\label{pickle}
-	\begin{algorithmic}
-	\STATE pickle.dump(count\_vect, open("/mypath/count\_vect.pickle", "wb")) \\
-	\STATE pickle.dump(tfidf\_transformer, open("/mypath/tfidf.pickle", "wb"))
-	\end{algorithmic}
-\end{algorithm}
 
 \newpage
 \begin{table}[t]
-	\begin{minipage}{.5\textwidth}
-		\begin{tabular}{ccc}
-			\toprule
-			Term & Average \Gls{tfidf} Weight \\
-			\midrule
-			trump & 0.091165 \\
-			bannon & 0.065129 \\
-			president & 0.061829 \\
-			kimmel & 0.052415 \\
-			money & 0.051647 \\
-			americans & 0.049132 \\
-			people & 0.047342 \\
-			obamacare & 0.042512 \\
-			wall & 0.042117 \\
-			control & 0.039068 \\
-			\bottomrule
-		\end{tabular}
-		\caption{Top 10 terms by average \Gls{tfidf} weight (By Article)}
-	\end{minipage}
-	\hspace{0,8cm}
-	\begin{minipage}{.5\textwidth}
-		\begin{tabular}{ccc}
-			\toprule
-			Terms & Average \Gls{tfidf} Weight \\
-			\midrule
-			balls & 0.057251 \\
-			said & 0.051183 \\
-			medicare & 0.047450 \\
-			martin & 0.046519 \\
-			school & 0.044264 \\
-			university & 0.043572 \\
-			says & 0.042079 \\
-			trump & 0.041235 \\
-			carrier & 0.040903 \\
-			degree & 0.040704 \\
-			\bottomrule
-		\end{tabular}
-		\caption{Top 10 terms by average \Gls{tfidf} weight (By Publisher)}
-	\end{minipage}
+	\centering
+			\begin{tabular}{cc|cc}
+				\toprule
+				By Article & \Gls{tfidf} Weight & By Publisher & \Gls{tfidf} Weight \\
+				\midrule
+				trump & 0.091165 & balls & 0.057251\\
+				bannon & 0.065129 & said & 0.051183 \\
+				president & 0.061829 & medicare & 0.047450 \\
+				kimmel & 0.052415 & martin & 0.046519 \\
+				money & 0.051647 & school & 0.044264\\
+				americans & 0.049132 & university & 0.043572\\
+				people & 0.047342 & says & 0.042079 \\
+				obamacare & 0.042512 & trump & 0.041235\\
+				wall & 0.042117 & carrier & 0.040903\\
+				control & 0.039068 & degree & 0.040704\\
+				\bottomrule
+			\end{tabular}
+		\caption{Top 10 terms by \Gls{tfidf} weight}
 \end{table}
 
 \subsection{Word Embeddings}
@@ -745,8 +738,7 @@ Our resulting word vectors now have the dimension defined in the parameter \text
 	word_vectors.save(fname)
 	\end{lstlisting}
 \end{minipage} \\
-\section{Feature Selection and/or Feature Transformation}
-\section{Learning Algorithms}
+\section{Classification Algorithms}
 Classification is about predicting a particular outcome based on given training data. For this prediction, a classification algorithm processes the training data set, which consists of a set of features and the respective predictions. The algorithm attempts to discover relationships between given features  of the instances and the associated classes to learn a function which makes it possible to predict the correct class based on the features of an instance. Thereafter, the algorithm receive a test dataset which it has not seen before. This dataset contains the same features as the training set but not the corresponding class names. With the previously learned function, the algorithm now assigns a class name to each instance  of the test record. \\
 \noindent Classic classification algorithms include \textit{Multinomial Naive Bayes}, \textit{Support Vector Machines}, \textit{Random Forest} and \textit{Logistic Regression}, which is why, in the following chapter, I will explain the basic procedure for implementing these algorithms. In addition, I will discuss the aspect of \textit{Grid Search}, which gives us the optimal parameter assignment to a given set of data for these algorithms.
 \subsection{SVM}
@@ -756,23 +748,82 @@ The \textit{MultinomialNB} class of the library \textit{scikit-learn} implements
 	\hat{V}_{yi}=\frac{N_{yi}+\alpha}{N_y + \alpha n}
 \]
 where $N_{yi}=\sum_{x \in T}x_i$ is the number of times a feature $i$ appears in a sample of class $y$ in the training set $T$ and $N_y=\sum_{i=1}^{n}N_{yi}$ is the total count of all features for class $y$. The smoothing priors $\alpha \ge 0$ accounts for features not present in the learning samples and prevents zero probabilities in further computations. \\
-\\ For implementing \gls{mnb}, the first step is to define the classifier \textit{clf = MultinomialNB()} which includes the parameters \textit{alpha}, \textit{fit\_prior} and \textit{class\_prior}. \textit{alpha} specifies $\alpha$'s value with which smoothing should be made. \textit{fit\_prior} specifies  whether the class probalilities should be leraned in advance and \textit{class\_prior} specifies the prior probabilities of the classes. After the classifier has been defined, we train it by calling the method \textit{fit()}, to which the training data \textit{X} and the associated labels \textit{y} are passed as parameters. This method then adjusts the Naive Bayes classifier according to \textit{X} and \textit{y}. \\
+\\ The \textit{MultinomialNB} classifier includes the parameters \textit{alpha}, \textit{fit\_prior} and \textit{class\_prior}. \textit{alpha} specifies $\alpha$'s value with which smoothing should be made. \textit{fit\_prior} specifies  whether the class probalilities should be leraned in advance and \textit{class\_prior} specifies the prior probabilities of the classes.\\
 \noindent
 \begin{minipage}{\linewidth}
-	\begin{lstlisting}[frame=single]
+	\begin{lstlisting}
 	from sklearn.naive_bayes import MultinomialNB
-	clf = MultinomialNB(alpha=1.0, fit_prior=True, class_prior=None)
-	clf.fit(X, y)
+	MultinomialNB(alpha=1.0, fit_prior=True, class_prior=None)
 	\end{lstlisting}
 \end{minipage} \\
 \subsection{Random Forest Classifier}
+As described in Chapter 2.6.2, the Random Forest Classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. For implementing the Random Forest Classifier, \textit{scikit-learn} provides the class \textit{sklearn.ensemble.RandomForestClassifier}. Unlike the original publication [Random Forests”, Machine Learning, 45(1), 5-32, 200], the \textit{scikit-learn} classifier determines the final class by averaging the probabilistic forecasts as opposed to having each classifier vote in favour of a solitary class. \\
+\noindent The Random Forest classifier includes 17 parameters, of which I have included 6 in my classification.\\
+\noindent
+\begin{minipage}{\linewidth}
+	\begin{lstlisting}
+from sklearn.ensemble import RandomForestClassifier
+RandomForestClassifier(min_samples_leaf=1, n_estimators=500, criterion='gini', max_depth=15, max_features='auto', bootstrap=True)
+	\end{lstlisting}
+\end{minipage} \\
+where \textit{n\_estimators} determines the number of trees in the forest, \textit{criterion} which impurity measure to utilize, \textit{max\_depth} determines the maximum depth of a tree, \textit{min\_samples\_leaf} determines the base number of samples to be at a leaf node, \textit{max\_features} the quantity of features that must be considered in the search for the best partition and \textit{bootstrap} indicates whether bootstrap models are utilized when making trees.
 \subsection{Logistic Regression Classifier}
-\newpage
-
+The Logistic Regression classifier is a model for classification, where the probabilities depicting the potential results of a solitary class are modelled utilizing a logistic function. The provided classifier of \textit{scikit-learn} offers the possibility not only to classify binary, but also One-vs-Rest and multinomial. There are several solvers available for this, yet since our classification problem only refers to binary classification, I will only discuss those aspects of the logistic regression classifier in the following section. \\
+\noindent Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization.[https://scikit-learn.org/stable/modules/linear\_model.html\#logistic-regression]\\
+\noindent \textit{L1} solves the regularized logistic regression by minimizing the following cost function:
+\[
+\min_{w, c} \quad \|w\|_1 + C \sum_{i=1}^n \log(\exp(1+e^{-y_ix^Tx_i})
+\]
+whereas \textit{L2} solves it the following way:
+\[
+\min_{w, c} \quad \frac{1}{2}w^T w + C \sum_{i=1}^n \log(1+e^{-y_iw^Tx_i})
+\]
+,where $C>0$ is penalty parameter, $w$ is the vector, $w^T$ is an additional dimension, $x_i$ is an instance of the vector and $y_i$ is an instance label pair $\in \{-1,+1\}$ [https://www.csie.ntu.edu.tw/~cjlin/papers/liblinear.pdf].\\
+\noindent A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out [https://scikit-learn.org/stable/modules/linear\_model.html\#logistic-regression], that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}. \\
+\noindent \textit{Liblinear} uses a coordinate descent algorithm, the \textit{sag} solver a Stochastic Average Gradient descent, \textit{saga} is a variant of \textit{sag} and therefor supports the non-smooth penalty \textit{L1} and \textit{elasticnet} and the \textit{lbfgs} solver is an optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno algorithm.
+\subsection{Grid Search}
+\begin{table}[h]
+	\centering
+		\begin{tabular}{c|c|c}
+			\toprule
+			Parameter & Result by Article & Result by Publisher \\
+			\midrule
+			alpha & 0.7 & 0.5  \\
+			fit\_prior & False & True \\
+			\bottomrule
+		\end{tabular}
+		\caption{Grid Search Result of the \gls{mnb} Classifier}
+\end{table}
+\noindent A significant perspective in machine learning is the aspect of hyperparameters. These are parameters that are not determined by the learning algorithm, but those that must be determined beforehand. In our classification algorithms, for example, theses are the parameters to be passed to the classifier. For instance, which size \textit{n\_estimators} in the \textit{Random Forest} classifier should assume. To solve this issue the algorithm \textit{GridSearch} exists. This algorithm is used to find the optimal hyperparameters of a model, which then leads to the most accurate predictions. \\
+\noindent The procedure is as follows: We define a set of parameters of which GridSearch trains the given classifier for all possible combinations and measures the performance by cross-validation. This ensures that our trained model has received the most samples from our training data set. \\
+\noindent A simple implementation of GridSearch is provided by \textit{scikit} learn through the class \textit{sklearn.model\_selection.GridSearchCV}. This class evaluates all possible combinations of parameters when calling the method fit() and keeps the best combination. \\
+\noindent The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is our parameter set, \textit{scoring}, which specifies which measure we want to use to evaluate our test set, and \textit{cv} how many cross-validation splits we want to perform. Algorithm 8 shows a practical example of how to use \textit{GridSearchCV} while table 4.4 shows the corresponding results. 
+\begin{algorithm}[H]
+	\DontPrintSemicolon
+	from sklearn.model\_selection import GridSearchCV\;
+	from sklearn.naive\_bayes import MultinomialNB\;
+	\BlankLine
+	    parameter\_candidates = \{'alpha': np.linspace(0.5, 1.5, 6), 'fit\_prior': [True, False]\}\;
+	    clf = GridSearchCV(estimator=MultinomialNB(), param\_grid=parameter\_candidates, scoring='accuracy', cv=10)\;
+	clf.fit(features, labels)\;
+	\caption{Grid Search for \gls{mnb} classifier}
+\end{algorithm}
+\subsection{Training and Predicting}
+\begin{algorithm}
+	\DontPrintSemicolon
+	\KwIn{Classifier model, Features, Labels}
+	\KwOut{Trained Classifier} 
+	classifier = model\;
+	classifier.fit(features, labels)
+	\caption{Classifier fitting}
+\end{algorithm}
+\chapter{Bidirectional Encoder Representations from Transformers}
+\chapter{Evaluation}
+\chapter{Conclusion}
 
 \pagestyle{empty}
 
-
+\newpage
 \section*{Ehrenw\"ortliche Erkl\"arung}
 Ich versichere, dass ich die beiliegende Master-/Bachelorarbeit ohne Hilfe Dritter
 und ohne Benutzung anderer als der angegebenen Quellen und Hilfsmittel

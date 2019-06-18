@@ -8,28 +8,36 @@
 \contentsline {subsection}{\numberline {2.2.1}Word2Vec}{3}% 
 \contentsline {section}{\numberline {2.3}SVM}{4}% 
 \contentsline {section}{\numberline {2.4}Multinomial Naive Bayes Classifier}{4}% 
-\contentsline {section}{\numberline {2.5}Decision Trees and Random Forest Classifier}{4}% 
-\contentsline {section}{\numberline {2.6}Logistic Regression Classifier}{5}% 
-\contentsline {chapter}{\numberline {3}Data}{6}% 
-\contentsline {section}{\numberline {3.1}Data Description}{6}% 
-\contentsline {subsection}{\numberline {3.1.1}Dataset labelled by Publisher}{7}% 
-\contentsline {subsection}{\numberline {3.1.2}Dataset labelled by Article}{7}% 
-\contentsline {section}{\numberline {3.2}Data Analysis}{8}% 
-\contentsline {section}{\numberline {3.3}Data Preparation}{9}% 
-\contentsline {subsection}{\numberline {3.3.1}Read the XML files}{10}% 
-\contentsline {subsection}{\numberline {3.3.2}Filter out the important information}{10}% 
-\contentsline {subsection}{\numberline {3.3.3}Merge the Groundtruth- and Training datasets into a csv file}{10}% 
-\contentsline {subsection}{\numberline {3.3.4}Remove special characters and stop words}{11}% 
-\contentsline {subsection}{\numberline {3.3.5}Tokenization and Stemming of the datasets}{11}% 
-\contentsline {chapter}{\numberline {4}Methodology}{13}% 
-\contentsline {section}{\numberline {4.1}Important Algorithms}{13}% 
-\contentsline {section}{\numberline {4.2}Vector Representation of the Text}{14}% 
-\contentsline {subsection}{\numberline {4.2.1}Term Frequency-Inverse Document Frequency}{14}% 
-\contentsline {subsection}{\numberline {4.2.2}Word Embeddings}{17}% 
-\contentsline {subsubsection}{Word2Vec}{17}% 
-\contentsline {section}{\numberline {4.3}Feature Selection and/or Feature Transformation}{19}% 
-\contentsline {section}{\numberline {4.4}Learning Algorithms}{19}% 
-\contentsline {subsection}{\numberline {4.4.1}SVM}{19}% 
-\contentsline {subsection}{\numberline {4.4.2}Multinomial Naive Bayes Classifier}{19}% 
-\contentsline {subsection}{\numberline {4.4.3}Random Forest Classifier}{20}% 
-\contentsline {subsection}{\numberline {4.4.4}Logistic Regression Classifier}{20}% 
+\contentsline {section}{\numberline {2.5}Logistic Regression Classifier}{4}% 
+\contentsline {section}{\numberline {2.6}Decision Trees and Random Forest Classifier}{6}% 
+\contentsline {subsection}{\numberline {2.6.1}Decision Trees}{6}% 
+\contentsline {subsection}{\numberline {2.6.2}Random Forest Classifier}{7}% 
+\contentsline {section}{\numberline {2.7}Cross Validation}{8}% 
+\contentsline {section}{\numberline {2.8}Evaluation}{8}% 
+\contentsline {chapter}{\numberline {3}Data}{10}% 
+\contentsline {section}{\numberline {3.1}Data Description}{10}% 
+\contentsline {subsection}{\numberline {3.1.1}Dataset labelled by Publisher}{11}% 
+\contentsline {subsection}{\numberline {3.1.2}Dataset labelled by Article}{11}% 
+\contentsline {section}{\numberline {3.2}Data Analysis}{12}% 
+\contentsline {section}{\numberline {3.3}Data Preparation}{13}% 
+\contentsline {subsection}{\numberline {3.3.1}Read the XML files}{14}% 
+\contentsline {subsection}{\numberline {3.3.2}Filter out the important information}{14}% 
+\contentsline {subsection}{\numberline {3.3.3}Merge the Groundtruth- and Training datasets into a csv file}{14}% 
+\contentsline {subsection}{\numberline {3.3.4}Remove special characters and stop words}{15}% 
+\contentsline {subsection}{\numberline {3.3.5}Tokenization and Stemming of the datasets}{15}% 
+\contentsline {chapter}{\numberline {4}Methodology}{17}% 
+\contentsline {section}{\numberline {4.1}Important Algorithms}{17}% 
+\contentsline {section}{\numberline {4.2}Vector Representation of the Text}{18}% 
+\contentsline {subsection}{\numberline {4.2.1}Term Frequency-Inverse Document Frequency}{18}% 
+\contentsline {subsection}{\numberline {4.2.2}Word Embeddings}{20}% 
+\contentsline {subsubsection}{Word2Vec}{20}% 
+\contentsline {section}{\numberline {4.3}Classification Algorithms}{21}% 
+\contentsline {subsection}{\numberline {4.3.1}SVM}{22}% 
+\contentsline {subsection}{\numberline {4.3.2}Multinomial Naive Bayes Classifier}{22}% 
+\contentsline {subsection}{\numberline {4.3.3}Random Forest Classifier}{22}% 
+\contentsline {subsection}{\numberline {4.3.4}Logistic Regression Classifier}{23}% 
+\contentsline {subsection}{\numberline {4.3.5}Grid Search}{24}% 
+\contentsline {subsection}{\numberline {4.3.6}Training and Predicting}{25}% 
+\contentsline {chapter}{\numberline {5}Bidirectional Encoder Representations from Transformers}{26}% 
+\contentsline {chapter}{\numberline {6}Evaluation}{27}% 
+\contentsline {chapter}{\numberline {7}Conclusion}{28}% 
