@@ -28,9 +28,14 @@
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \SetKwInput{KwIn}{Input}                % Set the Input
 \SetKwInput{KwOut}{Output}              % set the Output
+\AtBeginEnvironment{algorithm}{\scriptsize}
+\AtBeginEnvironment{tabular}{\scriptsize}
+\AtBeginEnvironment{amsmath}{\scriptsize}
 %\usepackage{algorithmic}
 \usepackage{array}
 \usepackage{multirow}
+\usepackage{url}
+
 
 \newcommand\MyBox[2]{
 	\fbox{\lower0.75cm
@@ -175,13 +180,13 @@
 \chapter{Fundamentals}
 
 \section{Term Frequency-Inverse Document Frequency}
-Term frequency (\gls{tf}) is a measure that denotes how frequently a term \textit{t} appears a the document \textit{d}. One way to compute \gls{tf} is [https://nlp.stanford.edu/IR-book/pdf/06vect.pdf]\\
+Term frequency (\gls{tf}) is a measure that denotes how frequently a term \textit{t} appears a the document \textit{d}. One way to compute \gls{tf} is \cite{IR-book}:\\
 \[
 tf(t,d)=\frac{1+\log(tf_{t,d})}{1+\log(ave_{t\in d}(tf_{t,d}))}
 \]
 where $1+\log(tf_{t,d})$ reflects how many times the term $t$ appears in document $d$ and $1+\log(ave_{t\in d}(tf_{t,d}))$ is the highest occurrence of any term in document $d_i$.\\
 
-\noindent Inverse Doucment Frequency (\gls{idf}) points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears.[https://nlp.stanford.edu/IR-book/pdf/06vect.pdf]\\
+\noindent Inverse Doucment Frequency (\gls{idf}) points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears \cite{IR-book}.\\
 \[
 idf(t_i)=log\frac{N}{d \in D : t \in d}
 \]
@@ -193,25 +198,27 @@ w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
 \]
 Therefore, \Gls{tfidf} indicates how significant a word is to a document in a collection or corpus. It is regularly used as a weighting factor in Information Retrieval and Text Mining. The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others.\\
 \noindent \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between 2 terms. However, TF-IDF is based on the bag-of-words (BoW) model, which is why it disregards aspects such as text position, semantics and co-occurrence.
+
 \section{Word Embeddings}
-Word Embeddings are based on the approach of Harris Distributional Hypothesis from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
+Word Embeddings are based on the approach of Harris Distributional Hypothesis \cite{distributionalhypothesis} from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
 \noindent A Word Embedding provides a word vector for each word. This is done by extracting features from that word within the context in which it appears and assigning it a place within the vector space. Two similar words will occupy locations areas near one another within this vector space, while words that differ will have positions much further apart. This makes it possible to calculate the distance calculation by computing cosine distance.
+
 \subsection{Word2Vec}
-Word2Vec is a "2-Model Architecture for computing continuous vector representations of words from very large dataset" [Efficient Estimation of Word Representations in Vector Space] that creates an n-dimensional vector space in which each word is represented as a vector. Word2Vecs 2 learning models are the \gls{cbow} and Skip-Gram-Model (Figure 3.1).\\
+Word2Vec is a "2-Model Architecture for computing continuous vector representations of words from very large dataset"\cite{effiecientestimation} that creates an n-dimensional vector space in which each word is represented as a vector. Word2Vecs 2 learning models are the \gls{cbow} and Skip-Gram-Model.\\
 \\
-\noindent \gls{cbow} uses the context word to predict the target word. The input is a one-hot encoded vector. The weights between the input layer and the output layer can be represented by a $V \cdot N$ matrix \textit{W} where each row of \textit{W} is the \textit{N}-dimensional vector representation $v_W$ of the input word [word2vec Parameter Learning Explained]. The hidden-layer \textit{h} is computed by multiplying the one-hot encoding vector of the input word $w_I$ with the weight matrix \textit{W}.
+\noindent \gls{cbow} uses the context word to predict the target word. The input is a one-hot encoded vector. The weights between the input layer and the output layer can be represented by a $V \cdot N$ matrix \textit{W} where "each row of $W$ is the $N$-dimension vector representation $w_v$ of the associated word of the input layer" \cite{word2vecparam}. The hidden-layer \textit{h} is computed by multiplying the one-hot encoding vector of the input word $w_I$ with the weight matrix \textit{W} \cite{word2vecparam}.
 \[
-h=W_{(k, \cdot)}^{T}:=v_{w_I}^{T}
+h=W^Tx=W_{(k, \cdot)}^{T}:=v_{w_I}^{T}
 \] 
-Next we have another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix. With these weights we can finally compute a score $u_j$ for each word in the vocabulary
+Next we have another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix. With these weights we can finally compute a score $u_j$ for each word in the vocabulary \cite{word2vecparam}
 \[
 u_{j}={v'}_{w_j}^{T}h
-\] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. Afterwards we use \textit{softmax}, which is a log-linear classification model, to obtain the posterior distribution of words.
+\] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. Afterwards "we can use \textit{softmax}, which is a log-linear classification model, to obtain the posterior distribution of words" \cite{word2vecparam}.
 \[
 p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
 \] \\
 \\
-\noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same. However in the output layer, we are now outputting \textit{C} multinomial distributions. 
+\noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same \cite{word2vecparam}. However in the output layer, we are now outputting \textit{C} multinomial distributions. 
 \section{SVM}
 \section{Multinomial Naive Bayes Classifier}
 The Naive Bayes classifier is based on  Bayes' theorem, which comes from the probability calculus and describes the calculation of conditional probability. Each object in this classification approach is assigned to the class for which the highest probability was computed or for which the lowest costs arise in this assignment.  \\
@@ -251,8 +258,7 @@ Combining these two therefore results in
 \[
 h_\Theta(x)=\frac{1}{1+e^{-\Theta^\tau x}}
 \]
-\noindent To find the optimal $\Theta$ by which we get an $h_\Theta(x)$ that is close to 0 or 1, we maximize the log-likelihood relying upon the output class, therefore the optimization problem can be expressed, utilizing the indicator notion as the minimization of the loss function [Machine learning algorithms : reference guide for popular algorithms for data science and machine learning
-]:
+\noindent To find the optimal $\Theta$ by which we get an $h_\Theta(x)$ that is close to 0 or 1, we maximize the log-likelihood relying upon the output class, therefore the optimization problem can be expressed, utilizing the indicator notion as the minimization of the loss function\cite{algorithms}:
 \[
 l(\Theta)=-\sum_{i=1}^{n}y_i\ln(z_i)+(1-y_i)\ln(1-z_i) \qquad ,\forall i,y_i \in {\{0,1\}} \\
 \]
@@ -280,8 +286,8 @@ l_\lambda^L(\Theta)=-\sum_{i=1}^{n}y_i\ln(z_i)+(1-y_i)\ln(1-z_i)+\lambda\sum_{j=
 
 \section{Decision Trees and Random Forest Classifier}
 \subsection{Decision Trees}
-Starting from the root node of a tree, a feature is evaluated from which a branch is subsequently selected. This process is repeated until the last node in the tree (leaf) is reached, which supplies the corresponding class. Different approaches have been developed in Decision Trees. One of the first is called \textit{Iterative Dichotomizer (ID3)} and required explicit features. This condition led to the development of the \textit{C4.5} formulation, which also manages continuous (but summarized and discretized) values. In addition, C4.5 was also known for its ability to transform a tree into a series of conditional expressions. The latest development is called \textit{Classification and Regression Trees (CART)}. These kinds of trees can oversee both downright and numeric highlights, can be utilized in either characterization or relapse assignments, and don't utilize a standard set as an inner portrayal.[Machine Learning Algorithms - Second Edition].\\
-\noindent The algorithm uses impurity measures to select a particular branch from a leaf. Among others, the two most common measures are "Gini" and "Cross Entropy Index". [Machine Learning Algorithms - Second Edition -Nicht zitiert]. These impurity measures are  applied to each candidate subset, and the resulting values are combined (e.g., averaged) to provide a measure of the quality of the split,
+Starting from the root node of a tree, a feature is evaluated from which a branch is subsequently selected. This process is repeated until the last node in the tree (leaf) is reached, which supplies the corresponding class. Different approaches have been developed in Decision Trees. One of the first is called \textit{Iterative Dichotomizer (ID3)} and required explicit features. This condition led to the development of the \textit{C4.5} formulation, which also manages continuous (but summarized and discretized) values. In addition, C4.5 was also known for its ability to transform a tree into a series of conditional expressions. The latest development is called \textit{Classification and Regression Trees (CART)}. These kinds of trees can oversee both downright and numeric highlights, can be utilized in either characterization or relapse assignments, and don't utilize a standard set as an inner portrayal\cite{algorithms}.\\
+\noindent The algorithm uses impurity measures to select a particular branch from a leaf. Among others, the two most common measures are "Gini" and "Cross Entropy Index"\cite{algorithms}.  These impurity measures are  applied to each candidate subset, and the resulting values are combined (e.g., averaged) to provide a measure of the quality of the split,
 \[
 I_{Gini}(j)=\sum_{i}p(i|j)(1-p(i|j))
 \]
@@ -293,8 +299,8 @@ where $j$ is a certain node, $p(i|j)$ is the probability with $i \in [1,n]$ asso
 \noindent \textit{Cross-Entropy} depends on information theory, and accepts invalid qualities just when samples having a place with a solitary class are available in a split, while it is greatest when there's a uniform conveyance among classes.
 
 \subsection{Random Forest Classifier}
-The Random Forest classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. Each tree in this process may make a decision, these votes are then aggregated to determine the final class. According to Breiman [https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf] the Random Forest algorithm is as follows:\\
-\noindent
+The Random Forest classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. Each tree in this process may make a decision, these votes are then aggregated to determine the final class. According to Breiman \cite{randomforest} the Random Forest algorithm is as follows:\\
+
 \begin{algorithm}[H]
 	\DontPrintSemicolon
 	Set the number of decision trees $N_c$\;
@@ -310,7 +316,7 @@ The Random Forest classifier is a classification technique that creates multiple
 	\caption{Random Forest}
 \end{algorithm}
 \section{Cross Validation}
-\textit{Cross Validation} is a model validation technique used to survey how the result of measurable statistical analysis generalizes into an independent dataset. The idea is to devide the entire dataset into a moving test and training set. The size of the test set is determined by the quantity of folds, so that at \textit{k} emphasess the test set covers the whole original dataset.\\
+\textit{Cross Validation} is a model validation technique used to survey how the result of measurable statistical analysis generalizes into an independent dataset. The idea is to divide the entire dataset into a moving test and training set. The size of the test set is determined by the quantity of folds, so that at \textit{k} emphases the test set covers the whole original dataset.\\
 \noindent A round of \text{Cross Validation} comprises of separating a sample of data into corresponding subsets, performing the analysis on the training set, and validating the analysis on the test set. To decrease fluctuation, most strategies perform several rounds of \textit{Cross Validation} utilizing various partitions and combine the validation result over the rounds to obtain an estimate of the predictive performance of the model.
 \section{Evaluation}
 In order to evaluate how well a classifier works, several procedures exist. The ones used during the competition are \textit{Accuracy}, \textit{Recall}, \textit{Precision} and \textit{F1-Score}, for which the Confusion Matrix (Table 2.1) forms the basis. Each column of the matrix represents the instances of a predicted class, while each row represents the instances of the actual class. \\
@@ -327,7 +333,7 @@ In order to evaluate how well a classifier works, several procedures exist. The 
 	\captionof{table}{Confusion Matrix}
 \end{center}
 \noindent \textit{True Positive} means that the classifier predicted a class which actually corresponds to it, whereas \textit{False Positive} means that a class was predicted that does not correspond to the actual class. In contrast, there are the \textit{False Negatives}, where the classifier predicted a class as not belonging, although the instance actually belongs to it whereas \textit{True Negative} means that the class was correctly classified as not belonging. \\
-\noindent The four evaluation metrics are computed as follows [Machine Learning Algorithms - Second Edition]:
+\noindent The four evaluation metrics are computed as follows \cite{algorithms}:
 \begin{itemize}
 	\item Accuracy: $\frac{TP+TN}{TP+TN+FP+FN}$\\
 					Defines the correct classification to the total number of cases
@@ -351,139 +357,76 @@ In order to evaluate how well a classifier works, several procedures exist. The 
  
  \noindent In return, the second dataset, recognizable by the term 'byArticle', was scrapped by crowdsourcing at hand and therefore consists of only 645 items without a Validation set.\\
  \\
- The GroundTruth dataset was provided as an XML File and consists of the features 'article url', 'labeled-by', 'id' and 'hyperpartisan'. In addition, the GroundTruth dataset scrapped 'byPublisher' contains the feature 'bias'.
-\begin{itemize}
-	\item Article-url: Contains the article's url.
-	\item Labeled-by: Reflects whether the respective article was labeled 'byPublisher' or 'byArticle'.
-	\item Id: Allocates each article a unique id.
-	\item Hyperpartisan: Displays whether the particular article has been labeled as hyperpartisan or not.
-	\item Bias: Divides the publisher's bias into 'left', 'left-center', 'least', 'right-center' and 'right'.
-\end{itemize}
- The Training dataset was as well provided as an XML file and contains the contents of the website of the respective article. In addition, it consists of the features 'article title' 'published-at' and 'id'.
-\begin{itemize}
-	\item Article title: Represents the articles title.
-	\item Published-at: Specifies the published date.
-	\item Id: A unique id, which is the same as the corresponding entry in the GroundTruth dataset.
-\end{itemize}
-
- \noindent The given Data has been cleaned in advance, therefore no additional steps were necessary.\\ 
- The main focus of the datasets is on the Hyperpartisan feature, on which we want to classify the articles as this thesis progresses.
+The GroundTruth-, Validation- and Training sets were each provided as XML documents. The GroundTruth file contains the attributes \textit{article-url}, \textit{labeled-by}, \textit{id} and \textit{hyperpartisan}. The main distinction between the by Article and by Publisher labelled datasets is that the by Publisher labelled GroundTruth dataset contains an additional attribute named \textit{bias}. In this context, the \textit{article-url} provides the URL of the article, the characteristic \textit{labeled-by} reflects whether the article belongs to the publisher or article dataset, \textit{id} represents a unique ID for the article, Hyperpartisan reflects whether the article was labeled als Hyperpartisan or not and the additional attribute \textit{bias} in the publisher record, states whether the article belongs to the "left", "left-center", "least", "right-center" or "right" sector.
  
 
 \subsection{Dataset labelled by Publisher}
-As mentioned above, this dataset consists of a total of 750,000 articles and is divided into a training record consisting of 600,000 articles and a validation set consisting of 150,000 articles. Summarizing these two sets of data, a total of 375,000 were labelled as 'Hyperpartisan' and 375,000 were not – which corresponds to a 50:50 distribution. But even individually, this distribution does not change. 
-\begin{figure}[h]
-	\centering
-	%Arbeit:
-	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
-	%PC:
-	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
-	%Lap Top:
-	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
-	\caption{Distribution of as Hyperpartisan labelled articles by publisher}
-	\label{fig:example}
-\end{figure}
-
-\noindent This dataset also includes the feature 'bias', which informs you about the general bias of the publisher. All 375,000 Hyperpartisan labelled all are assigned to either the left or right sectors, but none are right-centre, least or left-centre and are again 50:50 distributed.
-
-
-\noindent The other 50\% are split between the remaining bias, with 'Least' owning the largest share at 37\%.\\
-The publicity data is distributed over the years 1964-2018, with most of the data coming from 2012-2018.
-\begin{figure}[h]
-	%Arbeit:
-	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
-	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}  
-	%PC:
-	\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}} 
-	%Lap Top:
-	%\subfigure[Distribution of Bias]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Bias_Distribution.png}}
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Publisher_AllYears.png}}
-\end{figure}
-
-
-\subsection{Dataset labelled by Article}
-
-The dataset labelled by Article is a little different to the larger one labelled by publisher. Here the articles were individually labelled by hand. Accordingly, the distributions of this dataset are completely different. This becomes quiet obvious if we look at how the distribution of the Hyperpartisan labelled articles is here.
-\begin{figure}[h]
-	%Arbeit:
-	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Distribution_Published-At_ByArticle}} 
-	%PC:
-	\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}} 
-	%Lap Top:
-	%\subfigure[Distribution of Hyperpartisan labelled articles]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByArticle.png}} 
-	%\subfigure[Distribution of publishing years]{\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Distribution_PublishedAt_Article.png}}
-\end{figure}
-\noindent Here we can see that there is no 50:50 distribution left. Only 36.9\% were defined here as Hyperpartisan as shown in figure 2.4.\\
-\noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 2.5. Altogether all 645 articles date from the years 1902-2018.
-
-\section{Data Analysis}
-
-Hyperpartisan means "extremely partisan; extremely biased in favor of a political party." [definition]. This often materializes in relation to significant political events. As a result, in the following chapter, I will discuss in detail the direct link between the various features, especially the correlations between publication dates and label, as well as the connections between publisher and label.\\
-\begin{table}[h]
-\begin{minipage}{.4\textwidth}
-		\begin{tabular}{ccc}
-		\toprule
-		Publisher & Amount \\
-		\midrule
-		The Gateway Pundit & 17 \\
-		
-		OpsLens & 14 \\
-		
-		RealClearPolitics & 13 \\
-		
-		New York Post & 10 \\
-		
-		Salon & 8 \\
-		\bottomrule
-	\end{tabular}
-	\caption{Publishers who have published more than 7 Hyperpartisan Articles}
+\begin{minipage}[T]{.45\linewidth}
+	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	\captionof{figure}{Hyperpartisan Distribution by Publisher}
 \end{minipage}
-\hspace{0,8cm}
-\begin{minipage}{.4\textwidth}
-		\begin{tabular}{ccc}
+	\hspace{.1\linewidth}% Abstand zwischen Bilder
+\begin{minipage}[T]{.45\linewidth}
+	\centering
+	\begin{tabular}{ccc}
 		\toprule
 		Publisher & Bias & Amount \\
 		\midrule
 		Fox Business & Left & 96175 \\
-		
 		CounterPunch & Left & 39832 \\
-		
 		Mother Jones & Left & 36730 \\
-		
 		Truthdig & Left & 25056 \\
-		
 		Daily Wire & Right & 18570 \\
 		\bottomrule
 	\end{tabular}
-	\caption{Publishers who have published more than 10.000 Hyperpartisan articles}
-\end{minipage}
-\end{table}
+	\captionof{table}{Publishers with the highest proportion of Hypeprartisan articles}
+\end{minipage}\\
+\\ As mentioned above, this dataset consists of a total of 750,000 articles and is divided into a training record consisting of 600,000 articles and a validation set consisting of 150,000 articles.
+The main difference between this dataset and the by articel labelled one is the type of classification. This is because these articles were not labelled as Hyperpartisan based on their content, but due to the publisher (Table 3.1). This means, that a publisher who has been designated as right or left by the MediaBiasFastCheck.com will naturally publish articles which are Hyperpartisan. This manifests itself in a different form of features, which becomes apparent in the further course of this thesis. This likewise influences the distribution of Hyperpatisan articles.
+ Out of a total of 750,000 items, 375,000 assume the value 'True', while the remaining 375,000 have the value 'False'(Figure 3.1). 
+Furthermore, the classification is expressed by the distribution of the additionally contained GroundTruth attribute 'Bias', which informs about the general bias of the publisher. All 375,000 Hyperpartisan labelled all are assigned to either the left or right sectors, but none are right-centre, least or left-centre and are again 50:50 distributed. The other 50\% are split between the remaining bias, with 'Least' owning the largest share at 37\%.\\
+The publicity data is distributed over the years 1964-2018, with most of the data coming from 2012-2018.
 
-\noindent The two tables 2.1 and 2.2 list the publisher who produced the highest amount of Hyperpartisan articles in the respective dataset. To keep track, only those publishers who have published more than 7 Hyperpartisan articles in the dataset 'labelled by article' and who have published more than 10.000 hyperpartisan articles in the dataset 'labelled by publisher' are included in the tables. However, a problem here is the dataset 'Labelled by Publisher', since this record, as previously described, has been labelled by the overall bias of the publisher. Meaning, for the further development, we can not include the publishers, since each article of a publishing house has the same label. What I would like to discuss later, however, is the connection between whether or not one of the publishers listed in Table 2.2 published more articles in important political years.
+
+\subsection{Dataset labelled by Article}
+
+As already described in the previous section, the distribution of the by Article dataset is different from the by Publisher one. The distribution is no longer 50:50, but only 36.9\% were classified as Hyperpartisan. 
+\begin{figure}[t]
+	\begin{minipage}{.45\linewidth}
+		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		\caption{Hyperpartisan Distribution by Article}
+	\end{minipage}
+	\hspace{.1\linewidth}% Abstand zwischen Bilder
+	\begin{minipage}{.45\linewidth}
+	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+	\caption{Publishing Years Distribution by Article}
+\end{minipage}
+\end{figure}
+\noindent Here we can see that there is no more 50:50 distribution. Only 36.9\% were defined here as Hyperpartisan as shown in figure 3.2.\\
+\noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 3.3. Altogether all 645 articles date from the years 1902-2018.
+
+
 
 
 \section{Data Preparation}
-In order to be able to work with the existing data in the further course of this project, several preprocessing steps are necessary. In the preprocessation phase of my bachelor's thesis, the data therefore went through the following steps:
+In order to be able to work with the existing data in the further course of this project, several preprocessing steps are necessary. In the preprocessing phase of my bachelor's thesis, the data therefore went through the following steps:
 \begin{enumerate}
-	\item Read the XML files. 
-	\item Filter out the important information.
-	\item Merge the Groundtruth- and Training datasets into a csv file.
-	\item Remove special characters and stop words.
-	\item Tokenization and stemming of the datasets.
+	\item File Parsing. 
+	\item Information Filtering.
+	\item Combine Data.
+	\item Special Characters and Stop Word Removal.
+	\item Tokenization and Stemming.
 \end{enumerate}	
 \noindent As a result, in the following section, I will go further into detail how I preprocessed my data.
 
 
-\subsection{Read the XML files}
-Since it is difficult to work with the given data in an XML format, it is necessary to bring them into a format with which it’ll be easier to work with. The particular challenge hereby is the size of the dataset labelled by publisher. A standard algorithm for reading XML files is provided by pythons DOM library ElementTree, called “ElementTree.parse”. This method returns an ElemenTree type, which "is a flexible container object, designed to store hierarchical data structures in memory" [ http://effbot.org/zone/element.htm]. Meaning, that this library forms the entire model in the memory which can pose a problem with very large files, such as ours. As a substitute,I therefore use the method “ElemenTree.iterparse”, which can process XML documents in a streaming fashion, retaining in memory only the most recently examined parts of the tree. 
+\subsection{File Parsing}
+Since it is difficult to work with the given data in an XML format, the first challenge is to convert these files into a format which allows it to work with them more easily. The particular challenge here is the size of the dataset labelled by publisher. A standard algorithm for reading XML files is provided by pythons DOM library \textit{ElementTree}, called \textit{ElementTree.parse}\cite{parse}. This method returns an ElemenTree type, which "is a flexible container object, designed to store hierarchical data structures in memory" [ http://effbot.org/zone/element.htm]. Meaning, that this library forms the entire model in the memory which can pose a problem with very large files, such as ours. As a substitute, I therefore use the method \textit{ElemenTree.iterparse}, which can process XML documents in a streaming fashion, retaining in memory only the most recently examined parts of the tree\cite{iterparse}. 
 
 
-\subsection{Filter out the important information}
-As mentioned in Chapter 2.1 Data Description, the XML files include various features, which will play an important role in the further course of this work. It is now necessary to filter these features out of the XML format so the can be better worked with later. In order to be able to do this, we pass an algorithm the, by the iterparse method read content, which then passes through this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. \\
-\noindent
+\subsection{Information Filtering}
+As mentioned in Chapter 2.1 Data Description, the XML files include various features, which is why it is necessary to extract these features from XML file. In order to be able to do this, we pass an algorithm the, by the \textit{iterparse} method read content, which then passes through this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. \\
+
 \begin{algorithm}[H]
 	\DontPrintSemicolon
 	\caption{Parse Ground-Truth File}
@@ -503,23 +446,22 @@ As mentioned in Chapter 2.1 Data Description, the XML files include various feat
 		}
 \end{algorithm}
 
-\subsection{Merge the Groundtruth- and Training datasets into a csv file}
-Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library pandas to write the two files into one csv file. This, and especially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.\\
-\noindent
+\subsection{Combine Data}
+Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library \textit{pandas} \cite{pandas} to combine both files into a single one. This, and especially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.\\
+
 \begin{algorithm}[H]
 	\DontPrintSemicolon
 	\caption{Merge Groundtruth- and Trainingdatasets}
-	feature\_extraction.parse\_features(xml\_training, publisher)\;
-	groundtruth\_parser.parse\_groundtruth(xml\_gt, publisher)\;
 	content = content\_parser.parse\_content(content\_training)\;
-	a\_id = feature\_extraction.get\_id\_array(publisher)\;
+	a\_id = feature\_extraction.get\_id\_array()\;
 	\BlankLine
 	\BlankLine
-	published = feature\_extraction.get\_published\_at\_array(publisher)\;
-	title = feature\_extraction.get\_title\_array(publisher)\;
-	bias = groundtruth\_parser.get\_bias\_array(publisher)\;
-	hyperpartisan = groundtruth\_parser.get\_hyperpartisan\_array(publisher)\;
-	columns = \{"ArticleID": a\_id,"PublishedAt": published,"Title": title,"Bias": bias,"Content": content "Hyperpartisan": hyperpartisan\}\;
+	published = feature\_extraction.get\_published\_at\_array()\;
+	title = feature\_extraction.get\_title\_array()\;
+	bias = groundtruth\_parser.get\_bias\_array()\;
+	hyperpartisan = groundtruth\_parser.get\_hyperpartisan\_array()\;
+	\BlankLine
+	columns = \{"ArticleID": a\_id, "PublishedAt": published, "Title": title, "Bias": bias, "Content": content  "Hyperpartisan": hyperpartisan\}\;
 	\BlankLine
 	\BlankLine
 	tf = Pd.DataFrame(columns)\;
@@ -527,9 +469,9 @@ Since both, the Groundtruth- and Trainingdata contain important information, it 
 	tf.to\_csv(titlecsv,encoding='utf-8',index=False)\;
 \end{algorithm}
 
-\subsection{Remove special characters and stop words}
-Now that we have merged both files and written them into a csv file, we need to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles [TextClassificationUsingMachineLearning] are useful for training a classifier. It also decreases our corpus which makes it easier to classify later on. (Warum?)\\
-\noindent
+\subsection{Special Characters and Stop Word Removal}
+Since the GroundTruth- and Trainingdatasets have been combined into a single file, the next step  is to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles \cite{textclassification} are useful for training a classifier.\\
+
 \begin{algorithm}[H]
 		\DontPrintSemicolon
 	stop = stopwords.words('english')\;
@@ -543,52 +485,41 @@ Now that we have merged both files and written them into a csv file, we need to 
 
 
 \subsection{Tokenization and Stemming of the datasets}
-After cleaning the dataset, the words are tokenized in order to convert them into numerical vectors so that a classifier is able to work with them. Tokenization is definied as "The process of demarcating and possibly classifying sections of a string of input characters. The resulting tokens are then passed on to some other form of processing. The process can be considered a sub-task of parsing input".\\
-\noindent Stemming is the procedure of reducing the word to its grammatical (morpho-syntatctic) root. The result is not necessarily a valid word of the language. For example, "recognized" would be converted to "recogniz". Still, the basic word almost always contains the very meaning of the word. Stemming is advantageous in that the algorithm used later now only has to fall back on a few different words and not many, all of which have the same meaning.\\
+After cleaning the dataset, the words are tokenized in order to convert them into numerical vectors so that a classifier is able to work with them. Tokenization is definied as "The process of demarcating and possibly classifying sections of a string of input characters. The resulting tokens are then passed on to some other form of processing. The process can be considered a sub-task of parsing input.\\
+\noindent Stemming is the procedure of reducing the word to its grammatical root. The result is not necessarily a valid word of the language. For example, "recognized" would be converted to "recogniz". Still, the basic word almost always contains the very meaning of the word. Stemming is advantageous in that the algorithm used later now only has to fall back on a few different words and instead of many, all of which have the same meaning.\\
 \\
 \noindent In order to implement Stemming and Tokenization, only 2 lines of python code are necessary, due to the Pandas dataframe. \\
-\noindent
-\begin{minipage}{\linewidth}
-\begin{lstlisting}[frame=single]
-df["Content"] = df["Content"].apply(nltk.word_tokenize)
-df['Content'] = df['Content'].apply(lambda x: [stemmer.stem(y) for y in x])
-\end{lstlisting}
-\end{minipage}
-This will transform our output file in the following way:
+
+\begin{algorithm}[H]
+	\DontPrintSemicolon
+	df.Content = df.Content.apply(nltk.word\_tokenize)\;
+	df.Content = df.Content.apply(lambda x: [stemmer.stem(y) for y in x])\;
+	\caption{Special Character and Stopword Removal with Pandas and NLTK}
+\end{algorithm}
 
 \chapter{Methodology}
-\noindent The main process for Text Classification includes 7 steps of which the first 4 have already been performed in Chapter 2.
-\begin{enumerate}
-	\item Read the Document.  
-	\item Tokenize Text.
-	\item Stemming.
-	\item Delete Stopwords.
-	\item Vector Representation of the Text.
-	\item Feature Selection and/or Feature Transformation.
-	\item Learning Algorithm.
-\end{enumerate}
-As already mentioned in Chapter "Introduction", we build our classifier model by using BERT-Embeddings. To compare how our model performs, in this chapter, I will discuss the classic methods and algorithms that I have used in order to achieve this comparison. \\	
+The primary procedure in Text Classification consist of 6 steps. These include  reading the dataset, tokenization, stemming, removing stop words, represent the text using vectors, as well as applying classification algorithms. Since the first four steps have already been covered in Chapter 2, I will discuss the remaining 3 in this section. Especially, step 6 plays an important role. As already mentioned in Chapter 1 - Introduction, we build the classifier using \glspl{bert}-Embeddings. In order to compare how the model performs, I will therefore focus on classical text classification algorithms.
 
-\section{Important Algorithms}
-In order to avoid the repetition of algorithms used in the same context, in this section, I will explain some recurring algorithms.
-\begin{algorithm}
-	\DontPrintSemicolon
-	import pickle\;
-	filename = 'finalized\_model.sav'\;
-	pickle.dump(model, open(filename, 'wb))
-	\caption{Saving a trained model}
-\end{algorithm}
-\begin{algorithm}
-	\DontPrintSemicolon
-	loaded\_model = pickle.load(open(filename, 'rb'))
-	\caption{Loading a trained model}
-\end{algorithm}
+%\section{Important Algorithms}
+%In order to avoid the repetition of algorithms used in the same context, in this section, I will explain some recurring algorithms.
+%\begin{algorithm}
+%	\DontPrintSemicolon
+%	import pickle\;
+%	filename = 'finalized\_model.sav'\;
+%	pickle.dump(model, open(filename, 'wb))
+%	\caption{Saving a trained model}
+%\end{algorithm}
+%\begin{algorithm}
+%	\DontPrintSemicolon
+%	loaded\_model = pickle.load(open(filename, 'rb'))
+%	\caption{Loading a trained model}
+%\end{algorithm}
 
 \section{Vector Representation of the Text}
-In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document. [TextClassificationUsingmachineLearning]. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertor for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
+In order for our classifier to be able to work with the text, we first need to transform our words into a feature vector representation. A document is a sequence of words [Text Categorization with Support Vector Machines] so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document\cite{textclassification}. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have V-diemensional vertor for each out of V words which can lead to huge memory issues. In addition this does not notion similiarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
 
 \subsection{Term Frequency-Inverse Document Frequency}
-A comparative approach I used in the course of my Bachelor Thesis is Term Frequency-Inverse Document Frequency. By using \gls{tfidf}, we're able to represent a word as a vector by assigning it weight which is computed through Term-Frequency multiplied with Inverse-Term-Frequency. Table 4.1 shows the 10 terms which have been assigned the highest \gls{tfidf} weights. Python's library \textit{sklearn} provides two ways to implement \gls{tfidf} without having to program \gls{tf} and \gls{idf} by itself.
+A comparative approach I used in the course of my Bachelor Thesis is Term Frequency-Inverse Document Frequency. By using \gls{tfidf}, we're able to represent a word as a vector by assigning it weight which is computed through Term-Frequency multiplied with Inverse-Term-Frequency. Table 4.1 shows the 10 terms which have been assigned the highest \gls{tfidf} weights. Python's library \textit{scikit-learn}\cite{scikit-learn} provides two ways to implement \gls{tfidf} without having to program \gls{tf} and \gls{idf} by itself.
 In order to get a generally better overview, I will now explain the 2-step implementation, but also briefly explain how both steps can be combined in one. \\
 \\ Term-Frequency, as mentioned in chapter 1 -- Principles, is a measure that denotes how often a term appears in a document. Inverse Document Frequency, on the other hand, reflects the importance of a term throughout a document corpus. To implement the TF-IDF measure, \textit{scikit-learn} provides the classes \textit{CountVectorizer} and \textit{TfidfTransformer} of the submodule \textit{sklearn.feature\_extraction.text}. Therefore, in the first step of the \gls{tfidf}-implementation, both classes must be imported. As an input example, I use the first article of the "byArticle" labelled dataset. \\
 \noindent
@@ -622,7 +553,7 @@ In order to get a generally better overview, I will now explain the 2-step imple
 	content_tfidf = tfidf_transformer.fit_transform(content_counts)
 	\end{lstlisting}
 \end{minipage} \\
-\noindent It should be noted that the shape of the finalized \gls{tfidf} matrix depends on the document corpus. The first time the conversion is carried out, the two objects of the respective classes learn the respective vocabulary through the keyword \textit{"fit\_"}. If we want to convert a second text document to \gls{tfidf} vectors afterwards, which is supposed to be used in connection with the already converted text document, we have to make sure to use the same \textit{CountVectorizer} and the same \textit{TfidfTransformer}. This is necessary because otherwise the error message "Dimension Mismatch" would occur in later prediction calls.
+\noindent It should be noted that the shape of the finalized \gls{tfidf} matrix depends on the document corpus. The first time the conversion is carried out, the two objects of the respective classes learn the respective vocabulary through the keyword \textit{"fit\_"}. If we want to convert a second text document to \gls{tfidf} vectors afterwards, which is supposed to be used in connection with the already converted text document, we have to make sure to use the same \textit{CountVectorizer} \cite{tfidf} and the same \textit{TfidfTransformer}\cite{tfidf}. This is necessary because otherwise the error message "Dimension Mismatch" would occur in later prediction calls.
 Let's take the following example: \\
 \noindent If we convert the two datasets labelled by article and publisher with the same \textit{CountVectorizer} and \textit{TfidfTransformer} as in algorithm 7, we obtain the following dimensions:
 \begin{itemize}
@@ -632,7 +563,7 @@ Let's take the following example: \\
 
 \noindent The first number in the vectors refers to the number of rows in the document and the second, how many columns the matrix contains. As we can clearly see, the two dimensions match because the documents were converted with the same fitted models. \\
 \noindent
-\begin{algorithm}[H]
+\begin{algorithm}[t]
 	\DontPrintSemicolon
 	count\_vect = CountVectorizer()\;
 	tfidf\_transformer = TfidfTransformer()\;
@@ -652,6 +583,7 @@ Let's take the following example: \\
 
 \newpage
 \begin{table}[t]
+	\scriptsize
 	\centering
 			\begin{tabular}{cc|cc}
 				\toprule
@@ -676,14 +608,14 @@ Let's take the following example: \\
 \subsubsection{Word2Vec} 
 For a forther comparison and an approximation to the the later on used classification model, I did not only uf \gls{tfidf} as a Vector representation method as part of my Bachelor Thesis, but also Word Embeddings - especially the \textit{Word2Vec} model. \\
 \noindent Word2Vec represents words as vectors. Unlike the  \gls{tfidf} method, however, not only word frequencies and -priorities are considered, but also the connection of individual words to others. Again, several methods of implementation exist. 
-As part of my Bachelor Thesis, I decided to use  the library \textit{gensim} to implement my Word2Vec model. With \textit{gensim} it is  possible to do  unsupervised semantic modelling from plain text. Thsi makes it possible to implement a Word"vec model using only a few lines of code without having to program Skip-Gram of \gls{cbow} yourself. \\
+As part of my Bachelor Thesis, I decided to use  the library \textit{gensim} \cite{gensim} to implement my Word2Vec model. With \textit{gensim} it is  possible to do  unsupervised semantic modelling from plain text. This makes it possible to implement a Word"vec model using only a few lines of code without having to program Skip-Gram of \gls{cbow} yourself. \\
 \noindent
 \begin{minipage}{\linewidth}
 	\begin{lstlisting}[frame=single]
     model = gensim.models.Word2Vec(vocab, min_count=10, window=10, size=300, iter=10)
 	\end{lstlisting}
 \end{minipage} \\
-\noindent The algorithm above shows that the implementation of the model is straightforward, as it is pretty much the only step we need to program. By default,  gensim uses \gls{cbow} which can be  changed  by adding the following parameter to the parameters list: \textit{sg=1}. As for the other parameters, 18 more exist which can be viewed at "https://radimrehurek.com/gensim/models/word2vec.html", but I decided to focus only on the important ones. \textit{Vocab} is our text corpus, which needs to be transformed into a list of tokenized sentences. \textit{Size} determines the dimension of the word vectors, \textit{window} the maximum distance between the current and predicted word within a sentence, \textit{min\_count}  how often a word must occur to be included in the vocabulary and \textit{iter} how many iterations  should be performed on the corpus. What exactly happens here is that we train a neural network with a single hidden layer on which the model is trained to predict the current word based on the context. The resulting vector consists of several features that describe the target word.\\
+\noindent The algorithm above shows that the implementation of the model is straightforward, as it is pretty much the only step we need to program. By default,  gensim uses \gls{cbow} which can be  changed  by adding the following parameter to the parameters list: \textit{sg=1}. As for the other parameters, 18 more exist which can be viewed at \url{https://radimrehurek.com/gensim/models/word2vec.html}, but I decided to focus only on the important ones. \textit{Vocab} is our text corpus, which needs to be transformed into a list of tokenized sentences. \textit{Size} determines the dimension of the word vectors, \textit{window} the maximum distance between the current and predicted word within a sentence, \textit{min\_count}  how often a word must occur to be included in the vocabulary and \textit{iter} how many iterations  should be performed on the corpus. What exactly happens here is that we train a neural network with a single hidden layer on which the model is trained to predict the current word based on the context. The resulting vector consists of several features that describe the target word.\\
 \noindent 
 After the model has been trained it is possible to find out information like the similarity between 2 words. Table 4.3 shows the most similar words to "trump", which was assigned the highest \gls{tfidf} weight. \\
 \noindent
@@ -700,7 +632,8 @@ model.wv.similarity(w1="trump", w2="explosion")
 \end{minipage} \\
 \noindent  The functionality here is that the cosine similarity is calculated between 2 words in the vector space. As the range of the cosine similarity can go from [-1 to 1], words that are completely the same are assigned the value \textit{1} and words that are not similar at all are given the value \textit{-1}.
 \begin{table}[t]
-	\begin{minipage}{.5\textwidth}
+	\scriptsize
+	\centering
 		\begin{tabular}{cc|cc}
 			\toprule
 			By Article & Similarity  & By Publisher & Similarity \\
@@ -713,7 +646,6 @@ model.wv.similarity(w1="trump", w2="explosion")
 			\bottomrule
 		\end{tabular}
 		\caption{Most similar word to 'trump'}
-	\end{minipage}
 \end{table}
 Our resulting word vectors now have the dimension defined in the parameter \textit{size}. In order to be able to form features from them, I averaged the Word Embeddings of all words in a sentence.\\
 \noindent
@@ -757,7 +689,7 @@ where $N_{yi}=\sum_{x \in T}x_i$ is the number of times a feature $i$ appears in
 	\end{lstlisting}
 \end{minipage} \\
 \subsection{Random Forest Classifier}
-As described in Chapter 2.6.2, the Random Forest Classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. For implementing the Random Forest Classifier, \textit{scikit-learn} provides the class \textit{sklearn.ensemble.RandomForestClassifier}. Unlike the original publication [Random Forests”, Machine Learning, 45(1), 5-32, 200], the \textit{scikit-learn} classifier determines the final class by averaging the probabilistic forecasts as opposed to having each classifier vote in favour of a solitary class. \\
+As described in Chapter 2.6.2, the Random Forest Classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. For implementing the Random Forest Classifier, \textit{scikit-learn} provides the class \textit{sklearn.ensemble.RandomForestClassifier}. Unlike the original publication \cite{randomforest}, the \textit{scikit-learn} classifier determines the final class by averaging the probabilistic forecasts as opposed to having each classifier vote in favour of a solitary class. \\
 \noindent The Random Forest classifier includes 17 parameters, of which I have included 6 in my classification.\\
 \noindent
 \begin{minipage}{\linewidth}
@@ -769,7 +701,7 @@ RandomForestClassifier(min_samples_leaf=1, n_estimators=500, criterion='gini', m
 where \textit{n\_estimators} determines the number of trees in the forest, \textit{criterion} which impurity measure to utilize, \textit{max\_depth} determines the maximum depth of a tree, \textit{min\_samples\_leaf} determines the base number of samples to be at a leaf node, \textit{max\_features} the quantity of features that must be considered in the search for the best partition and \textit{bootstrap} indicates whether bootstrap models are utilized when making trees.
 \subsection{Logistic Regression Classifier}
 The Logistic Regression classifier is a model for classification, where the probabilities depicting the potential results of a solitary class are modelled utilizing a logistic function. The provided classifier of \textit{scikit-learn} offers the possibility not only to classify binary, but also One-vs-Rest and multinomial. There are several solvers available for this, yet since our classification problem only refers to binary classification, I will only discuss those aspects of the logistic regression classifier in the following section. \\
-\noindent Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization.[https://scikit-learn.org/stable/modules/linear\_model.html\#logistic-regression]\\
+\noindent Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization \cite{logisticregression}.\\
 \noindent \textit{L1} solves the regularized logistic regression by minimizing the following cost function:
 \[
 \min_{w, c} \quad \|w\|_1 + C \sum_{i=1}^n \log(\exp(1+e^{-y_ix^Tx_i})
@@ -779,10 +711,10 @@ whereas \textit{L2} solves it the following way:
 \min_{w, c} \quad \frac{1}{2}w^T w + C \sum_{i=1}^n \log(1+e^{-y_iw^Tx_i})
 \]
 ,where $C>0$ is penalty parameter, $w$ is the vector, $w^T$ is an additional dimension, $x_i$ is an instance of the vector and $y_i$ is an instance label pair $\in \{-1,+1\}$ [https://www.csie.ntu.edu.tw/~cjlin/papers/liblinear.pdf].\\
-\noindent A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out [https://scikit-learn.org/stable/modules/linear\_model.html\#logistic-regression], that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}. \\
+\noindent A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out, that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}. \\
 \noindent \textit{Liblinear} uses a coordinate descent algorithm, the \textit{sag} solver a Stochastic Average Gradient descent, \textit{saga} is a variant of \textit{sag} and therefor supports the non-smooth penalty \textit{L1} and \textit{elasticnet} and the \textit{lbfgs} solver is an optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno algorithm.
 \subsection{Grid Search}
-\begin{table}[h]
+\begin{table}[ht]
 	\centering
 		\begin{tabular}{c|c|c}
 			\toprule
@@ -796,9 +728,9 @@ whereas \textit{L2} solves it the following way:
 \end{table}
 \noindent A significant perspective in machine learning is the aspect of hyperparameters. These are parameters that are not determined by the learning algorithm, but those that must be determined beforehand. In our classification algorithms, for example, theses are the parameters to be passed to the classifier. For instance, which size \textit{n\_estimators} in the \textit{Random Forest} classifier should assume. To solve this issue the algorithm \textit{GridSearch} exists. This algorithm is used to find the optimal hyperparameters of a model, which then leads to the most accurate predictions. \\
 \noindent The procedure is as follows: We define a set of parameters of which GridSearch trains the given classifier for all possible combinations and measures the performance by cross-validation. This ensures that our trained model has received the most samples from our training data set. \\
-\noindent A simple implementation of GridSearch is provided by \textit{scikit} learn through the class \textit{sklearn.model\_selection.GridSearchCV}. This class evaluates all possible combinations of parameters when calling the method fit() and keeps the best combination. \\
-\noindent The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is our parameter set, \textit{scoring}, which specifies which measure we want to use to evaluate our test set, and \textit{cv} how many cross-validation splits we want to perform. Algorithm 8 shows a practical example of how to use \textit{GridSearchCV} while table 4.4 shows the corresponding results. 
-\begin{algorithm}[H]
+\noindent A simple implementation of GridSearch is provided by \textit{scikit-learn} through the class \textit{sklearn.model\_selection.GridSearchCV}. This class evaluates all possible combinations of parameters when calling the method fit() and keeps the best combination. \\
+\noindent The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is our parameter set, \textit{scoring}, which specifies which measure we want to use to evaluate our test set, and \textit{cv} how many cross-validation splits we want to perform. Algorithm 8 shows a practical example of how to use \textit{GridSearchCV} while table 4.4 shows the corresponding results. \\
+\begin{algorithm}[h]
 	\DontPrintSemicolon
 	from sklearn.model\_selection import GridSearchCV\;
 	from sklearn.naive\_bayes import MultinomialNB\;
@@ -821,6 +753,8 @@ whereas \textit{L2} solves it the following way:
 \chapter{Evaluation}
 \chapter{Conclusion}
 
+\bibliography{BA}{}
+\bibliographystyle{plain}
 \pagestyle{empty}
 
 \newpage

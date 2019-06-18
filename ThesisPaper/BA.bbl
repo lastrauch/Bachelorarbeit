@@ -1,0 +1,78 @@
+\begin{thebibliography}{10}
+
+\bibitem{algorithms}
+Giuseppe Bonaccorso.
+\newblock {\em Machine learning algorithms : reference guide for popular
+  algorithms for data science and machine learning}.
+\newblock Birmingham, England ; Mumbai, India : Packt, 2017.
+
+\bibitem{randomforest}
+Leo Breiman.
+\newblock Random forests.
+\newblock Technical report, University of California, January 2001.
+
+\bibitem{IR-book}
+Prabhakar~Raghavan Christopher D.~Manning and Hinrich Schütze.
+\newblock {\em Introduction to Information Retrieval}.
+\newblock Cambridge University Press., 2008.
+
+\bibitem{parse}
+Elementree.
+\newblock
+  \url{https://github.com/python/cpython/blob/3.7/Lib/xml/etree/ElementTree.py}.
+
+\bibitem{distributionalhypothesis}
+Zellig~S. Harris.
+\newblock Distributional structure.
+\newblock {\em WORD}, 10(2-3):146--162, 1954.
+
+\bibitem{textclassification}
+Emmanouil Ikonomakis, Sotiris Kotsiantis, and V~Tampakas.
+\newblock Text classification using machine learning techniques.
+\newblock {\em WSEAS transactions on computers}, 4:966--974, 08 2005.
+
+\bibitem{iterparse}
+Class iterparse.
+\newblock \url{https://lxml.de/api/lxml.etree.iterparse-class.html}.
+
+\bibitem{pandas}
+Wes McKinney et~al.
+\newblock Data structures for statistical computing in python.
+\newblock In {\em Proceedings of the 9th Python in Science Conference}, volume
+  445, pages 51--56. Austin, TX, 2010.
+
+\bibitem{scikit-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
+\newblock {Scikit-learn: Machine Learning in Python }.
+\newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{gensim}
+Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.
+\newblock {Software Framework for Topic Modelling with Large Corpora}.
+\newblock In {\em {Proceedings of the LREC 2010 Workshop on New Challenges for
+  NLP Frameworks}}, pages 45--50, Valletta, Malta, May 2010. ELRA.
+\newblock \url{http://is.muni.cz/publication/884893/en}.
+
+\bibitem{word2vecparam}
+Xin Rong.
+\newblock word2vec parameter learning explained.
+\newblock {\em CoRR}, abs/1411.2738, 2014.
+
+\bibitem{tfidf}
+sklearn.feature\_extraction.text.
+\newblock
+  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb5b2012412888b69e73d76f2df2b50b6/sklearn/feature_extraction/text.py}.
+
+\bibitem{logisticregression}
+sklearn.linear\_model.
+\newblock
+  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/linear_model/logistic.py#L1202}.
+
+\bibitem{effiecientestimation}
+Greg~Corrado Tomas~Mikolov, Kai~Chen and Jeffrey Dean.
+\newblock Efficient estimation of word representations in vector space.
+\newblock {\em arXiv.org}, January 2013.
+
+\end{thebibliography}

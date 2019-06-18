@@ -1,13 +1,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Confusion Matrix\relax }}{9}% 
+\contentsline {table}{\numberline {2.1}{\ignorespaces Confusion Matrix\relax }}{8}% 
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Publishers who have published more than 7 Hyperpartisan Articles\relax }}{13}% 
-\contentsline {table}{\numberline {3.2}{\ignorespaces Publishers who have published more than 10.000 Hyperpartisan articles\relax }}{13}% 
+\contentsline {table}{\numberline {3.1}{\ignorespaces Publishers with the highest proportion of Hypeprartisan articles\relax }}{11}% 
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Top 10 terms by \Gls {tfidf} weight\relax }}{20}% 
-\contentsline {table}{\numberline {4.2}{\ignorespaces Most similar word to 'trump'\relax }}{21}% 
-\contentsline {table}{\numberline {4.3}{\ignorespaces Grid Search Result of the \gls {mnb} Classifier\relax }}{24}% 
+\contentsline {table}{\numberline {4.1}{\ignorespaces Top 10 terms by \Gls {tfidf} weight\relax }}{18}% 
+\contentsline {table}{\numberline {4.2}{\ignorespaces Most similar word to 'trump'\relax }}{19}% 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Grid Search Result of the \gls {mnb} Classifier\relax }}{22}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

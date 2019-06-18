@@ -1,16 +1,15 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {algocf}{\numberline {1}{\ignorespaces Random Forest\relax }}{8}% 
+\contentsline {algocf}{\numberline {1}{\ignorespaces Random Forest\relax }}{7}% 
 \addvspace {10\p@ }
-\contentsline {algocf}{\numberline {2}{\ignorespaces Parse Ground-Truth File\relax }}{14}% 
-\contentsline {algocf}{\numberline {3}{\ignorespaces Merge Groundtruth- and Trainingdatasets\relax }}{15}% 
-\contentsline {algocf}{\numberline {4}{\ignorespaces Remove special characters and stop words\relax }}{15}% 
+\contentsline {algocf}{\numberline {2}{\ignorespaces Parse Ground-Truth File\relax }}{13}% 
+\contentsline {algocf}{\numberline {3}{\ignorespaces Merge Groundtruth- and Trainingdatasets\relax }}{13}% 
+\contentsline {algocf}{\numberline {4}{\ignorespaces Remove special characters and stop words\relax }}{14}% 
+\contentsline {algocf}{\numberline {5}{\ignorespaces Special Character and Stopword Removal with Pandas and NLTK\relax }}{14}% 
 \addvspace {10\p@ }
-\contentsline {algocf}{\numberline {5}{\ignorespaces Saving a trained model\relax }}{17}% 
-\contentsline {algocf}{\numberline {6}{\ignorespaces Loading a trained model\relax }}{18}% 
-\contentsline {algocf}{\numberline {7}{\ignorespaces \gls {tfidf} Fitting\relax }}{19}% 
-\contentsline {algocf}{\numberline {8}{\ignorespaces Grid Search for \gls {mnb} classifier\relax }}{24}% 
-\contentsline {algocf}{\numberline {9}{\ignorespaces Classifier fitting\relax }}{25}% 
+\contentsline {algocf}{\numberline {6}{\ignorespaces \gls {tfidf} Fitting\relax }}{17}% 
+\contentsline {algocf}{\numberline {7}{\ignorespaces Grid Search for \gls {mnb} classifier\relax }}{22}% 
+\contentsline {algocf}{\numberline {8}{\ignorespaces Classifier fitting\relax }}{23}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
