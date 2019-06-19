@@ -1,10 +1,23 @@
 \begin{thebibliography}{10}
 
+\bibitem{btheory}
+Mr. Bayes and Mr. Price.
+\newblock An essay towards solving a problem in the doctrine of chances. by the
+  late rev. mr. bayes, f. r. s. communicated by mr. price, in a letter to john
+  canton, a. m. f. r. s.
+\newblock {\em Philosophical Transactions (1683-1775)}, 53:370--418, 1763.
+
 \bibitem{algorithms}
 Giuseppe Bonaccorso.
 \newblock {\em Machine learning algorithms : reference guide for popular
   algorithms for data science and machine learning}.
 \newblock Birmingham, England ; Mumbai, India : Packt, 2017.
+
+\bibitem{algorithms2}
+Giuseppe Bonaccorso.
+\newblock {\em Machine learning algorithms : popular algorithms for data
+  science and machine learning}.
+\newblock Birmingham ; Mumbai : Packt Publishing, 2018.
 
 \bibitem{randomforest}
 Leo Breiman.
@@ -21,6 +34,16 @@ Elementree.
 \newblock
   \url{https://github.com/python/cpython/blob/3.7/Lib/xml/etree/ElementTree.py}.
 
+\bibitem{liblinear}
+Rong-En Fan, Kai-Wei Chang, Cho-Jui Hsieh, Xiang-Rui Wang, and Chih-Jen Lin.
+\newblock Liblinear: A library for large linear classification.
+\newblock {\em J. Mach. Learn. Res.}, 9:1871--1874, June 2008.
+
+\bibitem{logisticregressionbook}
+Frank~E. Harrell.
+\newblock {\em Binary Logistic Regression}, pages 219--274.
+\newblock Springer International Publishing, Cham, 2015.
+
 \bibitem{distributionalhypothesis}
 Zellig~S. Harris.
 \newblock Distributional structure.
@@ -30,6 +53,19 @@ Zellig~S. Harris.
 Emmanouil Ikonomakis, Sotiris Kotsiantis, and V~Tampakas.
 \newblock Text classification using machine learning techniques.
 \newblock {\em WSEAS transactions on computers}, 4:966--974, 08 2005.
+
+\bibitem{word2vecdortmund}
+Thorsten Joachims.
+\newblock Text categorization with support vector machines: Learning with many
+  relevant features.
+\newblock Technical report, Universit\"a Dortmund, 1997.
+
+\bibitem{multinomialnb}
+Ashraf~M. Kibriya, Eibe Frank, Bernhard Pfahringer, and Geoffrey Holmes.
+\newblock Multinomial naive bayes for text categorization revisited.
+\newblock In Geoffrey~I. Webb and Xinghuo Yu, editors, {\em AI 2004: Advances
+  in Artificial Intelligence}, pages 488--499, Berlin, Heidelberg, 2005.
+  Springer Berlin Heidelberg.
 
 \bibitem{iterparse}
 Class iterparse.
@@ -41,12 +77,20 @@ Wes McKinney et~al.
 \newblock In {\em Proceedings of the 9th Python in Science Conference}, volume
   445, pages 51--56. Austin, TX, 2010.
 
+\bibitem{keyedvectors}
+models.keyedvectors – store and query word vectors.
+\newblock \url{https://radimrehurek.com/gensim/models/keyedvectors.html}.
+
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
   M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
   D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
 \newblock {Scikit-learn: Machine Learning in Python }.
 \newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{pickle}
+pickle — python object serialization.
+\newblock \url{https://docs.python.org/3/library/pickle.html}.
 
 \bibitem{gensim}
 Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.
@@ -60,6 +104,11 @@ Xin Rong.
 \newblock word2vec parameter learning explained.
 \newblock {\em CoRR}, abs/1411.2738, 2014.
 
+\bibitem{coderandomforest}
+sklearn.ensemble.randomforestclassifier.
+\newblock
+  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/ensemble/forest.py#L758}.
+
 \bibitem{tfidf}
 sklearn.feature\_extraction.text.
 \newblock
@@ -69,6 +118,28 @@ sklearn.feature\_extraction.text.
 sklearn.linear\_model.
 \newblock
   \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/linear_model/logistic.py#L1202}.
+
+\bibitem{codegridsearch}
+sklearn.model\_selection.gridsearchcv.
+\newblock
+  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/model_selection/_search.py#L828}.
+
+\bibitem{codemulinomialnb}
+sklearn.naive\_bayes.multinomialnb.
+\newblock
+  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/naive_bayes.py#L636}.
+
+\bibitem{confusionmatrix}
+Stephen~V. Stehman.
+\newblock Selecting and interpreting measures of thematic classification
+  accuracy.
+\newblock {\em Remote Sensing of Environment}, 62(1):77 -- 89, 1997.
+
+\bibitem{nltk}
+Ewan~Klein Steven~Bird and Edward Loper.
+\newblock {\em Natural Language Processing with Python – Analyzing Text with
+  the Natural Language Toolkit}.
+\newblock O'Reilly Media, 2009.
 
 \bibitem{effiecientestimation}
 Greg~Corrado Tomas~Mikolov, Kai~Chen and Jeffrey Dean.

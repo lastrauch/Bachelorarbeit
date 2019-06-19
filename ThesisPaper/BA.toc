@@ -6,36 +6,34 @@
 \contentsline {section}{\numberline {2.1}Term Frequency-Inverse Document Frequency}{2}% 
 \contentsline {section}{\numberline {2.2}Word Embeddings}{3}% 
 \contentsline {subsection}{\numberline {2.2.1}Word2Vec}{3}% 
-\contentsline {section}{\numberline {2.3}SVM}{4}% 
-\contentsline {section}{\numberline {2.4}Multinomial Naive Bayes Classifier}{4}% 
-\contentsline {section}{\numberline {2.5}Logistic Regression Classifier}{4}% 
-\contentsline {section}{\numberline {2.6}Decision Trees and Random Forest Classifier}{6}% 
-\contentsline {subsection}{\numberline {2.6.1}Decision Trees}{6}% 
-\contentsline {subsection}{\numberline {2.6.2}Random Forest Classifier}{7}% 
-\contentsline {section}{\numberline {2.7}Cross Validation}{8}% 
-\contentsline {section}{\numberline {2.8}Evaluation}{8}% 
-\contentsline {chapter}{\numberline {3}Data}{10}% 
-\contentsline {section}{\numberline {3.1}Data Description}{10}% 
-\contentsline {subsection}{\numberline {3.1.1}Dataset labelled by Publisher}{11}% 
-\contentsline {subsection}{\numberline {3.1.2}Dataset labelled by Article}{11}% 
-\contentsline {section}{\numberline {3.2}Data Preparation}{12}% 
-\contentsline {subsection}{\numberline {3.2.1}File Parsing}{12}% 
-\contentsline {subsection}{\numberline {3.2.2}Information Filtering}{13}% 
-\contentsline {subsection}{\numberline {3.2.3}Combine Data}{13}% 
-\contentsline {subsection}{\numberline {3.2.4}Special Characters and Stop Word Removal}{13}% 
-\contentsline {subsection}{\numberline {3.2.5}Tokenization and Stemming of the datasets}{14}% 
-\contentsline {chapter}{\numberline {4}Methodology}{15}% 
-\contentsline {section}{\numberline {4.1}Vector Representation of the Text}{15}% 
-\contentsline {subsection}{\numberline {4.1.1}Term Frequency-Inverse Document Frequency}{15}% 
-\contentsline {subsection}{\numberline {4.1.2}Word Embeddings}{18}% 
-\contentsline {subsubsection}{Word2Vec}{18}% 
-\contentsline {section}{\numberline {4.2}Classification Algorithms}{19}% 
-\contentsline {subsection}{\numberline {4.2.1}SVM}{20}% 
-\contentsline {subsection}{\numberline {4.2.2}Multinomial Naive Bayes Classifier}{20}% 
-\contentsline {subsection}{\numberline {4.2.3}Random Forest Classifier}{20}% 
-\contentsline {subsection}{\numberline {4.2.4}Logistic Regression Classifier}{21}% 
-\contentsline {subsection}{\numberline {4.2.5}Grid Search}{22}% 
-\contentsline {subsection}{\numberline {4.2.6}Training and Predicting}{22}% 
-\contentsline {chapter}{\numberline {5}Bidirectional Encoder Representations from Transformers}{24}% 
-\contentsline {chapter}{\numberline {6}Evaluation}{25}% 
-\contentsline {chapter}{\numberline {7}Conclusion}{26}% 
+\contentsline {section}{\numberline {2.3}Multinomial Naive Bayes Classifier}{4}% 
+\contentsline {section}{\numberline {2.4}Logistic Regression Classifier}{4}% 
+\contentsline {section}{\numberline {2.5}Decision Trees and Random Forest Classifier}{6}% 
+\contentsline {subsection}{\numberline {2.5.1}Decision Trees}{6}% 
+\contentsline {subsection}{\numberline {2.5.2}Random Forest Classifier}{7}% 
+\contentsline {section}{\numberline {2.6}Cross Validation}{7}% 
+\contentsline {section}{\numberline {2.7}Evaluation}{8}% 
+\contentsline {chapter}{\numberline {3}Data}{9}% 
+\contentsline {section}{\numberline {3.1}Data Description}{9}% 
+\contentsline {subsection}{\numberline {3.1.1}Dataset labelled by Publisher}{10}% 
+\contentsline {subsection}{\numberline {3.1.2}Dataset labelled by Article}{10}% 
+\contentsline {section}{\numberline {3.2}Data Preparation}{11}% 
+\contentsline {subsection}{\numberline {3.2.1}File Parsing}{11}% 
+\contentsline {subsection}{\numberline {3.2.2}Information Filtering}{12}% 
+\contentsline {subsection}{\numberline {3.2.3}Combine Data}{12}% 
+\contentsline {subsection}{\numberline {3.2.4}Special Characters and Stop Word Removal}{12}% 
+\contentsline {subsection}{\numberline {3.2.5}Tokenization and Stemming of the datasets}{13}% 
+\contentsline {chapter}{\numberline {4}Methodology}{14}% 
+\contentsline {section}{\numberline {4.1}Vector Representation of the Text}{14}% 
+\contentsline {subsection}{\numberline {4.1.1}Term Frequency-Inverse Document Frequency}{14}% 
+\contentsline {subsection}{\numberline {4.1.2}Word Embeddings}{16}% 
+\contentsline {subsubsection}{Word2Vec}{16}% 
+\contentsline {section}{\numberline {4.2}Classification Algorithms}{17}% 
+\contentsline {subsection}{\numberline {4.2.1}Multinomial Naive Bayes Classifier}{18}% 
+\contentsline {subsection}{\numberline {4.2.2}Random Forest Classifier}{18}% 
+\contentsline {subsection}{\numberline {4.2.3}Logistic Regression Classifier}{19}% 
+\contentsline {subsection}{\numberline {4.2.4}Grid Search}{19}% 
+\contentsline {subsection}{\numberline {4.2.5}Training and Classification}{21}% 
+\contentsline {chapter}{\numberline {5}Bidirectional Encoder Representations from Transformers}{23}% 
+\contentsline {chapter}{\numberline {6}Evaluation}{24}% 
+\contentsline {chapter}{\numberline {7}Conclusion}{25}% 
