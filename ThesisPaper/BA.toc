@@ -35,5 +35,11 @@
 \contentsline {subsection}{\numberline {4.2.4}Grid Search}{19}% 
 \contentsline {subsection}{\numberline {4.2.5}Training and Classification}{21}% 
 \contentsline {chapter}{\numberline {5}Bidirectional Encoder Representations from Transformers}{23}% 
-\contentsline {chapter}{\numberline {6}Evaluation}{24}% 
-\contentsline {chapter}{\numberline {7}Conclusion}{25}% 
+\contentsline {section}{\numberline {5.1}Recurrent Neural Networks}{23}% 
+\contentsline {subsection}{\numberline {5.1.1}Long Short-Term Memory}{25}% 
+\contentsline {subsection}{\numberline {5.1.2}\gls {rnn} Encoder-Decoder}{26}% 
+\contentsline {section}{\numberline {5.2}Transformer and Attention}{27}% 
+\contentsline {section}{\numberline {5.3}\gls {bert} Model}{28}% 
+\contentsline {section}{\numberline {5.4}Application}{28}% 
+\contentsline {chapter}{\numberline {6}Evaluation}{29}% 
+\contentsline {chapter}{\numberline {7}Conclusion}{30}% 

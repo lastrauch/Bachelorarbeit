@@ -122,13 +122,13 @@ parent={},%
 {%
 \gls@defglossaryentry{cbow}%
 {%
-name={CBoW},%
-sort={CBoW},%
+name={CBOW},%
+sort={CBOW},%
 type={main},%
-first={CBoW},%
-firstplural={CBoWs},%
-text={CBoW},%
-plural={CBoWs},%
+first={CBOW},%
+firstplural={CBOWs},%
+text={CBOW},%
+plural={CBOWs},%
 description={Continous Bag of Words},%
 descriptionplural={Continous Bag of Words},%
 symbol={\relax },%
@@ -161,6 +161,66 @@ text={Multinomial NB},%
 plural={Multinomial NBs},%
 description={Multinomial Naives Bayes},%
 descriptionplural={Multinomial Naives Bayes},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{rnn}{}%
+{%
+\gls@defglossaryentry{rnn}%
+{%
+name={RNN},%
+sort={Recurrent Neural Network},%
+type={main},%
+first={RNN},%
+firstplural={RNNs},%
+text={RNN},%
+plural={RNNs},%
+description={Recurrent Neural Network},%
+descriptionplural={Recurrent Neural Network},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{lstm}{}%
+{%
+\gls@defglossaryentry{lstm}%
+{%
+name={LSTM},%
+sort={LSTM},%
+type={main},%
+first={LSTM},%
+firstplural={LSTMs},%
+text={LSTM},%
+plural={LSTMs},%
+description={Long Short-Term Memory},%
+descriptionplural={Long Short-Term Memory},%
 symbol={\relax },%
 symbolplural={\relax },%
 user1={},%

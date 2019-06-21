@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{feedforward}
+David~H. Ackley, Geoffrey~E. Hinton, and Terrence~J. Sejnowski.
+\newblock A learning algorithm for boltzmann machines*.
+\newblock {\em Cognitive Science}, 9(1):147--169, 1985.
+
 \bibitem{btheory}
 Mr. Bayes and Mr. Price.
 \newblock An essay towards solving a problem in the doctrine of chances. by the
@@ -24,20 +29,50 @@ Leo Breiman.
 \newblock Random forests.
 \newblock Technical report, University of California, January 2001.
 
+\bibitem{encodedecode}
+Kyunghyun Cho, Bart van Merrienboer, {\c{C}}aglar G{\"{u}}l{\c{c}}ehre, Fethi
+  Bougares, Holger Schwenk, and Yoshua Bengio.
+\newblock Learning phrase representations using {RNN} encoder-decoder for
+  statistical machine translation.
+\newblock {\em CoRR}, abs/1406.1078, 2014.
+
 \bibitem{IR-book}
 Prabhakar~Raghavan Christopher D.~Manning and Hinrich Schütze.
 \newblock {\em Introduction to Information Retrieval}.
 \newblock Cambridge University Press., 2008.
+
+\bibitem{bert}
+Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova.
+\newblock Bert: Pre-training of deep bidirectional transformers for language
+  understanding.
+\newblock {\em arXiv preprint arXiv:1810.04805}, 2018.
+
+\bibitem{bahdnau}
+Yoshua~Bengio Dzmitry~Bahdanau, Kyunghyun~Cho.
+\newblock Neural machine translation by jointly learning to align and
+  translate.
+\newblock {\em CoRR}, 2014.
 
 \bibitem{parse}
 Elementree.
 \newblock
   \url{https://github.com/python/cpython/blob/3.7/Lib/xml/etree/ElementTree.py}.
 
+\bibitem{ELMAN1990179}
+Jeffrey~L. Elman.
+\newblock Finding structure in time.
+\newblock {\em Cognitive Science}, 14(2):179 -- 211, 1990.
+
 \bibitem{liblinear}
 Rong-En Fan, Kai-Wei Chang, Cho-Jui Hsieh, Xiang-Rui Wang, and Chih-Jen Lin.
 \newblock Liblinear: A library for large linear classification.
 \newblock {\em J. Mach. Learn. Res.}, 9:1871--1874, June 2008.
+
+\bibitem{rnn}
+Palash Goyal.
+\newblock {\em Deep Learning for Natural Language Processing : Creating Neural
+  Networks with Python}.
+\newblock Berkeley, CA : Apress : Imprint: Apress, Berkeley, CA, 2018.
 
 \bibitem{logisticregressionbook}
 Frank~E. Harrell.
@@ -48,6 +83,11 @@ Frank~E. Harrell.
 Zellig~S. Harris.
 \newblock Distributional structure.
 \newblock {\em WORD}, 10(2-3):146--162, 1954.
+
+\bibitem{lstm}
+Sepp Hochreiter and Jürgen Schmidhuber.
+\newblock Long short-term memory.
+\newblock {\em Neural computation}, 9:1735--80, 12 1997.
 
 \bibitem{textclassification}
 Emmanouil Ikonomakis, Sotiris Kotsiantis, and V~Tampakas.
@@ -67,6 +107,11 @@ Ashraf~M. Kibriya, Eibe Frank, Bernhard Pfahringer, and Geoffrey Holmes.
   in Artificial Intelligence}, pages 488--499, Berlin, Heidelberg, 2005.
   Springer Berlin Heidelberg.
 
+\bibitem{lunong}
+Minh{-}Thang Luong, Hieu Pham, and Christopher~D. Manning.
+\newblock Effective approaches to attention-based neural machine translation.
+\newblock {\em CoRR}, abs/1508.04025, 2015.
+
 \bibitem{iterparse}
 Class iterparse.
 \newblock \url{https://lxml.de/api/lxml.etree.iterparse-class.html}.
@@ -76,6 +121,12 @@ Wes McKinney et~al.
 \newblock Data structures for statistical computing in python.
 \newblock In {\em Proceedings of the 9th Python in Science Conference}, volume
   445, pages 51--56. Austin, TX, 2010.
+
+\bibitem{rnnmodel}
+Tomas Mikolov, Martin Karafi{\'a}t, Luk{\'a}s Burget, Jan~Honza Cernock{\'y},
+  and Sanjeev Khudanpur.
+\newblock Recurrent neural network based language model.
+\newblock In {\em INTERSPEECH}, 2010.
 
 \bibitem{keyedvectors}
 models.keyedvectors – store and query word vectors.
@@ -145,5 +196,11 @@ Ewan~Klein Steven~Bird and Edward Loper.
 Greg~Corrado Tomas~Mikolov, Kai~Chen and Jeffrey Dean.
 \newblock Efficient estimation of word representations in vector space.
 \newblock {\em arXiv.org}, January 2013.
+
+\bibitem{attention}
+Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones,
+  Aidan~N. Gomez, Lukasz Kaiser, and Illia Polosukhin.
+\newblock Attention is all you need.
+\newblock {\em CoRR}, abs/1706.03762, 2017.
 
 \end{thebibliography}

@@ -151,6 +151,16 @@
 	name=Multinomial NB,
 	description={Multinomial Naives Bayes}
 }
+\newglossaryentry{rnn}
+{
+	name=RNN,
+	description={Recurrent Neural Network}
+}
+\newglossaryentry{lstm}
+{
+	name=LSTM,
+	description={Long Short-Term Memory}
+}
 
 
 \printglossaries %in cmd for printing: makeindex -s BA.ist -t BA.glg -o BA.gls BA.glo
@@ -711,6 +721,102 @@ For this purpose the module \textit{pickle} of Python's standard library is avai
 \\ \textit{KeyedVectors} "is essentially a mapping between entities and vectors. Each entity is identified by its string id, so this is a mapping between a string and a 1D numpy array. The entity typically corresponds to a word, but for some models, the key can also correspond to a document, a graph node etc. To generalize over different use-cases, this module calls the keys entities. Each entity is always represented by its string id, no matter whether the entity is a word, a document or a graph node" \cite{keyedvectors}.
 
 \chapter{Bidirectional Encoder Representations from Transformers}
+Bidirectional Encoder Representations from Transformers (\gls{bert}) \cite{bert} is a novel model that was introduced in October 2018 by researches at Google AI Language and has since caused a stir in the field of machine learning by representing state-of-the-art results in a variety of Natural Languag Processing tasks. The special feature of this model, unlike previous efforts, is the technical innovation of bi-directional training of transformers. \\
+\noindent In order to understand how the actual model, and thus the classification model applied in this thesis, works, I will discuss the basics and the actual \gls{bert} model in the following chapter before I explain how this model can be applied to the data sets.
+
+\section{Recurrent Neural Networks}
+Recurrent Neural Networks (\gls{rnn}) are a kind of artificial neural network, which considers time and order. Unlike Feedforward algorithms \cite{feedforward}, which use only the current example as input, \gls{rnn}s also use the Input Example, which they perceived in previous steps (Figure 5.1). 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	\caption{\gls{rnn} and Feedforward Neural Network \cite{rnn}}
+\end{figure}
+This sequential information is retained over many time steps in the hidden state of the RNN as it cascades forward to affect the processing of each new example. This means that the RNN finds correlations between events that are separated by many steps. These relationships are referred to as \textit{long-term dependencies} because a subordinate event is dependent on one or more preceding events.\\
+\newpage
+\noindent Mathematically, a \textit{simple recurrent neural network} \cite{ELMAN1990179} can be represented as follows \cite{rnnmodel}:
+\[
+x(t)=w(t)+s(t-1)
+\]
+\[
+s_j(t)=f(\sum_{i}x_i(t)u_{ji})
+\]
+\[
+y_k(t)=g(\sum_{j}s_j(t)v_{kj})
+\]
+Where $x(t)$ is the input-, $s(t)$ the hidden- and $y(t)$ the output layer. $s_t$ is the function of the input at the same time step $t$, modified by a weight matrix $w$, which has been added to the hidden states previous step $s(t-1)$ and multiplied by its own hidden-state-to-hidden-state matrix $u$. The weight matrices $w$ and $u$ are filters that determine the importance of matching the current input as well as the past hidden-state. These generate errors which return via backpropagation and are used to adjust their weights until the error can no longer be reduced. The sum of the weight input and hidden state is squashed by the functions $f$ or $g$, where  $f(z)$ represents the sigmoid function
+\[
+f(z)=\frac{1}{1+e^{-z}}
+\]
+and $g(z)$ the softmax function
+\[
+g(z_m)=\frac{e^{zm}}{\sum_{l}e^zk}
+\]
+The initial value $s(0)$ can take the values 0 or 1, whereas in all further steps $s(t+1)=s(t)$. \\
+\noindent A problem of \gls{rnn}s is the disappearance and explosion of the gradient. Since the layers and time steps of deep neural networks are wired together by multiplication, derivatives are susceptible to disappearance or explosion. With an exploding gradient, the weights at the upper end become saturated, whereas with disappearing gradients, the final value will tend to 0.
+
+\subsection{Long Short-Term Memory}
+\begin{figure}[h]
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		\caption{Input gate$_1$ \cite{rnn}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		\caption{Input gate$_2$ \cite{rnn}}
+	\end{minipage}
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		\caption{Forget gate \cite{rnn}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.4\textwidth}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		\caption{Output gate \cite{rnn}}
+	\end{minipage}
+\end{figure}
+\noindent Long Short-Term Memory (\gls{lstm}) units \cite{lstm} are a modification of the RNNs which represent a problem elimination for the disappearing gradient. Unlike standard RNNs, \gls{lstm}s no longer consist of a single neural network layer, but of four instead. \gls{lstm}s are formed by multiple gates which close and open (Figure 5.2 - 5.5). This allows a cell to make decisions about what to back up and when to read, write or delete. Within a cell, information can be saved, written or read from. Gates act on the signals they receive and block or route the data they filter with their own weights based on their strength and import. These weights are tailored via the learning process of the recurring networks. This means that cells learn when to enter, leave or remove facts by iteratively making assumptions, propagating errors backwards and adapting weights via gradient descent.\\
+The different gates of \gls{lstm}s are Input-, Forget- and Output Gate, where the Input Gate controls the contribution of a new input to the memory, the Forget Gate controls the limits up to which a value remains in the memory, and the Output Gate controls the limit up to which the memory in the activation block of the output contributes. Mathematically, the different gates can be represented as follows \cite{rnn}: 
+\begin{itemize}
+	\item Input Gate - Figure 5.2: 
+	\begin{itemize}
+			\item $i_t=\sigma(W_i \cdot [h_{t-1}, x_t]+b_i)$
+			\item $\acute{C}=\tanh(W_C \cdot [h_{t1}, x_t]+b_c)$
+			\item where $x_t$ is the time step at $t$, $h_{t-1}$ denotes the hidden state at time step $t-1$, $i_t$ is the input gate layer output at step $t$, $\acute{C}$ refers to candidate values to be added to the input gates output at time $t$, $b_i$ and $b_c$ denote the bias for the input gate layer and the candidate value computation and $W_i$ and $W_c$ denote the weights for the input gate layer and the candidate value computation.
+		\end{itemize}	
+	\item  Input Gate - Figure 5.3:
+	\begin{itemize}
+		\item $C_t=f_t*C_{t-1}+i_t*C_t$
+		\item Where $C_i$ denotes the cell state after time step $i$ and $F_t$ is the forget state at step $t$.
+	\end{itemize}
+	\item Forget Gate - Figure 5.4:
+	\begin{itemize}
+		\item $f_t=\sigma(W_f \cdot [h_{t-1}, x_t]+b_f)$
+		\item Where $f_t$ denotes the forget state at time step $t$ and $W_f$ and $b_f$ are the weights and bias for the forget state at step $t$.
+	\end{itemize}
+	\item Output Gate - Figure 5.4:
+	\begin{itemize}
+		\item $o_t=\sigma(W_o \cdot [h_{t-1},x_t]+b_o)$
+		\item $h_t=o_t*\tanh(C_t)$
+		\item Where $o_t$ is the output gates output at time step $t$ and $W_o$ and $b_o$ denote the weights and bias for the output gate at time step $t$.
+	\end{itemize}
+\end{itemize}
+
+
+\noindent "Today, \gls{lstm} networks have become a more popular choice than basic \gls{rnn}s, as they have proven to work tremendously on diverse sets of problems. Most remarkable results are achieved with \gls{lstm} networks than \gls{rnn}s, and now the phenomenon has extended such that wherever an \gls{rnn} is quoted, it usually refers to \gls{lstm} network only" \cite{rnn}.
+
+\subsection{\gls{rnn} Encoder-Decoder}
+Classic RNNs and LSTMs have the problem that the input and output length of the sequences may vary. This led to the development of the RNN Encoder-Decoder \cite{encodedecode}, which consists of 2 recurring neural networks that function as a pair of encoders and decoders. Here the encoder maps a variable length input sequence to a fixed length vector, whereupon the decoder maps the vector representation to a variable length output sequence. \textit{Cho et. al} states, that "the encoder is an \gls{rnn} that reads each symbol of an input sequence x sequentially. After finishing the reading process of a sequence, the hidden state of the \gls{rnn} is a summary c of the complete input sequence" \cite{encodedecode}. This means that at the end of the training, the encoder provides an input feature vector that can be used by the decoder to construct the input with those aspects that are most essential to make the reconstructed input noticeable as the actual input. The paper also states, that the "decoder represents another \gls{rnn} that has been trained to generate the output sequence by predicting the next symbol $y_t$ under the condition of the hidden state $h_t$. In contrast to typical \gls{rnn}s, $y_t$ and $h_t$ are also dependent on each other by $y_{t-1}$ and the combination c in this case".
+\section{Transformer and Attention}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	\caption{The Transformer - model architecture \cite{attention}}
+\end{figure}
+\noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. \\
+\\In 2017 the paper "Attention is all you need" by Ashish Vaswani et al.  \cite{attention} was published which suggests to neglect \gls{rnn}s and instead proposes a new model architecture called "Transformer". As the title of the paper indicates, this model uses attention mechanisms. Like \gls{lstm}, Transformer is also an architecture for transforming one sequence into another using an Encoder and Decoder, but differs from the previously described/existing sequence-to-sequence models since it does not include recurrent networks. Furthermore, the Attention Mechanism model has been extended by using self-attention and point-wise, fully connected layers for Encoders and Decoders.
+\section{\gls{bert} Model}
+\section{Application}
 \chapter{Evaluation}
 \chapter{Conclusion}
 

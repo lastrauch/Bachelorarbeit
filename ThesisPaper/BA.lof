@@ -7,5 +7,11 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Publishing Years Distribution by Article\relax }}{11}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces \gls {rnn} and Feedforward Neural Network \cite {rnn}\relax }}{24}% 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Input gate$_1$ \cite {rnn}\relax }}{25}% 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Input gate$_2$ \cite {rnn}\relax }}{25}% 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Forget gate \cite {rnn}\relax }}{25}% 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Output gate \cite {rnn}\relax }}{25}% 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces The Transformer - model architecture \cite {attention}\relax }}{27}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
