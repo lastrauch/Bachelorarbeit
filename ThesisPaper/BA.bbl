@@ -1,5 +1,19 @@
 \begin{thebibliography}{10}
 
+\bibitem{tensorflow}
+Mart\'{\i}n Abadi, Ashish Agarwal, Paul Barham, Eugene Brevdo, Zhifeng Chen,
+  Craig Citro, Greg~S. Corrado, Andy Davis, Jeffrey Dean, Matthieu Devin,
+  Sanjay Ghemawat, Ian Goodfellow, Andrew Harp, Geoffrey Irving, Michael Isard,
+  Yangqing Jia, Rafal Jozefowicz, Lukasz Kaiser, Manjunath Kudlur, Josh
+  Levenberg, Dandelion Man\'{e}, Rajat Monga, Sherry Moore, Derek Murray, Chris
+  Olah, Mike Schuster, Jonathon Shlens, Benoit Steiner, Ilya Sutskever, Kunal
+  Talwar, Paul Tucker, Vincent Vanhoucke, Vijay Vasudevan, Fernanda Vi\'{e}gas,
+  Oriol Vinyals, Pete Warden, Martin Wattenberg, Martin Wicke, Yuan Yu, and
+  Xiaoqiang Zheng.
+\newblock {TensorFlow}: Large-scale machine learning on heterogeneous systems,
+  2015.
+\newblock Software available from tensorflow.org.
+
 \bibitem{feedforward}
 David~H. Ackley, Geoffrey~E. Hinton, and Terrence~J. Sejnowski.
 \newblock A learning algorithm for boltzmann machines*.
@@ -27,7 +41,7 @@ Giuseppe Bonaccorso.
 \bibitem{randomforest}
 Leo Breiman.
 \newblock Random forests.
-\newblock Technical report, University of California, January 2001.
+\newblock {\em Mach. Learn.}, 45(1):5--32, October 2001.
 
 \bibitem{encodedecode}
 Kyunghyun Cho, Bart van Merrienboer, {\c{C}}aglar G{\"{u}}l{\c{c}}ehre, Fethi
@@ -42,10 +56,10 @@ Prabhakar~Raghavan Christopher D.~Manning and Hinrich Schütze.
 \newblock Cambridge University Press., 2008.
 
 \bibitem{bert}
-Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova.
-\newblock Bert: Pre-training of deep bidirectional transformers for language
+Jacob Devlin, Ming{-}Wei Chang, Kenton Lee, and Kristina Toutanova.
+\newblock {BERT:} pre-training of deep bidirectional transformers for language
   understanding.
-\newblock {\em arXiv preprint arXiv:1810.04805}, 2018.
+\newblock {\em CoRR}, abs/1810.04805, 2018.
 
 \bibitem{bahdnau}
 Yoshua~Bengio Dzmitry~Bahdanau, Kyunghyun~Cho.
@@ -84,6 +98,11 @@ Zellig~S. Harris.
 \newblock Distributional structure.
 \newblock {\em WORD}, 10(2-3):146--162, 1954.
 
+\bibitem{residualcon}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock {\em CoRR}, abs/1512.03385, 2015.
+
 \bibitem{lstm}
 Sepp Hochreiter and Jürgen Schmidhuber.
 \newblock Long short-term memory.
@@ -93,6 +112,11 @@ Sepp Hochreiter and Jürgen Schmidhuber.
 Emmanouil Ikonomakis, Sotiris Kotsiantis, and V~Tampakas.
 \newblock Text classification using machine learning techniques.
 \newblock {\em WSEAS transactions on computers}, 4:966--974, 08 2005.
+
+\bibitem{normalization}
+Geoffrey E.~Hinton Jimmy Lei~Ba, Jamie Ryan~Kiros.
+\newblock Layer normalization.
+\newblock {\em CoRR}, abs/1607.06450, 2016.
 
 \bibitem{word2vecdortmund}
 Thorsten Joachims.
@@ -180,6 +204,12 @@ sklearn.naive\_bayes.multinomialnb.
 \newblock
   \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/naive_bayes.py#L636}.
 
+\bibitem{dopout}
+Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan
+  Salakhutdinov.
+\newblock Dropout: A simple way to prevent neural networks from overfitting.
+\newblock {\em Journal of Machine Learning Research}, 15:1929--1958, 2014.
+
 \bibitem{confusionmatrix}
 Stephen~V. Stehman.
 \newblock Selecting and interpreting measures of thematic classification
@@ -191,6 +221,11 @@ Ewan~Klein Steven~Bird and Edward Loper.
 \newblock {\em Natural Language Processing with Python – Analyzing Text with
   the Natural Language Toolkit}.
 \newblock O'Reilly Media, 2009.
+
+\bibitem{cloze}
+Wilson~L. Taylor.
+\newblock “cloze procedure”: A new tool for measuring readability.
+\newblock {\em Journalism Bulletin}, 30(4):415--433, 1953.
 
 \bibitem{effiecientestimation}
 Greg~Corrado Tomas~Mikolov, Kai~Chen and Jeffrey Dean.

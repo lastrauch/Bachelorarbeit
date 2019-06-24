@@ -54,12 +54,24 @@
 	publisher ={Birmingham ; Mumbai : Packt Publishing},
 	year ={2018}
 }
-@techreport{randomforest,
-	author      = {Leo Breiman},
-	title       = {RANDOM FORESTS},
-	institution	= {University of California},
-	year        = {2001},
-	month		= {January}
+@article{randomforest,
+ 	author = {Breiman, Leo},
+	title = {Random Forests},
+	journal = {Mach. Learn.},
+	issue_date = {October 1 2001},
+	volume = {45},
+	number = {1},
+	month = oct,
+	year = {2001},
+	issn = {0885-6125},
+	pages = {5--32},
+	numpages = {28},
+	url = {https://doi.org/10.1023/A:1010933404324},
+	doi = {10.1023/A:1010933404324},
+	acmid = {570182},
+	publisher = {Kluwer Academic Publishers},
+	address = {Norwell, MA, USA},
+	keywords = {classification, ensemble, regression},
 }
 @techreport{word2vecdortmund,
 	author      = {Thorsten Joachims},
@@ -243,10 +255,22 @@
 	url="https://doi.org/10.1007/978-3-319-19425-7_10"
 }
 @article{bert,
-	title={BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding},
-	author={Devlin, Jacob and Chang, Ming-Wei and Lee, Kenton and Toutanova, Kristina},
-	journal={arXiv preprint arXiv:1810.04805},
-	year={2018}
+	author    = {Jacob Devlin and
+	Ming{-}Wei Chang and
+	Kenton Lee and
+	Kristina Toutanova},
+	title     = {{BERT:} Pre-training of Deep Bidirectional Transformers for Language
+	Understanding},
+	journal   = {CoRR},
+	volume    = {abs/1810.04805},
+	year      = {2018},
+	url       = {http://arxiv.org/abs/1810.04805},
+	archivePrefix = {arXiv},
+	eprint    = {1810.04805},
+	timestamp = {Tue, 30 Oct 2018 20:39:56 +0100},
+	biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1810-04805},
+	bibsource = {dblp computer science bibliography, https://dblp.org}
+}
 }
 @article{feedforward,
 	author = {Ackley, David H. and Hinton, Geoffrey E. and Sejnowski, Terrence J.},
@@ -363,4 +387,106 @@
 	url       = {https://arxiv.org/abs/1409.0473},
 	archivePrefix = {arXiv},
 	eprint    = {1508.04025}
+}
+@article{residualcon,
+	author    = {Kaiming He and
+	Xiangyu Zhang and
+	Shaoqing Ren and
+	Jian Sun},
+	title     = {Deep Residual Learning for Image Recognition},
+	journal   = {CoRR},
+	volume    = {abs/1512.03385},
+	year      = {2015},
+	url       = {http://arxiv.org/abs/1512.03385},
+	archivePrefix = {arXiv},
+	eprint    = {1512.03385},
+	timestamp = {Wed, 17 Apr 2019 17:23:45 +0200},
+	biburl    = {https://dblp.org/rec/bib/journals/corr/HeZRS15},
+	bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+@article{dopout,
+	author  = {Nitish Srivastava and Geoffrey Hinton and Alex Krizhevsky and Ilya Sutskever and Ruslan Salakhutdinov},
+	title   = {Dropout: A Simple Way to Prevent Neural Networks from Overfitting},
+	journal = {Journal of Machine Learning Research},
+	year    = {2014},
+	volume  = {15},
+	pages   = {1929-1958},
+	url     = {http://jmlr.org/papers/v15/srivastava14a.html}
+}
+@article{normalization,
+	author    = {Jimmy Lei Ba, Jamie Ryan Kiros, Geoffrey E. Hinton},
+	title     = {Layer Normalization},
+	journal   = {CoRR},
+	volume    = {abs/1607.06450},
+	year      = {2016},
+	url       = {https://arxiv.org/abs/1607.06450},
+	archivePrefix = {arXiv},
+}
+@article{cloze,
+	author = {Wilson L. Taylor},
+	title ={“Cloze Procedure”: A New Tool for Measuring Readability},
+	journal = {Journalism Bulletin},
+	volume = {30},
+	number = {4},
+	pages = {415-433},
+	year = {1953},
+	doi = {10.1177/107769905303000401},
+	
+	URL = { 
+	https://doi.org/10.1177/107769905303000401
+	
+	},
+	eprint = { 
+	https://doi.org/10.1177/107769905303000401
+	
+	}
+	,
+	abstract = { Here is the first comprehensive statement of a research method and its theory which were introduced briefly during a workshop at the 1953 AEJ convention. Included are findings from three pilot studies and two experiments in which “cloze procedure” results are compared with those of two readability formulas. }
+}
+@misc{tensorflow,
+	title={ {TensorFlow}: Large-Scale Machine Learning on Heterogeneous Systems},
+	url={https://www.tensorflow.org/},
+	note={Software available from tensorflow.org},
+	author={
+	Mart\'{\i}n~Abadi and
+	Ashish~Agarwal and
+	Paul~Barham and
+	Eugene~Brevdo and
+	Zhifeng~Chen and
+	Craig~Citro and
+	Greg~S.~Corrado and
+	Andy~Davis and
+	Jeffrey~Dean and
+	Matthieu~Devin and
+	Sanjay~Ghemawat and
+	Ian~Goodfellow and
+	Andrew~Harp and
+	Geoffrey~Irving and
+	Michael~Isard and
+	Yangqing Jia and
+	Rafal~Jozefowicz and
+	Lukasz~Kaiser and
+	Manjunath~Kudlur and
+	Josh~Levenberg and
+	Dandelion~Man\'{e} and
+	Rajat~Monga and
+	Sherry~Moore and
+	Derek~Murray and
+	Chris~Olah and
+	Mike~Schuster and
+	Jonathon~Shlens and
+	Benoit~Steiner and
+	Ilya~Sutskever and
+	Kunal~Talwar and
+	Paul~Tucker and
+	Vincent~Vanhoucke and
+	Vijay~Vasudevan and
+	Fernanda~Vi\'{e}gas and
+	Oriol~Vinyals and
+	Pete~Warden and
+	Martin~Wattenberg and
+	Martin~Wicke and
+	Yuan~Yu and
+	Xiaoqiang~Zheng},
+	year={2015},
 }

@@ -35,7 +35,7 @@
 \usepackage{array}
 \usepackage{multirow}
 \usepackage{url}
-
+\urlstyle{same}
 
 \newcommand\MyBox[2]{
 	\fbox{\lower0.75cm
@@ -161,6 +161,11 @@
 	name=LSTM,
 	description={Long Short-Term Memory}
 }
+\newglossaryentry{mlm}
+{
+	name=MLM,
+	description={Masked LM}
+}
 
 
 \printglossaries %in cmd for printing: makeindex -s BA.ist -t BA.glg -o BA.gls BA.glo
@@ -238,16 +243,6 @@ Pr(c|t_i)=(\sum_{n}f_{ni})!\prod_{n}\frac{Pr(w_n|c)^{f_{ni}}}{f_{ni}!}
 \]
 where $f_{ni}$ is the number of times a word $n$ occurs in document $t$ and $Pr(t_i|c)$ is the probability of observing word $n$ given class $c$.
 \section{Logistic Regression Classifier}
-\begin{figure}[h]
-	\centering
-	%Arbeit:
-	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
-	%PC:
-	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
-	%Lap Top:
-	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
-	\caption{sigmoid function \cite{algorithms}}
-\end{figure}
 \noindent Logistic Regression is like Naive Bayes, a probabilistic classifier, and thus classifies by estimating the probability $P(Y|X)$ that the object belongs to a particular class.
 It can be derived analogously to the linear regression model \cite{logisticregressionbook}, 
 \[
@@ -271,6 +266,16 @@ where $\Theta$ is a single parameter vector.
 \[
 l(\Theta)=-\sum_{i}y_i\log(\sigma(z_i))+(1-y_i)\log(1-\sigma(z_i))
 \]
+\begin{figure}[t]
+	\centering
+	%Arbeit:
+	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	%PC:
+	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
+	%Lap Top:
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	\caption{Sigmoid Function \cite{algorithms}}
+\end{figure}
 \noindent This implies, if $y=0$, the first term ends up $0$ and the second $\log(1-\sigma(z_i)$, which results in a log-likelihood of $0$. In the event that $y=1$, the second term ends up 0 and the first one corresponds to the log-likelihood of $z$. Along these lines, both cases are integrated into a solitary articulation. \\
 \\ A major issue in machine learning is the aspect of overfitting. Overfitting tends to adjust the model too much to the training data. This happens when a model learns the details in the training data so that the performance of the model is contrairily influenced by new data. This implies that noise or random fluctuations in the training data are recorded and learned as concepts by the model. The issue is, that these concepts do not apply to new data and negatively impact the generalization of the model. Therefore, there is the process of \textit{regularization}, which is a form of regression that decreases the coefficient estimation to $0$ and assumes that smaller weights generate simpler models and thus helps avoid overfitting. \\
 \noindent Two of the most commonly used regularization techniques are \textit{Lasso Regression (L1)} and \textit{Ridge Regression (L2)}, which differ mainly in the penalty term. \\
@@ -681,7 +686,7 @@ The Logistic Regression classifier is a model for classification, where the prob
 	clf.fit(features, labels)\;
 	\caption{Grid Search for \gls{mnb} classifier}
 \end{algorithm}
-\newpage
+
 \subsection{Training and Classification}
 Classifiers are algorithms which map input data to a specific type of category. Using the classifier consists of two basic steps: training and classification. Training is the process of recording content known to belong to certain class and creating a classifier based on that known content. Classification is the process by which a classifier is created with such a training content and is run on unknown content to determine the class affiliation for the undefined dataset.
 \begin{algorithm}[h]
@@ -815,8 +820,61 @@ Classic RNNs and LSTMs have the problem that the input and output length of the 
 \end{figure}
 \noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. \\
 \\In 2017 the paper "Attention is all you need" by Ashish Vaswani et al.  \cite{attention} was published which suggests to neglect \gls{rnn}s and instead proposes a new model architecture called "Transformer". As the title of the paper indicates, this model uses attention mechanisms. Like \gls{lstm}, Transformer is also an architecture for transforming one sequence into another using an Encoder and Decoder, but differs from the previously existing sequence-to-sequence models since it does not include recurrent networks. Furthermore, the Attention Mechanism model has been extended by using self-attention and point-wise, fully connected layers for Encoders and Decoders.
+The attention mechanism used in the paper includes a query $Q$, a set of key $K$ and a set ov values $V$. Here the function connects the query vector with the set of key-value pairs to an output in which query, keys, values and output are all vectors.\\
+\begin{figure}[t]
+	\begin{minipage}[b]{0.5\linewidth}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		\caption{Scaled Dot-Product Attention}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.5\linewidth}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		\caption{Multi-Head Attention}
+	\end{minipage}
+\end{figure}
+\\The Encoder of this model, consists of $N=6$ layers of \textit{Multi-Head Attention} and \textit{Position-Wise Feed Forward} networks with \textit{residual connections} \cite{residualcon} employed around each of the two sublayers, followed by a layer of Normalization \cite{normalization}, whereby dropouts \cite{dopout} are also added to the output of each sublayer before they are normalized. The Encoders input is added by creating an Input Embedding plus its Position Encoding. For each word, \textit{self-attention} aggregates information from all other words in the context of the sentence, creating a new representation for each word, which is a visited representation of all other words in the sequence. This is repeated for each word in a sentence  successively building newer representations on top of previous ones several times.
+\noindent The model's Decoder includes $N=6$ layers as well, consisting of \textit{Masked Multi-Head Attention}, \textit{Multi-Head Attention} and \textit{Position-Wise Feed Forward} networks with residual connections around them, followed by a layer of normalization. Here the input is the Output Embedding plus its positional encoding, which is offset by one to ensure that the prediction for position $i$ depends only on the positions ahead of i. Masked-Multi-Head Attention is necessary to prevent future words from being part of the attention. Following here is the Position-Wise Feed Forward Normalization. The Decoder generates one word after the other from left to right, where the first word is based on the final representation of the Encoder, offset by one position. Each predicted word then takes care of the previously generated words of the Decoder on that layer, as well as the final representation of the Encoder.
+
+\noindent The intention behind Self-Attention is to avoid long-term dependencies by learning the attention distribution with each additional word for each representation of an input word and using that distribution with each word pair as the weight of a linear layer to calculate a new representation for each input representation. In this way, the input representation possesses global level information about every other token in the sequence not only at the connection between the encoder and decoder, but also at the beginning. This kind of attention is described in the Transformer Paper as "Scaled Dot-Product" (Figure 5.7) and is calculated as follows:
+\[
+Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V
+\]
+Where $Q$ is the query of  dimension $d_k$, $K$ are are the keys of dimension $d_k$ and $V$ are the values of dimension $d_v$. \\
+\noindent Another special feature of the Attention Art described in the paper is the fact that not only single attention, i.e. weighted sum values, but Multi-Head Attention (Figure 5.8) is calculated, which means that this mechanism coaculates multiple attention weighted sums. Each of these multiple heads is a linear transformation of the initial representation. This is done so that different parts of the input representation can interact with different parts of the other representation with which it is compared in the vector space. This provides the model to capture different aspects of the input and improve its expressiveness.\\
+
+\noindent Since neither recurrence nor convolution are used in this model, the Transformer takes advantage of \textit{Positional Encodings}, which make it possible to use the order of the sequences. These inhabit the same  dimension $d_{model}$ as the embeddings, in order to execute a summation. For these positional encodings the Transformer uses sine and cosine functions with different frequencies:
+\[
+PE(_{(pos,2i)}=\sin (\frac{pos}{10000^{\frac{2i}{d_{model}}}})
+\
+\]
+\[
+PE_{(pos,2i+1)}=\cos (\frac{pos}{10000^{\frac{2i}{d_model}}})
+\]
+where $pos$ is the position and $i$ is the dimension. Therefore the resulting wavelengths have a geometric progression from $2\pi$ to $1000 \cdot 2\pi$.
+
 \section{\gls{bert} Model}
+Bidirectional Encoder Representations from Transformer \cite{bert}, short \gls{bert}, is a new language representation model that, unlike previous efforts, which look at text sequences exclusively through pure left-to-right or combined left-to-right and right-to-left, applies bidirectional training of Transformer. \\
+\noindent The \gls{bert} model exists in two versions. \gls{bert}$_{Base}$, which consists of 12 transformer layers, a hidden size of 768 and 12 self-attention heads, whereas \gls{bert}$_{Large}$ consists of 24 layers, a hidden size of 1020 and 16 self-attention heads. In this thesis the \gls{bert}$_{Base}$ model was used, since my existing resources would not have been sufficient for the \gls{bert}$_{Large}$ model.
+
+\subsection{Input Representation}
+The input of the \gls{bert} model consists of the sum of token-, segmentation- and position embeddings (Figure 5.9). As it is not possible to consider the order of inputs due to the transformer architecture of the \gls{bert}, the model uses the same concept of position embeddings as described in the paper "Attention Is Al You Need" \cite{attention}. Here, a sequence length of 512 tokens is possible. The segmentation embeddings are necessary since BERT makes it possible to pass 2 sentence pairs as input. This helps the model to learn a unique embedding for the first and second sentence in order to distinguish between these two sentences.  Additionally, the token [CLS] is inserted at the beginning of the first sentence and the token [SEP] at the end of each sentence. Here [CLS] is used as the key corresponding to the output of the transformer as an aggregated sequence representation for classification tasks, while [SEP] is an additional help for the model to distinguish two sentence pairs.
+\begin{figure}[t]
+	\centering
+	\includegraphics[width=0.9\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	\caption{\gls{bert} Input Representations \cite{bert}}
+	
+\end{figure}
+
+\subsection{Pre-training and Fine-Tuning}
+\gls{bert} is a pre-trained model, which has been trained on two unsupervised tasks, called \textit{Masked LM} (\gls{mlm}) and \textit{Next Sentence Prediction}. The idea of pre-training is to pass start values to a neural network, which is to be trained on the basis of a new data set, which were not initialized randomly. \\
+
+
+\noindent \gls{mlm} is the main aspect of bidirectional training. In classical Masked Language models, such as Taylor's Cloze task of 1953 \cite{cloze}, models are trained by randomly replacing a certain percentage of words with the token [MASK] and then predicting these words from the model. \gls{bert} uses this mechanism by selecting and masking 15\% of the tokens evenly and randomly. However, since the problem here is that the model only tries to predict when the token [MASK] is present in the input, which means that the hidden state of the input token may not be as rich as it could be, BERT extends the Masked Language Model. In this extension, 15\% of the tokens are selected randomly, whereby not all selected words are provided with [MASK] any more, but in 10\% of the cases, the selected token is replaced by a random word, in further 10\% the token remains intact, while in the remaining 80\% the token is replaced by [MASK]. This enables the model to realize which information to use by deriving which words are absent.\\
+\noindent In addition to ML models, \gls{bert} uses \textit{Next Sentence Prediction}, which allows subsequent sentences to be predicted. In this training process, the model receives pairs of sentences as input and learns to predict whether the second sentence in the pair is the following sentence in the original document. Here half of the inputs are a pair in which the second sentence is the next sentence in the original document, while in the remaining 50\% a random sentence is chosen as the successor from the corpus. This allows the model to develop an understanding of relationships between two sentences. \\
+
+\noindent Fine-tuning involves the process of using an already pre-trained neural networks for another similar task. This way, it is possible to use the extracted feature of the already trained model without having to develop a feature extraction from scratch on the new model. The authors of the paper claim that it is possible to fine tune the BERT model using a single additional output layer. Different approaches are used for different Language Tasks. In the case of a classification task, like the one in this thesis, the last hidden state [CLS] is used, whereupon a classification layer is added. 
 \section{Application}
+In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for the lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper.
 \chapter{Evaluation}
 \chapter{Conclusion}
 

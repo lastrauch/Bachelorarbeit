@@ -238,3 +238,33 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{mlm}{}%
+{%
+\gls@defglossaryentry{mlm}%
+{%
+name={MLM},%
+sort={MLM},%
+type={main},%
+first={MLM},%
+firstplural={MLMs},%
+text={MLM},%
+plural={MLMs},%
+description={Masked LM},%
+descriptionplural={Masked LM},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

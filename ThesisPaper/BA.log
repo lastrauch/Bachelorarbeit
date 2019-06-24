@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.23)  22 JUN 2019 15:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.23)  24 JUN 2019 00:20
 entering extended mode
 **./BA.tex
 (BA.tex
@@ -665,30 +665,30 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ]
 Chapter 1.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <20.74> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 178.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 183.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 180.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 185.
 [1
 
 ]
 Chapter 2.
 
-Underfull \hbox (badness 10000) in paragraph at lines 193--194
+Underfull \hbox (badness 10000) in paragraph at lines 198--199
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--198
+Underfull \hbox (badness 10000) in paragraph at lines 201--203
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 199--200
+Underfull \hbox (badness 10000) in paragraph at lines 204--205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 202--204
+Underfull \hbox (badness 10000) in paragraph at lines 207--209
 
  []
 
@@ -696,113 +696,103 @@ Underfull \hbox (badness 10000) in paragraph at lines 202--204
 
 ]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 216.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 221.
 
-Underfull \hbox (badness 10000) in paragraph at lines 217--220
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 229--232
+Underfull \hbox (badness 10000) in paragraph at lines 222--225
 
  []
 
-[3]
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--237
+
+ []
+
+[3] [4]
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png, 
-id=46, 397.485pt x 247.1634pt>
+id=49, 397.485pt x 247.1634pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.
 png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.p
 ng>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/sigmoid.png  used on input line 246.
+r/Pictures/sigmoid.png  used on input line 274.
 (pdftex.def)             Requested size: 180.0pt x 111.93152pt.
- [4 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.p
-ng (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 273--278
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--283
 
  []
 
-[5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 305--306
+[5 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.pn
+g (PNG copy)>] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 310--311
 
  []
 
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 309.
-
-Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 309.
-
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 309.
-
-Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 312.
-
-
-Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 312.
-
-
-Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 312.
-
-
-Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 313.
-
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 314.
 
 Package relsize Warning: Font size 5.55556pt is too small.
 (relsize)                Using 6.0pt instead on input line 314.
 
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 314.
+
+Package relsize Warning: Font size 5.55556pt is too small.
+(relsize)                Using 6.0pt instead on input line 317.
+
+
+Package relsize Warning: Font size 5.55556pt is too small.
+(relsize)                Using 6.0pt instead on input line 317.
+
+
+Package relsize Warning: Font size 5.55556pt is too small.
+(relsize)                Using 6.0pt instead on input line 317.
+
 
 Package relsize Warning: Font size 5.55556pt is too small.
 (relsize)                Using 6.0pt instead on input line 318.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 318.
+(relsize)                Using 6.0pt instead on input line 319.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 318.
+(relsize)                Using 6.0pt instead on input line 323.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 318.
+(relsize)                Using 6.0pt instead on input line 323.
+
+
+Package relsize Warning: Font size 5.55556pt is too small.
+(relsize)                Using 6.0pt instead on input line 323.
+
+
+Package relsize Warning: Font size 5.55556pt is too small.
+(relsize)                Using 6.0pt instead on input line 323.
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 325--326
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 341.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 346.
 
 ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\omsptm.fd"
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 341.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 346.
  [8]
 Chapter 3.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 357.
 
-("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
-File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
-)
-Overfull \hbox (8.14519pt too wide) in paragraph at lines 357--358
-\OT1/ptm/m/n/10.95 mEvals Task 4 [$\OT1/pcr/m/n/10.95 https : / / pan . webis .
- de / semeval19 / semeval19-[]web/$\OT1/ptm/m/n/10.95 ]
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 361--364
+Underfull \hbox (badness 10000) in paragraph at lines 366--369
 
  []
 
 
-Overfull \hbox (1.26904pt too wide) in paragraph at lines 361--364
+Overfull \hbox (1.26904pt too wide) in paragraph at lines 366--369
 \OT1/ptm/m/n/10.95 u-ments. While the Training- and Val-i-da-tion-set con-tain 
 the ar-ti-cles, the GroundTruth
  []
@@ -814,15 +804,15 @@ b.pdf Graphic file (type pdf)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub
 .pdf>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/hyper_pub.pdf  used on input line 368.
+r/Pictures/hyper_pub.pdf  used on input line 373.
 (pdftex.def)             Requested size: 161.9989pt x 124.19121pt.
 
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 367--392
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 372--397
 $[]$  $[]$ 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--392
+Underfull \hbox (badness 10000) in paragraph at lines 372--397
 
  []
 
@@ -830,31 +820,31 @@ Underfull \hbox (badness 10000) in paragraph at lines 367--392
 
 ]
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf, 
-id=68, 379.93944pt x 288.59016pt>
+id=67, 379.93944pt x 288.59016pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.
 pdf Graphic file (type pdf)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.p
 df>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/figure2.pdf  used on input line 399.
+r/Pictures/figure2.pdf  used on input line 404.
 (pdftex.def)             Requested size: 161.9989pt x 123.0477pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf, i
-d=69, 409.94215pt x 331.35933pt>
+d=68, 409.94215pt x 331.35933pt>
 File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.p
 df Graphic file (type pdf)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pd
 f>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/figure.pdf  used on input line 404.
+r/Pictures/figure.pdf  used on input line 409.
 (pdftex.def)             Requested size: 161.9989pt x 130.94363pt.
 
-Overfull \hbox (2.0805pt too wide) in paragraph at lines 398--407
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 403--412
 []$[]$  $[]$ 
  []
 
 [10 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub
 .pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 430--431
+Underfull \hbox (badness 10000) in paragraph at lines 435--436
 
  []
 
@@ -868,52 +858,40 @@ included in a single page
 >]
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 449.
+(relsize)                Using 6.0pt instead on input line 454.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 449.
+(relsize)                Using 6.0pt instead on input line 454.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 449.
+(relsize)                Using 6.0pt instead on input line 454.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 449.
+(relsize)                Using 6.0pt instead on input line 454.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 449.
+(relsize)                Using 6.0pt instead on input line 454.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 449.
+(relsize)                Using 6.0pt instead on input line 454.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 449.
+(relsize)                Using 6.0pt instead on input line 454.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 449.
+(relsize)                Using 6.0pt instead on input line 454.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 452--453
+Underfull \hbox (badness 10000) in paragraph at lines 457--458
 
  []
-
-
-Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 457.
-
-
-Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 458.
-
-
-Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 461.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
@@ -925,98 +903,109 @@ Package relsize Warning: Font size 5.55556pt is too small.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 464.
+(relsize)                Using 6.0pt instead on input line 466.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 466.
+(relsize)                Using 6.0pt instead on input line 467.
 
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 466.
+
+Package relsize Warning: Font size 5.55556pt is too small.
+(relsize)                Using 6.0pt instead on input line 468.
+
 
 Package relsize Warning: Font size 5.55556pt is too small.
 (relsize)                Using 6.0pt instead on input line 469.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 470.
+(relsize)                Using 6.0pt instead on input line 471.
+
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 471.
+
+Package relsize Warning: Font size 5.55556pt is too small.
+(relsize)                Using 6.0pt instead on input line 474.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 471.
+(relsize)                Using 6.0pt instead on input line 475.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 475--476
+Package relsize Warning: Font size 5.55556pt is too small.
+(relsize)                Using 6.0pt instead on input line 476.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 480--481
 
  []
 
 [12]
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 479.
+(relsize)                Using 6.0pt instead on input line 484.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 482.
+(relsize)                Using 6.0pt instead on input line 487.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 483.
+(relsize)                Using 6.0pt instead on input line 488.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 489--493
+Underfull \hbox (badness 10000) in paragraph at lines 494--498
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 489--493
+Underfull \hbox (badness 10000) in paragraph at lines 494--498
 
  []
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 496.
+(relsize)                Using 6.0pt instead on input line 501.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 497.
+(relsize)                Using 6.0pt instead on input line 502.
 
 
 Package relsize Warning: Font size 5.55556pt is too small.
-(relsize)                Using 6.0pt instead on input line 498.
+(relsize)                Using 6.0pt instead on input line 503.
 
 [13]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--528
+Underfull \hbox (badness 10000) in paragraph at lines 529--533
 
  []
 
 
-Overfull \hbox (10.64156pt too wide) in paragraph at lines 524--528
+Overfull \hbox (10.64156pt too wide) in paragraph at lines 529--533
 \OT1/ptm/m/n/10.95 In or-der to cal-cu-late the []TF mea-sure, the method \OT1/
 ptm/m/it/10.95 fit[]transform() \OT1/ptm/m/n/10.95 of the class \OT1/ptm/m/it/1
 0.95 CountVec-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--528
+Underfull \hbox (badness 10000) in paragraph at lines 529--533
 
  []
 
 [14
 
-] [15]
-Overfull \hbox (2.80486pt too wide) in paragraph at lines 578--622
-\OT1/pcr/m/n/10.95 / / radimrehurek . com / gensim / models / word2vec . html$\
-OT1/ptm/m/n/10.95 , but I de-cided
- []
+] [15] [16] [17]
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 641.
 
-[16] [17]
+ ("C:\Program Files\MiKTeX 2.9\tex/latex/psnfss\ot1pcr.fd"
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
 LaTeX Font Info:    Font shape `OT1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 637.
+(Font)              Font shape `OT1/pcr/b/n' tried instead on input line 642.
 
-Overfull \hbox (10.67403pt too wide) in paragraph at lines 632--641
+Overfull \hbox (10.67403pt too wide) in paragraph at lines 637--646
 \OT1/ptm/m/n/10.95 The \OT1/ptm/m/it/10.95 Multi-no-mi-alNB \OT1/ptm/m/n/10.95 
 clas-si-fier in-cludes the pa-ram-e-ters \OT1/ptm/m/it/10.95 al-pha\OT1/ptm/m/n
 /10.95 , \OT1/ptm/m/it/10.95 fit[]prior \OT1/ptm/m/n/10.95 and \OT1/ptm/m/it/10
@@ -1024,7 +1013,7 @@ clas-si-fier in-cludes the pa-ram-e-ters \OT1/ptm/m/it/10.95 al-pha\OT1/ptm/m/n
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 632--641
+Underfull \hbox (badness 10000) in paragraph at lines 637--646
 
  []
 
@@ -1036,10 +1025,10 @@ File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png
 Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/rnn.png  used on input line 731.
+r/Pictures/rnn.png  used on input line 736.
 (pdftex.def)             Requested size: 288.0011pt x 143.9068pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 728--735
+Underfull \hbox (badness 10000) in paragraph at lines 733--740
 
  []
 
@@ -1053,7 +1042,7 @@ ng Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.pn
 g>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/inputg.png  used on input line 760.
+r/Pictures/inputg.png  used on input line 765.
 (pdftex.def)             Requested size: 115.19867pt x 81.20532pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png, 
 id=187, 294.1389pt x 217.7736pt>
@@ -1062,7 +1051,7 @@ png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.p
 ng>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/inputg2.png  used on input line 765.
+r/Pictures/inputg2.png  used on input line 770.
 (pdftex.def)             Requested size: 115.19867pt x 85.29024pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png, 
 id=188, 294.1389pt x 217.7736pt>
@@ -1071,7 +1060,7 @@ png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.p
 ng>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/forgetg.png  used on input line 769.
+r/Pictures/forgetg.png  used on input line 774.
 (pdftex.def)             Requested size: 115.19867pt x 85.29024pt.
 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png, 
 id=189, 326.1786pt x 241.8636pt>
@@ -1080,7 +1069,7 @@ png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.p
 ng>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/outputg.png  used on input line 774.
+r/Pictures/outputg.png  used on input line 779.
 (pdftex.def)             Requested size: 115.19867pt x 85.42116pt.
 
 Overfull \hbox (77.53429pt too wide) has occurred while \output is active
@@ -1107,7 +1096,7 @@ n.png Graphic file (type png)
 <use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention
 .png>
 Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
-r/Pictures/attention.png  used on input line 813.
+r/Pictures/attention.png  used on input line 818.
 (pdftex.def)             Requested size: 180.0pt x 244.69957pt.
 
 Overfull \hbox (77.53429pt too wide) has occurred while \output is active
@@ -1116,7 +1105,31 @@ SFORMERS \OT1/ptm/m/n/10.95 26
  []
 
 [26]
-Underfull \hbox (badness 10000) in paragraph at lines 816--818
+<C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg
+, id=202, 342.5297pt x 382.42876pt>
+File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddo
+t.jpg Graphic file (type jpg)
+<use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot
+.jpg>
+Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
+r/Pictures/scaleddot.jpg  used on input line 826.
+(pdftex.def)             Requested size: 125.99945pt x 140.67363pt.
+<C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png, id=
+203, 328.97906pt x 430.60875pt>
+File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png
+ Graphic file (type png)
+<use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png>
+
+Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
+r/Pictures/head.png  used on input line 831.
+(pdftex.def)             Requested size: 125.99945pt x 164.92084pt.
+
+Overfull \hbox (2.0805pt too wide) in paragraph at lines 825--834
+[][]  [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 821--837
 
  []
 
@@ -1133,137 +1146,162 @@ Overfull \hbox (77.53429pt too wide) has occurred while \output is active
 SFORMERS \OT1/ptm/m/n/10.95 28
  []
 
-[28]
+[28 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot
+.jpg> <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.pn
+g>]
+Underfull \hbox (badness 10000) in paragraph at lines 841--844
+
+ []
+
+
+Overfull \hbox (77.53429pt too wide) has occurred while \output is active
+\OT1/ptm/m/sl/10.95 CHAPTER 5.  BIDIRECTIONAL ENCODER REPRESENTATIONS FROM TRAN
+SFORMERS \OT1/ptm/m/n/10.95 29
+ []
+
+[29]
+<C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png, i
+d=215, 513.92pt x 155.07938pt>
+File: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.p
+ng Graphic file (type png)
+<use C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.pn
+g>
+Package pdftex.def Info: C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPape
+r/Pictures/inputB.png  used on input line 863.
+(pdftex.def)             Requested size: 323.9978pt x 97.76913pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 869--870
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 872--874
+
+ []
+
+
+Overfull \hbox (77.53429pt too wide) has occurred while \output is active
+\OT1/ptm/m/sl/10.95 CHAPTER 5.  BIDIRECTIONAL ENCODER REPRESENTATIONS FROM TRAN
+SFORMERS \OT1/ptm/m/n/10.95 30
+ []
+
+[30 <C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.pn
+g>]
+Overfull \hbox (3.19261pt too wide) in paragraph at lines 877--878
+\OT1/ptm/m/n/10.95 In the of-fi-cial github repos-i-tory ($https : / / github .
+ com / google-[]research / bert$) both mod-
+ []
+
+
+Overfull \hbox (6.41147pt too wide) in paragraph at lines 877--878
+\OT1/ptm/m/n/10.95 code, pre-trained check-points for the low-er-case and up-pe
+r-case ver-sions of []BERT$[]$
+ []
+
+
+Overfull \hbox (77.53429pt too wide) has occurred while \output is active
+\OT1/ptm/m/sl/10.95 CHAPTER 5.  BIDIRECTIONAL ENCODER REPRESENTATIONS FROM TRAN
+SFORMERS \OT1/ptm/m/n/10.95 31
+ []
+
+[31]
 Chapter 6.
-[29
+[32
 
 ]
 Chapter 7.
-(BA.bbl [30
+(BA.bbl [33
 
-] [31
+] [34
 
 ]
-Underfull \hbox (badness 1033) in paragraph at lines 111--114
+Underfull \hbox (badness 10000) in paragraph at lines 71--74
+[]\OT1/ptm/m/n/10.95 Elementree.  $https : / / github . com / python / cpython 
+/ blob / 3 . 7 / Lib / xml / etree /
+ []
+
+
+Underfull \hbox (badness 1033) in paragraph at lines 135--138
 \OT1/ptm/m/n/10.95 tive ap-proaches to attention-based neu-ral ma-chine trans-l
 a-tion.  \OT1/ptm/m/it/10.95 CoRR\OT1/ptm/m/n/10.95 ,
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 116--118
-[]\OT1/ptm/m/n/10.95 Class iter-parse.  $\OT1/pcr/m/n/10.95 https : / / lxml . 
-de / api / lxml . etree .
+[35]
+Underfull \hbox (badness 4726) in paragraph at lines 183--186
+[]\OT1/ptm/m/n/10.95 sklearn.ensemble.randomforestclassifier.  $https : / / git
+hub . com / scikit-[]learn /
  []
 
 
-Underfull \hbox (badness 3108) in paragraph at lines 132--134
-[]\OT1/ptm/m/n/10.95 models.keyedvectors { store and query word vec-tors.  $\OT
-1/pcr/m/n/10.95 https : / /
- []
-
-[32]
-Underfull \hbox (badness 10000) in paragraph at lines 159--162
-[]\OT1/ptm/m/n/10.95 sklearn.ensemble.randomforestclassifier.  $\OT1/pcr/m/n/10
-.95 https : / / github . com /
+Underfull \hbox (badness 10000) in paragraph at lines 188--191
+[]\OT1/ptm/m/n/10.95 sklearn.feature[]extraction.text.  $https : / / github . c
+om / scikit-[]learn /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 159--162
-\OT1/pcr/m/n/10.95 scikit-[]learn / scikit-[]learn / blob / 7813f7efb / sklearn
- /
+Underfull \hbox (badness 10000) in paragraph at lines 188--191
+\OT1/ptm/m/n/10.95 scikit-[]learn / blob / 7813f7efb5b2012412888b69e73d76f2df2b
+50b6 / sklearn /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--167
-[]\OT1/ptm/m/n/10.95 sklearn.feature[]extraction.text.  $\OT1/pcr/m/n/10.95 htt
-ps : / / github .
+Underfull \hbox (badness 10000) in paragraph at lines 193--196
+[]\OT1/ptm/m/n/10.95 sklearn.linear[]model.  $https : / / github . com / scikit
+-[]learn / scikit-[]learn / blob /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--167
-\OT1/pcr/m/n/10.95 com / scikit-[]learn / scikit-[]learn / blob /
+Underfull \hbox (badness 10000) in paragraph at lines 198--201
+[]\OT1/ptm/m/n/10.95 sklearn.model[]selection.gridsearchcv.  $https : / / githu
+b . com / scikit-[]learn /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 164--167
-\OT1/pcr/m/n/10.95 7813f7efb5b2012412888b69e73d76f2df2b50b6 / sklearn /
+Underfull \hbox (badness 10000) in paragraph at lines 203--206
+[]\OT1/ptm/m/n/10.95 sklearn.naive[]bayes.multinomialnb.  $https : / / github .
+ com / scikit-[]learn /
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 169--172
-[]\OT1/ptm/m/n/10.95 sklearn.linear[]model.  $\OT1/pcr/m/n/10.95 https : / / gi
-thub . com / scikit-[]learn /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 169--172
-\OT1/pcr/m/n/10.95 scikit-[]learn / blob / 7813f7efb / sklearn / linear _ model
- /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 174--177
-[]\OT1/ptm/m/n/10.95 sklearn.model[]selection.gridsearchcv.  $\OT1/pcr/m/n/10.9
-5 https : / / github . com /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 174--177
-\OT1/pcr/m/n/10.95 scikit-[]learn / scikit-[]learn / blob / 7813f7efb / sklearn
- /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--182
-[]\OT1/ptm/m/n/10.95 sklearn.naive[]bayes.multinomialnb.  $\OT1/pcr/m/n/10.95 h
-ttps : / / github . com /
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 179--182
-\OT1/pcr/m/n/10.95 scikit-[]learn / scikit-[]learn / blob / 7813f7efb / sklearn
- /
- []
-
-[33]) [34]
-Underfull \hbox (badness 10000) in paragraph at lines 829--838
+[36]) [37]
+Underfull \hbox (badness 10000) in paragraph at lines 887--896
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 829--838
+Underfull \hbox (badness 10000) in paragraph at lines 887--896
 
  []
 
 \tf@thm=\write10
 \openout10 = `BA.thm'.
 
-[35] (BA.aux) ) 
+[38] (BA.aux) ) 
 Here is how much of TeX's memory you used:
- 11499 strings out of 492945
- 172284 string characters out of 3135513
+ 11552 strings out of 492945
+ 173787 string characters out of 3135513
  318083 words of memory out of 3000000
- 15121 multiletter control sequences out of 15000+200000
- 33570 words of font info for 74 fonts, out of 3000000 for 9000
+ 15171 multiletter control sequences out of 15000+200000
+ 33778 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,18n,92p,1991b,1258s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 53i,18n,92p,1991b,1259s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/base/8r.enc}<C:/Pro
 gram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Fil
 es/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
 public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/am
-sfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
-cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pf
-b><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Pro
-gram Files/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/ty
-pe1/urw/times/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utm
-r8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Progr
-am Files/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on BA.pdf (42 pages, 1137227 bytes).
+sfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files
+/MiKTeX 2.9/fonts/type1/urw/courier/ucrb8a.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ti
+mes/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C
+:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on BA.pdf (45 pages, 1302115 bytes).
 PDF statistics:
- 281 PDF objects out of 1000 (max. 8388607)
+ 299 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 66 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -11,10 +11,10 @@
 \contentsline {algocf}{\numberline {7}{\ignorespaces Word2Vec with gensim\relax }}{16}% 
 \contentsline {algocf}{\numberline {8}{\ignorespaces sent\_vectorizer\relax }}{17}% 
 \contentsline {algocf}{\numberline {9}{\ignorespaces Grid Search for \gls {mnb} classifier\relax }}{20}% 
-\contentsline {algocf}{\numberline {10}{\ignorespaces Classifier Training\relax }}{21}% 
+\contentsline {algocf}{\numberline {10}{\ignorespaces Classifier Training\relax }}{20}% 
 \contentsline {algocf}{\numberline {11}{\ignorespaces Make Predictions\relax }}{21}% 
 \contentsline {algocf}{\numberline {12}{\ignorespaces Saving a trained model\relax }}{21}% 
-\contentsline {algocf}{\numberline {13}{\ignorespaces Saving a trained Word2Vec model\relax }}{22}% 
+\contentsline {algocf}{\numberline {13}{\ignorespaces Saving a trained Word2Vec model\relax }}{21}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
