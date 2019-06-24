@@ -1,20 +1,20 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Sigmoid Function \cite {algorithms}\relax }}{5}% 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Sigmoid Function \cite {algorithms}\relax }}{5}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Hyperpartisan Distribution by Publisher\relax }}{10}% 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Hyperpartisan Distribution by Article\relax }}{11}% 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Publishing Years Distribution by Article\relax }}{11}% 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Hyperpartisan Distribution by Publisher\relax }}{10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Hyperpartisan Distribution by Article\relax }}{11}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Publishing Years Distribution by Article\relax }}{11}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces \gls {rnn} and Feedforward Neural Network \cite {rnn}\relax }}{24}% 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Input gate$_1$ \cite {rnn}\relax }}{25}% 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Input gate$_2$ \cite {rnn}\relax }}{25}% 
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Forget gate \cite {rnn}\relax }}{25}% 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Output gate \cite {rnn}\relax }}{25}% 
-\contentsline {figure}{\numberline {5.6}{\ignorespaces The Transformer - model architecture \cite {attention}\relax }}{27}% 
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Scaled Dot-Product Attention\relax }}{28}% 
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Multi-Head Attention\relax }}{28}% 
-\contentsline {figure}{\numberline {5.9}{\ignorespaces \gls {bert} Input Representations \cite {bert}\relax }}{30}% 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces \gls {rnn} and Feedforward Neural Network \cite {rnn}\relax }}{24}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Input gate$_1$ \cite {rnn}\relax }}{25}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Input gate$_2$ \cite {rnn}\relax }}{25}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Forget gate \cite {rnn}\relax }}{25}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Output gate \cite {rnn}\relax }}{25}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces The Transformer - model architecture \cite {attention}\relax }}{27}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Scaled Dot-Product Attention\relax }}{28}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Multi-Head Attention\relax }}{28}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces \gls {bert} Input Representations \cite {bert}\relax }}{30}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

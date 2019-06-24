@@ -156,6 +156,12 @@ Tomas Mikolov, Martin Karafi{\'a}t, Luk{\'a}s Burget, Jan~Honza Cernock{\'y},
 models.keyedvectors – store and query word vectors.
 \newblock \url{https://radimrehurek.com/gensim/models/keyedvectors.html}.
 
+\bibitem{pytorch}
+Adam Paszke, Sam Gross, Soumith Chintala, Gregory Chanan, Edward Yang, Zachary
+  DeVito, Zeming Lin, Alban Desmaison, Luca Antiga, and Adam Lerer.
+\newblock Automatic differentiation in {PyTorch}.
+\newblock In {\em NIPS Autodiff Workshop}, 2017.
+
 \bibitem{scikit-learn}
 F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
   M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,

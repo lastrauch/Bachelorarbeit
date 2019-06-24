@@ -271,9 +271,9 @@ l(\Theta)=-\sum_{i}y_i\log(\sigma(z_i))+(1-y_i)\log(1-\sigma(z_i))
 	%Arbeit:
 	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%PC:
-	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
 	%Lap Top:
-	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
+	\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
 	\caption{Sigmoid Function \cite{algorithms}}
 \end{figure}
 \noindent This implies, if $y=0$, the first term ends up $0$ and the second $\log(1-\sigma(z_i)$, which results in a log-likelihood of $0$. In the event that $y=1$, the second term ends up 0 and the first one corresponds to the log-likelihood of $z$. Along these lines, both cases are integrated into a solitary articulation. \\
@@ -370,7 +370,10 @@ The GroundTruth-, Validation- and Training sets were each provided as XML docume
 
 \subsection{Dataset labelled by Publisher}
 \begin{minipage}[T]{.45\linewidth}
-	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	%PC:
+	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	%Lap Top:
+	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	\captionof{figure}{Hyperpartisan Distribution by Publisher}
 \end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
@@ -401,12 +404,18 @@ The publicity data is distributed over the years 1964-2018, with most of the dat
 As already described in the previous section, the distribution of the by Article dataset is different from the by Publisher one. The distribution is no longer 50:50, but only 36.9\% were classified as Hyperpartisan (Figure 3.2). 
 \begin{figure}[t]
 	\begin{minipage}{.45\linewidth}
-		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		%PC:
+		%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		%Lap Top:
+		\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		\caption{Hyperpartisan Distribution by Article}
 	\end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
 	\begin{minipage}{.45\linewidth}
-	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		%PC:
+	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		%Lap Top:
+	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
 	\caption{Publishing Years Distribution by Article}
 \end{minipage}
 \end{figure}
@@ -733,7 +742,10 @@ Bidirectional Encoder Representations from Transformers (\gls{bert}) \cite{bert}
 Recurrent Neural Networks (\gls{rnn}) are a kind of artificial neural network, which considers time and order. Unlike Feedforward algorithms \cite{feedforward}, which use only the current example as input, \gls{rnn}s also use the Input Example, which they perceived in previous steps (Figure 5.1). 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	%PC:
+	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+		%Lap Top:
+	\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	\caption{\gls{rnn} and Feedforward Neural Network \cite{rnn}}
 \end{figure}
 This sequential information is retained over many time steps in the hidden state of the RNN as it cascades forward to affect the processing of each new example. This means that the RNN finds correlations between events that are separated by many steps. These relationships are referred to as \textit{long-term dependencies} because a subordinate event is dependent on one or more preceding events.\\
@@ -762,21 +774,33 @@ The initial value $s(0)$ can take the values 0 or 1, whereas in all further step
 \subsection{Long Short-Term Memory}
 \begin{figure}[h]
 	\begin{minipage}[b]{0.4\textwidth}
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		%PC:
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+			%Lap Top:
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		\caption{Input gate$_1$ \cite{rnn}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.4\textwidth}
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		%PC:
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		%Lap Top:
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		\caption{Input gate$_2$ \cite{rnn}}
 	\end{minipage}
 	\begin{minipage}[b]{0.4\textwidth}
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		%PC:
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		%Lap Top:
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		\caption{Forget gate \cite{rnn}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.4\textwidth}
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		%PC:
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		%Lap Top:
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		\caption{Output gate \cite{rnn}}
 	\end{minipage}
 \end{figure}
@@ -813,9 +837,12 @@ The different gates of \gls{lstm}s are Input-, Forget- and Output Gate, where th
 \subsection{\gls{rnn} Encoder-Decoder}
 Classic RNNs and LSTMs have the problem that the input and output length of the sequences may vary. This led to the development of the RNN Encoder-Decoder \cite{encodedecode}, which consists of 2 recurring neural networks that function as a pair of encoders and decoders. Here the encoder maps a variable length input sequence to a fixed length vector, whereupon the decoder maps the vector representation to a variable length output sequence. \textit{Cho et. al} states, that "the encoder is an \gls{rnn} that reads each symbol of an input sequence x sequentially. After finishing the reading process of a sequence, the hidden state of the \gls{rnn} is a summary c of the complete input sequence" \cite{encodedecode}. This means that at the end of the training, the encoder provides an input feature vector that can be used by the decoder to construct the input with those aspects that are most essential to make the reconstructed input noticeable as the actual input. The paper also states, that the "decoder represents another \gls{rnn} that has been trained to generate the output sequence by predicting the next symbol $y_t$ under the condition of the hidden state $h_t$. In contrast to typical \gls{rnn}s, $y_t$ and $h_t$ are also dependent on each other by $y_{t-1}$ and the combination c in this case".
 \section{Transformer and Attention}
-\begin{figure}[h]
+\begin{figure}[ht]
 	\centering
-	\includegraphics[width=0.5\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	%PC:
+	%\includegraphics[width=0.5\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	%Lap Top:
+	\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	\caption{The Transformer - model architecture \cite{attention}}
 \end{figure}
 \noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. \\
@@ -823,12 +850,18 @@ Classic RNNs and LSTMs have the problem that the input and output length of the 
 The attention mechanism used in the paper includes a query $Q$, a set of key $K$ and a set ov values $V$. Here the function connects the query vector with the set of key-value pairs to an output in which query, keys, values and output are all vectors.\\
 \begin{figure}[t]
 	\begin{minipage}[b]{0.5\linewidth}
-		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		%PC:
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+					%Lap Top:
+		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		\caption{Scaled Dot-Product Attention}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.5\linewidth}
-		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		%PC:
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+					%Lap Top:
+		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		\caption{Multi-Head Attention}
 	\end{minipage}
 \end{figure}
@@ -860,7 +893,10 @@ Bidirectional Encoder Representations from Transformer \cite{bert}, short \gls{b
 The input of the \gls{bert} model consists of the sum of token-, segmentation- and position embeddings (Figure 5.9). As it is not possible to consider the order of inputs due to the transformer architecture of the \gls{bert}, the model uses the same concept of position embeddings as described in the paper "Attention Is Al You Need" \cite{attention}. Here, a sequence length of 512 tokens is possible. The segmentation embeddings are necessary since BERT makes it possible to pass 2 sentence pairs as input. This helps the model to learn a unique embedding for the first and second sentence in order to distinguish between these two sentences.  Additionally, the token [CLS] is inserted at the beginning of the first sentence and the token [SEP] at the end of each sentence. Here [CLS] is used as the key corresponding to the output of the transformer as an aggregated sequence representation for classification tasks, while [SEP] is an additional help for the model to distinguish two sentence pairs.
 \begin{figure}[t]
 	\centering
-	\includegraphics[width=0.9\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	%PC:
+	%\includegraphics[width=0.9\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+				%Lap Top:
+	\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	\caption{\gls{bert} Input Representations \cite{bert}}
 	
 \end{figure}
@@ -874,7 +910,59 @@ The input of the \gls{bert} model consists of the sum of token-, segmentation- a
 
 \noindent Fine-tuning involves the process of using an already pre-trained neural networks for another similar task. This way, it is possible to use the extracted feature of the already trained model without having to develop a feature extraction from scratch on the new model. The authors of the paper claim that it is possible to fine tune the BERT model using a single additional output layer. Different approaches are used for different Language Tasks. In the case of a classification task, like the one in this thesis, the last hidden state [CLS] is used, whereupon a classification layer is added. 
 \section{Application}
-In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for the lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper.
+In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for the lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper. The existing pre-trained models consist of a \textit{.zip} file, which contains The TensorFlow checkpoint for intilializing the pre-trained weights, a vocab file to map WordPiece to word id, as well as a config file, which describes the hyperparameters of the model. Meanwhile many more possibilities are available to use the Bert model, including TensorFlow Hub or a PyTorch \cite{pytorch} interface, whereby in this thesis the original GitHub Code was used. 
+A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modfied. 
+\begin{algorithm}[t]
+	\DontPrintSemicolon
+	\KwIn{self, lines, set\_type}
+	examples = []\;
+	\For{i,line in enumerate(lines)}
+	{
+		\If{i == 0}
+		{
+			continue
+		}
+		guid = \%s-\%s" \% (set\_type, line[0])\;
+		text\_a = line[1]\;
+		label = line[2]\;
+		examples.append(InputExample(guid=guid, text\_a=text\_a, text\_b=None, label=label))\;
+	}
+	\Return examples
+	\caption{Create\_examples in \gls{bert}}
+\end{algorithm} 
+The class is given a slightly modified version of the combined GroundTruth- and Training datasets, since oly the article content, ids and lablel are required for the to be generated input examples. In addition the \gls{bert} model uses \text{.tsv} as input by default, therefor an adapted version is transferred here. In the methode \textit{create\_examples}, \textit{guid} represents the articles id, \textit{text\_a} the content and \textit{label} the corresponding label. In addition, the flags \textit{task\_name, do\_train, do\_eval, data\_dir, task\_name, vocab\_file, bert\_config\_file, output\_dir, init\_checkpoint, max\_seq\_length, train\_batch\_size, learning\_rate} and \textit{num\_train\_epochs} must be passed when calling the file \textit{run\_classifier} (Listing 5.2). Here \textit{task\_name} describes, the name of the class processor, \textit{do\_train}, if training should be done, \textit{do\_eval} if training should be evaluated with a dev set, \textit{data\_dir} describes the directory path to the folder of training-, dev- and test data, \textit{vocab\_file} describes where the file \textit{vocab.txt} is located, \textit{bert\_config\_file} where the file \textit{bert\_config.json},  \textit{init\_checkpoint} in which folder the pre-trained weights \textit{bert\_model.ckpt} are located, or, if weights have already been trained, it specifies the path in which they are located, \textit{out\_dir}, in which directory path the checkpoints are written, and \textit{max\_seq\_length} to \textit{num\_train\_epochs} the hyperparameters of the model.
+ 
+
+\noindent \begin{minipage}[t]{\textwidth}
+\begin{lstlisting}[caption={TensorFlow Output for InputExampels},captionpos=b, frame = single]
+INFO:tensorflow:guid: train-15
+INFO:tensorflow:tokens: [CLS] president elect donald trump reached agreement united technologies utc keep 1 000 carrier jobs state indiana according cn [...] ##ce plan holding event carrier plant indiana thursday [SEP]
+INFO:tensorflow:input_ids: 101 2343 11322 6221 [...] 24897 24370 10660 8144 3685 24763 2094 2292 2894 11674 2460 2180 1056 5814 8028 2008 1055 8667 3959 9432 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 [...] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0  [...] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:label: True (id = 0)
+\end{lstlisting}
+\end{minipage}
+\begin{lstlisting}[caption={Example: Calling \textit{run\_classifier} with the required flags},captionpos=b, frame = single]
+export BERT_BASE_DIR=/path_to_bert_model/uncased_L-12_H-768_A-12
+export DATA_DIR=/path_to_input_data/
+
+export CUDA_VISIBLE_DEVICES=2 && python run_classifier.py \
+--task_name=ba \
+--do_train=true \
+--do_eval=true \
+--data_dir=$DATA_DIR \
+--vocab_file=$BERT_BASE_DIR/vocab.txt \
+--bert_config_file=$BERT_BASE_DIR/bert_config.json \
+--init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
+--max_seq_length=512 \
+--train_batch_size=2 \
+--learning_rate=3e-5 \
+--num_train_epochs=4.0 \
+--output_dir=/path_for_output_data/
+\end{lstlisting}
+
+
 \chapter{Evaluation}
 \chapter{Conclusion}
 
