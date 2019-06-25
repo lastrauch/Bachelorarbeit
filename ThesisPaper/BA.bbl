@@ -48,6 +48,13 @@ Leo Breiman.
 \newblock Random forests.
 \newblock {\em Mach. Learn.}, 45(1):5--32, October 2001.
 
+\bibitem{use}
+Daniel Cer, Yinfei Yang, Sheng{-}yi Kong, Nan Hua, Nicole Limtiaco, Rhomni~St.
+  John, Noah Constant, Mario Guajardo{-}Cespedes, Steve Yuan, Chris Tar,
+  Yun{-}Hsuan Sung, Brian Strope, and Ray Kurzweil.
+\newblock Universal sentence encoder.
+\newblock {\em CoRR}, abs/1803.11175, 2018.
+
 \bibitem{encodedecode}
 Kyunghyun Cho, Bart van Merrienboer, {\c{C}}aglar G{\"{u}}l{\c{c}}ehre, Fethi
   Bougares, Holger Schwenk, and Yoshua Bengio.
@@ -123,6 +130,14 @@ Emmanouil Ikonomakis, Sotiris Kotsiantis, and V~Tampakas.
 \newblock Text classification using machine learning techniques.
 \newblock {\em WSEAS transactions on computers}, 4:966--974, 08 2005.
 
+\bibitem{gewinner}
+Ye~Jiang, Johann Petrak, Xingyi Song, Kalina Bontcheva, and Diana Maynard.
+\newblock Team bertha von suttner at {S}em{E}val-2019 task 4: Hyperpartisan
+  news detection using {ELM}o sentence representation convolutional network.
+\newblock In {\em Proceedings of the 13th International Workshop on Semantic
+  Evaluation}, pages 840--844, Minneapolis, Minnesota, USA, June 2019.
+  Association for Computational Linguistics.
+
 \bibitem{normalization}
 Geoffrey E.~Hinton Jimmy Lei~Ba, Jamie Ryan~Kiros.
 \newblock Layer normalization.
@@ -140,6 +155,11 @@ Ashraf~M. Kibriya, Eibe Frank, Bernhard Pfahringer, and Geoffrey Holmes.
 \newblock In Geoffrey~I. Webb and Xinghuo Yu, editors, {\em AI 2004: Advances
   in Artificial Intelligence}, pages 488--499, Berlin, Heidelberg, 2005.
   Springer Berlin Heidelberg.
+
+\bibitem{doc2vec}
+Quoc~V. Le and Tomas Mikolov.
+\newblock Distributed representations of sentences and documents.
+\newblock {\em CoRR}, abs/1405.4053, 2014.
 
 \bibitem{lunong}
 Minh{-}Thang Luong, Hieu Pham, and Christopher~D. Manning.
@@ -183,6 +203,12 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
 Jeffrey Pennington, Richard Socher, and Christopher~D. Manning.
 \newblock Glove: Global vectors for word representation.
 \newblock In {\em EMNLP}, 2014.
+
+\bibitem{elmo}
+Matthew~E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark,
+  Kenton Lee, and Luke Zettlemoyer.
+\newblock Deep contextualized word representations.
+\newblock {\em CoRR}, abs/1802.05365, 2018.
 
 \bibitem{pickle}
 pickle — python object serialization.
@@ -230,6 +256,15 @@ Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan
   Salakhutdinov.
 \newblock Dropout: A simple way to prevent neural networks from overfitting.
 \newblock {\em Journal of Machine Learning Research}, 15:1929--1958, 2014.
+
+\bibitem{vernon}
+Vertika Srivastava, Ankita Gupta, Divya Prakash, Sudeep~Kumar Sahoo, Rohit R.R,
+  and Yeon~Hyang Kim.
+\newblock Vernon-fenwick at {S}em{E}val-2019 task 4: Hyperpartisan news
+  detection using lexical and semantic features.
+\newblock In {\em Proceedings of the 13th International Workshop on Semantic
+  Evaluation}, pages 1078--1082, Minneapolis, Minnesota, USA, June 2019.
+  Association for Computational Linguistics.
 
 \bibitem{confusionmatrix}
 Stephen~V. Stehman.

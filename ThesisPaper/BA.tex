@@ -184,6 +184,9 @@
 
 
 \chapter{Related Work}
+Different classifiers were designed in the context of SemEval Task 4. For this purpose, the most common were Neural Networks, but overall all kinds of classifier were used. The winners of the competition used a model based on ELMo \cite{elmo}. ELMo was designed by AllenNLP in 2018 and uses a deep, bidirectional LSTM model to design character-based word representations. The advantage is that the employment of character embeddings makes it possible to identify morphological features which word-level embedding might overlook. Additionally, this ensures that valid word representations can be formed even for out-of-vocabulary words. The winners use a pre-trained ELMo model to output three vectors for each word. They state, that each vector corresponds to a layer output of the pre-trained ELMo model, whereupon they calculate the average of all three vectors to create the last word vector. Finally, the sentence vector is calculated by averaging the word vectors of a sentence. The complete development of her model was presented in the paper "Team Bertha by Suttner at SemEval-2019 Task 4: Hyperpartisan News Detection using ELMo Sentence Representation Convolutional Network" \cite{gewinner}. With their model they achieved an accuracy score of 0.822, a precision score of 0.871, a recall score of 0.755 and an F1 score of 0.809 on the by Article dataset. \\
+\noindent Team Vernon Fenwick used a combination of handcrafted text features and models that capture semantics to represent an article. Here the authors say that the handcrafted text features capture the tone, over praise, and mood in an article. For these text features a Bias Score, Article Level Polarity, Sentence Level Polarity, Subjectivity and Modality and Supleratives and Comperatives were used. The complete functionality of these features can be vied in their paper "Vernon-fenwick at SemEval-2019 Task 4: Hyperpartisan News Detection using Lexical and Semantic Features" \cite{vernon}. For the semantic features, they used Glove \cite{glove}, Doc2Vec \cite{doc2vec}, and Universal Sentence Encoder (USE) \cite{use}, with the USE giving the best score in conjunction with the henad-made features. Overall, the group came second with an Accuracy Score of 0.820, a Precision sScore of 0.815, a Recal Score of 0.828, and an F1 Score of 0.821.
+
 
 \chapter{Fundamentals}
 \section{Text Representation}
@@ -331,9 +334,9 @@ Bidirectional Encoder Representations from Transformers (\gls{bert}) \cite{bert}
 \begin{figure}[h]
 	\centering
 	%PC:
-	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	%Lap Top:
-	%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	\caption{\gls{rnn} and Feedforward Neural Network \cite{rnn}}
 \end{figure}\\
 Recurrent Neural Networks (\gls{rnn}) are a kind of artificial neural network, which considers time and order. Unlike Feedforward algorithms \cite{feedforward}, which use only the current example as input, \gls{rnn}s also use the Input Example, which they perceived in previous steps (Figure 5.1). 
@@ -364,32 +367,32 @@ The initial value $s(0)$ can take the values 0 or 1, whereas in all further step
 \begin{figure}[h]
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		%Lap Top:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		\caption{Input gate$_1$ \cite{rnn}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		%Lap Top:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		\caption{Input gate$_2$ \cite{rnn}}
 	\end{minipage}
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		%Lap Top:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		\caption{Forget gate \cite{rnn}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.8\linewidth}
 		%PC:
-		\includegraphics[width=0.5\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		%\includegraphics[width=0.5\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		%Lap Top:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		\caption{Output gate \cite{rnn}}
 	\end{minipage}
 \end{figure}
@@ -432,9 +435,9 @@ The different gates of \gls{lstm}s are Input-, Forget- and Output Gate, where th
 \begin{figure}[h]
 	\centering
 	%PC:
-	\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	%\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	%Lap Top:
-	%\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	\caption{The Transformer - model architecture \cite{attention}}
 \end{figure}\\
 \noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. 
@@ -444,17 +447,17 @@ The attention mechanism used in the paper includes a query $Q$, a set of key $K$
 \begin{figure}[t]
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		%Lap Top:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		\caption{Scaled Dot-Product Attention}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		%Lap Top:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		\caption{Multi-Head Attention}
 	\end{minipage}
 \end{figure}
@@ -483,9 +486,9 @@ where $pos$ is the position and $i$ is the dimension. Therefore the resulting wa
 \begin{figure}[h]
 	\centering
 	%PC:
-	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	%Lap Top:
-	%\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	\caption{\gls{bert} Input Representations \cite{bert}}
 \end{figure}
 Bidirectional Encoder Representations from Transformer \cite{bert}, short \gls{bert}, is a new language representation model that, unlike previous efforts, which look at text sequences exclusively through pure left-to-right or combined left-to-right and right-to-left, applies bidirectional training of Transformer. \\
@@ -557,9 +560,9 @@ The GroundTruth-, Validation- and Training sets were each provided as XML docume
 \section{Dataset labelled by Publisher}
 \begin{minipage}[T]{.45\linewidth}
 	%PC:
-	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	%Lap Top:
-	%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	\captionof{figure}{Hyperpartisan Distribution by Publisher}
 \end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
@@ -591,17 +594,17 @@ As already described in the previous section, the distribution of the by Article
 \begin{figure}[t]
 	\begin{minipage}{.45\linewidth}
 		%PC:
-		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		%Lap Top:
-		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		\caption{Hyperpartisan Distribution by Article}
 	\end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
 	\begin{minipage}{.45\linewidth}
 	%PC:
-	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
 	%Lap Top:
-	%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
 	\caption{Publishing Years Distribution by Article}
 \end{minipage}
 \end{figure}
