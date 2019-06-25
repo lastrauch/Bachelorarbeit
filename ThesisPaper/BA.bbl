@@ -26,6 +26,11 @@ Mr. Bayes and Mr. Price.
   canton, a. m. f. r. s.
 \newblock {\em Philosophical Transactions (1683-1775)}, 53:370--418, 1763.
 
+\bibitem{fasttext}
+Piotr Bojanowski, Edouard Grave, Armand Joulin, and Tomas Mikolov.
+\newblock Enriching word vectors with subword information.
+\newblock {\em arXiv preprint arXiv:1607.04606}, 2016.
+
 \bibitem{algorithms}
 Giuseppe Bonaccorso.
 \newblock {\em Machine learning algorithms : reference guide for popular
@@ -60,6 +65,11 @@ Jacob Devlin, Ming{-}Wei Chang, Kenton Lee, and Kristina Toutanova.
 \newblock {BERT:} pre-training of deep bidirectional transformers for language
   understanding.
 \newblock {\em CoRR}, abs/1810.04805, 2018.
+
+\bibitem{adam}
+Jimmy~Ba Diederik P.~Kingma.
+\newblock Adam: A method for stochastic optimization.
+\newblock {\em CoRR}, abs/1412.6980, 2014.
 
 \bibitem{bahdnau}
 Yoshua~Bengio Dzmitry~Bahdanau, Kyunghyun~Cho.
@@ -168,6 +178,11 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
   D.~Cournapeau, M.~Brucher, M.~Perrot, and E.~Duchesnay.
 \newblock {Scikit-learn: Machine Learning in Python }.
 \newblock {\em Journal of Machine Learning Research}, 12:2825--2830, 2011.
+
+\bibitem{glove}
+Jeffrey Pennington, Richard Socher, and Christopher~D. Manning.
+\newblock Glove: Global vectors for word representation.
+\newblock In {\em EMNLP}, 2014.
 
 \bibitem{pickle}
 pickle — python object serialization.

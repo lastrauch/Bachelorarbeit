@@ -182,19 +182,12 @@
 
 \chapter{Introduction}
 
-\section{Problem Statement}
- 
- 
 
-\section{Contribution}
-
- 
-
-\section{Related Work}
+\chapter{Related Work}
 
 \chapter{Fundamentals}
-
-\section{Term Frequency-Inverse Document Frequency}
+\section{Text Representation}
+\subsection{Term Frequency-Inverse Document Frequency}
 Term frequency (\gls{tf}) is a measure that denotes how frequently a term \textit{t} appears a the document \textit{d}. One way to compute \gls{tf} is \cite{IR-book}:\\
 \[
 tf(t,d)=\frac{1+\log(tf_{t,d})}{1+\log(ave_{t\in d}(tf_{t,d}))}
@@ -211,16 +204,17 @@ Where $N$ is the total amount of doucments in a document set and $d \in D : t \i
 \[
 w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
 \]
-Therefore, \Gls{tfidf} indicates how significant a word is to a document in a collection or corpus. It is regularly used as a weighting factor in Information Retrieval and Text Mining. \textit{The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others.}\\
+Therefore, \Gls{tfidf} indicates how significant a word is to a document in a collection or corpus. It is regularly used as a weighting factor in Information Retrieval and Text Mining. 
+\newpage
+\noindent \textit{The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others.}\\
 \noindent \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between 2 terms. However, TF-IDF is based on the bag-of-words (BoW) model, which is why it disregards aspects such as text position, semantics and co-occurrence.
 
-\section{Word Embeddings}
+\subsection{Word Embeddings}
 Word Embeddings are based on the approach of Harris' Distributional Hypothesis \cite{distributionalhypothesis} from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
-\noindent A Word Embedding provides a word vector for each word. This is done by extracting features from that word within the context in which it appears and assigning it a place within the vector space. Two similar words will occupy locations near one another within this vector space, while words that differ will have positions much further apart. This makes it possible to calculate the distance calculation by computing cosine distance.
+\noindent A Word Embedding provides a word vector for each word. This is done by extracting features from that word within the context in which it appears and assigning it a place within the vector space. Two similar words will occupy locations near one another within this vector space, while words that differ will have positions much further apart. This makes it possible to calculate the distance calculation by computing cosine distance. There are different models for learning word vectors. Among others fastText \cite{fasttext}, GloVe \cite{glove} and word2vec. \\
 
-\subsection{Word2Vec}
+%\subsubsection{Word2Vec}
 Word2Vec is a "2-Model Architecture for computing continuous vector representations of words from very large dataset"\cite{effiecientestimation} that creates an n-dimensional vector space in which each word is represented as a vector. Word2Vecs 2 learning models are the \gls{cbow} and Skip-Gram-Model.\\
-\\
 \noindent \gls{cbow} uses the context word to predict the target word. The input is a one-hot encoded vector. The weights between the input layer and the output layer can be represented by a $V \cdot N$ matrix \textit{W} where "each row of $W$ is the $N$-dimension vector representation $w_v$ of the associated word of the input layer" \cite{word2vecparam}. The hidden-layer \textit{h} is computed by multiplying the one-hot encoding vector of the input word $w_I$ with the weight matrix \textit{W} \cite{word2vecparam}.
 \[
 h=W^Tx=W_{(k, \cdot)}^{T}:=v_{w_I}^{T}
@@ -228,13 +222,16 @@ h=W^Tx=W_{(k, \cdot)}^{T}:=v_{w_I}^{T}
 Next we have another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix. With these weights we can finally compute a score $u_j$ for each word in the vocabulary \cite{word2vecparam}
 \[
 u_{j}={v'}_{w_j}^{T}h
-\] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. Afterwards "we can use \textit{softmax}, which is a log-linear classification model, to obtain the posterior distribution of words" \cite{word2vecparam}.
+\] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. \\
+
+\noindent Afterwards "we can use \textit{softmax}, which is a log-linear classification model, to obtain the posterior distribution of words" \cite{word2vecparam}.
 \[
 p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
-\] \\
-\\
+\] 
 \noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same \cite{word2vecparam}. However in the output layer, we are now outputting \textit{C} multinomial distributions. 
-\section{Multinomial Naive Bayes Classifier}
+
+\section{Classification Methods}
+\subsection{Multinomial Naive Bayes Classifier}
 The Naive Bayes classifier is based on  Bayes' theorem \cite{btheory}, which comes from the probability calculus and describes the calculation of conditional probability. Each object in this classification approach is assigned to the class for which the highest probability was computed or for which the lowest costs arise in this assignment.  \\
 \noindent The Multinomial Naive Bayes classifiers assumes that the position of the word does not matter, as well as  that the feature probabilities $Pr(t_i|c_)$ are independent given a class $c$.
 The probability of a class value $c$ given a test document $t_i$ is computed as \cite{multinomialnb}
@@ -242,17 +239,14 @@ The probability of a class value $c$ given a test document $t_i$ is computed as 
 Pr(c|t_i)=(\sum_{n}f_{ni})!\prod_{n}\frac{Pr(w_n|c)^{f_{ni}}}{f_{ni}!}
 \]
 where $f_{ni}$ is the number of times a word $n$ occurs in document $t$ and $Pr(t_i|c)$ is the probability of observing word $n$ given class $c$.
-\section{Logistic Regression Classifier}
+
+\subsection{Logistic Regression Classifier}
 \noindent Logistic Regression is like Naive Bayes, a probabilistic classifier, and thus classifies by estimating the probability $P(Y|X)$ that the object belongs to a particular class.
 It can be derived analogously to the linear regression model \cite{logisticregressionbook}, 
 \[
 P(Y|X)=Pr(Y=1)=X\beta
 \]
-where $X$ is the vector of predictors $\{X_1,...,X_n\}$ and $\beta$ is the model's parameter vector. In contrast to linear regression, in logistic regression only values between 0 and 1 are obtained, which can be attributed to the addition of the sigmoid function \cite{algorithms2} (Figure 2.1).
-\[
-p(\bar{x}_i)=\sigma(\bar{x}_i)=\frac{1}{1+e^{-z_i}}
-\]
-, where $z_i=\log(\frac{p(\bar{x}_i)}{1-p(\bar{x}_i)})$. \\
+where $X$ is the vector of predictors $\{X_1,...,X_n\}$ and $\beta$ is the model's parameter vector. In contrast to linear regression, in logistic regression only values between 0 and 1 are obtained, which can be attributed to the addition of the sigmoid function $p(\bar{x}_i)=\sigma(\bar{x}_i)=\frac{1}{1+e^{-z_i}}$ \cite{algorithms2}, where $z_i=\log(\frac{p(\bar{x}_i)}{1-p(\bar{x}_i)})$. \\
 So if the probability distribution is modelled with a sigmoid, the following is obtained \cite{algorithms2}:
 \[
 z_i=\log(\frac{p(\bar{x}_i)}{1-p(\bar{x}_i)})=\log(\frac{\frac{1}{1+e^{-z_i}}}{1-\frac{1}{1+e^{-z_i}}})=\log(\frac{1}{e^{-z_i}})=z_i
@@ -266,20 +260,22 @@ where $\Theta$ is a single parameter vector.
 \[
 l(\Theta)=-\sum_{i}y_i\log(\sigma(z_i))+(1-y_i)\log(1-\sigma(z_i))
 \]
-\begin{figure}[t]
-	\centering
+%\begin{figure}[t]
+%	\centering
 	%Arbeit:
 	%includegraphics[width=0.5\textwidth]{C:/Users/lastrauc/Documents/Git/ThesisPaper/Pictures/Hypeprartisan_LabeledByPublisher.png}
 	%PC:
-	%\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
+%	\includegraphics[width=0.5\textwidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
 	%Lap Top:
-	\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
-	\caption{Sigmoid Function \cite{algorithms}}
-\end{figure}
+	%\includegraphics[width=0.5\textwidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/sigmoid.png}
+%	\caption{Sigmoid Function \cite{algorithms}}
+%\end{figure}
 \noindent This implies, if $y=0$, the first term ends up $0$ and the second $\log(1-\sigma(z_i)$, which results in a log-likelihood of $0$. In the event that $y=1$, the second term ends up 0 and the first one corresponds to the log-likelihood of $z$. Along these lines, both cases are integrated into a solitary articulation. \\
 \\ A major issue in machine learning is the aspect of overfitting. Overfitting tends to adjust the model too much to the training data. This happens when a model learns the details in the training data so that the performance of the model is contrairily influenced by new data. This implies that noise or random fluctuations in the training data are recorded and learned as concepts by the model. The issue is, that these concepts do not apply to new data and negatively impact the generalization of the model. Therefore, there is the process of \textit{regularization}, which is a form of regression that decreases the coefficient estimation to $0$ and assumes that smaller weights generate simpler models and thus helps avoid overfitting. \\
 \noindent Two of the most commonly used regularization techniques are \textit{Lasso Regression (L1)} and \textit{Ridge Regression (L2)}, which differ mainly in the penalty term. \\
-\noindent The \textit{L1} loss function minimizes the sum of the absolute differences between the target value and the estimated values. If input characteristics have weights closer to zero, this results in a sparse L1 standard. In the Sparse solution, most of the input features have zero weights and very few features have non-zero weights. The L1 regulation offers a function selection. This is done by associating insignificant input features with zero weights and useful features with a non-zero weight. \noindent \textit{L1} solves the regularized logistic regression by minimizing the following cost function:
+\noindent The \textit{L1} loss function minimizes the sum of the absolute differences between the target value and the estimated values. If input characteristics have weights closer to zero, this results in a sparse L1 standard. In the Sparse solution, most of the input features have zero weights and very few features have non-zero weights. The L1 regulation offers a function selection. This is done by associating insignificant input features with zero weights and useful features with a non-zero weight. 
+\newpage 
+\noindent \textit{L1} solves the regularized logistic regression by minimizing the following cost function:
 \[
 \min_{w, c} \quad \|w\|_1 + C \sum_{i=1}^n \log(\exp(1+e^{-y_ix^Tx_i})
 \]
@@ -292,10 +288,11 @@ The L2 loss function is essentially about minimizing the sum of the square of th
 L2 control forces the weights to small weights, but does not make them zero and leads to a not sparse solution. In addition, L2 is not robust against outliers, since square terms inflate the error differences of the outliers and the regularization term tries to correct them by punishing the weights.
 
 
-\section{Decision Trees and Random Forest Classifier}
-\subsection{Decision Trees}
+\subsection{Decision Trees and Random Forest Classifier}
+\subsubsection{Decision Trees}
 Starting from the root node of a tree, a feature is evaluated from which a branch is subsequently selected. This process is repeated until the last node in the tree (leaf) is reached, which supplies the corresponding class. Different approaches have been developed in Decision Trees. One of the first is called \textit{Iterative Dichotomizer (ID3)}. However, this algorithm had the disadvantage that explicit functions were necessary, which led to the development of C4.5. Like ID3, C4.5 manages continuous values. In return to ID3, C4.5 could furthermore manage summarized and decreed values and transform a tree into a set of conditional expressions. Nevertheless, the most recent development called CART (Classification and Regression Trees) was introduced, which allows the use of absolute and numeric values, as well as the non-use of standard sets. In addition, CART trees can be utilized for characterization and fallback assignments. \cite{algorithms2}\\
 \noindent The algorithm uses impurity measures to select a particular branch from a leaf. Among others, the two most common measures are \textit{Gini Impurity} and \textit{Cross Entropy} Index \cite{algorithms}.  These impurity measures are  applied to each candidate subset, and the resulting values are combined (e.g., averaged) to provide a measure of the quality of the split,
+\newpage
 \[
 I_{Gini}(j)=\sum_{i}p(i|j)(1-p(i|j))
 \]
@@ -306,7 +303,7 @@ where $j$ is a certain node, $p(i|j)$ is the probability with $i \in [1,n]$ asso
 \noindent The \textit{Gini} Index measures how often a randomly selected element from the set would be mislabelled ift it were randomly chosen according to the distribution of labels in the subset. The minimum index (0,0) is achieved when all examples are classified into a solitary class.\\
 \noindent "\textit{Cross-Entropy} is based on information theory, and assumes null values only when samples belonging to a single class are present in a split, while it is maximum when there's a uniform distribution among classes. This index is very similar to the Gini impurity, even though, more formally, the cross-entropy allows to select the split that minimizes the uncertainty about the classification, while the \textit{Gini} impurity minimizes the probability of misclassification" \cite{algorithms}.
 
-\subsection{Random Forest Classifier}
+\subsubsection{Random Forest Classifier}
 The Random Forest classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. Each tree in this process may make a decision, these votes are then aggregated to determine the final class. According to Breiman \cite{randomforest} the Random Forest algorithm is as follows:\\
 
 \begin{algorithm}[H]
@@ -323,10 +320,197 @@ The Random Forest classifier is a classification technique that creates multiple
 	Define an output function averaging the single outputs or employing a majority vote
 	\caption{Random Forest}
 \end{algorithm}
-\section{Cross Validation}
-\textit{Cross Validation} is a model validation technique used to survey how the result of measurable statistical analysis generalizes into an independent dataset. The idea is to divide the entire dataset into a moving test and training set. The size of the test set is determined by the quantity of folds, so that at \textit{k} emphases the test set covers the whole original dataset.\\
-\noindent A round of \text{Cross Validation} comprises of separating a sample of data into corresponding subsets, performing the analysis on the training set, and validating the analysis on the test set. To decrease fluctuation, most strategies perform several rounds of \textit{Cross Validation} utilizing various partitions and combine the validation result over the rounds to obtain an estimate of the predictive performance of the model.
+
+\newpage
+\subsection{Bidirectional Encoder Representation from Transformers}
+Bidirectional Encoder Representations from Transformers (\gls{bert}) \cite{bert} is a novel model that was introduced in October 2018 by researches at Google AI Language and has since caused a stir in the field of machine learning by representing state-of-the-art results in a variety of Natural Languag Processing tasks. The special feature of this model, unlike previous efforts, is the technical innovation of bi-directional training of transformers. \\
+\noindent In order to understand how the actual model, and thus the classification model applied in this thesis, works, I will discuss the basics and the actual \gls{bert} model in the following section.
+
+\subsubsection{Transfer Learning}
+\textbf{Recurrent Neural Networks}
+\begin{figure}[h]
+	\centering
+	%PC:
+	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	%Lap Top:
+	%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	\caption{\gls{rnn} and Feedforward Neural Network \cite{rnn}}
+\end{figure}\\
+Recurrent Neural Networks (\gls{rnn}) are a kind of artificial neural network, which considers time and order. Unlike Feedforward algorithms \cite{feedforward}, which use only the current example as input, \gls{rnn}s also use the Input Example, which they perceived in previous steps (Figure 5.1). 
+This sequential information is retained over many time steps in the hidden state of the RNN as it cascades forward to affect the processing of each new example. This means that the RNN finds correlations between events that are separated by many steps. These relationships are referred to as \textit{long-term dependencies} because a subordinate event is dependent on one or more preceding events.\\
+\newpage
+\noindent Mathematically, a \textit{simple recurrent neural network} \cite{ELMAN1990179} can be represented as follows \cite{rnnmodel}:
+\[
+x(t)=w(t)+s(t-1)
+\]
+\[
+s_j(t)=f(\sum_{i}x_i(t)u_{ji})
+\]
+\[
+y_k(t)=g(\sum_{j}s_j(t)v_{kj})
+\]
+Where $x(t)$ is the input-, $s(t)$ the hidden- and $y(t)$ the output layer. $s_t$ is the function of the input at the same time step $t$, modified by a weight matrix $w$, which has been added to the hidden states previous step $s(t-1)$ and multiplied by its own hidden-state-to-hidden-state matrix $u$. The weight matrices $w$ and $u$ are filters that determine the importance of matching the current input as well as the past hidden-state. These generate errors which return via backpropagation and are used to adjust their weights until the error can no longer be reduced. The sum of the weight input and hidden state is squashed by the functions $f$ or $g$, where  $f(z)$ represents the sigmoid function
+\[
+f(z)=\frac{1}{1+e^{-z}}
+\]
+and $g(z)$ the softmax function
+\[
+g(z_m)=\frac{e^{zm}}{\sum_{l}e^zk}
+\]
+The initial value $s(0)$ can take the values 0 or 1, whereas in all further steps $s(t+1)=s(t)$. \\
+\noindent A problem of \gls{rnn}s is the disappearance and explosion of the gradient. Since the layers and time steps of deep neural networks are wired together by multiplication, derivatives are susceptible to disappearance or explosion. With an exploding gradient, the weights at the upper end become saturated, whereas with disappearing gradients, the final value will tend to 0. \\
+
+\noindent \textbf{Long Short-Term Memory} \\
+\begin{figure}[h]
+	\begin{minipage}[b]{0.5\linewidth}
+		%PC:
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		%Lap Top:
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		\caption{Input gate$_1$ \cite{rnn}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.5\linewidth}
+		%PC:
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		%Lap Top:
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		\caption{Input gate$_2$ \cite{rnn}}
+	\end{minipage}
+	\begin{minipage}[b]{0.5\linewidth}
+		%PC:
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		%Lap Top:
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		\caption{Forget gate \cite{rnn}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.8\linewidth}
+		%PC:
+		\includegraphics[width=0.5\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		%Lap Top:
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		\caption{Output gate \cite{rnn}}
+	\end{minipage}
+\end{figure}
+Long Short-Term Memory (\gls{lstm}) units \cite{lstm} are a modification of the RNNs which represent a problem elimination for the disappearing gradient. Unlike standard RNNs, \gls{lstm}s no longer consist of a single neural network layer, but of four instead. \gls{lstm}s are formed by multiple gates which close and open (Figure 5.2 - 5.5). This allows a cell to make decisions about what to back up and when to read, write or delete. Within a cell, information can be saved, written or read from. Gates act on the signals they receive and block or route the data they filter with their own weights based on their strength and import. These weights are tailored via the learning process of the recurring networks. 
+\newpage 
+\noindent This means that cells learn when to enter, leave or remove facts by iteratively making assumptions, propagating errors backwards and adapting weights via gradient descent.\\
+The different gates of \gls{lstm}s are Input-, Forget- and Output Gate, where the Input Gate controls the contribution of a new input to the memory, the Forget Gate controls the limits up to which a value remains in the memory, and the Output Gate controls the limit up to which the memory in the activation block of the output contributes. Mathematically, the different gates can be represented as follows \cite{rnn}: 
+\begin{itemize}
+	\item Input Gate - Figure 5.2: 
+	\begin{itemize}
+		\item $i_t=\sigma(W_i \cdot [h_{t-1}, x_t]+b_i)$
+		\item $\acute{C}=\tanh(W_C \cdot [h_{t1}, x_t]+b_c)$
+		\item where $x_t$ is the time step at $t$, $h_{t-1}$ denotes the hidden state at time step $t-1$, $i_t$ is the input gate layer output at step $t$, $\acute{C}$ refers to candidate values to be added to the input gates output at time $t$, $b_i$ and $b_c$ denote the bias for the input gate layer and the candidate value computation and $W_i$ and $W_c$ denote the weights for the input gate layer and the candidate value computation.
+	\end{itemize}	
+	\item  Input Gate - Figure 5.3:
+	\begin{itemize}
+		\item $C_t=f_t*C_{t-1}+i_t*C_t$
+		\item Where $C_i$ denotes the cell state after time step $i$ and $F_t$ is the forget state at step $t$.
+	\end{itemize}
+	\item Forget Gate - Figure 5.4:
+	\begin{itemize}
+		\item $f_t=\sigma(W_f \cdot [h_{t-1}, x_t]+b_f)$
+		\item Where $f_t$ denotes the forget state at time step $t$ and $W_f$ and $b_f$ are the weights and bias for the forget state at step $t$.
+	\end{itemize}
+	\item Output Gate - Figure 5.4:
+	\begin{itemize}
+		\item $o_t=\sigma(W_o \cdot [h_{t-1},x_t]+b_o)$
+		\item $h_t=o_t*\tanh(C_t)$
+		\item Where $o_t$ is the output gates output at time step $t$ and $W_o$ and $b_o$ denote the weights and bias for the output gate at time step $t$.
+	\end{itemize}
+\end{itemize}
+
+
+\noindent "Today, \gls{lstm} networks have become a more popular choice than basic \gls{rnn}s, as they have proven to work tremendously on diverse sets of problems. Most remarkable results are achieved with \gls{lstm} networks than \gls{rnn}s, and now the phenomenon has extended such that wherever an \gls{rnn} is quoted, it usually refers to \gls{lstm} network only" \cite{rnn}.\\
+
+\noindent \textbf{\gls{rnn} Encoder-Decoder} \\
+\noindent Classic RNNs and LSTMs have the problem that the input and output length of the sequences may vary. This led to the development of the RNN Encoder-Decoder \cite{encodedecode}, which consists of 2 recurring neural networks that function as a pair of encoders and decoders. Here the encoder maps a variable length input sequence to a fixed length vector, whereupon the decoder maps the vector representation to a variable length output sequence. \textit{Cho et. al} states, that "the encoder is an \gls{rnn} that reads each symbol of an input sequence x sequentially. After finishing the reading process of a sequence, the hidden state of the \gls{rnn} is a summary c of the complete input sequence" \cite{encodedecode}. This means that at the end of the training, the encoder provides an input feature vector that can be used by the decoder to construct the input with those aspects that are most essential to make the reconstructed input noticeable as the actual input. The paper also states, that the "decoder represents another \gls{rnn} that has been trained to generate the output sequence by predicting the next symbol $y_t$ under the condition of the hidden state $h_t$. In contrast to typical \gls{rnn}s, $y_t$ and $h_t$ are also dependent on each other by $y_{t-1}$ and the combination c in this case". 
+\newpage
+\noindent \textbf{Transformer and Attention} \\
+\begin{figure}[h]
+	\centering
+	%PC:
+	\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	%Lap Top:
+	%\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	\caption{The Transformer - model architecture \cite{attention}}
+\end{figure}\\
+\noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. 
+\newpage
+In 2017 the paper "Attention is all you need" by Ashish Vaswani et al.  \cite{attention} was published which suggests to neglect \gls{rnn}s and instead proposes a new model architecture called "Transformer". As the title of the paper indicates, this model uses attention mechanisms. Like \gls{lstm}, Transformer is also an architecture for transforming one sequence into another using an Encoder and Decoder, but differs from the previously existing sequence-to-sequence models since it does not include recurrent networks. Furthermore, the Attention Mechanism model has been extended by using self-attention and point-wise, fully connected layers for Encoders and Decoders.
+The attention mechanism used in the paper includes a query $Q$, a set of key $K$ and a set ov values $V$. Here the function connects the query vector with the set of key-value pairs to an output in which query, keys, values and output are all vectors.\\
+\begin{figure}[t]
+	\begin{minipage}[b]{0.5\linewidth}
+		%PC:
+		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		%Lap Top:
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		\caption{Scaled Dot-Product Attention}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[b]{0.5\linewidth}
+		%PC:
+		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		%Lap Top:
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		\caption{Multi-Head Attention}
+	\end{minipage}
+\end{figure}
+\\The Encoder of this model, consists of $N=6$ layers of \textit{Multi-Head Attention} and \textit{Position-Wise Feed Forward} networks with \textit{residual connections} \cite{residualcon} employed around each of the two sublayers, followed by a layer of Normalization \cite{normalization}, whereby dropouts \cite{dopout} are also added to the output of each sublayer before they are normalized. The Encoders input is added by creating an Input Embedding plus its Position Encoding. For each word, \textit{self-attention} aggregates information from all other words in the context of the sentence, creating a new representation for each word, which is a visited representation of all other words in the sequence. This is repeated for each word in a sentence  successively building newer representations on top of previous ones several times.
+\noindent The model's Decoder includes $N=6$ layers as well, consisting of \textit{Masked Multi-Head Attention}, \textit{Multi-Head Attention} and \textit{Position-Wise Feed Forward} networks with residual connections around them, followed by a layer of normalization. Here the input is the Output Embedding plus its positional encoding, which is offset by one to ensure that the prediction for position $i$ depends only on the positions ahead of i. Masked-Multi-Head Attention is necessary to prevent future words from being part of the attention. Following here is the Position-Wise Feed Forward Normalization. The Decoder generates one word after the other from left to right, where the first word is based on the final representation of the Encoder, offset by one position. Each predicted word then takes care of the previously generated words of the Decoder on that layer, as well as the final representation of the Encoder.
+
+\noindent The intention behind Self-Attention is to avoid long-term dependencies by learning the attention distribution with each additional word for each representation of an input word and using that distribution with each word pair as the weight of a linear layer to calculate a new representation for each input representation. In this way, the input representation possesses global level information about every other token in the sequence not only at the connection between the encoder and decoder, but also at the beginning. This kind of attention is described in the Transformer Paper as "Scaled Dot-Product" (Figure 5.7) and is calculated as follows:
+\[
+Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V
+\]
+Where $Q$ is the query of  dimension $d_k$, $K$ are are the keys of dimension $d_k$ and $V$ are the values of dimension $d_v$. \\
+\noindent Another special feature of the Attention Art described in the paper is the fact that not only single attention, i.e. weighted sum values, but Multi-Head Attention (Figure 5.8) is calculated, which means that this mechanism coaculates multiple attention weighted sums. Each of these multiple heads is a linear transformation of the initial representation. This is done so that different parts of the input representation can interact with different parts of the other representation with which it is compared in the vector space. This provides the model to capture different aspects of the input and improve its expressiveness.\\
+
+\noindent Since neither recurrence nor convolution are used in this model, the Transformer takes advantage of \textit{Positional Encodings}, which make it possible to use the order of the sequences. These inhabit the same  dimension $d_{model}$ as the embeddings, in order to execute a summation. For these positional encodings the Transformer uses sine and cosine functions with different frequencies:
+\[
+PE(_{(pos,2i)}=\sin (\frac{pos}{10000^{\frac{2i}{d_{model}}}})
+\
+\]
+\[
+PE_{(pos,2i+1)}=\cos (\frac{pos}{10000^{\frac{2i}{d_model}}})
+\]
+where $pos$ is the position and $i$ is the dimension. Therefore the resulting wavelengths have a geometric progression from $2\pi$ to $1000 \cdot 2\pi$.
+
+\newpage
+\subsubsection{\gls{bert} Model}
+\begin{figure}[h]
+	\centering
+	%PC:
+	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	%Lap Top:
+	%\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	\caption{\gls{bert} Input Representations \cite{bert}}
+\end{figure}
+Bidirectional Encoder Representations from Transformer \cite{bert}, short \gls{bert}, is a new language representation model that, unlike previous efforts, which look at text sequences exclusively through pure left-to-right or combined left-to-right and right-to-left, applies bidirectional training of Transformer. \\
+\noindent The \gls{bert} model exists in two versions. \gls{bert}$_{Base}$, which consists of 12 transformer layers, a hidden size of 768 and 12 self-attention heads, whereas \gls{bert}$_{Large}$ consists of 24 layers, a hidden size of 1020 and 16 self-attention heads. In this thesis the \gls{bert}$_{Base}$ model was used, since my existing resources would not have been sufficient for the \gls{bert}$_{Large}$ model.\\
+
+\noindent \textbf{Input Representation} \\
+The input of the \gls{bert} model consists of the sum of token-, segmentation- and position embeddings (Figure 5.9). As it is not possible to consider the order of inputs due to the transformer architecture of \gls{bert}, the model uses the same concept of position embeddings as described in the paper "Attention Is Al You Need" \cite{attention}. Here, a sequence length of 512 tokens is possible. The segmentation embeddings are necessary since BERT makes it possible to pass 2 sentence pairs as input. This helps the model to learn a unique embedding for the first and second sentence in order to distinguish between these two sentences.  Additionally, the token [CLS] is inserted at the beginning of the first sentence and the token [SEP] at the end of each sentence. Here [CLS] is used as the key corresponding to the output of the transformer as an aggregated sequence representation for classification tasks, while [SEP] is an additional help for the model to distinguish two sentence pairs.\\
+
+\noindent \textbf{Pre-training and Fine-Tuning}\\
+\gls{bert} is a pre-trained model, which has been trained on two unsupervised tasks, called \textit{Masked LM} (\gls{mlm}) and \textit{Next Sentence Prediction}. The idea of pre-training is to pass start values to a neural network, which is to be trained on the basis of a new data set, so it is not initialized randomly.
+\newpage
+\noindent \gls{mlm} is the main aspect of bidirectional training. In classical Masked Language models, such as Taylor's Cloze task of 1953 \cite{cloze}, models are trained by randomly replacing a certain percentage of words with the token [MASK] and then predicting these words from the model. \gls{bert} uses this mechanism by selecting and masking 15\% of the tokens evenly and randomly. However, since the problem here is that the model only tries to predict when the token [MASK] is present in the input, which means that the hidden state of the input token may not be as rich as it could be, BERT extends the Masked Language Model. In this extension, 15\% of the tokens are selected randomly, whereby not all selected words are provided with [MASK] any more, but in 10\% of the cases, the selected token is replaced by a random word, in further 10\% the token remains intact, while in the remaining 80\% the token is replaced by [MASK]. This enables the model to realize which information to use by deriving which words are absent.\\
+\noindent In addition to ML models, \gls{bert} uses \textit{Next Sentence Prediction}, which allows subsequent sentences to be predicted. In this training process, the model receives pairs of sentences as input and learns to predict whether the second sentence in the pair is the following sentence in the original document. Here half of the inputs are a pair in which the second sentence is the next sentence in the original document, while in the remaining 50\% a random sentence is chosen as the successor from the corpus. This allows the model to develop an understanding of relationships between two sentences. \\
+
+\noindent Fine-tuning involves the process of using an already pre-trained neural networks for another similar task. This way, it is possible to use the extracted feature of the already trained model without having to develop a feature extraction from scratch on the new model. The authors of the paper claim that it is possible to fine tune the BERT model using a single additional output layer. Different approaches are used for different Language Tasks. In the case of a classification task, like the one in this thesis, the last hidden state [CLS] is used, whereupon a classification layer is added. 
+
+
+
+
+
+
+
 \section{Evaluation}
+
+\subsection{Evaluation Measures}
 In order to evaluate how well a classifier works, several procedures exist. The ones used during the competition are \textit{Accuracy}, \textit{Recall}, \textit{Precision} and \textit{F1-Score}, for which the Confusion Matrix \cite{confusionmatrix} (Table 2.1) forms the basis. Each column of the matrix represents the instances of a predicted class, while each row represents the instances of the actual class. \\
 \begin{center}
 	\renewcommand\arraystretch{1.5}
@@ -354,11 +538,13 @@ In order to evaluate how well a classifier works, several procedures exist. The 
 	where an F1 value reaches its best value at 1
 	and worst at 0
 \end{itemize}
-\chapter{Data}
-\label{cha:theory}
+
+\subsection{Cross Validation}
+\textit{Cross Validation} is a model validation technique used to survey how the result of measurable statistical analysis generalizes into an independent dataset. The idea is to divide the entire dataset into a moving test and training set. The size of the test set is determined by the quantity of folds, so that at \textit{k} emphases the test set covers the whole original dataset.\\
+\noindent A round of \text{Cross Validation} comprises of separating a sample of data into corresponding subsets, performing the analysis on the training set, and validating the analysis on the test set. To decrease fluctuation, most strategies perform several rounds of \textit{Cross Validation} utilizing various partitions and combine the validation result over the rounds to obtain an estimate of the predictive performance of the model.
 
 
-\section{Data Description}
+\chapter{Data Description}
  The given data, the model is build on, was provided by zenodo.org as part of SemEvals Task 4 [\url{https://pan.webis.de/semeval19/semeval19-web/}] and consists of 2 independent datasets, which in turn have been divided into a GroundTruth-, Training- and Validation set.
  
  \noindent The first dataset, recognizable by the term 'byPublisher', reflects the publisher's general bias set forth by BuzzFeed journalists or MediaBiasFastCheck.com beforehand. It consists of a total of 750,000 items, of which 600,000 belong to the Training- and 150,000 to the Validation set.
@@ -368,12 +554,12 @@ In order to evaluate how well a classifier works, several procedures exist. The 
 The GroundTruth-, Validation- and Training sets were each provided as XML documents. While the Training- and Validationset contain the articles, the GroundTruth file contains the attributes \textit{article-url}, \textit{labeled-by}, \textit{id} and \textit{hyperpartisan}. The main distinction between the by Article and by Publisher labelled datasets is that the by Publisher labelled GroundTruth dataset contains an additional attribute named \textit{bias}. In this context, the \textit{article-url} provides the URL of the article, the characteristic \textit{labeled-by} reflects whether the article belongs to the publisher or article dataset, \textit{id} represents a unique ID for the article, \textit{hyperpartisan} reflects whether the article was labeled als Hyperpartisan or not and the additional attribute \textit{bias} in the publisher record, states whether the article belongs to the "left", "left-center", "least", "right-center" or "right" sector.
  
 
-\subsection{Dataset labelled by Publisher}
+\section{Dataset labelled by Publisher}
 \begin{minipage}[T]{.45\linewidth}
 	%PC:
-	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	%Lap Top:
-	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	\captionof{figure}{Hyperpartisan Distribution by Publisher}
 \end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
@@ -399,23 +585,23 @@ Furthermore, the classification is expressed by the distribution of the addition
 The publicity data is distributed over the years 1964-2018, with most of the data coming from 2012-2018.
 
 
-\subsection{Dataset labelled by Article}
+\section{Dataset labelled by Article}
 
 As already described in the previous section, the distribution of the by Article dataset is different from the by Publisher one. The distribution is no longer 50:50, but only 36.9\% were classified as Hyperpartisan (Figure 3.2). 
 \begin{figure}[t]
 	\begin{minipage}{.45\linewidth}
 		%PC:
-		%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		%Lap Top:
-		\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		\caption{Hyperpartisan Distribution by Article}
 	\end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
 	\begin{minipage}{.45\linewidth}
-		%PC:
-	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
-		%Lap Top:
-	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+	%PC:
+	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+	%Lap Top:
+	%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
 	\caption{Publishing Years Distribution by Article}
 \end{minipage}
 \end{figure}
@@ -423,6 +609,10 @@ As already described in the previous section, the distribution of the by Article
 
 
 
+
+
+\chapter{Classification Techniques}
+The primary procedure in Text Classification consist of 7 steps \cite{textclassification}. These include  reading the dataset, tokenization, stemming, removing stop words, represent the text using vectors, feature extraction and selection, as well as applying classification algorithms. Since the first five steps have already been covered in Chapter 2, I will discuss the remaining three in this section. Especially, step 7 -- applying classification algorithms -- plays an important role. As already mentioned in Chapter 1 - Introduction, we build the classifier using \glspl{bert}-Embeddings. In order to compare how the model performs, I will therefore focus on classical text classification algorithms.
 
 \section{Data Preparation}
 In order to be able to work with the existing data in the further course of this project, several preprocessing steps are necessary. In the preprocessing phase of my bachelor's thesis, the data therefore went through the following steps:
@@ -435,7 +625,7 @@ In order to be able to work with the existing data in the further course of this
 \end{enumerate}	
 \noindent As a result, in the following section, I will go further into detail how I preprocessed my data.
 
-
+\newpage
 \subsection{File Parsing}
 Since it is difficult to work with the given data in an XML format, the first challenge is to convert these files into a format which allows work with them more easily. The particular challenge here is the size of the dataset labelled by publisher. A standard algorithm for reading XML files is provided by pythons DOM library \textit{ElementTree}, called \textit{ElementTree.parse}\cite{parse}. This method returns an ElemenTree type, which "is a flexible container object, designed to store hierarchical data structures in memory" [ http://effbot.org/zone/element.htm]. Meaning, that this library forms the entire model in the memory which can pose a problem with very large files, such as ours. As a substitute, I therefore use the method \textit{ElemenTree.iterparse}, which can process XML documents in a streaming fashion, retaining in memory only the most recently examined parts of the tree\cite{iterparse}. 
 
@@ -449,19 +639,19 @@ As mentioned in Chapter 2.1 Data Description, the XML files include various feat
 	\KwIn{Ground-Truth File}
 	\KwOut{Trained Classifier} 
 	\For{event, elem in content}
-		{
+	{
 		\For{key, value in elem.items()}
-			{
+		{
 			\uIf{key == 'id'}
-				{id\_array.append(str(value))}
+			{id\_array.append(str(value))}
 			\uElseIf{key == 'published-at'}
-				{published\_at\_array.append(value)}
+			{published\_at\_array.append(value)}
 			\uElseIf{key == 'title'}
-				{title\_array.append(value)}
-			}
+			{title\_array.append(value)}
 		}
+	}
 \end{algorithm}
-
+\newpage 
 \subsection{Combine Data}
 Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library \textit{pandas} \cite{pandas} to combine both files into a single one. This, and especially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.\\
 
@@ -487,9 +677,8 @@ Since both, the Groundtruth- and Trainingdata contain important information, it 
 
 \subsection{Special Characters and Stop Word Removal}
 Since the GroundTruth- and Trainingdatasets have been combined into a single file, the next step  is to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles \cite{textclassification} are useful for training a classifier.\\
-
 \begin{algorithm}[H]
-		\DontPrintSemicolon
+	\DontPrintSemicolon
 	stop = stopwords.words('english')\;
 	\BlankLine
 	\BlankLine
@@ -499,7 +688,7 @@ Since the GroundTruth- and Trainingdatasets have been combined into a single fil
 \end{algorithm}
 
 
-\subsection{Tokenization and Stemming of the datasets}
+\subsection{Tokenization and Stemming}
 After cleaning the dataset, the words are tokenized in order to convert them into numerical vectors so that a classifier is able to work with them. Tokenization is definied as "The process of demarcating and possibly classifying sections of a string of input characters". The resulting tokens are then passed on to some other form of processing. The process can be considered a sub-task of parsing input.\\
 \noindent Stemming is the procedure of reducing the word to its grammatical root. The result is not necessarily a valid word of the language. For example, "recognized" would be converted to "recogniz". Still, the basic word almost always contains the very meaning of the word. Stemming is advantageous in that the algorithm used later now only has to fall back on a few different words instead of many, all of which have the same meaning.\\
 \\
@@ -513,34 +702,36 @@ After cleaning the dataset, the words are tokenized in order to convert them int
 	\caption{Special Character and Stopword Removal with Pandas and NLTK}
 \end{algorithm}
 
-\chapter{Methodology}
-The primary procedure in Text Classification consist of 7 steps \cite{textclassification}. These include  reading the dataset, tokenization, stemming, removing stop words, represent the text using vectors, feature extraction and selection, as well as applying classification algorithms. Since the first five steps have already been covered in Chapter 2, I will discuss the remaining three in this section. Especially, step 7 -- applying classification algorithms -- plays an important role. As already mentioned in Chapter 1 - Introduction, we build the classifier using \glspl{bert}-Embeddings. In order to compare how the model performs, I will therefore focus on classical text classification algorithms.
-
-%\section{Important Algorithms}
-%In order to avoid the repetition of algorithms used in the same context, in this section, I will explain some recurring algorithms.
-%\begin{algorithm}
-%	\DontPrintSemicolon
-%	import pickle\;
-%	filename = 'finalized\_model.sav'\;
-%	pickle.dump(model, open(filename, 'wb))
-%	\caption{Saving a trained model}
-%\end{algorithm}
-%\begin{algorithm}
-%	\DontPrintSemicolon
-%	loaded\_model = pickle.load(open(filename, 'rb'))
-%	\caption{Loading a trained model}
-%\end{algorithm}
-
-\section{Vector Representation of the Text}
+\section{Text Representation}
 In order for the classifier to be able to work with the text, the first step is to transform the words into a feature vector representation. A document is a sequence of words \cite{word2vecdortmund} so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document \cite{textclassification}. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have $V$-dimensional vector for each out of $V$ words which can lead to huge memory issues. In addition this does not notion similarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
 
 \subsection{Term Frequency-Inverse Document Frequency}
+%\begin{table}[h]
+%	\scriptsize
+%	\centering
+%	\begin{tabular}{cc|cc}
+%		\toprule
+%		By Article & \Gls{tfidf} Weight & By Publisher & \Gls{tfidf} Weight \\
+%		\midrule
+%		trump & 0.091165 & balls & 0.057251\\
+%		bannon & 0.065129 & said & 0.051183 \\
+%		president & 0.061829 & medicare & 0.047450 \\
+%		kimmel & 0.052415 & martin & 0.046519 \\
+%		money & 0.051647 & school & 0.044264\\
+%		americans & 0.049132 & university & 0.043572\\
+%		people & 0.047342 & says & 0.042079 \\
+%		obamacare & 0.042512 & trump & 0.041235\\
+%		wall & 0.042117 & carrier & 0.040903\\
+%		control & 0.039068 & degree & 0.040704\\
+%		\bottomrule
+%	\end{tabular}
+%	\caption{Top 10 terms by \Gls{tfidf} weight}
+%\end{table}
 A comparative approach I used in the course of my Bachelor Thesis is Term Frequency - Inverse Document Frequency. Using \gls{tfidf} allows to represent a word as a vector by assigning it weight which is computed through Term-Frequency multiplied with Inverse-Term-Frequency. Table 4.1 shows the 10 terms which have been assigned the highest \gls{tfidf} weights. Python's library \textit{scikit-learn} \cite{scikit-learn} provides two ways to implement \gls{tfidf} without having to program \gls{tf} and \gls{idf} by itself.
 In order to get a generally better overview, I will now explain the 2-step implementation, but note that the class \textit{sklearn.feature\_extraction.text.TfidfVectorizer} enables implementation in just one. \\
 \\ Term-Frequency, as mentioned in "Chapter 1 -- Principles", is a measure that denotes how often a term appears in a document. Inverse Document Frequency, on the other hand, reflects the importance of a term throughout a document corpus. To implement the TF-IDF measure, \textit{scikit-learn} provides the classes \textit{CountVectorizer} and \textit{TfidfTransformer} of the submodule \textit{sklearn.feature\_extraction.text} \cite{tfidf}. As an input example, I use the first article of the "byArticle" labelled dataset. \\
-\noindent In order to calculate the \gls{tf} measure, the method \textit{fit\_transform()} of the class \textit{CountVectorizer} can be used, which the document corpus is passed as a parameter. \\
-
-\begin{algorithm}[t]
+\newpage
+\begin{algorithm}[H]
 	\DontPrintSemicolon
 	\KwIn{Text Corpus}
 	count\_vect = CountVectorizer()\;
@@ -550,6 +741,7 @@ In order to get a generally better overview, I will now explain the 2-step imple
 	content\_tfidf = tfidf\_transformer.fit\_transform(content\_counts)\;
 	\caption{\gls{tfidf}}
 \end{algorithm}
+\noindent In order to calculate the \gls{tf} measure, the method \textit{fit\_transform()} of the class \textit{CountVectorizer} can be used, which the document corpus is passed as a parameter. \\
 \noindent \textit{fit\_transform()} learns a vocabulary dictionary of all tokens and then counts how many times a term \textit{t} occurs in a document \textit{d} and converts the text document into a token matrix.
 \noindent The calculation of the \gls{idf}-measure in the second step is similar to the calculation of the \gls{tf}-measure. Again, the method \textit{fit\_transform()} is called. In contrast to the method of the \textit{CountVectorizer}, the text document is no longer passed as a parameter, but the token matrix of \textit{CountVectorizer}. \\
 \noindent It should be noted that the shape of the finalized \gls{tfidf} matrix depends on the document corpus. The first time the conversion is carried out, the two objects of the respective classes learn the respective vocabulary through the keyword \textit{"fit\_"}. If a second text document should be converted to \gls{tfidf} vectors afterwards, which is supposed to be used in connection with the already converted text document, it is necessary to use the same \textit{CountVectorizer} and the same \textit{TfidfTransformer}. This is, because otherwise the error message "Dimension Mismatch" would occur in later prediction calls.
@@ -565,38 +757,19 @@ Let's take the following example: \\
 	\item By Publisher: (600000, 708863)
 	\item By Article: (645, 11485)	
 \end{itemize}
-\begin{table}
-	\scriptsize
-	\centering
-			\begin{tabular}{cc|cc}
-				\toprule
-				By Article & \Gls{tfidf} Weight & By Publisher & \Gls{tfidf} Weight \\
-				\midrule
-				trump & 0.091165 & balls & 0.057251\\
-				bannon & 0.065129 & said & 0.051183 \\
-				president & 0.061829 & medicare & 0.047450 \\
-				kimmel & 0.052415 & martin & 0.046519 \\
-				money & 0.051647 & school & 0.044264\\
-				americans & 0.049132 & university & 0.043572\\
-				people & 0.047342 & says & 0.042079 \\
-				obamacare & 0.042512 & trump & 0.041235\\
-				wall & 0.042117 & carrier & 0.040903\\
-				control & 0.039068 & degree & 0.040704\\
-				\bottomrule
-			\end{tabular}
-		\caption{Top 10 terms by \Gls{tfidf} weight}
-\end{table}
 
-\subsection{Word Embeddings}
-\subsubsection{Word2Vec} 
+\newpage
+\subsection{Word2Vec} 
 For a forther comparison and an approximation to the the later on used classification model, I did not only uf \gls{tfidf} as a Vector representation method as part of my Bachelor Thesis, but also Word Embeddings - especially the \textit{Word2Vec} model. \\
 \noindent Word2Vec represents words as vectors. Unlike the  \gls{tfidf} method, however, not only word frequencies and -priorities are considered, but also the connection of individual words to others. Again, several methods of implementation exist. 
-As part of my Bachelor Thesis, I decided to use  the library \textit{gensim} \cite{gensim} to implement my Word2Vec model. With \textit{gensim} it is  possible to do  unsupervised semantic modelling from plain text. This makes it possible to implement a Word"vec model using only a few lines of code without having to program Skip-Gram of \gls{cbow} yourself. \\
-\begin{algorithm}[h]
+\noindent As part of my Bachelor Thesis, I decided to use  the library \textit{gensim} \cite{gensim} to implement my Word2Vec model. With \textit{gensim} it is  possible to do  unsupervised semantic modelling from plain text. This makes it possible to implement a Word"vec model using only a few lines of code without having to program Skip-Gram of \gls{cbow} yourself. \\
+
+\begin{algorithm}[H]
 	\DontPrintSemicolon
     model = gensim.models.Word2Vec(vocab, min\_count=10, window=10, size=300, iter=10)\;
 	\caption{Word2Vec with gensim}
 \end{algorithm}
+
 \noindent Algorithm 7 shows that the implementation of the model is straightforward, as it is pretty much the only step we need to program. By default, \textit{gensim} uses \gls{cbow} which can be  changed  by adding the following parameter to the parameters list: \textit{sg=1}. As for the other parameters, 18 more exist which can be viewed at \url{https://radimrehurek.com/gensim/models/word2vec.html}, but I decided to focus only on the important ones. \textit{Vocab} is our text corpus, which needs to be transformed into a list of tokenized sentences. \textit{Size} determines the dimension of the word vectors, \textit{window} the maximum distance between the current and predicted word within a sentence, \textit{min\_count}  how often a word must occur to be included in the vocabulary and \textit{iter} how many iterations  should be performed on the corpus. What exactly happens here is that a neural network with a single hidden layer is trained to predict the current word based on the context. The resulting vector consists of several features that describe the target word.\\
 \noindent 
 After the model has been trained it is possible to get information about the similarity of two words by calling the method $model.wv.similarity(word_1, word_2)$. Table 4.2 shows the 6 most similar words to "trump" of both datasets. This is possible by calculating the cosine similarity of two words in the vector space. As the range of the cosine similarity can go from [-1 to 1], words that are completely the same are assigned the value \textit{1} and words that are not similar at all are given the value \textit{-1}. \\
@@ -617,7 +790,7 @@ After the model has been trained it is possible to get information about the sim
 		\caption{Most similar word to 'trump'}
 \end{table}
 \noindent The resulting word vectors now have the dimension defined in the parameter \textit{size}. In order to be able to form features from them, I averaged the Word Embeddings of all words in a sentence (algorithm 8).\\
-\begin{algorithm}[h]
+\begin{algorithm}[H]
 	\DontPrintSemicolon
 	\KwIn{text corpus, trained model}
 	sent\_vec = [] \;
@@ -634,7 +807,7 @@ After the model has been trained it is possible to get information about the sim
 	\caption{sent\_vectorizer}
 \end{algorithm}
 
-\section{Classification Algorithms}
+\section{Classification Methods}
 Classification is about predicting a particular outcome based on given training data. For this prediction, a classification algorithm processes the training data set, which consists of a set of features and the respective predictions. The algorithm attempts to discover relationships between given features  of the instances and the associated classes to learn a function which makes it possible to predict the correct class based on the features of an instance. Thereafter, the algorithm receive a test dataset which it has not seen before. This dataset contains the same features as the training set but not the corresponding class names. With the previously learned function, the algorithm now assigns a class name to each instance  of the test record. \\
 \noindent Classic classification algorithms include \textit{Multinomial Naive Bayes}, \textit{Support Vector Machines}, \textit{Random Forest} and \textit{Logistic Regression}, which is why, in the following chapter, I will explain the basic procedure for implementing these algorithms. In addition, I will discuss the aspect of \textit{Grid Search}, which gives us the optimal parameter assignment to a given set of data for these algorithms.
 \subsection{Multinomial Naive Bayes Classifier}
@@ -668,33 +841,7 @@ The Logistic Regression classifier is a model for classification, where the prob
 \noindent Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization \cite{logisticregression}.\\
 \noindent A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out, that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}. \\
 \noindent \textit{Liblinear} uses a coordinate descent algorithm, the \textit{sag} solver a Stochastic Average Gradient descent, \textit{saga} is a variant of \textit{sag} and therefor supports the non-smooth penalty \textit{L1} and \textit{elasticnet} and the \textit{lbfgs} solver is an optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno algorithm
-\subsection{Grid Search}
-\begin{table}[h]
-	\centering
-		\begin{tabular}{c|c|c}
-			\toprule
-			Parameter & Result by Article & Result by Publisher \\
-			\midrule
-			alpha & 0.7 & 0.5  \\
-			fit\_prior & False & True \\
-			\bottomrule
-		\end{tabular}
-		\caption{Grid Search Result of the \gls{mnb} Classifier}
-\end{table}
-\noindent A significant perspective in machine learning is the aspect of hyperparameters. These are parameters that are not determined by the learning algorithm, but those that must be determined beforehand. In the above mentioned algotihms, for example, theses are the parameters to be passed to the classifier. For instance, which size \textit{n\_estimators} in the \textit{Random Forest} classifier should assume. To solve this issue the algorithm \textit{GridSearch} exists. This algorithm is used to find the optimal hyperparameters of a model, which then leads to the most accurate predictions. \\
-\noindent The procedure is as follows: A set of parameters is defined witch which GridSearch trains the given classifier for all possible combinations and measures the performance by cross-validation. This ensures that our trained model has received the most samples from our training data set. \\
-\noindent A simple implementation of GridSearch is provided by \textit{scikit-learn} through the class \textit{sklearn.model\_selection.GridSearchCV} \cite{codegridsearch}. This class evaluates all possible combinations of parameters when calling the method \textit{fit()} and keeps the best combination. \\
-\noindent The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is the parameter set, \textit{scoring}, which specifies the measure to evaluate the test set, and \textit{cv} how many cross-validation splits to perform. Algorithm 8 shows a practical example of how to use \textit{GridSearchCV} while table 4.4 shows the corresponding results. \\
-\begin{algorithm}[h]
-	\DontPrintSemicolon
-	from sklearn.model\_selection import GridSearchCV\;
-	from sklearn.naive\_bayes import MultinomialNB\;
-	\BlankLine
-	    parameter\_candidates = \{'alpha': np.linspace(0.5, 1.5, 6), 'fit\_prior': [True, False]\}\;
-	    clf = GridSearchCV(estimator=MultinomialNB(), param\_grid=parameter\_candidates, scoring='accuracy', cv=10)\;
-	clf.fit(features, labels)\;
-	\caption{Grid Search for \gls{mnb} classifier}
-\end{algorithm}
+
 
 \subsection{Training and Classification}
 Classifiers are algorithms which map input data to a specific type of category. Using the classifier consists of two basic steps: training and classification. Training is the process of recording content known to belong to certain class and creating a classifier based on that known content. Classification is the process by which a classifier is created with such a training content and is run on unknown content to determine the class affiliation for the undefined dataset.
@@ -734,184 +881,9 @@ For this purpose the module \textit{pickle} of Python's standard library is avai
 \end{algorithm}
 \\ \textit{KeyedVectors} "is essentially a mapping between entities and vectors. Each entity is identified by its string id, so this is a mapping between a string and a 1D numpy array. The entity typically corresponds to a word, but for some models, the key can also correspond to a document, a graph node etc. To generalize over different use-cases, this module calls the keys entities. Each entity is always represented by its string id, no matter whether the entity is a word, a document or a graph node" \cite{keyedvectors}.
 
-\chapter{Bidirectional Encoder Representations from Transformers}
-Bidirectional Encoder Representations from Transformers (\gls{bert}) \cite{bert} is a novel model that was introduced in October 2018 by researches at Google AI Language and has since caused a stir in the field of machine learning by representing state-of-the-art results in a variety of Natural Languag Processing tasks. The special feature of this model, unlike previous efforts, is the technical innovation of bi-directional training of transformers. \\
-\noindent In order to understand how the actual model, and thus the classification model applied in this thesis, works, I will discuss the basics and the actual \gls{bert} model in the following chapter before I explain how this model can be applied to the data sets.
-
-\section{Recurrent Neural Networks}
-Recurrent Neural Networks (\gls{rnn}) are a kind of artificial neural network, which considers time and order. Unlike Feedforward algorithms \cite{feedforward}, which use only the current example as input, \gls{rnn}s also use the Input Example, which they perceived in previous steps (Figure 5.1). 
-\begin{figure}
-	\centering
-	%PC:
-	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
-		%Lap Top:
-	\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
-	\caption{\gls{rnn} and Feedforward Neural Network \cite{rnn}}
-\end{figure}
-This sequential information is retained over many time steps in the hidden state of the RNN as it cascades forward to affect the processing of each new example. This means that the RNN finds correlations between events that are separated by many steps. These relationships are referred to as \textit{long-term dependencies} because a subordinate event is dependent on one or more preceding events.\\
-\newpage
-\noindent Mathematically, a \textit{simple recurrent neural network} \cite{ELMAN1990179} can be represented as follows \cite{rnnmodel}:
-\[
-x(t)=w(t)+s(t-1)
-\]
-\[
-s_j(t)=f(\sum_{i}x_i(t)u_{ji})
-\]
-\[
-y_k(t)=g(\sum_{j}s_j(t)v_{kj})
-\]
-Where $x(t)$ is the input-, $s(t)$ the hidden- and $y(t)$ the output layer. $s_t$ is the function of the input at the same time step $t$, modified by a weight matrix $w$, which has been added to the hidden states previous step $s(t-1)$ and multiplied by its own hidden-state-to-hidden-state matrix $u$. The weight matrices $w$ and $u$ are filters that determine the importance of matching the current input as well as the past hidden-state. These generate errors which return via backpropagation and are used to adjust their weights until the error can no longer be reduced. The sum of the weight input and hidden state is squashed by the functions $f$ or $g$, where  $f(z)$ represents the sigmoid function
-\[
-f(z)=\frac{1}{1+e^{-z}}
-\]
-and $g(z)$ the softmax function
-\[
-g(z_m)=\frac{e^{zm}}{\sum_{l}e^zk}
-\]
-The initial value $s(0)$ can take the values 0 or 1, whereas in all further steps $s(t+1)=s(t)$. \\
-\noindent A problem of \gls{rnn}s is the disappearance and explosion of the gradient. Since the layers and time steps of deep neural networks are wired together by multiplication, derivatives are susceptible to disappearance or explosion. With an exploding gradient, the weights at the upper end become saturated, whereas with disappearing gradients, the final value will tend to 0.
-
-\subsection{Long Short-Term Memory}
-\begin{figure}[h]
-	\begin{minipage}[b]{0.4\textwidth}
-		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
-			%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
-		\caption{Input gate$_1$ \cite{rnn}}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.4\textwidth}
-		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
-		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
-		\caption{Input gate$_2$ \cite{rnn}}
-	\end{minipage}
-	\begin{minipage}[b]{0.4\textwidth}
-		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
-		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
-		\caption{Forget gate \cite{rnn}}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.4\textwidth}
-		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
-		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
-		\caption{Output gate \cite{rnn}}
-	\end{minipage}
-\end{figure}
-\noindent Long Short-Term Memory (\gls{lstm}) units \cite{lstm} are a modification of the RNNs which represent a problem elimination for the disappearing gradient. Unlike standard RNNs, \gls{lstm}s no longer consist of a single neural network layer, but of four instead. \gls{lstm}s are formed by multiple gates which close and open (Figure 5.2 - 5.5). This allows a cell to make decisions about what to back up and when to read, write or delete. Within a cell, information can be saved, written or read from. Gates act on the signals they receive and block or route the data they filter with their own weights based on their strength and import. These weights are tailored via the learning process of the recurring networks. This means that cells learn when to enter, leave or remove facts by iteratively making assumptions, propagating errors backwards and adapting weights via gradient descent.\\
-The different gates of \gls{lstm}s are Input-, Forget- and Output Gate, where the Input Gate controls the contribution of a new input to the memory, the Forget Gate controls the limits up to which a value remains in the memory, and the Output Gate controls the limit up to which the memory in the activation block of the output contributes. Mathematically, the different gates can be represented as follows \cite{rnn}: 
-\begin{itemize}
-	\item Input Gate - Figure 5.2: 
-	\begin{itemize}
-			\item $i_t=\sigma(W_i \cdot [h_{t-1}, x_t]+b_i)$
-			\item $\acute{C}=\tanh(W_C \cdot [h_{t1}, x_t]+b_c)$
-			\item where $x_t$ is the time step at $t$, $h_{t-1}$ denotes the hidden state at time step $t-1$, $i_t$ is the input gate layer output at step $t$, $\acute{C}$ refers to candidate values to be added to the input gates output at time $t$, $b_i$ and $b_c$ denote the bias for the input gate layer and the candidate value computation and $W_i$ and $W_c$ denote the weights for the input gate layer and the candidate value computation.
-		\end{itemize}	
-	\item  Input Gate - Figure 5.3:
-	\begin{itemize}
-		\item $C_t=f_t*C_{t-1}+i_t*C_t$
-		\item Where $C_i$ denotes the cell state after time step $i$ and $F_t$ is the forget state at step $t$.
-	\end{itemize}
-	\item Forget Gate - Figure 5.4:
-	\begin{itemize}
-		\item $f_t=\sigma(W_f \cdot [h_{t-1}, x_t]+b_f)$
-		\item Where $f_t$ denotes the forget state at time step $t$ and $W_f$ and $b_f$ are the weights and bias for the forget state at step $t$.
-	\end{itemize}
-	\item Output Gate - Figure 5.4:
-	\begin{itemize}
-		\item $o_t=\sigma(W_o \cdot [h_{t-1},x_t]+b_o)$
-		\item $h_t=o_t*\tanh(C_t)$
-		\item Where $o_t$ is the output gates output at time step $t$ and $W_o$ and $b_o$ denote the weights and bias for the output gate at time step $t$.
-	\end{itemize}
-\end{itemize}
-
-
-\noindent "Today, \gls{lstm} networks have become a more popular choice than basic \gls{rnn}s, as they have proven to work tremendously on diverse sets of problems. Most remarkable results are achieved with \gls{lstm} networks than \gls{rnn}s, and now the phenomenon has extended such that wherever an \gls{rnn} is quoted, it usually refers to \gls{lstm} network only" \cite{rnn}.
-
-\subsection{\gls{rnn} Encoder-Decoder}
-Classic RNNs and LSTMs have the problem that the input and output length of the sequences may vary. This led to the development of the RNN Encoder-Decoder \cite{encodedecode}, which consists of 2 recurring neural networks that function as a pair of encoders and decoders. Here the encoder maps a variable length input sequence to a fixed length vector, whereupon the decoder maps the vector representation to a variable length output sequence. \textit{Cho et. al} states, that "the encoder is an \gls{rnn} that reads each symbol of an input sequence x sequentially. After finishing the reading process of a sequence, the hidden state of the \gls{rnn} is a summary c of the complete input sequence" \cite{encodedecode}. This means that at the end of the training, the encoder provides an input feature vector that can be used by the decoder to construct the input with those aspects that are most essential to make the reconstructed input noticeable as the actual input. The paper also states, that the "decoder represents another \gls{rnn} that has been trained to generate the output sequence by predicting the next symbol $y_t$ under the condition of the hidden state $h_t$. In contrast to typical \gls{rnn}s, $y_t$ and $h_t$ are also dependent on each other by $y_{t-1}$ and the combination c in this case".
-\section{Transformer and Attention}
-\begin{figure}[ht]
-	\centering
-	%PC:
-	%\includegraphics[width=0.5\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
-	%Lap Top:
-	\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
-	\caption{The Transformer - model architecture \cite{attention}}
-\end{figure}
-\noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. \\
-\\In 2017 the paper "Attention is all you need" by Ashish Vaswani et al.  \cite{attention} was published which suggests to neglect \gls{rnn}s and instead proposes a new model architecture called "Transformer". As the title of the paper indicates, this model uses attention mechanisms. Like \gls{lstm}, Transformer is also an architecture for transforming one sequence into another using an Encoder and Decoder, but differs from the previously existing sequence-to-sequence models since it does not include recurrent networks. Furthermore, the Attention Mechanism model has been extended by using self-attention and point-wise, fully connected layers for Encoders and Decoders.
-The attention mechanism used in the paper includes a query $Q$, a set of key $K$ and a set ov values $V$. Here the function connects the query vector with the set of key-value pairs to an output in which query, keys, values and output are all vectors.\\
-\begin{figure}[t]
-	\begin{minipage}[b]{0.5\linewidth}
-		%PC:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
-					%Lap Top:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
-		\caption{Scaled Dot-Product Attention}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[b]{0.5\linewidth}
-		%PC:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
-					%Lap Top:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
-		\caption{Multi-Head Attention}
-	\end{minipage}
-\end{figure}
-\\The Encoder of this model, consists of $N=6$ layers of \textit{Multi-Head Attention} and \textit{Position-Wise Feed Forward} networks with \textit{residual connections} \cite{residualcon} employed around each of the two sublayers, followed by a layer of Normalization \cite{normalization}, whereby dropouts \cite{dopout} are also added to the output of each sublayer before they are normalized. The Encoders input is added by creating an Input Embedding plus its Position Encoding. For each word, \textit{self-attention} aggregates information from all other words in the context of the sentence, creating a new representation for each word, which is a visited representation of all other words in the sequence. This is repeated for each word in a sentence  successively building newer representations on top of previous ones several times.
-\noindent The model's Decoder includes $N=6$ layers as well, consisting of \textit{Masked Multi-Head Attention}, \textit{Multi-Head Attention} and \textit{Position-Wise Feed Forward} networks with residual connections around them, followed by a layer of normalization. Here the input is the Output Embedding plus its positional encoding, which is offset by one to ensure that the prediction for position $i$ depends only on the positions ahead of i. Masked-Multi-Head Attention is necessary to prevent future words from being part of the attention. Following here is the Position-Wise Feed Forward Normalization. The Decoder generates one word after the other from left to right, where the first word is based on the final representation of the Encoder, offset by one position. Each predicted word then takes care of the previously generated words of the Decoder on that layer, as well as the final representation of the Encoder.
-
-\noindent The intention behind Self-Attention is to avoid long-term dependencies by learning the attention distribution with each additional word for each representation of an input word and using that distribution with each word pair as the weight of a linear layer to calculate a new representation for each input representation. In this way, the input representation possesses global level information about every other token in the sequence not only at the connection between the encoder and decoder, but also at the beginning. This kind of attention is described in the Transformer Paper as "Scaled Dot-Product" (Figure 5.7) and is calculated as follows:
-\[
-Attention(Q,K,V)=softmax(\frac{QK^T}{\sqrt{d_k}})V
-\]
-Where $Q$ is the query of  dimension $d_k$, $K$ are are the keys of dimension $d_k$ and $V$ are the values of dimension $d_v$. \\
-\noindent Another special feature of the Attention Art described in the paper is the fact that not only single attention, i.e. weighted sum values, but Multi-Head Attention (Figure 5.8) is calculated, which means that this mechanism coaculates multiple attention weighted sums. Each of these multiple heads is a linear transformation of the initial representation. This is done so that different parts of the input representation can interact with different parts of the other representation with which it is compared in the vector space. This provides the model to capture different aspects of the input and improve its expressiveness.\\
-
-\noindent Since neither recurrence nor convolution are used in this model, the Transformer takes advantage of \textit{Positional Encodings}, which make it possible to use the order of the sequences. These inhabit the same  dimension $d_{model}$ as the embeddings, in order to execute a summation. For these positional encodings the Transformer uses sine and cosine functions with different frequencies:
-\[
-PE(_{(pos,2i)}=\sin (\frac{pos}{10000^{\frac{2i}{d_{model}}}})
-\
-\]
-\[
-PE_{(pos,2i+1)}=\cos (\frac{pos}{10000^{\frac{2i}{d_model}}})
-\]
-where $pos$ is the position and $i$ is the dimension. Therefore the resulting wavelengths have a geometric progression from $2\pi$ to $1000 \cdot 2\pi$.
-
-\section{\gls{bert} Model}
-Bidirectional Encoder Representations from Transformer \cite{bert}, short \gls{bert}, is a new language representation model that, unlike previous efforts, which look at text sequences exclusively through pure left-to-right or combined left-to-right and right-to-left, applies bidirectional training of Transformer. \\
-\noindent The \gls{bert} model exists in two versions. \gls{bert}$_{Base}$, which consists of 12 transformer layers, a hidden size of 768 and 12 self-attention heads, whereas \gls{bert}$_{Large}$ consists of 24 layers, a hidden size of 1020 and 16 self-attention heads. In this thesis the \gls{bert}$_{Base}$ model was used, since my existing resources would not have been sufficient for the \gls{bert}$_{Large}$ model.
-
-\subsection{Input Representation}
-The input of the \gls{bert} model consists of the sum of token-, segmentation- and position embeddings (Figure 5.9). As it is not possible to consider the order of inputs due to the transformer architecture of the \gls{bert}, the model uses the same concept of position embeddings as described in the paper "Attention Is Al You Need" \cite{attention}. Here, a sequence length of 512 tokens is possible. The segmentation embeddings are necessary since BERT makes it possible to pass 2 sentence pairs as input. This helps the model to learn a unique embedding for the first and second sentence in order to distinguish between these two sentences.  Additionally, the token [CLS] is inserted at the beginning of the first sentence and the token [SEP] at the end of each sentence. Here [CLS] is used as the key corresponding to the output of the transformer as an aggregated sequence representation for classification tasks, while [SEP] is an additional help for the model to distinguish two sentence pairs.
-\begin{figure}[t]
-	\centering
-	%PC:
-	%\includegraphics[width=0.9\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
-				%Lap Top:
-	\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
-	\caption{\gls{bert} Input Representations \cite{bert}}
-	
-\end{figure}
-
-\subsection{Pre-training and Fine-Tuning}
-\gls{bert} is a pre-trained model, which has been trained on two unsupervised tasks, called \textit{Masked LM} (\gls{mlm}) and \textit{Next Sentence Prediction}. The idea of pre-training is to pass start values to a neural network, which is to be trained on the basis of a new data set, which were not initialized randomly. \\
-
-
-\noindent \gls{mlm} is the main aspect of bidirectional training. In classical Masked Language models, such as Taylor's Cloze task of 1953 \cite{cloze}, models are trained by randomly replacing a certain percentage of words with the token [MASK] and then predicting these words from the model. \gls{bert} uses this mechanism by selecting and masking 15\% of the tokens evenly and randomly. However, since the problem here is that the model only tries to predict when the token [MASK] is present in the input, which means that the hidden state of the input token may not be as rich as it could be, BERT extends the Masked Language Model. In this extension, 15\% of the tokens are selected randomly, whereby not all selected words are provided with [MASK] any more, but in 10\% of the cases, the selected token is replaced by a random word, in further 10\% the token remains intact, while in the remaining 80\% the token is replaced by [MASK]. This enables the model to realize which information to use by deriving which words are absent.\\
-\noindent In addition to ML models, \gls{bert} uses \textit{Next Sentence Prediction}, which allows subsequent sentences to be predicted. In this training process, the model receives pairs of sentences as input and learns to predict whether the second sentence in the pair is the following sentence in the original document. Here half of the inputs are a pair in which the second sentence is the next sentence in the original document, while in the remaining 50\% a random sentence is chosen as the successor from the corpus. This allows the model to develop an understanding of relationships between two sentences. \\
-
-\noindent Fine-tuning involves the process of using an already pre-trained neural networks for another similar task. This way, it is possible to use the extracted feature of the already trained model without having to develop a feature extraction from scratch on the new model. The authors of the paper claim that it is possible to fine tune the BERT model using a single additional output layer. Different approaches are used for different Language Tasks. In the case of a classification task, like the one in this thesis, the last hidden state [CLS] is used, whereupon a classification layer is added. 
-\section{Application}
-In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for the lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper. The existing pre-trained models consist of a \textit{.zip} file, which contains The TensorFlow checkpoint for intilializing the pre-trained weights, a vocab file to map WordPiece to word id, as well as a config file, which describes the hyperparameters of the model. Meanwhile many more possibilities are available to use the Bert model, including TensorFlow Hub or a PyTorch \cite{pytorch} interface, whereby in this thesis the original GitHub Code was used. 
-A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modfied. 
+\subsection{Bidirectional Encoder Representations from Transformers}
+In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for both lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper. The existing pre-trained models consist of a \textit{.zip} file, which contains the TensorFlow checkpoint for initializing the pre-trained weights, a vocab file to map WordPiece to word id, as well as a config file, which describes the hyperparameters of the model. Meanwhile many possibilities are available to use the Bert model, including TensorFlow Hub or a PyTorch \cite{pytorch} interface, whereby in this thesis the original GitHub Code was used. \\ 
+\noindent A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modified. 
 \begin{algorithm}[t]
 	\DontPrintSemicolon
 	\KwIn{self, lines, set\_type}
@@ -930,19 +902,11 @@ A total of 15 python files have been published on GitHub, of which \textit{\_\_i
 	\Return examples
 	\caption{Create\_examples in \gls{bert}}
 \end{algorithm} 
-The class is given a slightly modified version of the combined GroundTruth- and Training datasets, since oly the article content, ids and lablel are required for the to be generated input examples. In addition the \gls{bert} model uses \text{.tsv} as input by default, therefor an adapted version is transferred here. In the methode \textit{create\_examples}, \textit{guid} represents the articles id, \textit{text\_a} the content and \textit{label} the corresponding label. In addition, the flags \textit{task\_name, do\_train, do\_eval, data\_dir, task\_name, vocab\_file, bert\_config\_file, output\_dir, init\_checkpoint, max\_seq\_length, train\_batch\_size, learning\_rate} and \textit{num\_train\_epochs} must be passed when calling the file \textit{run\_classifier} (Listing 5.2). Here \textit{task\_name} describes, the name of the class processor, \textit{do\_train}, if training should be done, \textit{do\_eval} if training should be evaluated with a dev set, \textit{data\_dir} describes the directory path to the folder of training-, dev- and test data, \textit{vocab\_file} describes where the file \textit{vocab.txt} is located, \textit{bert\_config\_file} where the file \textit{bert\_config.json},  \textit{init\_checkpoint} in which folder the pre-trained weights \textit{bert\_model.ckpt} are located, or, if weights have already been trained, it specifies the path in which they are located, \textit{out\_dir}, in which directory path the checkpoints are written, and \textit{max\_seq\_length} to \textit{num\_train\_epochs} the hyperparameters of the model.
- 
-
-\noindent \begin{minipage}[t]{\textwidth}
-\begin{lstlisting}[caption={TensorFlow Output for InputExampels},captionpos=b, frame = single]
-INFO:tensorflow:guid: train-15
-INFO:tensorflow:tokens: [CLS] president elect donald trump reached agreement united technologies utc keep 1 000 carrier jobs state indiana according cn [...] ##ce plan holding event carrier plant indiana thursday [SEP]
-INFO:tensorflow:input_ids: 101 2343 11322 6221 [...] 24897 24370 10660 8144 3685 24763 2094 2292 2894 11674 2460 2180 1056 5814 8028 2008 1055 8667 3959 9432 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 [...] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0  [...] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
-INFO:tensorflow:label: True (id = 0)
-\end{lstlisting}
-\end{minipage}
+A slightly modified version of the combined GroundTruth- and Training datasets will be passed to this new class, as only the article's content, the IDs and labels for the input examples to be generated are required. Since BERT uses \textit{.tsv} as the default file format, it is also necessary to save the modified file in this form. \\
+\noindent The execution of the \textit{run,\_classifier.py} file includes additional passing of 12 arguments (Listing 5.2), where \textit{train\_batch\_size}, \textit{learning\_rate} and \textit{num\_train\_epochs} represent the models hyperparameters. \\
+\noindent In a  single training epoch, the entire data set is passed through a neural network once. Hereby, a higher number of epochs is required to avoid under-fitting due to a small number of updated weights. However, too many epochs may lead to over-fitting. In the paper, the authors state, that a number of  3 or 4 epochs worked best across different tasks. \textit{Eigene Erfahrung einfügen!!!!!} \\
+\noindent Since it is not possible to transfer an entire data set into a neural network at once, batch size defines the total number of training examples contained in a single batch. Here, the paper refers  to an optimal number of 16 or 32. On the official GitHub page, however, it is pointed out that all experiments in the paper were fine-tuned on a cloud-TPU with 64GB RAM and using the same hyperparameters  on a GPU with 12 to 16GB RAM may lead to out-of-memory issues. Therefore in the same section, the maximum batch size for an associated sequence length and the associated Bert model is mentioned, whereas for the \gls{bert}$_{Base}$ model with a sequence length of 512 the corresponding maximum batch size is 6. However, on
+a GPU with 12GB RAM, I  experienced that using a batch size larger than 2 is not possible on the by Publisher labelled data set. Despite this, I decided not to use a smaller sequence length, since a length of 512 is already not enough for a complete article. \\
 \begin{lstlisting}[caption={Example: Calling \textit{run\_classifier} with the required flags},captionpos=b, frame = single]
 export BERT_BASE_DIR=/path_to_bert_model/uncased_L-12_H-768_A-12
 export DATA_DIR=/path_to_input_data/
@@ -961,9 +925,58 @@ export CUDA_VISIBLE_DEVICES=2 && python run_classifier.py \
 --num_train_epochs=4.0 \
 --output_dir=/path_for_output_data/
 \end{lstlisting}
+\noindent Learning rate tells the optimizer of a neural network how far it is supposed to set the weights in the opposite direction to the gradient for a mini batch. If the learning rate is low, training is more reliable, but  optimization will take a lot more time, whereas with a high learning rate, the training may not approach or even diverge. The authors of the paper refer to an optimal learning rate in relation to the Adam gradient \cite{adam} of 5e-5, 3-5 or 2-5. \textit{Eigene Erfahrung noch einfügen!}\\
+
+\noindent Predictions based on the \gls{bert} model can be made using the following prompt:
+\begin{lstlisting}
+export BERT_BASE_DIR=/path_to_bert_model/uncased_L-12_H-768_A-12
+export GLUE_DIR=/path_to_input_data/
+export TRAINED_CLASSIFIER=/path_to_fine_tuned/classifier
+
+python run_classifier.py \
+--task_name=ba \
+--do_predict=true \
+--data_dir=$GLUE_DIR \
+--vocab_file=$BERT_BASE_DIR/vocab.txt \
+--bert_config_file=$BERT_BASE_DIR/bert_config.json \
+--init_checkpoint=$TRAINED_CLASSIFIER \
+--max_seq_length=512 \
+--output_dir=/path_for_output_data/
+\end{lstlisting}
+\noindent It can be seen that the FLAGS \textit{do\_train} and \textit{do\_eval} have been replaced by \textit{do\_predict}, since these three arguments are set to "False" by default. With these flags the model recognizes which task it has to execute. Furthermore, the initial checkpoint is no longer from the pre-trained, but from the fine-tuned \gls{bert} model. \\
+\noindent Finally, I would like to add, that the class run\_classifier was modfied in the context of this thesis in order to have the suitable format for the evaluation by SemEvalTask4, which I will discuss in the following chapter "Evaluation".
 
 
 \chapter{Evaluation}
+\section{Grid Search}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c}
+		\toprule
+		Parameter & Result by Article & Result by Publisher \\
+		\midrule
+		alpha & 0.7 & 0.5  \\
+		fit\_prior & False & True \\
+		\bottomrule
+	\end{tabular}
+	\caption{Grid Search Result of the \gls{mnb} Classifier}
+\end{table}
+\noindent A significant perspective in machine learning is the aspect of hyperparameters. These are parameters that are not determined by the learning algorithm, but those that must be determined beforehand. In the above mentioned algotihms, for example, theses are the parameters to be passed to the classifier. For instance, which size \textit{n\_estimators} in the \textit{Random Forest} classifier should assume. To solve this issue the algorithm \textit{GridSearch} exists. This algorithm is used to find the optimal hyperparameters of a model, which then leads to the most accurate predictions. \\
+\noindent The procedure is as follows: A set of parameters is defined witch which GridSearch trains the given classifier for all possible combinations and measures the performance by cross-validation. This ensures that our trained model has received the most samples from our training data set. \\
+\noindent A simple implementation of GridSearch is provided by \textit{scikit-learn} through the class \textit{sklearn.model\_selection.GridSearchCV} \cite{codegridsearch}. This class evaluates all possible combinations of parameters when calling the method \textit{fit()} and keeps the best combination. \\
+\noindent The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is the parameter set, \textit{scoring}, which specifies the measure to evaluate the test set, and \textit{cv} how many cross-validation splits to perform. Algorithm 8 shows a practical example of how to use \textit{GridSearchCV} while table 4.4 shows the corresponding results. \\
+\begin{algorithm}[h]
+	\DontPrintSemicolon
+	from sklearn.model\_selection import GridSearchCV\;
+	from sklearn.naive\_bayes import MultinomialNB\;
+	\BlankLine
+	parameter\_candidates = \{'alpha': np.linspace(0.5, 1.5, 6), 'fit\_prior': [True, False]\}\;
+	clf = GridSearchCV(estimator=MultinomialNB(), param\_grid=parameter\_candidates, scoring='accuracy', cv=10)\;
+	clf.fit(features, labels)\;
+	\caption{Grid Search for \gls{mnb} classifier}
+\end{algorithm}
+
+\section{Evaluation Results}
 \chapter{Conclusion}
 
 \bibliography{BA}{}
