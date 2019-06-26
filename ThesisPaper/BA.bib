@@ -608,3 +608,58 @@
 	biburl    = {https://dblp.org/rec/bib/journals/corr/LeM14},
 	bibsource = {dblp computer science bibliography, https://dblp.org}
 }
+@inproceedings{bertgruppe,
+	title = "Harvey Mudd College at {S}em{E}val-2019 Task 4: The Clint Buchanan Hyperpartisan News Detector",
+	author = "Drissi, Mehdi  and
+	Sandoval Segura, Pedro  and
+	Ojha, Vivaswat  and
+	Medero, Julie",
+	booktitle = "Proceedings of the 13th International Workshop on Semantic Evaluation",
+	month = jun,
+	year = "2019",
+	address = "Minneapolis, Minnesota, USA",
+	publisher = "Association for Computational Linguistics",
+	url = "https://www.aclweb.org/anthology/S19-2165",
+	pages = "962--966",
+	abstract = "We investigate the recently developed Bidi- rectional Encoder Representations from Transformers (BERT) model (Devlin et al. 2018) for the hyperpartisan news detection task. Using a subset of hand-labeled articles from SemEval as a validation set, we test the performance of different parameters for BERT models. We find that accuracy from two different BERT models using different proportions of the articles is consistently high, with our best-performing model on the validation set achieving 85{\%} accuracy and the best-performing model on the test set achieving 77{\%}. We further determined that our model exhibits strong consistency, labeling independent slices of the same article identically. Finally, we find that randomizing the order of word pieces dramatically reduces validation accuracy (to approximately 60{\%}), but that shuffling groups of four or more word pieces maintains an accuracy of about 80{\%}, indicating the model mainly gains value from local context.",
+}
+@inproceedings{hyperpartisannewsdetection,
+	title = "{S}em{E}val-2019 Task 4: Hyperpartisan News Detection",
+	author = "Kiesel, Johannes  and
+	Mestre, Maria  and
+	Shukla, Rishabh  and
+	Vincent, Emmanuel  and
+	Adineh, Payam  and
+	Corney, David  and
+	Stein, Benno  and
+	Potthast, Martin",
+	booktitle = "Proceedings of the 13th International Workshop on Semantic Evaluation",
+	month = jun,
+	year = "2019",
+	address = "Minneapolis, Minnesota, USA",
+	publisher = "Association for Computational Linguistics",
+	url = "https://www.aclweb.org/anthology/S19-2145",
+	pages = "829--839",
+	abstract = "Hyperpartisan news is news that takes an extreme left-wing or right-wing standpoint. If one is able to reliably compute this meta information, news articles may be automatically tagged, this way encouraging or discouraging readers to consume the text. It is an open question how successfully hyperpartisan news detection can be automated, and the goal of this SemEval task was to shed light on the state of the art. We developed new resources for this purpose, including a manually labeled dataset with 1,273 articles, and a second dataset with 754,000 articles, labeled via distant supervision. The interest of the research community in our task exceeded all our expectations: The datasets were downloaded about 1,000 times, 322 teams registered, of which 184 configured a virtual machine on our shared task cloud service TIRA, of which in turn 42 teams submitted a valid run. The best team achieved an accuracy of 0.822 on a balanced sample (yes : no hyperpartisan) drawn from the manually tagged corpus; an ensemble of the submitted systems increased the accuracy by 0.048.",
+}
+@InProceedings{tira,
+	address =             {Berlin Heidelberg New York},
+	author =              {Martin Potthast and Tim Gollub and Francisco Rangel and Paolo Rosso and Efstathios Stamatatos and Benno Stein},
+	booktitle =           {Information Access Evaluation meets Multilinguality, Multimodality, and Visualization. 5th International Conference of the CLEF Initiative (CLEF 2014)},
+	doi =                 {10.1007/978-3-319-11382-1_22},
+	editor =              {Evangelos Kanoulas and Mihai Lupu and Paul Clough and Mark Sanderson and Mark Hall and Allan Hanbury and Elaine Toms},
+	isbn =                {978-3-319-11381-4},
+	month =               sep,
+	pages =               {268-299},
+	publisher =           {Springer},
+	title =               {{Improving the Reproducibility of PAN's Shared Tasks: Plagiarism Detection, Author Identification, and Author Profiling}},
+	year =                2014
+}
+@misc{evaluationasaservice,
+	title={Evaluation-as-a-Service: Overview and Outlook},
+	author={Allan Hanbury and Henning Müller and Krisztian Balog and Torben Brodt and Gordon V. Cormack and Ivan Eggel and Tim Gollub and Frank Hopfgartner and Jayashree Kalpathy-Cramer and Noriko Kando and Anastasia Krithara and Jimmy Lin and Simon Mercer and Martin Potthast},
+	year={2015},
+	eprint={1512.07454},
+	archivePrefix={arXiv},
+	primaryClass={cs.CY}
+}

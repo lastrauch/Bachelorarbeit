@@ -1,21 +1,21 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {algocf}{\numberline {1}{\ignorespaces Random Forest\relax }}{8}
+\contentsline {algocf}{\numberline {1}{\ignorespaces Random Forest\relax }}{9}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {algocf}{\numberline {2}{\ignorespaces Parse Ground-Truth File\relax }}{23}
-\contentsline {algocf}{\numberline {3}{\ignorespaces Merge Groundtruth- and Trainingdatasets\relax }}{24}
-\contentsline {algocf}{\numberline {4}{\ignorespaces Remove special characters and stop words\relax }}{24}
-\contentsline {algocf}{\numberline {5}{\ignorespaces Special Character and Stopword Removal with Pandas and NLTK\relax }}{25}
-\contentsline {algocf}{\numberline {6}{\ignorespaces \gls {tfidf}\relax }}{26}
-\contentsline {algocf}{\numberline {7}{\ignorespaces Word2Vec with gensim\relax }}{27}
-\contentsline {algocf}{\numberline {8}{\ignorespaces sent\_vectorizer\relax }}{28}
-\contentsline {algocf}{\numberline {9}{\ignorespaces Classifier Training\relax }}{30}
-\contentsline {algocf}{\numberline {10}{\ignorespaces Make Predictions\relax }}{30}
-\contentsline {algocf}{\numberline {11}{\ignorespaces Saving a trained model\relax }}{30}
-\contentsline {algocf}{\numberline {12}{\ignorespaces Saving a trained Word2Vec model\relax }}{31}
-\contentsline {algocf}{\numberline {13}{\ignorespaces Create\_examples in \gls {bert}\relax }}{32}
+\contentsline {algocf}{\numberline {2}{\ignorespaces Parse Ground-Truth File\relax }}{24}% 
+\contentsline {algocf}{\numberline {3}{\ignorespaces Merge Groundtruth- and Trainingdatasets\relax }}{25}% 
+\contentsline {algocf}{\numberline {4}{\ignorespaces Remove special characters and stop words\relax }}{25}% 
+\contentsline {algocf}{\numberline {5}{\ignorespaces Special Character and Stopword Removal with Pandas and NLTK\relax }}{26}% 
+\contentsline {algocf}{\numberline {6}{\ignorespaces \gls {tfidf}\relax }}{27}% 
+\contentsline {algocf}{\numberline {7}{\ignorespaces Word2Vec with gensim\relax }}{28}% 
+\contentsline {algocf}{\numberline {8}{\ignorespaces sent\_vectorizer\relax }}{29}% 
+\contentsline {algocf}{\numberline {9}{\ignorespaces Classifier Training\relax }}{31}% 
+\contentsline {algocf}{\numberline {10}{\ignorespaces Make Predictions\relax }}{31}% 
+\contentsline {algocf}{\numberline {11}{\ignorespaces Saving a trained model\relax }}{31}% 
+\contentsline {algocf}{\numberline {12}{\ignorespaces Saving a trained Word2Vec model\relax }}{32}% 
+\contentsline {algocf}{\numberline {13}{\ignorespaces Create\_examples in \gls {bert}\relax }}{33}% 
 \addvspace {10\p@ }
-\contentsline {algocf}{\numberline {14}{\ignorespaces Grid Search for \gls {mnb} classifier\relax }}{35}
+\contentsline {algocf}{\numberline {14}{\ignorespaces Grid Search for \gls {mnb} classifier\relax }}{36}% 
 \addvspace {10\p@ }

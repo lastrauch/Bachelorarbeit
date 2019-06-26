@@ -78,6 +78,14 @@ Jimmy~Ba Diederik P.~Kingma.
 \newblock Adam: A method for stochastic optimization.
 \newblock {\em CoRR}, abs/1412.6980, 2014.
 
+\bibitem{bertgruppe}
+Mehdi Drissi, Pedro Sandoval~Segura, Vivaswat Ojha, and Julie Medero.
+\newblock Harvey mudd college at {S}em{E}val-2019 task 4: The clint buchanan
+  hyperpartisan news detector.
+\newblock In {\em Proceedings of the 13th International Workshop on Semantic
+  Evaluation}, pages 962--966, Minneapolis, Minnesota, USA, June 2019.
+  Association for Computational Linguistics.
+
 \bibitem{bahdnau}
 Yoshua~Bengio Dzmitry~Bahdanau, Kyunghyun~Cho.
 \newblock Neural machine translation by jointly learning to align and
@@ -104,6 +112,13 @@ Palash Goyal.
 \newblock {\em Deep Learning for Natural Language Processing : Creating Neural
   Networks with Python}.
 \newblock Berkeley, CA : Apress : Imprint: Apress, Berkeley, CA, 2018.
+
+\bibitem{evaluationasaservice}
+Allan Hanbury, Henning Müller, Krisztian Balog, Torben Brodt, Gordon~V.
+  Cormack, Ivan Eggel, Tim Gollub, Frank Hopfgartner, Jayashree
+  Kalpathy-Cramer, Noriko Kando, Anastasia Krithara, Jimmy Lin, Simon Mercer,
+  and Martin Potthast.
+\newblock Evaluation-as-a-service: Overview and outlook, 2015.
 
 \bibitem{logisticregressionbook}
 Frank~E. Harrell.
@@ -155,6 +170,14 @@ Ashraf~M. Kibriya, Eibe Frank, Bernhard Pfahringer, and Geoffrey Holmes.
 \newblock In Geoffrey~I. Webb and Xinghuo Yu, editors, {\em AI 2004: Advances
   in Artificial Intelligence}, pages 488--499, Berlin, Heidelberg, 2005.
   Springer Berlin Heidelberg.
+
+\bibitem{hyperpartisannewsdetection}
+Johannes Kiesel, Maria Mestre, Rishabh Shukla, Emmanuel Vincent, Payam Adineh,
+  David Corney, Benno Stein, and Martin Potthast.
+\newblock {S}em{E}val-2019 task 4: Hyperpartisan news detection.
+\newblock In {\em Proceedings of the 13th International Workshop on Semantic
+  Evaluation}, pages 829--839, Minneapolis, Minnesota, USA, June 2019.
+  Association for Computational Linguistics.
 
 \bibitem{doc2vec}
 Quoc~V. Le and Tomas Mikolov.
@@ -213,6 +236,17 @@ Matthew~E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark,
 \bibitem{pickle}
 pickle — python object serialization.
 \newblock \url{https://docs.python.org/3/library/pickle.html}.
+
+\bibitem{tira}
+Martin Potthast, Tim Gollub, Francisco Rangel, Paolo Rosso, Efstathios
+  Stamatatos, and Benno Stein.
+\newblock {Improving the Reproducibility of PAN's Shared Tasks: Plagiarism
+  Detection, Author Identification, and Author Profiling}.
+\newblock In Evangelos Kanoulas, Mihai Lupu, Paul Clough, Mark Sanderson, Mark
+  Hall, Allan Hanbury, and Elaine Toms, editors, {\em Information Access
+  Evaluation meets Multilinguality, Multimodality, and Visualization. 5th
+  International Conference of the CLEF Initiative (CLEF 2014)}, pages 268--299,
+  Berlin Heidelberg New York, September 2014. Springer.
 
 \bibitem{gensim}
 Radim {\v R}eh{\r u}{\v r}ek and Petr Sojka.

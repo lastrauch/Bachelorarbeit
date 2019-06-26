@@ -1,19 +1,20 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces \gls {rnn} and Feedforward Neural Network \cite {rnn}\relax }}{9}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Input gate$_1$ \cite {rnn}\relax }}{11}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Input gate$_2$ \cite {rnn}\relax }}{11}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Forget gate \cite {rnn}\relax }}{11}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Output gate \cite {rnn}\relax }}{11}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces The Transformer - model architecture \cite {attention}\relax }}{13}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Scaled Dot-Product Attention\relax }}{14}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Multi-Head Attention\relax }}{14}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces \gls {bert} Input Representations \cite {bert}\relax }}{16}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces \gls {rnn} and Feedforward Neural Network \cite {rnn}\relax }}{10}% 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Input gate$_1$ \cite {rnn}\relax }}{12}% 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Input gate$_2$ \cite {rnn}\relax }}{12}% 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Forget gate \cite {rnn}\relax }}{12}% 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Output gate \cite {rnn}\relax }}{12}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces The Transformer - model architecture \cite {attention}\relax }}{14}% 
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Scaled Dot-Product Attention\relax }}{15}% 
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Multi-Head Attention\relax }}{15}% 
+\contentsline {figure}{\numberline {3.9}{\ignorespaces \gls {bert} Input Representations \cite {bert}\relax }}{17}% 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperpartisan Distribution by Publisher\relax }}{20}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Hyperpartisan Distribution by Article\relax }}{21}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Publishing Years Distribution by Article\relax }}{21}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Hyperpartisan Distribution by Publisher\relax }}{21}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Hyperpartisan Distribution by Article\relax }}{22}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Publishing Years Distribution by Article\relax }}{22}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces TIRA Interface\relax }}{35}% 
 \addvspace {10\p@ }

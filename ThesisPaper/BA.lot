@@ -1,11 +1,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Confusion Matrix\relax }}{18}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Confusion Matrix\relax }}{19}% 
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Publishers with the highest proportion of Hypeprartisan articles\relax }}{20}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Publishers with the highest proportion of Hypeprartisan articles\relax }}{21}% 
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Most similar word to 'trump'\relax }}{27}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Grid Search Result of the \gls {mnb} Classifier\relax }}{34}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Grid Search Result for \gls {mnb} classifier\relax }}{36}% 
+\contentsline {table}{\numberline {6.2}{\ignorespaces Evaluation Results -- Article: Classifier has been trained on the by Article dataset; -Publisher: Classifier has been trained on the by Publisher dataset; -WB: Word Embeddings have been used; -TFIDF: TFIDF has been used\relax }}{37}% 
 \addvspace {10\p@ }

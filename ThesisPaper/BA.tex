@@ -185,7 +185,10 @@
 
 \chapter{Related Work}
 Different classifiers were designed in the context of SemEval Task 4. For this purpose, the most common were Neural Networks, but overall all kinds of classifier were used. The winners of the competition used a model based on ELMo \cite{elmo}. ELMo was designed by AllenNLP in 2018 and uses a deep, bidirectional LSTM model to design character-based word representations. The advantage is that the employment of character embeddings makes it possible to identify morphological features which word-level embedding might overlook. Additionally, this ensures that valid word representations can be formed even for out-of-vocabulary words. The winners use a pre-trained ELMo model to output three vectors for each word. They state, that each vector corresponds to a layer output of the pre-trained ELMo model, whereupon they calculate the average of all three vectors to create the last word vector. Finally, the sentence vector is calculated by averaging the word vectors of a sentence. The complete development of her model was presented in the paper "Team Bertha by Suttner at SemEval-2019 Task 4: Hyperpartisan News Detection using ELMo Sentence Representation Convolutional Network" \cite{gewinner}. With their model they achieved an accuracy score of 0.822, a precision score of 0.871, a recall score of 0.755 and an F1 score of 0.809 on the by Article dataset. \\
-\noindent Team Vernon Fenwick used a combination of handcrafted text features and models that capture semantics to represent an article. Here the authors say that the handcrafted text features capture the tone, over praise, and mood in an article. For these text features a Bias Score, Article Level Polarity, Sentence Level Polarity, Subjectivity and Modality and Supleratives and Comperatives were used. The complete functionality of these features can be vied in their paper "Vernon-fenwick at SemEval-2019 Task 4: Hyperpartisan News Detection using Lexical and Semantic Features" \cite{vernon}. For the semantic features, they used Glove \cite{glove}, Doc2Vec \cite{doc2vec}, and Universal Sentence Encoder (USE) \cite{use}, with the USE giving the best score in conjunction with the henad-made features. Overall, the group came second with an Accuracy Score of 0.820, a Precision sScore of 0.815, a Recal Score of 0.828, and an F1 Score of 0.821.
+Team Vernon Fenwick used a combination of handcrafted text features and models that capture semantics to represent an article. Here the authors say that the handcrafted text features capture the tone, over praise, and mood in an article. For these text features a Bias Score, Article Level Polarity, Sentence Level Polarity, Subjectivity and Modality and Supleratives and Comperatives were used. The complete functionality of these features can be vied in their paper "Vernon-fenwick at SemEval-2019 Task 4: Hyperpartisan News Detection using Lexical and Semantic Features" \cite{vernon}. For the semantic features, they used Glove \cite{glove}, Doc2Vec \cite{doc2vec}, and Universal Sentence Encoder (USE) \cite{use}, with the USE giving the best score in conjunction with the hand-made features. Overall, the group came second with an Accuracy Score of 0.820, a Precision sScore of 0.815, a Recal Score of 0.828, and an F1 Score of 0.821. \\
+
+\noindent A third group also used \gls{bert} embeddings. They had a different approach than the one used in this thesis. They did not use the provided pre-trained models of \gls{bert}, but did the pre-training based on the large by publisher dataset and fine-tuned based on the ones labelled by Article. The complete procedure, as well as any anomalies during the development of the classifier, can be found in the paper "Harvey Mudd College at SemEval-2019 Task 4: The Clint Buchanan Hyperpartisan News Detector" \cite{bertgruppe}. In total, they achieved 10th place with their approach with an accuracy score of 0.771, a precision score of 0.832, a recall score of 0.678 and an F1 score of 0.747. Additionally, their code can be viewed at ",https://github.com/hmc-cs159-fall2018/final-project-team-mvp-10000/tree/c9da670b8a39068aa2d3154023ea44e-0b1266b7d". \\
+\noindent A complete overview of the task definition, used classifiers and participants can be found in the, by the organizers published paper "SemEval-2019 Task 4: Hyperpartisan News Detection" \cite{hyperpartisannewsdetection}.
 
 
 \chapter{Fundamentals}
@@ -209,7 +212,7 @@ w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
 \]
 Therefore, \Gls{tfidf} indicates how significant a word is to a document in a collection or corpus. It is regularly used as a weighting factor in Information Retrieval and Text Mining. 
 \newpage
-\noindent \textit{The \Gls{tfidf} value increases proportionally to the number of times a word appears in the document, but is offset by the frequency of the word in the corpus, which helps to control the fact that some words are usually more common than others.}\\
+\noindent The more often a word occurs in the document, the higher the \gls{tfidf} value, which is compensated by calculating the frequency of the word in the corpus. This makes it possible to find a balance between words that usually occur frequently and words that usually do not.\\
 \noindent \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between 2 terms. However, TF-IDF is based on the bag-of-words (BoW) model, which is why it disregards aspects such as text position, semantics and co-occurrence.
 
 \subsection{Word Embeddings}
@@ -226,7 +229,7 @@ Next we have another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix
 \[
 u_{j}={v'}_{w_j}^{T}h
 \] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. \\
-
+\newpage
 \noindent Afterwards "we can use \textit{softmax}, which is a log-linear classification model, to obtain the posterior distribution of words" \cite{word2vecparam}.
 \[
 p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
@@ -294,8 +297,9 @@ L2 control forces the weights to small weights, but does not make them zero and 
 \subsection{Decision Trees and Random Forest Classifier}
 \subsubsection{Decision Trees}
 Starting from the root node of a tree, a feature is evaluated from which a branch is subsequently selected. This process is repeated until the last node in the tree (leaf) is reached, which supplies the corresponding class. Different approaches have been developed in Decision Trees. One of the first is called \textit{Iterative Dichotomizer (ID3)}. However, this algorithm had the disadvantage that explicit functions were necessary, which led to the development of C4.5. Like ID3, C4.5 manages continuous values. In return to ID3, C4.5 could furthermore manage summarized and decreed values and transform a tree into a set of conditional expressions. Nevertheless, the most recent development called CART (Classification and Regression Trees) was introduced, which allows the use of absolute and numeric values, as well as the non-use of standard sets. In addition, CART trees can be utilized for characterization and fallback assignments. \cite{algorithms2}\\
-\noindent The algorithm uses impurity measures to select a particular branch from a leaf. Among others, the two most common measures are \textit{Gini Impurity} and \textit{Cross Entropy} Index \cite{algorithms}.  These impurity measures are  applied to each candidate subset, and the resulting values are combined (e.g., averaged) to provide a measure of the quality of the split,
+\noindent The algorithm uses impurity measures to select a particular branch from a leaf. Among others, the two most common measures are \textit{Gini Impurity} and \textit{Cross Entropy} Index \cite{algorithms}. 
 \newpage
+\noindent These impurity measures are  applied to each candidate subset, and the resulting values are combined (e.g., averaged) to provide a measure of the quality of the split,
 \[
 I_{Gini}(j)=\sum_{i}p(i|j)(1-p(i|j))
 \]
@@ -334,9 +338,9 @@ Bidirectional Encoder Representations from Transformers (\gls{bert}) \cite{bert}
 \begin{figure}[h]
 	\centering
 	%PC:
-	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	%Lap Top:
-	\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	\caption{\gls{rnn} and Feedforward Neural Network \cite{rnn}}
 \end{figure}\\
 Recurrent Neural Networks (\gls{rnn}) are a kind of artificial neural network, which considers time and order. Unlike Feedforward algorithms \cite{feedforward}, which use only the current example as input, \gls{rnn}s also use the Input Example, which they perceived in previous steps (Figure 5.1). 
@@ -365,34 +369,34 @@ The initial value $s(0)$ can take the values 0 or 1, whereas in all further step
 
 \noindent \textbf{Long Short-Term Memory} \\
 \begin{figure}[h]
-	\begin{minipage}[b]{0.5\linewidth}
+	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		\caption{Input gate$_1$ \cite{rnn}}
 	\end{minipage}
 	\hfill
-	\begin{minipage}[b]{0.5\linewidth}
+	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		\caption{Input gate$_2$ \cite{rnn}}
 	\end{minipage}
-	\begin{minipage}[b]{0.5\linewidth}
+	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		\caption{Forget gate \cite{rnn}}
 	\end{minipage}
 	\hfill
-	\begin{minipage}[b]{0.8\linewidth}
+	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		%\includegraphics[width=0.5\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		\caption{Output gate \cite{rnn}}
 	\end{minipage}
 \end{figure}
@@ -435,9 +439,9 @@ The different gates of \gls{lstm}s are Input-, Forget- and Output Gate, where th
 \begin{figure}[h]
 	\centering
 	%PC:
-	%\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	%Lap Top:
-	\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	%\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	\caption{The Transformer - model architecture \cite{attention}}
 \end{figure}\\
 \noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. 
@@ -447,17 +451,17 @@ The attention mechanism used in the paper includes a query $Q$, a set of key $K$
 \begin{figure}[t]
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		%Lap Top:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		\caption{Scaled Dot-Product Attention}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		%Lap Top:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		\caption{Multi-Head Attention}
 	\end{minipage}
 \end{figure}
@@ -486,9 +490,9 @@ where $pos$ is the position and $i$ is the dimension. Therefore the resulting wa
 \begin{figure}[h]
 	\centering
 	%PC:
-	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	%Lap Top:
-	\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	%\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	\caption{\gls{bert} Input Representations \cite{bert}}
 \end{figure}
 Bidirectional Encoder Representations from Transformer \cite{bert}, short \gls{bert}, is a new language representation model that, unlike previous efforts, which look at text sequences exclusively through pure left-to-right or combined left-to-right and right-to-left, applies bidirectional training of Transformer. \\
@@ -560,9 +564,9 @@ The GroundTruth-, Validation- and Training sets were each provided as XML docume
 \section{Dataset labelled by Publisher}
 \begin{minipage}[T]{.45\linewidth}
 	%PC:
-	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	%Lap Top:
-	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	\captionof{figure}{Hyperpartisan Distribution by Publisher}
 \end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
@@ -587,27 +591,26 @@ The main difference between this dataset and the by articel labelled one is the 
 Furthermore, the classification is expressed by the distribution of the additionally contained GroundTruth attribute \textit{Bias}, which informs about the general bias of the publisher. All 375,000 Hyperpartisan labelled all are assigned to either the left or right sectors, but none are right-centre, least or left-centre and are again 50:50 distributed. The other 50\% are split between the remaining bias, with 'Least' owning the largest share at 37\%.\\
 The publicity data is distributed over the years 1964-2018, with most of the data coming from 2012-2018.
 
-
+\newpage
 \section{Dataset labelled by Article}
-
-As already described in the previous section, the distribution of the by Article dataset is different from the by Publisher one. The distribution is no longer 50:50, but only 36.9\% were classified as Hyperpartisan (Figure 3.2). 
-\begin{figure}[t]
+\begin{figure}[h]
 	\begin{minipage}{.45\linewidth}
 		%PC:
-		%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		%Lap Top:
-		\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		\caption{Hyperpartisan Distribution by Article}
 	\end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
 	\begin{minipage}{.45\linewidth}
-	%PC:
-	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
-	%Lap Top:
-	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
-	\caption{Publishing Years Distribution by Article}
-\end{minipage}
+		%PC:
+		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		%Lap Top:
+		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		\caption{Publishing Years Distribution by Article}
+	\end{minipage}
 \end{figure}
+As already described in the previous section, the distribution of the by Article dataset is different from the by Publisher one. The distribution is no longer 50:50, but only 36.9\% were classified as Hyperpartisan (Figure 3.2). 
 \noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 3.3. Altogether all 645 articles date from the years 1902-2018.
 
 
@@ -763,36 +766,36 @@ Let's take the following example: \\
 
 \newpage
 \subsection{Word2Vec} 
-For a forther comparison and an approximation to the the later on used classification model, I did not only uf \gls{tfidf} as a Vector representation method as part of my Bachelor Thesis, but also Word Embeddings - especially the \textit{Word2Vec} model. \\
-\noindent Word2Vec represents words as vectors. Unlike the  \gls{tfidf} method, however, not only word frequencies and -priorities are considered, but also the connection of individual words to others. Again, several methods of implementation exist. 
-\noindent As part of my Bachelor Thesis, I decided to use  the library \textit{gensim} \cite{gensim} to implement my Word2Vec model. With \textit{gensim} it is  possible to do  unsupervised semantic modelling from plain text. This makes it possible to implement a Word"vec model using only a few lines of code without having to program Skip-Gram of \gls{cbow} yourself. \\
-
 \begin{algorithm}[H]
 	\DontPrintSemicolon
-    model = gensim.models.Word2Vec(vocab, min\_count=10, window=10, size=300, iter=10)\;
+	model = gensim.models.Word2Vec(vocab, min\_count=10, window=10, size=300, iter=10)\;
 	\caption{Word2Vec with gensim}
 \end{algorithm}
-
-\noindent Algorithm 7 shows that the implementation of the model is straightforward, as it is pretty much the only step we need to program. By default, \textit{gensim} uses \gls{cbow} which can be  changed  by adding the following parameter to the parameters list: \textit{sg=1}. As for the other parameters, 18 more exist which can be viewed at \url{https://radimrehurek.com/gensim/models/word2vec.html}, but I decided to focus only on the important ones. \textit{Vocab} is our text corpus, which needs to be transformed into a list of tokenized sentences. \textit{Size} determines the dimension of the word vectors, \textit{window} the maximum distance between the current and predicted word within a sentence, \textit{min\_count}  how often a word must occur to be included in the vocabulary and \textit{iter} how many iterations  should be performed on the corpus. What exactly happens here is that a neural network with a single hidden layer is trained to predict the current word based on the context. The resulting vector consists of several features that describe the target word.\\
+%\begin{table}[h]
+%	\scriptsize
+%	\centering
+%	\begin{tabular}{cc|cc}
+%		\toprule
+%		By Article & Similarity  & By Publisher & Similarity \\
+%		\midrule
+%		president & 0.9992413520812988 & obama & 0.5890584588050842 \\
+%		donald & 0.9992144107818604 & clinton & 0.5385712385177612 \\
+%		election & 0.9980630874633789 & bannon & 0.5277745127677917 \\
+%		presidential & 0.9978925585746765 & priebus & 0.5117671489715576 \\
+%		campaign & 0.9978247880935669 & hillary &  0.48596829175949097 \\
+%		\bottomrule
+%	\end{tabular}
+%	\caption{Most similar word to 'trump'}
+%\end{table}
+For a further comparison and an approximation to the the later on used classification model, I did not only uf \gls{tfidf} as a Vector representation method as part of my Bachelor Thesis, but also Word Embeddings - especially the \textit{Word2Vec} model. \\
+Word2Vec represents words as vectors. Unlike the  \gls{tfidf} method, however, not only word frequencies and -priorities are considered, but also the connection of individual words to others. Again, several methods of implementation exist. 
+\noindent As part of my Bachelor Thesis, I decided to use  the library \textit{gensim} \cite{gensim} to implement my Word2Vec model. With \textit{gensim} it is  possible to do  unsupervised semantic modelling from plain text. This makes it possible to implement a Word"vec model using only a few lines of code without having to program Skip-Gram of \gls{cbow} yourself. 
+ Algorithm 7 shows that the implementation of the model is straightforward, as it is pretty much the only step we need to program. By default, \textit{gensim} uses \gls{cbow} which can be  changed  by adding the following parameter to the parameters list: \textit{sg=1}. As for the other parameters, 18 more exist which can be viewed at \url{https://radimrehurek.com/gensim/models/word2vec.html}, but I decided to focus only on the important ones. \textit{Vocab} is our text corpus, which needs to be transformed into a list of tokenized sentences. \textit{Size} determines the dimension of the word vectors, \textit{window} the maximum distance between the current and predicted word within a sentence, \textit{min\_count}  how often a word must occur to be included in the vocabulary and \textit{iter} how many iterations  should be performed on the corpus. What exactly happens here is that a neural network with a single hidden layer is trained to predict the current word based on the context. The resulting vector consists of several features that describe the target word.\\
 \noindent 
-After the model has been trained it is possible to get information about the similarity of two words by calling the method $model.wv.similarity(word_1, word_2)$. Table 4.2 shows the 6 most similar words to "trump" of both datasets. This is possible by calculating the cosine similarity of two words in the vector space. As the range of the cosine similarity can go from [-1 to 1], words that are completely the same are assigned the value \textit{1} and words that are not similar at all are given the value \textit{-1}. \\
-\begin{table}[t]
-	\scriptsize
-	\centering
-		\begin{tabular}{cc|cc}
-			\toprule
-			By Article & Similarity  & By Publisher & Similarity \\
-			\midrule
-			president & 0.9992413520812988 & obama & 0.5890584588050842 \\
-			donald & 0.9992144107818604 & clinton & 0.5385712385177612 \\
-			election & 0.9980630874633789 & bannon & 0.5277745127677917 \\
-			presidential & 0.9978925585746765 & priebus & 0.5117671489715576 \\
-			campaign & 0.9978247880935669 & hillary &  0.48596829175949097 \\
-			\bottomrule
-		\end{tabular}
-		\caption{Most similar word to 'trump'}
-\end{table}
+After the model has been trained it is possible to get information about the similarity of two words by calling the method $model.wv.similarity(word_1, word_2)$. Table 4.2 shows the 6 most similar words to "trump" of both datasets. This is possible by calculating the cosine similarity of two words in the vector space. As the range of the cosine similarity can go from [-1 to 1], words that are completely the same are assigned the value \textit{1} and words that are not similar at all are given the value \textit{-1}. 
+\newpage
 \noindent The resulting word vectors now have the dimension defined in the parameter \textit{size}. In order to be able to form features from them, I averaged the Word Embeddings of all words in a sentence (algorithm 8).\\
+
 \begin{algorithm}[H]
 	\DontPrintSemicolon
 	\KwIn{text corpus, trained model}
@@ -820,7 +823,8 @@ The \textit{sklearn.naive\_bayes.MultinomialNB} class of the library \textit{sci
 \]
 
 \noindent where $N_{yi}=\sum_{x \in T}x_i$ is the number of times a feature $i$ appears in a sample of class $y$ in the training set, $N_y=\sum_{i=1}^{n}N_{yi}$ is the total count of all features for class $y$ and $\alpha$ incorporates the smoothing parameter due to which zero probabilities will be prevented.
-\\ The \textit{MultinomialNB} classifier includes the parameters \textit{alpha}, \textit{fit\_prior} and \textit{class\_prior}, where \textit{alpha} specifies the smoothing value,. \textit{fit\_prior} specifies whether the class probalilities should be learned in advance and \textit{class\_prior} specifies the prior probabilities of the classes.\\
+\newpage
+\noindent The \textit{MultinomialNB} classifier includes the parameters \textit{alpha}, \textit{fit\_prior} and \textit{class\_prior}, where \textit{alpha} specifies the smoothing value,. \textit{fit\_prior} specifies whether the class probalilities should be learned in advance and \textit{class\_prior} specifies the prior probabilities of the classes.\\
 \noindent
 \begin{minipage}{\linewidth}
 	\begin{lstlisting}
@@ -842,13 +846,14 @@ where \textit{n\_estimators} determines the number of trees in the forest, \text
 \subsection{Logistic Regression Classifier}
 The Logistic Regression classifier is a model for classification, where the probabilities depicting the potential results of a solitary class are modelled utilizing a logistic function. The provided classifier of \textit{scikit-learn} offers the possibility not only to classify binary, but also One-vs-Rest and multinomial. There are several solvers available for this, yet since our classification problem only refers to binary classification, I will only discuss those aspects of the logistic regression classifier in the following section. \\
 \noindent Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization \cite{logisticregression}.\\
-\noindent A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out, that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}. \\
+\noindent A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out, that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}.
+\newpage
 \noindent \textit{Liblinear} uses a coordinate descent algorithm, the \textit{sag} solver a Stochastic Average Gradient descent, \textit{saga} is a variant of \textit{sag} and therefor supports the non-smooth penalty \textit{L1} and \textit{elasticnet} and the \textit{lbfgs} solver is an optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno algorithm
 
 
 \subsection{Training and Classification}
-Classifiers are algorithms which map input data to a specific type of category. Using the classifier consists of two basic steps: training and classification. Training is the process of recording content known to belong to certain class and creating a classifier based on that known content. Classification is the process by which a classifier is created with such a training content and is run on unknown content to determine the class affiliation for the undefined dataset.
-\begin{algorithm}[h]
+Classifiers are algorithms which map input data to a specific type of category. Using the classifier consists of two basic steps: training and classification. Training is the process of recording content known to belong to certain class and creating a classifier based on that known content. Classification is the process by which a classifier is created with such a training content and is run on unknown content to determine the class affiliation for the undefined dataset.\\
+\begin{algorithm}[H]
 	\DontPrintSemicolon
 	\KwIn{Classifier model, Features, Labels}
 	\KwOut{Trained Classifier} 
@@ -856,25 +861,27 @@ Classifiers are algorithms which map input data to a specific type of category. 
 	classifier.fit(features, labels)
 	\caption{Classifier Training}
 \end{algorithm}
-The above mentioned classifiers all follow the same scheme of classification (algorithm 10). To train these classifiers, the method \textit{fit()} is called at the defined classification algorithm, to which the training data and its associated labels are passed on. Depending on the algorithm and the size of the data set, this can take different lengths of time.  For example, the \textit{RandomForest} Classifier classifies the by Article labelled data within X minutes, whereas it needs Y minutes for the by Publisher labelled data. 
-Afterwards it is possible to make predictions with the trained classification.  This is done by calling the \textit{predict()} method to which the test data is passed (algorithm 11).
-\begin{algorithm}[h]
+\noindent The above mentioned classifiers all follow the same scheme of classification (algorithm 10). To train these classifiers, the method \textit{fit()} is called at the defined classification algorithm, to which the training data and its associated labels are passed on. Depending on the algorithm and the size of the data set, this can take different lengths of time.  For example, the \textit{RandomForest} Classifier classifies the by Article labelled data within X minutes, whereas it needs Y minutes for the by Publisher labelled data. 
+Afterwards it is possible to make predictions with the trained classification.  This is done by calling the \textit{predict()} method to which the test data is passed (algorithm 11).\\
+\begin{algorithm}[H]
 	\DontPrintSemicolon
 	\KwIn{Trained model, testset} 
 	trained\_model.predict(testset)
 	\caption{Make Predictions}
-\end{algorithm}\\
+\end{algorithm}
 \noindent Finally, I consider it important to mention that it is possible to save trained classifiers and models in order to access them later on without having to train a classifier each time.
-For this purpose the module \textit{pickle} of Python's standard library is available (algorithm 12), as well as for word vector models, the module \textit{models.keyedvectors} (algorithm 13) of the library \textit{gensim}. The \textit{pickle} module implements binary protocols for serializing and deserializing a Python object structure, whereas \textit{models.keyedvectros} implements word vectors and their similarity look-ups.
-\begin{algorithm}[h]
+For this purpose the module \textit{pickle} of Python's standard library is available (algorithm 12), as well as for word vector models, the module \textit{models.keyedvectors} (algorithm 13) of the library \textit{gensim}. The \textit{pickle} module implements binary protocols for serializing and deserializing a Python object structure, whereas \textit{models.keyedvectros} implements word vectors and their similarity look-ups.\\
+\begin{algorithm}[H]
 	\DontPrintSemicolon
 	\KwIn{Trained model, Final filename} 
 	filename = file
 	pickele.dump(trained model, filename)
 	\caption{Saving a trained model}
 \end{algorithm}
-\\ "The pickle module implements binary protocols for serializing and de-serializing a Python object structure. 'Pickling' is the process whereby a Python object hierarchy is converted into a byte stream, and “unpickling” is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy" \cite{pickle}.
-\begin{algorithm}[h]
+\newpage
+\noindent "The pickle module implements binary protocols for serializing and de-serializing a Python object structure. 'Pickling' is the process whereby a Python object hierarchy is converted into a byte stream, and “unpickling” is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy" \cite{pickle}.\\
+
+\begin{algorithm}[H]
 	\DontPrintSemicolon
 	\KwIn{Word2Vec model, Final filename with ending "kv"} 
 	word\_vectors = model.wv\;
@@ -882,12 +889,14 @@ For this purpose the module \textit{pickle} of Python's standard library is avai
 	word\_vectors.save(filename)\;
 	\caption{Saving a trained Word2Vec model}
 \end{algorithm}
-\\ \textit{KeyedVectors} "is essentially a mapping between entities and vectors. Each entity is identified by its string id, so this is a mapping between a string and a 1D numpy array. The entity typically corresponds to a word, but for some models, the key can also correspond to a document, a graph node etc. To generalize over different use-cases, this module calls the keys entities. Each entity is always represented by its string id, no matter whether the entity is a word, a document or a graph node" \cite{keyedvectors}.
+
+\noindent \textit{KeyedVectors} "is essentially a mapping between entities and vectors. Each entity is identified by its string id, so this is a mapping between a string and a 1D numpy array. The entity typically corresponds to a word, but for some models, the key can also correspond to a document, a graph node etc. To generalize over different use-cases, this module calls the keys entities. Each entity is always represented by its string id, no matter whether the entity is a word, a document or a graph node" \cite{keyedvectors}.
 
 \subsection{Bidirectional Encoder Representations from Transformers}
 In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for both lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper. The existing pre-trained models consist of a \textit{.zip} file, which contains the TensorFlow checkpoint for initializing the pre-trained weights, a vocab file to map WordPiece to word id, as well as a config file, which describes the hyperparameters of the model. Meanwhile many possibilities are available to use the Bert model, including TensorFlow Hub or a PyTorch \cite{pytorch} interface, whereby in this thesis the original GitHub Code was used. \\ 
-\noindent A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modified. 
-\begin{algorithm}[t]
+\noindent A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modified. \\
+
+\begin{algorithm}[H]
 	\DontPrintSemicolon
 	\KwIn{self, lines, set\_type}
 	examples = []\;
@@ -951,6 +960,18 @@ python run_classifier.py \
 
 
 \chapter{Evaluation}
+The evaluation based on the test data set is hosted on TIRA \cite{tira}. TIRA is an "Evaluation as a Service" \cite{evaluationasaservice} and focuses on hosting common tasks to facilitate the delivery of software. Because of TIRA it is not possible to gain insight into the test data set in order not to influence the result.
+In order to test the classifiers on the test dataset, the organizers of the competition provided me with a virtual machine in TIRA. It is only possible to access the test data within the TIRA interface. To run the software, a shell-command must be passed in this interface, which contains the Python program, the path to the directory of the test dataset and the path for the output. In this connection, it was necessary that the passed file creates a .txt file as output, which consists of one column for the ID of the article and one column for the prediction. \\
+\noindent It is then possible for forward the run to the evaluation software, which then outputs Accuracy, Precision, Recall and F1-Score. When evaluated on the test data, the results are not immediately visible, but have to be unblinded by the organizers. Therefore it was important to test the classification software on publicly accessible datasets, to see if they work, since the runs on these datasets were not blinded. 
+\begin{figure}[h]
+	\centering
+	%PC:
+	\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/tira3.png}
+	%Lap Top:
+	%\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	\caption{TIRA Interface}
+\end{figure}
+
 \section{Grid Search}
 \begin{table}[h]
 	\centering
@@ -962,13 +983,14 @@ python run_classifier.py \
 		fit\_prior & False & True \\
 		\bottomrule
 	\end{tabular}
-	\caption{Grid Search Result of the \gls{mnb} Classifier}
+	\caption{Grid Search Result for \gls{mnb} classifier}
 \end{table}
 \noindent A significant perspective in machine learning is the aspect of hyperparameters. These are parameters that are not determined by the learning algorithm, but those that must be determined beforehand. In the above mentioned algotihms, for example, theses are the parameters to be passed to the classifier. For instance, which size \textit{n\_estimators} in the \textit{Random Forest} classifier should assume. To solve this issue the algorithm \textit{GridSearch} exists. This algorithm is used to find the optimal hyperparameters of a model, which then leads to the most accurate predictions. \\
 \noindent The procedure is as follows: A set of parameters is defined witch which GridSearch trains the given classifier for all possible combinations and measures the performance by cross-validation. This ensures that our trained model has received the most samples from our training data set. \\
 \noindent A simple implementation of GridSearch is provided by \textit{scikit-learn} through the class \textit{sklearn.model\_selection.GridSearchCV} \cite{codegridsearch}. This class evaluates all possible combinations of parameters when calling the method \textit{fit()} and keeps the best combination. \\
 \noindent The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is the parameter set, \textit{scoring}, which specifies the measure to evaluate the test set, and \textit{cv} how many cross-validation splits to perform. Algorithm 8 shows a practical example of how to use \textit{GridSearchCV} while table 4.4 shows the corresponding results. \\
-\begin{algorithm}[h]
+
+\begin{algorithm}[H]
 	\DontPrintSemicolon
 	from sklearn.model\_selection import GridSearchCV\;
 	from sklearn.naive\_bayes import MultinomialNB\;
@@ -979,7 +1001,30 @@ python run_classifier.py \
 	\caption{Grid Search for \gls{mnb} classifier}
 \end{algorithm}
 
+\newpage
 \section{Evaluation Results}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c}
+		\toprule
+		Classifier & Accuracy & Precision & Recall &F1  \\
+		\midrule
+		Logistic Regression-Article$_{TFIDF}$ & 0.744 & 0.5654 & 0.361 & 0.441 \\
+		Logistic Regression-Article$_{WB}$ & 0.744 & 0.5411 & 0.556 & 0.548 \\
+		Logistic Regression-Publisher$_{TFIDF}$ & 0.481 & 0.318 & 0.75 & 0.446 \\
+		Logistic Regression-Publisher$_{WB}$ & 0.543 & 0.3791 & \textbf{1.0} & 0.510 \\
+		Random Forest-Article$_{TFIDF}$ & 0.744 & 0.667 & 0.1677 & 0.267 \\
+		Random Forest-Article$_{WB}$ & \textbf{0.814} & 0.7737 & 0.472 & \textbf{0.586} \\
+		Random Forest-Publisher$_{TFIDF}$ & 0.636 & 0.427 & 0.889 & 0.577 \\
+		Random Forest-Publisher$_{WB}$ &  &  &  &  \\
+		\gls{mnb}-Article$_{TFIDF}$ & 0.744 & \textbf{0.667} & 0.167 & 0.2667 \\
+		\gls{mnb}-Publisher$_{TFIDF}$ &  &  &  &  \\
+		BERT-Article & 0.705 & 0.25 & 0.028 & 0.05 \\
+		BERT-Publisher & 0.380 & 0.306 & 0.944 & 0.459 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Evaluation Results -- Article: Classifier has been trained on the by Article dataset; -Publisher: Classifier has been trained on the by Publisher dataset; -WB: Word Embeddings have been used; -TFIDF: TFIDF has been used}
+\end{table}
 \chapter{Conclusion}
 
 \bibliography{BA}{}
