@@ -107,6 +107,12 @@ Rong-En Fan, Kai-Wei Chang, Cho-Jui Hsieh, Xiang-Rui Wang, and Chih-Jen Lin.
 \newblock Liblinear: A library for large linear classification.
 \newblock {\em J. Mach. Learn. Res.}, 9:1871--1874, June 2008.
 
+\bibitem{study}
+Knight Foundation.
+\newblock
+  \url{https://knightfoundation.org/reports/an-online-experimental-platform-to-assess-trust-in-the-media},
+  July 2018.
+
 \bibitem{rnn}
 Palash Goyal.
 \newblock {\em Deep Learning for Natural Language Processing : Creating Neural
@@ -205,10 +211,6 @@ Tomas Mikolov, Martin Karafi{\'a}t, Luk{\'a}s Burget, Jan~Honza Cernock{\'y},
 \newblock Recurrent neural network based language model.
 \newblock In {\em INTERSPEECH}, 2010.
 
-\bibitem{keyedvectors}
-models.keyedvectors – store and query word vectors.
-\newblock \url{https://radimrehurek.com/gensim/models/keyedvectors.html}.
-
 \bibitem{pytorch}
 Adam Paszke, Sam Gross, Soumith Chintala, Gregory Chanan, Edward Yang, Zachary
   DeVito, Zeming Lin, Alban Desmaison, Luca Antiga, and Adam Lerer.
@@ -232,10 +234,6 @@ Matthew~E. Peters, Mark Neumann, Mohit Iyyer, Matt Gardner, Christopher Clark,
   Kenton Lee, and Luke Zettlemoyer.
 \newblock Deep contextualized word representations.
 \newblock {\em CoRR}, abs/1802.05365, 2018.
-
-\bibitem{pickle}
-pickle — python object serialization.
-\newblock \url{https://docs.python.org/3/library/pickle.html}.
 
 \bibitem{tira}
 Martin Potthast, Tim Gollub, Francisco Rangel, Paolo Rosso, Efstathios

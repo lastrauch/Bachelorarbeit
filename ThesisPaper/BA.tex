@@ -181,7 +181,10 @@
 \pagenumbering{arabic}
 
 \chapter{Introduction}
-
+In the digital age it is possible to access news and information anytime and anywhere. Above all, freedom of the press makes it possible for everyone to express his or her opinion publicly. Many people who read news nowadays assume that the information presented is correct and neutral. Unfortunately, this is very often not the case. Especially in special political situations, even supposedly serious news portals are not always neutral.  Thus https://www.adfontesmedia.com/ shows on the basis the Media Bias Charts that even well-known news portals such as Fox News or the New York Times show partly extreme/unfair interpretations of the news. The most interesting question here is what is hyperpartisan and how hyperpartisan articles can be recognized. For example, a study by the Knight Foundation \cite{study} describes that the perceived trustworthiness of news content depends on how the news source is viewed.  This means that left-wing political supporters, newspaper articles from a left-wing publisher, would be less likely to call hyperpartisan than right-wing supporters. This raises the question, however, if people do not agree with themselves when an article is hyperpartisan and when not, how should this be recognized at all and how should it be tackled? The SemEValTask4: Hyperpartisan News Detecttion takes up this question by asking the task to implement a program that automatically detects whether a newspaper article is hyperpartisan or not. \\
+\indent The latest findings in data science and above all in Natural Language Processing (NLP) contribute to answering this question. Since a computer, unlike humans, cannot draw on experience to better understand language, these algorithms and procedures must apply artificial intelligence and machine learning. NLP therefore deals with techniques and methods for the machine processing of natural language. Since 1950 NLP has been dealing with tasks like machine translation and information retrieval. Since then NLP has gone through several developments. Among others, the development of Neural Language Models in 2001, Word Embeddings in 2013, Sequence-to-Sequence Models in 2014 and pre-trained models in 2018 are of particular importance. \\
+\indent In the context of this bachelor thesis I will discuss how a program based on SemEvalTask 4 can be implemented. I will use classical methods of text classification as well as the latest development in NLP BERT. The interesting question is whether the program achieves better results with BERT Embeddings than with classical methods. \\
+Therefore, in the first chapter of this thesis I will deal with the mathematical basics of the methods used here, whereupon I will describe the data available to me in the second chapter. Chapter 3 describes the procedure to implement such a program. Chapter 4 refers to the evaluation of the different classification procedures before a conclusion is drawn in chapter 5. 
 
 \chapter{Related Work}
 Different classifiers were designed in the context of SemEval Task 4. For this purpose, the most common were Neural Networks, but overall all kinds of classifier were used. The winners of the competition used a model based on ELMo \cite{elmo}. ELMo was designed by AllenNLP in 2018 and uses a deep, bidirectional LSTM model to design character-based word representations. The advantage is that the employment of character embeddings makes it possible to identify morphological features which word-level embedding might overlook. Additionally, this ensures that valid word representations can be formed even for out-of-vocabulary words. The winners use a pre-trained ELMo model to output three vectors for each word. They state, that each vector corresponds to a layer output of the pre-trained ELMo model, whereupon they calculate the average of all three vectors to create the last word vector. Finally, the sentence vector is calculated by averaging the word vectors of a sentence. The complete development of her model was presented in the paper "Team Bertha by Suttner at SemEval-2019 Task 4: Hyperpartisan News Detection using ELMo Sentence Representation Convolutional Network" \cite{gewinner}. With their model they achieved an accuracy score of 0.822, a precision score of 0.871, a recall score of 0.755 and an F1 score of 0.809 on the by Article dataset. \\
@@ -237,6 +240,7 @@ p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
 \noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same \cite{word2vecparam}. However in the output layer, we are now outputting \textit{C} multinomial distributions. 
 
 \section{Classification Methods}
+Classification is about predicting a particular outcome based on given training data. For this prediction, a classification algorithm processes the training data set, which consists of a set of features and the respective predictions. The algorithm attempts to discover relationships between given features  of the instances and the associated classes to learn a function which makes it possible to predict the correct class based on the features of an instance. Thereafter, the algorithm receive a test dataset which it has not seen before. This dataset contains the same features as the training set but not the corresponding class names. With the previously learned function, the algorithm now assigns a class name to each instance  of the test record. \\
 \subsection{Multinomial Naive Bayes Classifier}
 The Naive Bayes classifier is based on  Bayes' theorem \cite{btheory}, which comes from the probability calculus and describes the calculation of conditional probability. Each object in this classification approach is assigned to the class for which the highest probability was computed or for which the lowest costs arise in this assignment.  \\
 \noindent The Multinomial Naive Bayes classifiers assumes that the position of the word does not matter, as well as  that the feature probabilities $Pr(t_i|c_)$ are independent given a class $c$.
@@ -338,9 +342,9 @@ Bidirectional Encoder Representations from Transformers (\gls{bert}) \cite{bert}
 \begin{figure}[h]
 	\centering
 	%PC:
-	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	%Lap Top:
-	%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	\caption{\gls{rnn} and Feedforward Neural Network \cite{rnn}}
 \end{figure}\\
 Recurrent Neural Networks (\gls{rnn}) are a kind of artificial neural network, which considers time and order. Unlike Feedforward algorithms \cite{feedforward}, which use only the current example as input, \gls{rnn}s also use the Input Example, which they perceived in previous steps (Figure 5.1). 
@@ -371,32 +375,32 @@ The initial value $s(0)$ can take the values 0 or 1, whereas in all further step
 \begin{figure}[h]
 	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		%Lap Top:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		\caption{Input gate$_1$ \cite{rnn}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		%Lap Top:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		\caption{Input gate$_2$ \cite{rnn}}
 	\end{minipage}
 	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		%Lap Top:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		\caption{Forget gate \cite{rnn}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		%Lap Top:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		\caption{Output gate \cite{rnn}}
 	\end{minipage}
 \end{figure}
@@ -439,9 +443,9 @@ The different gates of \gls{lstm}s are Input-, Forget- and Output Gate, where th
 \begin{figure}[h]
 	\centering
 	%PC:
-	\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	%\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	%Lap Top:
-	%\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	\caption{The Transformer - model architecture \cite{attention}}
 \end{figure}\\
 \noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. 
@@ -451,17 +455,17 @@ The attention mechanism used in the paper includes a query $Q$, a set of key $K$
 \begin{figure}[t]
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		%Lap Top:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		\caption{Scaled Dot-Product Attention}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		%Lap Top:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		\caption{Multi-Head Attention}
 	\end{minipage}
 \end{figure}
@@ -490,9 +494,9 @@ where $pos$ is the position and $i$ is the dimension. Therefore the resulting wa
 \begin{figure}[h]
 	\centering
 	%PC:
-	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	%Lap Top:
-	%\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	\caption{\gls{bert} Input Representations \cite{bert}}
 \end{figure}
 Bidirectional Encoder Representations from Transformer \cite{bert}, short \gls{bert}, is a new language representation model that, unlike previous efforts, which look at text sequences exclusively through pure left-to-right or combined left-to-right and right-to-left, applies bidirectional training of Transformer. \\
@@ -550,6 +554,10 @@ In order to evaluate how well a classifier works, several procedures exist. The 
 \textit{Cross Validation} is a model validation technique used to survey how the result of measurable statistical analysis generalizes into an independent dataset. The idea is to divide the entire dataset into a moving test and training set. The size of the test set is determined by the quantity of folds, so that at \textit{k} emphases the test set covers the whole original dataset.\\
 \noindent A round of \text{Cross Validation} comprises of separating a sample of data into corresponding subsets, performing the analysis on the training set, and validating the analysis on the test set. To decrease fluctuation, most strategies perform several rounds of \textit{Cross Validation} utilizing various partitions and combine the validation result over the rounds to obtain an estimate of the predictive performance of the model.
 
+\subsection{Grid Search}
+A significant perspective in machine learning is the aspect of hyperparameters. These are parameters that are not determined by the learning algorithm, but those that must be determined beforehand. In the above mentioned algotihms, for example, theses are the parameters to be passed to the classifier. For instance, which size \textit{n\_estimators} in the \textit{Random Forest} classifier should assume. To solve this issue the algorithm \textit{GridSearch} exists. This algorithm is used to find the optimal hyperparameters of a model, which then leads to the most accurate predictions. \\
+\noindent The procedure is as follows: A set of parameters is defined witch which GridSearch trains the given classifier for all possible combinations and measures the performance by cross-validation. This ensures that our trained model has received the most samples from our training data set. 
+
 
 \chapter{Data Description}
  The given data, the model is build on, was provided by zenodo.org as part of SemEvals Task 4 [\url{https://pan.webis.de/semeval19/semeval19-web/}] and consists of 2 independent datasets, which in turn have been divided into a GroundTruth-, Training- and Validation set.
@@ -564,9 +572,9 @@ The GroundTruth-, Validation- and Training sets were each provided as XML docume
 \section{Dataset labelled by Publisher}
 \begin{minipage}[T]{.45\linewidth}
 	%PC:
-	\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	%Lap Top:
-	%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
 	\captionof{figure}{Hyperpartisan Distribution by Publisher}
 \end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
@@ -596,17 +604,17 @@ The publicity data is distributed over the years 1964-2018, with most of the dat
 \begin{figure}[h]
 	\begin{minipage}{.45\linewidth}
 		%PC:
-		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		%Lap Top:
-		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		\caption{Hyperpartisan Distribution by Article}
 	\end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
 	\begin{minipage}{.45\linewidth}
 		%PC:
-		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
 		%Lap Top:
-		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
 		\caption{Publishing Years Distribution by Article}
 	\end{minipage}
 \end{figure}
@@ -814,87 +822,36 @@ After the model has been trained it is possible to get information about the sim
 \end{algorithm}
 
 \section{Classification Methods}
-Classification is about predicting a particular outcome based on given training data. For this prediction, a classification algorithm processes the training data set, which consists of a set of features and the respective predictions. The algorithm attempts to discover relationships between given features  of the instances and the associated classes to learn a function which makes it possible to predict the correct class based on the features of an instance. Thereafter, the algorithm receive a test dataset which it has not seen before. This dataset contains the same features as the training set but not the corresponding class names. With the previously learned function, the algorithm now assigns a class name to each instance  of the test record. \\
-\noindent Classic classification algorithms include \textit{Multinomial Naive Bayes}, \textit{Support Vector Machines}, \textit{Random Forest} and \textit{Logistic Regression}, which is why, in the following chapter, I will explain the basic procedure for implementing these algorithms. In addition, I will discuss the aspect of \textit{Grid Search}, which gives us the optimal parameter assignment to a given set of data for these algorithms.
-\subsection{Multinomial Naive Bayes Classifier}
-The \textit{sklearn.naive\_bayes.MultinomialNB} class of the library \textit{scikit-learn} implements the Naive Bayes algorithm for multinomial distributed data \cite{codemulinomialnb}. Here $\Theta$ is estimated by a smoothed version of the maximum likelihood
+The given classification task in this thesis is of binary nature. Given a set of articles, it should be determined whether an article is hyperpartisan or not. For training different classifiers I used different approaches. \\
+
+\subsection{Classical Approach}
+In the first approach, the first step I performed was representing the articles using Word Embeddings and TFIDF Measure. The Word2Vec, TFIDFransformer and CountVectorizer were both trained on the by Publisher dataset, since it coontains 600.000  articles and therefore has more data to train these models. In the second step I did a GridSearch to get the optimal parameters for the classifiers based on the given data sets, whereupon in the third step, I performed training using the classifiers Multinomial Naive Bayes, Logistic Regression and Random Forest on the datasets labeled by Article and by Publisher. For implementating of these classifiers I used Python's library scikit learn, which makes it possible to use already implemented classifiers without having to program them from scratch. Here a classification algorithm is a Python object, which represents an estimator for classifications and implements the methods fit() and predict(). The aim is that the classifier instance learns from the defined model by passing the training dataset to the method fit().\\
+\indent A simple implementation of GridSearch is provided by \textit{scikit-learn} through the class \textit{sklearn.model\_selection.GridSearchCV} \cite{codegridsearch}. This class evaluates all possible combinations of parameters when calling the method \textit{fit()} and keeps the best combination. The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is the parameter set, \textit{scoring}, which specifies the measure to evaluate the test set, and \textit{cv} how many cross-validation splits to perform. \\
+%begin{algorithm}[H]
+%	\DontPrintSemicolon
+%	from sklearn.model\_selection import GridSearchCV\;
+%	from sklearn.naive\_bayes import MultinomialNB\;
+%	\BlankLine
+%	parameter\_candidates = \{'alpha': np.linspace(0.5, 1.5, 6), 'fit\_prior': [True, False]\}\;
+%	clf = GridSearchCV(estimator=MultinomialNB(), param\_grid=parameter\_candidates, scoring='accuracy', cv=10)\;
+%	clf.fit(features, labels)\;
+%	\caption{Grid Search for \gls{mnb} classifier}
+%\end{algorithm}
+\indent The Multinomial Naies Bayes classifier is an estimator for classifying multinomial istributed data. For implemening the Naives Bayes model scikit learn provides the class \textit{sklearn.naive\_bayes.MultinomialNB} \cite{codemulinomialnb} and cassifies as follows:
 \[
 \hat{\Theta}_{yi}=\frac{N_{yi}+\alpha}{N_y + \alpha n}
 \]
 
-\noindent where $N_{yi}=\sum_{x \in T}x_i$ is the number of times a feature $i$ appears in a sample of class $y$ in the training set, $N_y=\sum_{i=1}^{n}N_{yi}$ is the total count of all features for class $y$ and $\alpha$ incorporates the smoothing parameter due to which zero probabilities will be prevented.
-\newpage
-\noindent The \textit{MultinomialNB} classifier includes the parameters \textit{alpha}, \textit{fit\_prior} and \textit{class\_prior}, where \textit{alpha} specifies the smoothing value,. \textit{fit\_prior} specifies whether the class probalilities should be learned in advance and \textit{class\_prior} specifies the prior probabilities of the classes.\\
-\noindent
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}
-from sklearn.naive_bayes import MultinomialNB
-MultinomialNB(alpha=0.5, fit_prior=True)
-	\end{lstlisting}
-\end{minipage} \\
-\subsection{Random Forest Classifier}
-As described in Chapter 2.6.2, the Random Forest Classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. For implementing the Random Forest Classifier, \textit{scikit-learn} provides the class \textit{sklearn.ensemble.RandomForestClassifier} \cite{coderandomforest}. Unlike the original publication \cite{randomforest}, the \textit{scikit-learn} classifier determines the final class by averaging the probabilistic forecasts as opposed to having each classifier vote in favour of a solitary class. \\
-\noindent The Random Forest classifier includes 17 parameters, of which I have included 6 in my classification.\\
-\noindent
-\begin{minipage}{\linewidth}
-	\begin{lstlisting}
-from sklearn.ensemble import RandomForestClassifier
-RandomForestClassifier(min_samples_leaf=1, n_estimators=500, criterion='gini', max_depth=15, max_features='auto', bootstrap=True)
-	\end{lstlisting}
-\end{minipage} \\
-where \textit{n\_estimators} determines the number of trees in the forest, \textit{criterion} which impurity measure to utilize, \textit{max\_depth} determines the maximum depth of a tree, \textit{min\_samples\_leaf} determines the base number of samples to be at a leaf node, \textit{max\_features} the quantity of features that must be considered in the search for the best partition and \textit{bootstrap} indicates whether bootstrap models are utilized when making trees.
-\subsection{Logistic Regression Classifier}
-The Logistic Regression classifier is a model for classification, where the probabilities depicting the potential results of a solitary class are modelled utilizing a logistic function. The provided classifier of \textit{scikit-learn} offers the possibility not only to classify binary, but also One-vs-Rest and multinomial. There are several solvers available for this, yet since our classification problem only refers to binary classification, I will only discuss those aspects of the logistic regression classifier in the following section. \\
-\noindent Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization \cite{logisticregression}.\\
-\noindent A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out, that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}.
-\newpage
-\noindent \textit{Liblinear} uses a coordinate descent algorithm, the \textit{sag} solver a Stochastic Average Gradient descent, \textit{saga} is a variant of \textit{sag} and therefor supports the non-smooth penalty \textit{L1} and \textit{elasticnet} and the \textit{lbfgs} solver is an optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno algorithm
+\noindent Here $\Theta$ is estimated by a smoothed version of the maximum likelihood, $N_{yi}=\sum_{x \in T}x_i$ is the number of times a feature $i$ appears in a sample of class $y$ in the training set, $N_y=\sum_{i=1}^{n}N_{yi}$ is the total count of all features for class $y$ and $\alpha$ incorporates the smoothing parameter due to which zero probabilities will be prevented.
+The \textit{MultinomialNB} classifier includes the parameters \textit{alpha}, \textit{fit\_prior} and \textit{class\_prior}, where \textit{alpha} specifies the smoothing value, \textit{fit\_prior} whether the class probalilities should be learned in advance and \textit{class\_prior} specifies the prior probabilities of the classes.\\
+\indent The Random Forest Classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. For implementing the Random Forest Classifier, \textit{scikit-learn} provides the class \textit{sklearn.ensemble.Ran-domForestClassifier} \cite{coderandomforest}. Unlike the original publication \cite{randomforest}, the \textit{scikit-learn} classifier determines the final class by averaging the probabilistic forecasts as opposed to having each classifier vote in favour of a solitary class. The Random Forest classifier includes 17 parameters, of which I have included \textit{n\_estimators}, criterion, max\_depth, min\_samples\_leaf, max\_features and bootstrap. Here, n\_estimators determines the number of trees in the forest, \textit{criterion} which impurity measure to utilize, \textit{max\_depth} determines the maximum depth of a tree, \textit{min\_samples\_leaf} determines the base number of samples to be at a leaf node, \textit{max\_features} the quantity of features that must be considered in the search for the best partition and \textit{bootstrap} indicates whether bootstrap models are utilized when making trees.\\
+\indent The Logistic Regression classifier is a model for classification, where the probabilities depicting the potential results of a solitary class are modelled utilizing a logistic function. The provided classifier of \textit{scikit-learn} offers the possibility not only to classify binary, but also One-vs-Rest and multinomial. There are several solvers available for this, yet since our classification problem only refers to binary classification, I will only discuss those aspects of the logistic regression classifier in the following section. Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization \cite{logisticregression}. A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out, that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}. \textit{Liblinear} uses a coordinate descent algorithm, the \textit{sag} solver a Stochastic Average Gradient descent, \textit{saga} is a variant of \textit{sag} and therefor supports the non-smooth penalty \textit{L1} and \textit{elasticnet} and the \textit{lbfgs} solver is an optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno algorithm.\\
 
 
-\subsection{Training and Classification}
-Classifiers are algorithms which map input data to a specific type of category. Using the classifier consists of two basic steps: training and classification. Training is the process of recording content known to belong to certain class and creating a classifier based on that known content. Classification is the process by which a classifier is created with such a training content and is run on unknown content to determine the class affiliation for the undefined dataset.\\
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\KwIn{Classifier model, Features, Labels}
-	\KwOut{Trained Classifier} 
-	classifier = model\;
-	classifier.fit(features, labels)
-	\caption{Classifier Training}
-\end{algorithm}
-\noindent The above mentioned classifiers all follow the same scheme of classification (algorithm 10). To train these classifiers, the method \textit{fit()} is called at the defined classification algorithm, to which the training data and its associated labels are passed on. Depending on the algorithm and the size of the data set, this can take different lengths of time.  For example, the \textit{RandomForest} Classifier classifies the by Article labelled data within X minutes, whereas it needs Y minutes for the by Publisher labelled data. 
-Afterwards it is possible to make predictions with the trained classification.  This is done by calling the \textit{predict()} method to which the test data is passed (algorithm 11).\\
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\KwIn{Trained model, testset} 
-	trained\_model.predict(testset)
-	\caption{Make Predictions}
-\end{algorithm}
-\noindent Finally, I consider it important to mention that it is possible to save trained classifiers and models in order to access them later on without having to train a classifier each time.
-For this purpose the module \textit{pickle} of Python's standard library is available (algorithm 12), as well as for word vector models, the module \textit{models.keyedvectors} (algorithm 13) of the library \textit{gensim}. The \textit{pickle} module implements binary protocols for serializing and deserializing a Python object structure, whereas \textit{models.keyedvectros} implements word vectors and their similarity look-ups.\\
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\KwIn{Trained model, Final filename} 
-	filename = file
-	pickele.dump(trained model, filename)
-	\caption{Saving a trained model}
-\end{algorithm}
-\newpage
-\noindent "The pickle module implements binary protocols for serializing and de-serializing a Python object structure. 'Pickling' is the process whereby a Python object hierarchy is converted into a byte stream, and “unpickling” is the inverse operation, whereby a byte stream (from a binary file or bytes-like object) is converted back into an object hierarchy" \cite{pickle}.\\
-
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\KwIn{Word2Vec model, Final filename with ending "kv"} 
-	word\_vectors = model.wv\;
-	filename = "vectors.kv"\;
-	word\_vectors.save(filename)\;
-	\caption{Saving a trained Word2Vec model}
-\end{algorithm}
-
-\noindent \textit{KeyedVectors} "is essentially a mapping between entities and vectors. Each entity is identified by its string id, so this is a mapping between a string and a 1D numpy array. The entity typically corresponds to a word, but for some models, the key can also correspond to a document, a graph node etc. To generalize over different use-cases, this module calls the keys entities. Each entity is always represented by its string id, no matter whether the entity is a word, a document or a graph node" \cite{keyedvectors}.
-
-\subsection{Bidirectional Encoder Representations from Transformers}
-In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for both lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper. The existing pre-trained models consist of a \textit{.zip} file, which contains the TensorFlow checkpoint for initializing the pre-trained weights, a vocab file to map WordPiece to word id, as well as a config file, which describes the hyperparameters of the model. Meanwhile many possibilities are available to use the Bert model, including TensorFlow Hub or a PyTorch \cite{pytorch} interface, whereby in this thesis the original GitHub Code was used. \\ 
-\noindent A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modified. \\
+\subsection{Novel Approach using Bidirectional Encoder Representations from Transformers}
+In the second approach of my classification I used Google's model for Bidirectional Encoder Representations from Transformers. Here I do not pre-train the model like the group Clint Buchanan, but use the already pre-trained models and fine-tune using the data sets labelled by Article and by Publisher. Meanwhile many possibilities exist to use the Bert model, including TensorFlow Hub or a PyTorch \cite{pytorch} interface, whereby in this thesis the original GitHub Code was used.\\
+\indent In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for both lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper. The existing pre-trained models consist of a \textit{.zip} file, which contains the TensorFlow checkpoint for initializing the pre-trained weights, a vocab file to map WordPiece to word id, as well as a config file, which describes the hyperparameters of the model. \\ 
+\indent A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modified. \\
 
 \begin{algorithm}[H]
 	\DontPrintSemicolon
@@ -916,14 +873,15 @@ In the official github repository (\url{https://github.com/google-research/bert}
 \end{algorithm} 
 A slightly modified version of the combined GroundTruth- and Training datasets will be passed to this new class, as only the article's content, the IDs and labels for the input examples to be generated are required. Since BERT uses \textit{.tsv} as the default file format, it is also necessary to save the modified file in this form. \\
 \noindent The execution of the \textit{run,\_classifier.py} file includes additional passing of 12 arguments (Listing 5.2), where \textit{train\_batch\_size}, \textit{learning\_rate} and \textit{num\_train\_epochs} represent the models hyperparameters. \\
-\noindent In a  single training epoch, the entire data set is passed through a neural network once. Hereby, a higher number of epochs is required to avoid under-fitting due to a small number of updated weights. However, too many epochs may lead to over-fitting. In the paper, the authors state, that a number of  3 or 4 epochs worked best across different tasks. \textit{Eigene Erfahrung einfügen!!!!!} \\
-\noindent Since it is not possible to transfer an entire data set into a neural network at once, batch size defines the total number of training examples contained in a single batch. Here, the paper refers  to an optimal number of 16 or 32. On the official GitHub page, however, it is pointed out that all experiments in the paper were fine-tuned on a cloud-TPU with 64GB RAM and using the same hyperparameters  on a GPU with 12 to 16GB RAM may lead to out-of-memory issues. Therefore in the same section, the maximum batch size for an associated sequence length and the associated Bert model is mentioned, whereas for the \gls{bert}$_{Base}$ model with a sequence length of 512 the corresponding maximum batch size is 6. However, on
+\indent In a  single training epoch, the entire data set is passed through a neural network once. Hereby, a higher number of epochs is required to avoid under-fitting due to a small number of updated weights. However, too many epochs may lead to over-fitting. In the paper, the authors state, that a number of  3 or 4 epochs worked best across different tasks. I experienced that a number of 10 epochs slightly improved the model when trained on the Publisher record, while it made no real difference on the Article record. This is different from the paper, which states that the result with different parameters should not vary as much on large datasets as on small ones.  \\
+\indent Since it is not possible to transfer an entire data set into a neural network at once, batch size defines the total number of training examples contained in a single batch. Here, the paper refers  to an optimal number of 16 or 32. On the official GitHub page, however, it is pointed out that all experiments in the paper were fine-tuned on a cloud-TPU with 64GB RAM and using the same hyperparameters  on a GPU with 12 to 16GB RAM may lead to out-of-memory issues. Therefore in the same section, the maximum batch size for an associated sequence length and the associated Bert model is mentioned, whereas for the \gls{bert}$_{Base}$ model with a sequence length of 512 the corresponding maximum batch size is 6. However, on
 a GPU with 12GB RAM, I  experienced that using a batch size larger than 2 is not possible on the by Publisher labelled data set. Despite this, I decided not to use a smaller sequence length, since a length of 512 is already not enough for a complete article. \\
+\indent Learning rate tells the optimizer of a neural network how far it is supposed to set the weights in the opposite direction to the gradient for a mini batch. If the learning rate is low, training is more reliable, but  optimization will take a lot more time, whereas with a high learning rate, the training may not approach or even diverge. The authors of the paper refer to an optimal learning rate in relation to the Adam gradient \cite{adam} of 5e-5, 3-5 or 2-5. I trained the model with the parameters 5e-5, 3e-5, 2-5 and 1e-5 and the model produced the best results on both data sets with the learning rate 2e-5. \\
 \begin{lstlisting}[caption={Example: Calling \textit{run\_classifier} with the required flags},captionpos=b, frame = single]
 export BERT_BASE_DIR=/path_to_bert_model/uncased_L-12_H-768_A-12
 export DATA_DIR=/path_to_input_data/
 
-export CUDA_VISIBLE_DEVICES=2 && python run_classifier.py \
+export python run_classifier.py \
 --task_name=ba \
 --do_train=true \
 --do_eval=true \
@@ -937,27 +895,6 @@ export CUDA_VISIBLE_DEVICES=2 && python run_classifier.py \
 --num_train_epochs=4.0 \
 --output_dir=/path_for_output_data/
 \end{lstlisting}
-\noindent Learning rate tells the optimizer of a neural network how far it is supposed to set the weights in the opposite direction to the gradient for a mini batch. If the learning rate is low, training is more reliable, but  optimization will take a lot more time, whereas with a high learning rate, the training may not approach or even diverge. The authors of the paper refer to an optimal learning rate in relation to the Adam gradient \cite{adam} of 5e-5, 3-5 or 2-5. \textit{Eigene Erfahrung noch einfügen!}\\
-
-\noindent Predictions based on the \gls{bert} model can be made using the following prompt:
-\begin{lstlisting}
-export BERT_BASE_DIR=/path_to_bert_model/uncased_L-12_H-768_A-12
-export GLUE_DIR=/path_to_input_data/
-export TRAINED_CLASSIFIER=/path_to_fine_tuned/classifier
-
-python run_classifier.py \
---task_name=ba \
---do_predict=true \
---data_dir=$GLUE_DIR \
---vocab_file=$BERT_BASE_DIR/vocab.txt \
---bert_config_file=$BERT_BASE_DIR/bert_config.json \
---init_checkpoint=$TRAINED_CLASSIFIER \
---max_seq_length=512 \
---output_dir=/path_for_output_data/
-\end{lstlisting}
-\noindent It can be seen that the FLAGS \textit{do\_train} and \textit{do\_eval} have been replaced by \textit{do\_predict}, since these three arguments are set to "False" by default. With these flags the model recognizes which task it has to execute. Furthermore, the initial checkpoint is no longer from the pre-trained, but from the fine-tuned \gls{bert} model. \\
-\noindent Finally, I would like to add, that the class run\_classifier was modfied in the context of this thesis in order to have the suitable format for the evaluation by SemEvalTask4, which I will discuss in the following chapter "Evaluation".
-
 
 \chapter{Evaluation}
 The evaluation based on the test data set is hosted on TIRA \cite{tira}. TIRA is an "Evaluation as a Service" \cite{evaluationasaservice} and focuses on hosting common tasks to facilitate the delivery of software. Because of TIRA it is not possible to gain insight into the test data set in order not to influence the result.
@@ -966,43 +903,13 @@ In order to test the classifiers on the test dataset, the organizers of the comp
 \begin{figure}[h]
 	\centering
 	%PC:
-	\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/tira3.png}
+	%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/tira3.png}
 	%Lap Top:
-	%\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	\caption{TIRA Interface}
 \end{figure}
 
-\section{Grid Search}
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c}
-		\toprule
-		Parameter & Result by Article & Result by Publisher \\
-		\midrule
-		alpha & 0.7 & 0.5  \\
-		fit\_prior & False & True \\
-		\bottomrule
-	\end{tabular}
-	\caption{Grid Search Result for \gls{mnb} classifier}
-\end{table}
-\noindent A significant perspective in machine learning is the aspect of hyperparameters. These are parameters that are not determined by the learning algorithm, but those that must be determined beforehand. In the above mentioned algotihms, for example, theses are the parameters to be passed to the classifier. For instance, which size \textit{n\_estimators} in the \textit{Random Forest} classifier should assume. To solve this issue the algorithm \textit{GridSearch} exists. This algorithm is used to find the optimal hyperparameters of a model, which then leads to the most accurate predictions. \\
-\noindent The procedure is as follows: A set of parameters is defined witch which GridSearch trains the given classifier for all possible combinations and measures the performance by cross-validation. This ensures that our trained model has received the most samples from our training data set. \\
-\noindent A simple implementation of GridSearch is provided by \textit{scikit-learn} through the class \textit{sklearn.model\_selection.GridSearchCV} \cite{codegridsearch}. This class evaluates all possible combinations of parameters when calling the method \textit{fit()} and keeps the best combination. \\
-\noindent The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is the parameter set, \textit{scoring}, which specifies the measure to evaluate the test set, and \textit{cv} how many cross-validation splits to perform. Algorithm 8 shows a practical example of how to use \textit{GridSearchCV} while table 4.4 shows the corresponding results. \\
 
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	from sklearn.model\_selection import GridSearchCV\;
-	from sklearn.naive\_bayes import MultinomialNB\;
-	\BlankLine
-	parameter\_candidates = \{'alpha': np.linspace(0.5, 1.5, 6), 'fit\_prior': [True, False]\}\;
-	clf = GridSearchCV(estimator=MultinomialNB(), param\_grid=parameter\_candidates, scoring='accuracy', cv=10)\;
-	clf.fit(features, labels)\;
-	\caption{Grid Search for \gls{mnb} classifier}
-\end{algorithm}
-
-\newpage
-\section{Evaluation Results}
 \begin{table}[h]
 	\centering
 	\begin{tabular}{c|c|c|c|c}
