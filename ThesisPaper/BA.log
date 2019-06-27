@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.23)  26 JUN 2019 22:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7000 64-bit) (preloaded format=pdflatex 2019.4.23)  27 JUN 2019 13:07
 entering extended mode
 **./BA.tex
 (BA.tex
@@ -1414,12 +1414,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 284--287
  []
 
 ) [43]
-Underfull \hbox (badness 10000) in paragraph at lines 1036--1045
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1067
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1036--1045
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1067
 
  []
 
@@ -1450,7 +1450,7 @@ ts/type1/urw/courier/ucrr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/ti
 mes/utmb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C
 :/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/M
 iKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on BA.pdf (51 pages, 1228073 bytes).
+Output written on BA.pdf (51 pages, 1229382 bytes).
 PDF statistics:
  318 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

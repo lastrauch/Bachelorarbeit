@@ -1019,12 +1019,34 @@ In order to test the classifiers on the test dataset, the organizers of the comp
 		Random Forest-Publisher$_{WB}$ &  &  &  &  \\
 		\gls{mnb}-Article$_{TFIDF}$ & 0.744 & \textbf{0.667} & 0.167 & 0.2667 \\
 		\gls{mnb}-Publisher$_{TFIDF}$ &  &  &  &  \\
-		BERT-Article & 0.705 & 0.25 & 0.028 & 0.05 \\
+		BERT-Article & \textbf{0.705} & 0.25 & 0.028 & 0.05 \\
+		BERT-Publisher & 0.380 & 0.306 & 0.944 & 0.459 \\
+		\bottomrule
+	\end{tabular}
+\end{table}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c|c|c|c|c}
+		\toprule
+		Classifier & Accuracy & Precision & Recall &F1  \\
+		\midrule
+		Logistic Regression-Article$_{TFIDF}$ & 0.519 & 0.521 & 0.476 & 0.5 \\
+		Logistic Regression-Article$_{WB}$ & 0.521 & 0.554 & 0.219 & 0.314 \\
+		Logistic Regression-Publisher$_{TFIDF}$ & 0.584 & \textbf{0.562} & 0.771 & 0.65 \\
+		Logistic Regression-Publisher$_{WB}$ &  &  &  &  \\
+		Random Forest-Article$_{TFIDF}$ & 0.521 & 0.554 & 0.219 & 0.314 \\
+		Random Forest-Article$_{WB}$ & 0.551 & 0.561 & 0.465 & 0.509 \\
+		Random Forest-Publisher$_{TFIDF}$ & 0.529 & 0.529 & 0.532 & 0.530 \\
+		Random Forest-Publisher$_{WB}$ &  &  &  &  \\
+		\gls{mnb}-Article$_{TFIDF}$ & 0.507 & 0.516 & 0.217 & 0.306 \\
+		\gls{mnb}-Publisher$_{TFIDF}$ & 0.577 & 0.551 & \textbf{0.835}  & \textbf{0.663} \\
+		BERT-Article & \textbf{0.705} & 0.25 & 0.028 & 0.05 \\
 		BERT-Publisher & 0.380 & 0.306 & 0.944 & 0.459 \\
 		\bottomrule
 	\end{tabular}
 	\caption{Evaluation Results -- Article: Classifier has been trained on the by Article dataset; -Publisher: Classifier has been trained on the by Publisher dataset; -WB: Word Embeddings have been used; -TFIDF: TFIDF has been used}
 \end{table}
+For the evaluation I used different models for comparison. A total of 12 types of classifiers were used for comparing different methods of classification. Among these, each classifier mentioned in Chapter 5 was trained on the by Article and on the by Publisher datasets, as well as each of these using \gls{tfidf} and Word Embeddings to represent the article. As a final comparison step, the \gls{bert} model was taken in to see if it stands out from the classical classifiers. Table 6.2 shows the results. The results refer to the evaluation on the test data set labelled by Article, as this was the basis for the results of the competition. 
 \chapter{Conclusion}
 
 \bibliography{BA}{}
