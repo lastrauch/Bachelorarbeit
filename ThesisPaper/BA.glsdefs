@@ -268,3 +268,93 @@ parent={},%
 %
 }%
 }%
+\ifglsentryexists{nlp}{}%
+{%
+\gls@defglossaryentry{nlp}%
+{%
+name={NLP},%
+sort={NLP},%
+type={main},%
+first={NLP},%
+firstplural={NLPs},%
+text={NLP},%
+plural={NLPs},%
+description={Natural Language Processing},%
+descriptionplural={Natural Language Processing},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{use}{}%
+{%
+\gls@defglossaryentry{use}%
+{%
+name={USE},%
+sort={USE},%
+type={main},%
+first={USE},%
+firstplural={USEs},%
+text={USE},%
+plural={USEs},%
+description={Universal Sentence Encoder},%
+descriptionplural={Universal Sentence Encoder},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%
+\ifglsentryexists{elmo}{}%
+{%
+\gls@defglossaryentry{elmo}%
+{%
+name={ELMo},%
+sort={ELMo},%
+type={main},%
+first={ELMo},%
+firstplural={ELMos},%
+text={ELMo},%
+plural={ELMos},%
+description={Embeddings from Language Models},%
+descriptionplural={Embeddings from Language Models},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+}%

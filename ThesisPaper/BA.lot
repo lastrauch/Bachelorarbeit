@@ -1,10 +1,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {3.1}{\ignorespaces Confusion Matrix\relax }}{20}
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Publishers with the highest proportion of Hypeprartisan articles\relax }}{23}
+\contentsline {table}{\numberline {3.1}{\ignorespaces Confusion Matrix\relax }}{20}% 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {6.1}{\ignorespaces Evaluation Results -- Article: Classifier has been trained on the by Article dataset; -Publisher: Classifier has been trained on the by Publisher dataset; -WB: Word Embeddings have been used; -TFIDF: TFIDF has been used\relax }}{37}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Evaluation Results -- Article: Classifier has been trained on the by Article dataset; -Publisher: Classifier has been trained on the by Publisher dataset; -WB: Word Embeddings have been used; -TFIDF: TFIDF has been used\relax }}{38}% 
 \addvspace {10\p@ }

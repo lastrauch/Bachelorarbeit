@@ -19,12 +19,23 @@ David~H. Ackley, Geoffrey~E. Hinton, and Terrence~J. Sejnowski.
 \newblock A learning algorithm for boltzmann machines*.
 \newblock {\em Cognitive Science}, 9(1):147--169, 1985.
 
+\bibitem{infor}
+Ricardo Baeza-Yates.
+\newblock {\em Modern information retrieval}.
+\newblock ACM Press books. New York, NY : ACM Press : Addison-Wesley, New York,
+  NY, [nachdr.] edition, 2002.
+
 \bibitem{btheory}
 Mr. Bayes and Mr. Price.
 \newblock An essay towards solving a problem in the doctrine of chances. by the
   late rev. mr. bayes, f. r. s. communicated by mr. price, in a letter to john
   canton, a. m. f. r. s.
 \newblock {\em Philosophical Transactions (1683-1775)}, 53:370--418, 1763.
+
+\bibitem{neural}
+Yoshua Bengio, R{\'e}jean Ducharme, Pascal Vincent, and Christian Janvin.
+\newblock A neural probabilistic language model.
+\newblock {\em J. Mach. Learn. Res.}, 3:1137--1155, March 2003.
 
 \bibitem{fasttext}
 Piotr Bojanowski, Edouard Grave, Armand Joulin, and Tomas Mikolov.
@@ -66,6 +77,13 @@ Kyunghyun Cho, Bart van Merrienboer, {\c{C}}aglar G{\"{u}}l{\c{c}}ehre, Fethi
 Prabhakar~Raghavan Christopher D.~Manning and Hinrich Schütze.
 \newblock {\em Introduction to Information Retrieval}.
 \newblock Cambridge University Press., 2008.
+
+\bibitem{pre1}
+Alexis Conneau, Douwe Kiela, Holger Schwenk, Lo{\"{\i}}c Barrault, and Antoine
+  Bordes.
+\newblock Supervised learning of universal sentence representations from
+  natural language inference data.
+\newblock {\em CoRR}, abs/1705.02364, 2017.
 
 \bibitem{bert}
 Jacob Devlin, Ming{-}Wei Chang, Kenton Lee, and Kristina Toutanova.
@@ -109,6 +127,7 @@ Rong-En Fan, Kai-Wei Chang, Cho-Jui Hsieh, Xiang-Rui Wang, and Chih-Jen Lin.
 
 \bibitem{study}
 Knight Foundation.
+\newblock An online experimental platform to assess trust in the media.
 \newblock
   \url{https://knightfoundation.org/reports/an-online-experimental-platform-to-assess-trust-in-the-media},
   July 2018.
@@ -185,10 +204,21 @@ Johannes Kiesel, Maria Mestre, Rishabh Shukla, Emmanuel Vincent, Payam Adineh,
   Evaluation}, pages 829--839, Minneapolis, Minnesota, USA, June 2019.
   Association for Computational Linguistics.
 
+\bibitem{socialbots}
+Sonja Kind, Marc Bovenschulte, Simone Ehrenberg-Silies, and Sebastian Weide.
+\newblock Social bots.
+\newblock {\em TAB}, 2017.
+
 \bibitem{doc2vec}
 Quoc~V. Le and Tomas Mikolov.
 \newblock Distributed representations of sentences and documents.
 \newblock {\em CoRR}, abs/1405.4053, 2014.
+
+\bibitem{facebook}
+Vladimir~Kropotov Lion~Gu and Fyodor Yarochkin.
+\newblock The fake news machine how propagandists abuse the internet and
+  manipulate the public.
+\newblock {\em TrendLabs}, 2017.
 
 \bibitem{lunong}
 Minh{-}Thang Luong, Hieu Pham, and Christopher~D. Manning.
@@ -199,11 +229,21 @@ Minh{-}Thang Luong, Hieu Pham, and Christopher~D. Manning.
 Class iterparse.
 \newblock \url{https://lxml.de/api/lxml.etree.iterparse-class.html}.
 
+\bibitem{pre2}
+Bryan McCann, James Bradbury, Caiming Xiong, and Richard Socher.
+\newblock Learned in translation: Contextualized word vectors.
+\newblock {\em CoRR}, abs/1708.00107, 2017.
+
 \bibitem{pandas}
 Wes McKinney et~al.
 \newblock Data structures for statistical computing in python.
 \newblock In {\em Proceedings of the 9th Python in Science Conference}, volume
   445, pages 51--56. Austin, TX, 2010.
+
+\bibitem{webster}
+The real story of 'fake news'.
+\newblock
+  https://www.merriam-webster.com/words-at-play/the-real-story-of-fake-news.
 
 \bibitem{rnnmodel}
 Tomas Mikolov, Martin Karafi{\'a}t, Luk{\'a}s Burget, Jan~Honza Cernock{\'y},
@@ -310,10 +350,26 @@ Ewan~Klein Steven~Bird and Edward Loper.
   the Natural Language Toolkit}.
 \newblock O'Reilly Media, 2009.
 
+\bibitem{pre3}
+Sandeep Subramanian, Guillaume Lample, Eric~Michael Smith, Ludovic Denoyer,
+  Marc'Aurelio Ranzato, and Y{-}Lan Boureau.
+\newblock Multiple-attribute text style transfer.
+\newblock {\em CoRR}, abs/1811.00552, 2018.
+
+\bibitem{s2s}
+Ilya Sutskever, Oriol Vinyals, and Quoc V.~Le.
+\newblock Sequence to sequence learning with neural networks.
+\newblock {\em Advances in Neural Information Processing Systems}, 4, 09 2014.
+
 \bibitem{cloze}
 Wilson~L. Taylor.
 \newblock “cloze procedure”: A new tool for measuring readability.
 \newblock {\em Journalism Bulletin}, 30(4):415--433, 1953.
+
+\bibitem{wb1}
+Greg~Corrado Tomas~Mikolov, Kai~Chen and Jeffrey Dean.
+\newblock Efficient estimation of word representations in vector space.
+\newblock {\em CoRR}, abs/1301.3781, 2013.
 
 \bibitem{effiecientestimation}
 Greg~Corrado Tomas~Mikolov, Kai~Chen and Jeffrey Dean.

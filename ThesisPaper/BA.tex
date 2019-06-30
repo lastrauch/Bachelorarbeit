@@ -11,14 +11,22 @@
 \usepackage{amssymb}
 \usepackage{subfigure}
 \usepackage{verbatim}
-\usepackage{listings} 
-\usepackage{booktabs}
-\lstset{language=Python,
-	basicstyle=\ttfamily\scriptsize,
-	breaklines=true}    
+\usepackage{listings}
+\usepackage{courier}
+\usepackage{caption}
+\lstset{
+	language=Python,
+	basicstyle=\small,
+	numbers=left,
+	numberstyle=\tiny,
+	frame=tb,
+	columns=fullflexible,
+	showstringspaces=false,
+	breaklines=true,
+}
+\usepackage{booktabs} 
 \usepackage{glossaries}          
 \usepackage{ntheorem}
-\usepackage{caption}
 \DeclareCaptionType{code}[Algorithm][List of Code] 
 % \usepackage{paralist}
 \usepackage{tabularx}
@@ -28,7 +36,7 @@
 \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
 \SetKwInput{KwIn}{Input}                % Set the Input
 \SetKwInput{KwOut}{Output}              % set the Output
-\AtBeginEnvironment{algorithm}{\scriptsize}
+%\AtBeginEnvironment{algorithm}{\scriptsize}
 \AtBeginEnvironment{tabular}{\scriptsize}
 \AtBeginEnvironment{amsmath}{\scriptsize}
 %\usepackage{algorithmic}
@@ -166,8 +174,21 @@
 	name=MLM,
 	description={Masked LM}
 }
-
-
+\newglossaryentry{nlp}
+{
+	name=NLP,
+	description={Natural Language Processing}
+}
+\newglossaryentry{use}
+{
+	name=USE,
+	description={Universal Sentence Encoder}
+}
+\newglossaryentry{elmo}
+{
+	name=ELMo,
+	description={Embeddings from Language Models}
+}
 \printglossaries %in cmd for printing: makeindex -s BA.ist -t BA.glg -o BA.gls BA.glo
 
 % evntuelly you might add something like this
@@ -181,46 +202,48 @@
 \pagenumbering{arabic}
 
 \chapter{Introduction}
-In the digital age it is possible to access news and information anytime and anywhere. Above all, freedom of the press makes it possible for everyone to express his or her opinion publicly. Many people who read news nowadays assume that the information presented is correct and neutral. Unfortunately, this is very often not the case. Especially in special political situations, even supposedly serious news portals are not always neutral.  Thus https://www.adfontesmedia.com/ shows on the basis the Media Bias Charts that even well-known news portals such as Fox News or the New York Times show partly extreme/unfair interpretations of the news. The most interesting question here is what is hyperpartisan and how hyperpartisan articles can be recognized. For example, a study by the Knight Foundation \cite{study} describes that the perceived trustworthiness of news content depends on how the news source is viewed.  This means that left-wing political supporters, newspaper articles from a left-wing publisher, would be less likely to call hyperpartisan than right-wing supporters. This raises the question, however, if people do not agree with themselves when an article is hyperpartisan and when not, how should this be recognized at all and how should it be tackled? The SemEValTask4: Hyperpartisan News Detecttion takes up this question by asking the task to implement a program that automatically detects whether a newspaper article is hyperpartisan or not. \\
-\indent The latest findings in data science and above all in Natural Language Processing (NLP) contribute to answering this question. Since a computer, unlike humans, cannot draw on experience to better understand language, these algorithms and procedures must apply artificial intelligence and machine learning. NLP therefore deals with techniques and methods for the machine processing of natural language. Since 1950 NLP has been dealing with tasks like machine translation and information retrieval. Since then NLP has gone through several developments. Among others, the development of Neural Language Models in 2001, Word Embeddings in 2013, Sequence-to-Sequence Models in 2014 and pre-trained models in 2018 are of particular importance. \\
-\indent In the context of this bachelor thesis I will discuss how a program based on SemEvalTask 4 can be implemented. I will use classical methods of text classification as well as the latest development in NLP BERT. The interesting question is whether the program achieves better results with BERT Embeddings than with classical methods. \\
-Therefore, in the first chapter of this thesis I will deal with the mathematical basics of the methods used here, whereupon I will describe the data available to me in the second chapter. Chapter 3 describes the procedure to implement such a program. Chapter 4 refers to the evaluation of the different classification procedures before a conclusion is drawn in chapter 5. 
+In the digital age it is possible to access news and information anytime and anywhere. Above all, freedom of press makes it possible for everyone to express his or her opinion publicly. Many people who read news nowadays assume that the information presented is correct and neutral. Unfortunately, this is very often not the case. Especially in special political situations, even supposedly serious news portals are not always neutral.  Thus the website \textit{adfontesmedia} \footnote{https://www.adfontesmedia.com/} shows on basis of Media Bias Charts that even well-known news portals such as Fox News or the New York Times show partly extreme/unfair interpretations of the news. The most interesting question here is what is hyperpartisan and how hyperpartisan articles can be recognized. For example, a study by the Knight Foundation \cite{study} describes that the perceived trustworthiness of news content depends on how the news source is viewed.  This means that left-wing political supporters, would be less likely to call a newspaper article from a left-wing publisher hyperpartisan than right-wing supporters. This raises the question, however, if people do not agree with themselves when an article is hyperpartisan and when not, how should this be recognized at all and how should it be tackled?  \\
+\indent Hyperpartisan is defined as "extremely partisan; extremely biased in favor of a political party". Such a biased attitude towards a particular party often leads to the output of Fake News. Especially lately Fake News have been in discussion. Fake news is defined as "false stories that appear to be news, spread on the internet or using other media, usually created to influence political views or as a joke". According to Webster's Dictionary, their beginnings date back to 1980 \cite{webster}, but they first attracted a lot of attention in April 2017 when Facebook Inc. published a whitepaper stating that their platform was being used for targeted disinformation campaigns \cite{facebook}. This was expressed, among other things, in social bots \cite{socialbots}, which are computer programs that have been increasingly used in social networks in recent years to spread fake news. It is even more difficult to distinguish fake news from normal news than to recognize hyperpartisan articles. This is reflected in the fact that even professisonals cannot distinguish between true and fake news. To solve this problem, the first approach could be to detect hyperpartisan articles.  \\
+\indent PANs "SemEval Task 4: Hyperpartisan News Detection" \cite{hyperpartisannewsdetection} takes up on this challenge by assigning the task to implement a program that automatically detects whether a newspaper article is hyperpartisan or not. To develop such a model, the latest findings in data science and above all in Natural Language Processing (NLP) contribute. Since a computer, unlike humans, cannot draw on experience to better understand language, these algorithms and procedures must apply artificial intelligence and machine learning. \gls{nlp} therefore deals with techniques and methods for machines to process natural language. Since 1950 \gls{nlp} has been dealing with tasks like machine translation and information retrieval. Since then \gls{nlp} has gone through several developments. Among others, the development of Neural Language Models in 2001 \cite{neural}, Word Embeddings in 2013 \cite{wb1}, Sequence-to-Sequence Models in 2014 \cite{s2s} and pre-trained models in 2018 \cite{pre1}\cite{pre2}\cite{pre3} are of particular importance. \\
+\indent In the context of this bachelor thesis I will discuss how a program based on SemEvalTask 4 can be implemented. I will use classical methods of text classification as well as the latest development in \gls{bert} \cite{bert}. Within the framework of classical approaches, I will discuss classical approaches for text presentation using Word Embeddings and the \gls{tfidf}  \cite{infor} measure, which I will set in relation to \gls{bert} embeddings, which represent a new kind of model using a bidirectional learning process. In addition to the question of which techniques can be used to identify a program for detecting hyperpartisan articles, this also raises the question of whether \gls{bert} Embeddings improve the performance of a model compared to classical methods. \\
+\indent Therefore, in the first chapter of this thesis I will deal with the mathematical basics of the methods used here, whereupon I will describe the data available to me in the second chapter. Chapter 3 describes the procedure to implement such a program. Chapter 4 refers to the evaluation of the different classification procedures before a conclusion is drawn in Chapter 5. 
 
 \chapter{Related Work}
-Different classifiers were designed in the context of SemEval Task 4. For this purpose, the most common were Neural Networks, but overall all kinds of classifier were used. The winners of the competition used a model based on ELMo \cite{elmo}. ELMo was designed by AllenNLP in 2018 and uses a deep, bidirectional LSTM model to design character-based word representations. The advantage is that the employment of character embeddings makes it possible to identify morphological features which word-level embedding might overlook. Additionally, this ensures that valid word representations can be formed even for out-of-vocabulary words. The winners use a pre-trained ELMo model to output three vectors for each word. They state, that each vector corresponds to a layer output of the pre-trained ELMo model, whereupon they calculate the average of all three vectors to create the last word vector. Finally, the sentence vector is calculated by averaging the word vectors of a sentence. The complete development of her model was presented in the paper "Team Bertha by Suttner at SemEval-2019 Task 4: Hyperpartisan News Detection using ELMo Sentence Representation Convolutional Network" \cite{gewinner}. With their model they achieved an accuracy score of 0.822, a precision score of 0.871, a recall score of 0.755 and an F1 score of 0.809 on the by Article dataset. \\
-Team Vernon Fenwick used a combination of handcrafted text features and models that capture semantics to represent an article. Here the authors say that the handcrafted text features capture the tone, over praise, and mood in an article. For these text features a Bias Score, Article Level Polarity, Sentence Level Polarity, Subjectivity and Modality and Supleratives and Comperatives were used. The complete functionality of these features can be vied in their paper "Vernon-fenwick at SemEval-2019 Task 4: Hyperpartisan News Detection using Lexical and Semantic Features" \cite{vernon}. For the semantic features, they used Glove \cite{glove}, Doc2Vec \cite{doc2vec}, and Universal Sentence Encoder (USE) \cite{use}, with the USE giving the best score in conjunction with the hand-made features. Overall, the group came second with an Accuracy Score of 0.820, a Precision sScore of 0.815, a Recal Score of 0.828, and an F1 Score of 0.821. \\
-
-\noindent A third group also used \gls{bert} embeddings. They had a different approach than the one used in this thesis. They did not use the provided pre-trained models of \gls{bert}, but did the pre-training based on the large by publisher dataset and fine-tuned based on the ones labelled by Article. The complete procedure, as well as any anomalies during the development of the classifier, can be found in the paper "Harvey Mudd College at SemEval-2019 Task 4: The Clint Buchanan Hyperpartisan News Detector" \cite{bertgruppe}. In total, they achieved 10th place with their approach with an accuracy score of 0.771, a precision score of 0.832, a recall score of 0.678 and an F1 score of 0.747. Additionally, their code can be viewed at ",https://github.com/hmc-cs159-fall2018/final-project-team-mvp-10000/tree/c9da670b8a39068aa2d3154023ea44e-0b1266b7d". \\
-\noindent A complete overview of the task definition, used classifiers and participants can be found in the, by the organizers published paper "SemEval-2019 Task 4: Hyperpartisan News Detection" \cite{hyperpartisannewsdetection}.
+Different classifiers were designed in the context of SemEval Task 4. For this purpose, the most common were Neural Networks, but overall all kinds of classifier were used. 
+\indent The winners of the competition used a model based on \gls{elmo} \cite{elmo}. \gls{elmo} was designed by AllenNLP in 2018 and uses a deep, bidirectional LSTM model to design character-based word representations. The advantage is that the employment of character embeddings makes it possible to identify morphological features which word-level embedding might overlook. Additionally, this ensures that valid word representations can be formed even for out-of-vocabulary words. The winners use a pre-trained \gls{elmo} model to output three vectors for each word. They state, that each vector corresponds to a layer output of the pre-trained \gls{elmo} model, whereupon they calculate the average of all three vectors to create the last word vector. Finally, the sentence vector is calculated by averaging the word vectors of a sentence. The complete development of their model was presented in the paper "Team Bertha by Suttner at SemEval-2019 Task 4: Hyperpartisan News Detection using \gls{elmo} Sentence Representation Convolutional Network" \cite{gewinner}. With their model they achieved an accuracy score of 0.822, a precision score of 0.871, a recall score of 0.755 and an F1 score of 0.809 on the by Article dataset. \footnote{bertha-von-suttner - GitHub Repsoritory: https://github.com/GateNLP/semeval2019-hyperpartisan-bertha-von-suttner/tree/4b1d74b73247a06ed79e8e7af30923ce6828574a} \\
+\indent Team Vernon Fenwick used a combination of handcrafted text features and models that capture semantics to represent an article. Here the authors say that the handcrafted text features capture the tone, over praise, and mood in an article. For these text features a Bias Score, Article Level Polarity, Sentence Level Polarity, Subjectivity and Modality and Supleratives and Comperatives were used. The complete functionality of these features can be viewed in their paper "Vernon-fenwick at SemEval-2019 Task 4: Hyperpartisan News Detection using Lexical and Semantic Features" \cite{vernon}. For the semantic features, they used Glove \cite{glove}, Doc2Vec \cite{doc2vec}, and Universal Sentence Encoder (USE) \cite{use}, with the USE giving the best score in conjunction with the hand-made features. 
+\newpage 
+\noindent Overall, the group came in second with an Accuracy Score of 0.820, a Precision Score of 0.815, a Recall Score of 0.828, and an F1 Score of 0.821. \\
+\indent A third group also used \gls{bert} embeddings. They had a different approach than the one used in this thesis. They did not use the provided pre-trained models of \gls{bert}, but did the pre-training based on the large by publisher dataset and fine-tuned based on the ones labelled by Article. The complete procedure, as well as any anomalies during the development of the classifier, can be found in the paper "Harvey Mudd College at SemEval-2019 Task 4: The Clint Buchanan Hyperpartisan News Detector" \cite{bertgruppe}. In total, they achieved 10th place with their approach with an accuracy score of 0.771, a precision score of 0.832, a recall score of 0.678 and an F1 score of 0.747. \footnote{Clint Buchanan - GitHub Repsoritory: https://github.com/hmc-cs159-fall2018/final-project-team-mvp-10000/tree/c9da670b8a39068aa2d3154023ea44e-0b1266b7d}. \\
+\indent A complete overview of the task definition, used classifiers and participants can be found in the, by the organizers published paper "SemEval-2019 Task 4: Hyperpartisan News Detection" \cite{hyperpartisannewsdetection}.
 
 
 \chapter{Fundamentals}
 \section{Text Representation}
 \subsection{Term Frequency-Inverse Document Frequency}
-Term frequency (\gls{tf}) is a measure that denotes how frequently a term \textit{t} appears a the document \textit{d}. One way to compute \gls{tf} is \cite{IR-book}:\\
+\indent Term frequency (\gls{tf}) is a measure that denotes how frequently a term \textit{t} appears a the document \textit{d}. One way to compute \gls{tf} is \cite{IR-book}:\\
 \[
 tf(t,d)=\frac{1+\log(tf_{t,d})}{1+\log(ave_{t\in d}(tf_{t,d}))}
 \]
-where $1+\log(tf_{t,d})$ reflects how many times the term $t$ appears in document $d$ and $1+\log(ave_{t\in d}(tf_{t,d}))$ is the highest occurrence of any term in document $d_i$.\\
+Where $1+\log(tf_{t,d})$ reflects how many times the term $t$ appears in document $d$ and $1+\log(ave_{t\in d}(tf_{t,d}))$ is the highest occurrence of any term in document $d_i$.\\
 
-\noindent Inverse Doucment Frequency (\gls{idf}) points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears \cite{IR-book}.\\
+\indent Inverse Doucment Frequency (\gls{idf}) points to the assumption that the informativeness of the term \textit{t} is inversely proportional to the number of documents in the collection in which the term appears \cite{IR-book}.\\
 \[
 idf(t_i)=log\frac{N}{d \in D : t \in d}
 \]
-Where $N$ is the total amount of doucments in a document set and $d \in D : t \in d$ is the amount how many times the term $t$ appears in the document set.\\
+Here $N$ is the total amount of doucments in a document set and $d \in D : t \in d$ is the amount how many times the term $t$ appears in the document set.\\
 
-\noindent To compute the weight for the term $t_i$ within the document $d_j$ we simply multiply the \textit{TF} and \textit{IDF} components:
+\indent To compute the weight for the term $t_i$ within the document $d_j$ we simply multiply the \textit{TF} and \textit{IDF} components:
 \[
 w_{ij}=tf(t_i, d_j)\cdot idf(t_i)
 \]
-Therefore, \Gls{tfidf} indicates how significant a word is to a document in a collection or corpus. It is regularly used as a weighting factor in Information Retrieval and Text Mining. 
+\indent The more often a word occurs in the document, the higher the \gls{tfidf} value, which is compensated by calculating the frequency of the word in the corpus. This makes it possible to find a balance between words that usually occur frequently and words that usually do not.\\
 \newpage
-\noindent The more often a word occurs in the document, the higher the \gls{tfidf} value, which is compensated by calculating the frequency of the word in the corpus. This makes it possible to find a balance between words that usually occur frequently and words that usually do not.\\
-\noindent \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between 2 terms. However, TF-IDF is based on the bag-of-words (BoW) model, which is why it disregards aspects such as text position, semantics and co-occurrence.
+Therefore, \Gls{tfidf} indicates how significant a word is to a document in a collection or corpus. It is regularly used as a weighting factor in Information Retrieval and Text Mining. \Gls{tfidf} is easy to compute. In addition, it is possible to extract the most descriptive terms, as well as to calculate the similarity between tw terms. However, \gls{tfidf} is based on the bag-of-words (BoW) model \cite{distributionalhypothesis}, which is why it disregards aspects such as text position, semantics and co-occurrence.
 
 \subsection{Word Embeddings}
-Word Embeddings are based on the approach of Harris' Distributional Hypothesis \cite{distributionalhypothesis} from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
-\noindent A Word Embedding provides a word vector for each word. This is done by extracting features from that word within the context in which it appears and assigning it a place within the vector space. Two similar words will occupy locations near one another within this vector space, while words that differ will have positions much further apart. This makes it possible to calculate the distance calculation by computing cosine distance. There are different models for learning word vectors. Among others fastText \cite{fasttext}, GloVe \cite{glove} and word2vec. \\
+\indent Word Embeddings are based on the approach of Harris' Distributional Hypothesis \cite{distributionalhypothesis} from 1951, which states, that words that occur in the same contexts tend to have similar meanings. \\
+\indent A Word Embedding provides a word vector for each word. This is done by extracting features from that word within the context in which it appears and assigning it a place within the vector space. Two similar words will occupy locations near one another within this vector space, while words that differ will have positions much further apart. This makes it possible to calculate the distance calculation by computing cosine distance. There are different models for learning word vectors. Among others fastText \cite{fasttext}, GloVe \cite{glove} and word2vec. \\
 
 %\subsubsection{Word2Vec}
 Word2Vec is a "2-Model Architecture for computing continuous vector representations of words from very large dataset"\cite{effiecientestimation} that creates an n-dimensional vector space in which each word is represented as a vector. Word2Vecs 2 learning models are the \gls{cbow} and Skip-Gram-Model.\\
@@ -228,16 +251,16 @@ Word2Vec is a "2-Model Architecture for computing continuous vector representati
 \[
 h=W^Tx=W_{(k, \cdot)}^{T}:=v_{w_I}^{T}
 \] 
-Next we have another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix. With these weights we can finally compute a score $u_j$ for each word in the vocabulary \cite{word2vecparam}
+Next there is another weight matrix $W'={w'_{ij}}$ which is an $N \cdot V$ matrix. With these weights it is finally possible to compute a score $u_j$ for each word in the vocabulary \cite{word2vecparam}
 \[
 u_{j}={v'}_{w_j}^{T}h
 \] where ${v'}_{w_j}$ is the \textit{j}-th column of the matrix \textit{W'}. \\
 \newpage
-\noindent Afterwards "we can use \textit{softmax}, which is a log-linear classification model, to obtain the posterior distribution of words" \cite{word2vecparam}.
+\noindent Afterwards the \textit{softmax} function is used, "which is a log-linear classification model, to obtain the posterior distribution of words" \cite{word2vecparam}.
 \[
 p(w_j|w_I)=y_j=\frac{exp(u_j)}{\sum_{j'=1}^V exp(u_{j'})}
 \] 
-\noindent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input is still a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same \cite{word2vecparam}. However in the output layer, we are now outputting \textit{C} multinomial distributions. 
+\indent In contrast to the \gls{cbow} model,  Skip-Gram uses the target word to predict the context words. The input stays a one-hot encoding vector, the hidden layers definition stays the same as in the \gls{cbow} model, each output is still using the same hidden layer to output matrix as in the \gls{cbow} model $p(w_{c,j}=w_{O,c}|w_I)=y_{c,j} = p(w_j|w_I)=y_j$ and the function for $u_j=u_{c,j}$ stays the same \cite{word2vecparam}. However in the output layer is now outputting \textit{C} multinomial distributions.  
 
 \section{Classification Methods}
 Classification is about predicting a particular outcome based on given training data. For this prediction, a classification algorithm processes the training data set, which consists of a set of features and the respective predictions. The algorithm attempts to discover relationships between given features  of the instances and the associated classes to learn a function which makes it possible to predict the correct class based on the features of an instance. Thereafter, the algorithm receive a test dataset which it has not seen before. This dataset contains the same features as the training set but not the corresponding class names. With the previously learned function, the algorithm now assigns a class name to each instance  of the test record. \\
@@ -246,10 +269,10 @@ The Naive Bayes classifier is based on  Bayes' theorem \cite{btheory}, which com
 \noindent The Multinomial Naive Bayes classifiers assumes that the position of the word does not matter, as well as  that the feature probabilities $Pr(t_i|c_)$ are independent given a class $c$.
 The probability of a class value $c$ given a test document $t_i$ is computed as \cite{multinomialnb}
 \[
-Pr(c|t_i)=(\sum_{n}f_{ni})!\prod_{n}\frac{Pr(w_n|c)^{f_{ni}}}{f_{ni}!}
+Pr(t_i|c)=(\sum_{n}f_{ni})!\prod_{n}\frac{Pr(w_n|c)^{f_{ni}}}{f_{ni}!}
 \]
 where $f_{ni}$ is the number of times a word $n$ occurs in document $t$ and $Pr(t_i|c)$ is the probability of observing word $n$ given class $c$.
-
+\newpage
 \subsection{Logistic Regression Classifier}
 \noindent Logistic Regression is like Naive Bayes, a probabilistic classifier, and thus classifies by estimating the probability $P(Y|X)$ that the object belongs to a particular class.
 It can be derived analogously to the linear regression model \cite{logisticregressionbook}, 
@@ -266,7 +289,7 @@ This opens up the possibility of defining the probability that a sample belongs 
 p(y|\bar{x}_i)=\sigma(\bar{x}_i,\bar{\Theta})
 \]
 where $\Theta$ is a single parameter vector.
-\noindent To find the optimal $\Theta$ by which we get an $p(y|\bar{x}_i)$ that is close to 0 or 1, we maximize the log-likelihood relying upon the output class, therefore the optimization problem can be expressed, utilizing the indicator notion as the minimization of the loss function \cite{algorithms}:
+\noindent To find the optimal $\Theta$ by which $p(y|\bar{x}_i)$ gets close to 0 or 1, the log-likelihood is maximized relying upon the output class, therefore the optimization problem can be expressed, utilizing the indicator notion as the minimization of the loss function \cite{algorithms}:
 \[
 l(\Theta)=-\sum_{i}y_i\log(\sigma(z_i))+(1-y_i)\log(1-\sigma(z_i))
 \]
@@ -284,7 +307,6 @@ l(\Theta)=-\sum_{i}y_i\log(\sigma(z_i))+(1-y_i)\log(1-\sigma(z_i))
 \\ A major issue in machine learning is the aspect of overfitting. Overfitting tends to adjust the model too much to the training data. This happens when a model learns the details in the training data so that the performance of the model is contrairily influenced by new data. This implies that noise or random fluctuations in the training data are recorded and learned as concepts by the model. The issue is, that these concepts do not apply to new data and negatively impact the generalization of the model. Therefore, there is the process of \textit{regularization}, which is a form of regression that decreases the coefficient estimation to $0$ and assumes that smaller weights generate simpler models and thus helps avoid overfitting. \\
 \noindent Two of the most commonly used regularization techniques are \textit{Lasso Regression (L1)} and \textit{Ridge Regression (L2)}, which differ mainly in the penalty term. \\
 \noindent The \textit{L1} loss function minimizes the sum of the absolute differences between the target value and the estimated values. If input characteristics have weights closer to zero, this results in a sparse L1 standard. In the Sparse solution, most of the input features have zero weights and very few features have non-zero weights. The L1 regulation offers a function selection. This is done by associating insignificant input features with zero weights and useful features with a non-zero weight. 
-\newpage 
 \noindent \textit{L1} solves the regularized logistic regression by minimizing the following cost function:
 \[
 \min_{w, c} \quad \|w\|_1 + C \sum_{i=1}^n \log(\exp(1+e^{-y_ix^Tx_i})
@@ -293,7 +315,7 @@ whereas \textit{L2} solves it the following way:
 \[
 \min_{w, c} \quad \frac{1}{2}w^T w + C \sum_{i=1}^n \log(1+e^{-y_iw^Tx_i})
 \]
-,where $C>0$ is the penalty parameter, $w$ is the vector, $w^T$ is an additional dimension, $x_i$ is an instance of the vector and $y_i$ is an instance label pair $\in \{-1,+1\}$ \cite{liblinear}.\\
+Here, $C>0$ is the penalty parameter, $w$ is the vector, $w^T$ is an additional dimension, $x_i$ is an instance of the vector and $y_i$ is an instance label pair $\in \{-1,+1\}$ \cite{liblinear}.\\
 The L2 loss function is essentially about minimizing the sum of the square of the differences between the nominal value and the estimated values.
 L2 control forces the weights to small weights, but does not make them zero and leads to a not sparse solution. In addition, L2 is not robust against outliers, since square terms inflate the error differences of the outliers and the regularization term tries to correct them by punishing the weights.
 
@@ -342,9 +364,9 @@ Bidirectional Encoder Representations from Transformers (\gls{bert}) \cite{bert}
 \begin{figure}[h]
 	\centering
 	%PC:
-	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	%Lap Top:
-	\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
+	%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/rnn.png}
 	\caption{\gls{rnn} and Feedforward Neural Network \cite{rnn}}
 \end{figure}\\
 Recurrent Neural Networks (\gls{rnn}) are a kind of artificial neural network, which considers time and order. Unlike Feedforward algorithms \cite{feedforward}, which use only the current example as input, \gls{rnn}s also use the Input Example, which they perceived in previous steps (Figure 5.1). 
@@ -375,32 +397,32 @@ The initial value $s(0)$ can take the values 0 or 1, whereas in all further step
 \begin{figure}[h]
 	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg.png}
 		\caption{Input gate$_1$ \cite{rnn}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputg2.png}
 		\caption{Input gate$_2$ \cite{rnn}}
 	\end{minipage}
 	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/forgetg.png}
 		\caption{Forget gate \cite{rnn}}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.4\linewidth}
 		%PC:
-		%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		%Lap Top:
-		\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
+		%\includegraphics[width=0.8\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/outputg.png}
 		\caption{Output gate \cite{rnn}}
 	\end{minipage}
 \end{figure}
@@ -443,9 +465,9 @@ The different gates of \gls{lstm}s are Input-, Forget- and Output Gate, where th
 \begin{figure}[h]
 	\centering
 	%PC:
-	%\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	\includegraphics[width=0.6\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	%Lap Top:
-	\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
+	%\includegraphics[width=0.5\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/attention.png}
 	\caption{The Transformer - model architecture \cite{attention}}
 \end{figure}\\
 \noindent \gls{rnn}s handle the order of entries word for word. This reduces the parallelization of the process. For example, if the sentence "The cat eats the mouse" is to be translated into the German language, the RNN produces six hidden states (including s(0)) solely to represent the English sentence and has 8 as soon as it reaches the translation of the word "eats". This is not a major problem with sentences as small as this one. Now, for example, sentences with a length of 50 words exist. This becomes problematic with RNN's. The attention mechanism is dedicated to solve this problem. This technique was introduced by Bahdanau et al. \cite{bahdnau} and Luong et al. \cite{lunong} and allows the model to concentrate on the relevant parts of the input sequence. This means that the mechanism concentrates on human thinking. If, for example, a human being needs to find information in a text, it is usually skimmed in order to find the important information. And this is exactly what an attention mechanism does. 
@@ -455,17 +477,17 @@ The attention mechanism used in the paper includes a query $Q$, a set of key $K$
 \begin{figure}[t]
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		%Lap Top:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/scaleddot.jpg}
 		\caption{Scaled Dot-Product Attention}
 	\end{minipage}
 	\hfill
 	\begin{minipage}[b]{0.5\linewidth}
 		%PC:
-		%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		%Lap Top:
-		\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
+		%\includegraphics[width=0.7\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/head.png}
 		\caption{Multi-Head Attention}
 	\end{minipage}
 \end{figure}
@@ -494,25 +516,24 @@ where $pos$ is the position and $i$ is the dimension. Therefore the resulting wa
 \begin{figure}[h]
 	\centering
 	%PC:
-	%\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	\includegraphics[width=0.8\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	%Lap Top:
-	\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	%\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	\caption{\gls{bert} Input Representations \cite{bert}}
 \end{figure}
 Bidirectional Encoder Representations from Transformer \cite{bert}, short \gls{bert}, is a new language representation model that, unlike previous efforts, which look at text sequences exclusively through pure left-to-right or combined left-to-right and right-to-left, applies bidirectional training of Transformer. \\
 \noindent The \gls{bert} model exists in two versions. \gls{bert}$_{Base}$, which consists of 12 transformer layers, a hidden size of 768 and 12 self-attention heads, whereas \gls{bert}$_{Large}$ consists of 24 layers, a hidden size of 1020 and 16 self-attention heads. In this thesis the \gls{bert}$_{Base}$ model was used, since my existing resources would not have been sufficient for the \gls{bert}$_{Large}$ model.\\
 
 \noindent \textbf{Input Representation} \\
-The input of the \gls{bert} model consists of the sum of token-, segmentation- and position embeddings (Figure 5.9). As it is not possible to consider the order of inputs due to the transformer architecture of \gls{bert}, the model uses the same concept of position embeddings as described in the paper "Attention Is Al You Need" \cite{attention}. Here, a sequence length of 512 tokens is possible. The segmentation embeddings are necessary since BERT makes it possible to pass 2 sentence pairs as input. This helps the model to learn a unique embedding for the first and second sentence in order to distinguish between these two sentences.  Additionally, the token [CLS] is inserted at the beginning of the first sentence and the token [SEP] at the end of each sentence. Here [CLS] is used as the key corresponding to the output of the transformer as an aggregated sequence representation for classification tasks, while [SEP] is an additional help for the model to distinguish two sentence pairs.\\
+\indent The input of the \gls{bert} model consists of the sum of token-, segmentation- and position embeddings (Figure 5.9). As it is not possible to consider the order of inputs due to the transformer architecture of \gls{bert}, the model uses the same concept of position embeddings as described in the paper "Attention Is Al You Need" \cite{attention}. Here, a sequence length of 512 tokens is possible. The segmentation embeddings are necessary since BERT makes it possible to pass 2 sentence pairs as input. This helps the model to learn a unique embedding for the first and second sentence in order to distinguish between these two sentences.  Additionally, the token [CLS] is inserted at the beginning of the first sentence and the token [SEP] at the end of each sentence. Here [CLS] is used as the key corresponding to the output of the transformer as an aggregated sequence representation for classification tasks, while [SEP] is an additional help for the model to distinguish two sentence pairs.\\
 
 \noindent \textbf{Pre-training and Fine-Tuning}\\
-\gls{bert} is a pre-trained model, which has been trained on two unsupervised tasks, called \textit{Masked LM} (\gls{mlm}) and \textit{Next Sentence Prediction}. The idea of pre-training is to pass start values to a neural network, which is to be trained on the basis of a new data set, so it is not initialized randomly.
+\indent \gls{bert} is a pre-trained model, which has been trained on two unsupervised tasks, called \textit{Masked LM} (\gls{mlm}) and \textit{Next Sentence Prediction}. The idea of pre-training is to pass start values to a neural network, which is to be trained on the basis of a new data set, so it is not initialized randomly.
 \newpage
 \noindent \gls{mlm} is the main aspect of bidirectional training. In classical Masked Language models, such as Taylor's Cloze task of 1953 \cite{cloze}, models are trained by randomly replacing a certain percentage of words with the token [MASK] and then predicting these words from the model. \gls{bert} uses this mechanism by selecting and masking 15\% of the tokens evenly and randomly. However, since the problem here is that the model only tries to predict when the token [MASK] is present in the input, which means that the hidden state of the input token may not be as rich as it could be, BERT extends the Masked Language Model. In this extension, 15\% of the tokens are selected randomly, whereby not all selected words are provided with [MASK] any more, but in 10\% of the cases, the selected token is replaced by a random word, in further 10\% the token remains intact, while in the remaining 80\% the token is replaced by [MASK]. This enables the model to realize which information to use by deriving which words are absent.\\
 \noindent In addition to ML models, \gls{bert} uses \textit{Next Sentence Prediction}, which allows subsequent sentences to be predicted. In this training process, the model receives pairs of sentences as input and learns to predict whether the second sentence in the pair is the following sentence in the original document. Here half of the inputs are a pair in which the second sentence is the next sentence in the original document, while in the remaining 50\% a random sentence is chosen as the successor from the corpus. This allows the model to develop an understanding of relationships between two sentences. \\
 
-\noindent Fine-tuning involves the process of using an already pre-trained neural networks for another similar task. This way, it is possible to use the extracted feature of the already trained model without having to develop a feature extraction from scratch on the new model. The authors of the paper claim that it is possible to fine tune the BERT model using a single additional output layer. Different approaches are used for different Language Tasks. In the case of a classification task, like the one in this thesis, the last hidden state [CLS] is used, whereupon a classification layer is added. 
-
+Fine-tuning involves the process of using an already pre-trained neural networks for another similar task. This way, it is possible to use the extracted feature of the already trained model without having to develop a feature extraction from scratch on the new model. The authors of the paper claim that it is possible to fine tune the BERT model using a single additional output layer. Different approaches are used for different Language Tasks. In the case of a classification task, like the one in this thesis, the last hidden state [CLS] is used, whereupon a classification layer is added. 
 
 
 
@@ -520,7 +541,8 @@ The input of the \gls{bert} model consists of the sum of token-, segmentation- a
 
 
 \section{Evaluation}
-
+In contrast to classical programming, machine learning is not only about writing a program that compiles and runs without errors, but also about how the model cuts off. In order to be able to see how a classifier has performed after a successful training and prediction run, it is necessary to evaluate the classifier.
+\newpage
 \subsection{Evaluation Measures}
 In order to evaluate how well a classifier works, several procedures exist. The ones used during the competition are \textit{Accuracy}, \textit{Recall}, \textit{Precision} and \textit{F1-Score}, for which the Confusion Matrix \cite{confusionmatrix} (Table 2.1) forms the basis. Each column of the matrix represents the instances of a predicted class, while each row represents the instances of the actual class. \\
 \begin{center}
@@ -548,8 +570,7 @@ In order to evaluate how well a classifier works, several procedures exist. The 
 	Defines the average of precision and recall,
 	where an F1 value reaches its best value at 1
 	and worst at 0
-\end{itemize}
-
+\end{itemize}\newpage
 \subsection{Cross Validation}
 \textit{Cross Validation} is a model validation technique used to survey how the result of measurable statistical analysis generalizes into an independent dataset. The idea is to divide the entire dataset into a moving test and training set. The size of the test set is determined by the quantity of folds, so that at \textit{k} emphases the test set covers the whole original dataset.\\
 \noindent A round of \text{Cross Validation} comprises of separating a sample of data into corresponding subsets, performing the analysis on the training set, and validating the analysis on the test set. To decrease fluctuation, most strategies perform several rounds of \textit{Cross Validation} utilizing various partitions and combine the validation result over the rounds to obtain an estimate of the predictive performance of the model.
@@ -560,76 +581,108 @@ A significant perspective in machine learning is the aspect of hyperparameters. 
 
 
 \chapter{Data Description}
- The given data, the model is build on, was provided by zenodo.org as part of SemEvals Task 4 [\url{https://pan.webis.de/semeval19/semeval19-web/}] and consists of 2 independent datasets, which in turn have been divided into a GroundTruth-, Training- and Validation set.
- 
- \noindent The first dataset, recognizable by the term 'byPublisher', reflects the publisher's general bias set forth by BuzzFeed journalists or MediaBiasFastCheck.com beforehand. It consists of a total of 750,000 items, of which 600,000 belong to the Training- and 150,000 to the Validation set.
- 
- \noindent In return, the second dataset, recognizable by the term 'byArticle', was scrapped by crowdsourcing at hand and therefore consists of only 645 items without a Validation set.\\
+\indent The given data, the model is build on, was provided by zenodo\footnote{https://zenodo.org/record/1489920\#.XRY6DugzaUk} as part of SemEvals Task 4 \footnote{\url{https://pan.webis.de/semeval19/semeval19-web/}} and consists of two independent datasets, which in turn have been divided into a GroundTruth-, Training- and Validation set.
+The first dataset, recognizable by the term 'byPublisher', reflects the publisher's general bias set forth by BuzzFeed journalists or Media Bias/Fast Check\footnote{https://mediabiasfactcheck.com/} beforehand. It consists of a total of 750,000 items, of which 600,000 belong to the Training- and 150,000 to the Validation set.
+In return, the second dataset, recognizable by the term 'byArticle', was scrapped by crowdsourcing at hand and therefore consists of only 645 items without a Validation set.\\
  \\
-The GroundTruth-, Validation- and Training sets were each provided as XML documents. While the Training- and Validationset contain the articles, the GroundTruth file contains the attributes \textit{article-url}, \textit{labeled-by}, \textit{id} and \textit{hyperpartisan}. The main distinction between the by Article and by Publisher labelled datasets is that the by Publisher labelled GroundTruth dataset contains an additional attribute named \textit{bias}. In this context, the \textit{article-url} provides the URL of the article, the characteristic \textit{labeled-by} reflects whether the article belongs to the publisher or article dataset, \textit{id} represents a unique ID for the article, \textit{hyperpartisan} reflects whether the article was labeled als Hyperpartisan or not and the additional attribute \textit{bias} in the publisher record, states whether the article belongs to the "left", "left-center", "least", "right-center" or "right" sector.
+\indent The GroundTruth-, Validation- and Training sets were each provided as XML documents. While the Training- and Validationset contain the articles, the GroundTruth file contains the attributes \textit{article-url}, \textit{labeled-by}, \textit{id} and \textit{hyperpartisan}. The main distinction between the by Article and by Publisher labelled datasets is that the by Publisher labelled GroundTruth dataset contains an additional attribute named \textit{bias}. In this context, the \textit{article-url} provides the URL of the article, the characteristic \textit{labeled-by} reflects whether the article belongs to the publisher or article dataset, \textit{id} represents a unique ID for the article, \textit{hyperpartisan} reflects whether the article was labeled als Hyperpartisan or not and the additional attribute \textit{bias} in the publisher record, states whether the article belongs to the "left", "left-center", "least", "right-center" or "right" sector.
  
-
+\newpage
 \section{Dataset labelled by Publisher}
-\begin{minipage}[T]{.45\linewidth}
-	%PC:
-	%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
-	%Lap Top:
-	\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
-	\captionof{figure}{Hyperpartisan Distribution by Publisher}
-\end{minipage}
+\begin{figure}[h]
+	\begin{minipage}{.45\linewidth}
+		%PC:
+		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/hyper_pub.pdf}
+		%Lap Top:
+		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		\caption{Hyperpartisan Distribution by Publisher}
+	\end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
-\begin{minipage}[T]{.45\linewidth}
-	\centering
-	\begin{tabular}{ccc}
-		\toprule
-		Publisher & Bias & Amount \\
-		\midrule
-		Fox Business & Left & 96175 \\
-		CounterPunch & Left & 39832 \\
-		Mother Jones & Left & 36730 \\
-		Truthdig & Left & 25056 \\
-		Daily Wire & Right & 18570 \\
-		\bottomrule
-	\end{tabular}
-	\captionof{table}{Publishers with the highest proportion of Hypeprartisan articles}
-\end{minipage}\\
-\\ As mentioned above, this dataset consists of a total of 750,000 articles and is divided into a training record consisting of 600,000 articles and a validation set consisting of 150,000 articles.
-The main difference between this dataset and the by articel labelled one is the type of classification. This is because these articles were not labelled as Hyperpartisan based on their content, but due to the publisher (Table 3.1). This means, that a publisher who has been designated as right or left by the MediaBiasFastCheck.com will naturally publish articles which are Hyperpartisan. This manifests itself in a different form of features, which becomes apparent in the further course of this thesis. This likewise influences the distribution of Hyperpatisan articles.
+	\begin{minipage}{.45\linewidth}
+		%PC:
+		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/histPublisher.pdf}
+		%Lap Top:
+		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		\caption{Publishing Years Distribution by Publisher}
+	\end{minipage}
+\end{figure} As mentioned above, this dataset consists of a total of 750,000 articles and is divided into a training record consisting of 600,000 articles and a validation set consisting of 150,000 articles.
+The main difference between this dataset and the by articel labelled one is the type of classification. This is because these articles were not labelled as Hyperpartisan based on their content, but due to the publisher (Table 3.1). This likewise influences the distribution of Hyperpatisan articles.
  Out of a total of 750,000 items, 375,000 assume the value 'True', while the remaining 375,000 have the value 'False'(Figure 3.1). 
 Furthermore, the classification is expressed by the distribution of the additionally contained GroundTruth attribute \textit{Bias}, which informs about the general bias of the publisher. All 375,000 Hyperpartisan labelled all are assigned to either the left or right sectors, but none are right-centre, least or left-centre and are again 50:50 distributed. The other 50\% are split between the remaining bias, with 'Least' owning the largest share at 37\%.\\
 The publicity data is distributed over the years 1964-2018, with most of the data coming from 2012-2018.
+%\begin{table}[h]
+%	\centering
+%	\begin{tabular}{c|c|}
+%		\toprule
+%		Word & Similarity  \\
+%		\midrule
+%		obama &0.5890584588050842 \\
+%		clinton &0.5385712385177612 \\
+%		bannon & 0.5277745127677917 \\
+%		priebus &0.5117671489715576 \\
+%		hillary & 0.48596829175949097 \\
+%		sanders & 0.48391878604888916 \\
+%		rubio & 0.4825097918510437 \\
+%		\bottomrule
+%	\end{tabular}
+%\end{table}
 
 \newpage
 \section{Dataset labelled by Article}
 \begin{figure}[h]
 	\begin{minipage}{.45\linewidth}
 		%PC:
-		%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		%Lap Top:
-		\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
+		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure2.pdf}
 		\caption{Hyperpartisan Distribution by Article}
 	\end{minipage}
 	\hspace{.1\linewidth}% Abstand zwischen Bilder
 	\begin{minipage}{.45\linewidth}
 		%PC:
-		%\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		\includegraphics[width=\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
 		%Lap Top:
-		\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
+		%\includegraphics[width=\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/figure.pdf}
 		\caption{Publishing Years Distribution by Article}
 	\end{minipage}
 \end{figure}
-As already described in the previous section, the distribution of the by Article dataset is different from the by Publisher one. The distribution is no longer 50:50, but only 36.9\% were classified as Hyperpartisan (Figure 3.2). 
-\noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% as we can see in figure 3.3. Altogether all 645 articles date from the years 1902-2018.
-
+The record labelled by Article consists of a total of 645 articles which were labelled manually. As described in the official SemEval Task 4 paper, each annotator has labeled them using the following scale:
+\begin{enumerate}
+	\item No Hyperpartisan Content
+	\item Mostly unbiased, non-hyperpartisan content
+	\item Not sure
+	\item Fair amount of hyperpartisan content
+	\item Extreme hyperpartisan content
+\end{enumerate}
+After that all articles with rating 1 and 2 were labeled as non-hyperpartisan and all with score 3 and 4 as hyperpartisan.
+Accordingly, the Hyperparisan distribution is no longer 50:50, but 36.9\% of all articles were labeled as Hyperpartisan and 63.1\% not (Figure 4.2).
+\noindent Moreover, in this dataset, the distribution of publication data is not mainly from the years 2012-2018, but in 2016-2018, with the largest number of articles dating back to 2017 at just under 60\% (Figure 4.3). Altogether all 645 articles date from the years 1902-2018.
+%This dataset also shows that the feature distribution is different from that of the by Publisher dataset. For example, here are the most similar words to Trump xxx.
+%\begin{table}[h]
+%	\centering
+%	\begin{tabular}{c|c|}
+%		\toprule
+%		Word & Similarity  \\
+%		\midrule
+%		president &0.9992413520812988 \\
+%		donald & 0.9992144107818604 \\
+%		election & 0.9980630874633789 \\
+%		presidential &0.9978925585746765 \\
+%		campaign & 0.9978247880935669 \\
+%		obama & 0.9977766275405884 \\
+%		republican & 0.9974061250686646 \\
+%		\bottomrule
+%	\end{tabular}
+%\end{table}
 
 
 
 
 \chapter{Classification Techniques}
-The primary procedure in Text Classification consist of 7 steps \cite{textclassification}. These include  reading the dataset, tokenization, stemming, removing stop words, represent the text using vectors, feature extraction and selection, as well as applying classification algorithms. Since the first five steps have already been covered in Chapter 2, I will discuss the remaining three in this section. Especially, step 7 -- applying classification algorithms -- plays an important role. As already mentioned in Chapter 1 - Introduction, we build the classifier using \glspl{bert}-Embeddings. In order to compare how the model performs, I will therefore focus on classical text classification algorithms.
+The primary procedure in Text Classification consist of 7 steps \cite{textclassification}. These include  reading the dataset, tokenization, stemming, removing stop words, represent the text using vectors, feature extraction and selection, as well as applying classification algorithms. In the further course of this chapter I  will therefore describe the steps I took during the development of my program and how they were implemented.
 
 \section{Data Preparation}
-In order to be able to work with the existing data in the further course of this project, several preprocessing steps are necessary. In the preprocessing phase of my bachelor's thesis, the data therefore went through the following steps:
+In order to be able to work with the existing data in the further course of this project, several preprocessing steps were necessary. In the preprocessing phase of my bachelor's thesis, the data therefore went through the following steps:
 \begin{enumerate}
 	\item File Parsing. 
 	\item Information Filtering.
@@ -637,84 +690,76 @@ In order to be able to work with the existing data in the further course of this
 	\item Special Characters and Stop Word Removal.
 	\item Tokenization and Stemming.
 \end{enumerate}	
-\noindent As a result, in the following section, I will go further into detail how I preprocessed my data.
 
 \newpage
 \subsection{File Parsing}
-Since it is difficult to work with the given data in an XML format, the first challenge is to convert these files into a format which allows work with them more easily. The particular challenge here is the size of the dataset labelled by publisher. A standard algorithm for reading XML files is provided by pythons DOM library \textit{ElementTree}, called \textit{ElementTree.parse}\cite{parse}. This method returns an ElemenTree type, which "is a flexible container object, designed to store hierarchical data structures in memory" [ http://effbot.org/zone/element.htm]. Meaning, that this library forms the entire model in the memory which can pose a problem with very large files, such as ours. As a substitute, I therefore use the method \textit{ElemenTree.iterparse}, which can process XML documents in a streaming fashion, retaining in memory only the most recently examined parts of the tree\cite{iterparse}. 
+Since it is difficult to work with the given data in an XML format, the first challenge is to convert these files into a format which allows work with them more easily. The particular challenge here is the size of the dataset labelled by publisher. A standard algorithm for reading XML files is provided by pythons library \textit{ElementTree}, called \textit{ElementTree.parse}\cite{parse}. This method returns an ElemenTree type, which is a flexible container object, designed to store hierarchical data structures in memory. Meaning, that this library forms the entire model in the memory which can pose a problem with very large files, such as ours. As a substitute, I therefore use the method \textit{ElemenTree.iterparse}, which can process XML documents in a streaming fashion, retaining in memory only the most recently examined parts of the tree\cite{iterparse}. 
 
 
 \subsection{Information Filtering}
-As mentioned in Chapter 2.1 Data Description, the XML files include various features, which is why it is necessary to extract these features from the XML files. In order to do this,  an algorithm  is passed the, by the \textit{iterparse} method read content, which then passes through this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. \\
+As mentioned in Chapter 2.1 Data Description, the XML files include various features, which is why it is necessary to extract these from the XML files. In order to do this,  an algorithm  is passed the, by the \textit{iterparse} method read content, which then passes through this algorithm in a double for-loop and checks for each item of an element in the content which "key" is currently processed. I then save this in an array, so that the features which have already been parsed, can be used later. 
 
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\caption{Parse Ground-Truth File}
-	\KwIn{Ground-Truth File}
-	\KwOut{Trained Classifier} 
-	\For{event, elem in content}
-	{
-		\For{key, value in elem.items()}
-		{
-			\uIf{key == 'id'}
-			{id\_array.append(str(value))}
-			\uElseIf{key == 'published-at'}
-			{published\_at\_array.append(value)}
-			\uElseIf{key == 'title'}
-			{title\_array.append(value)}
-		}
-	}
-\end{algorithm}
+\begin{lstlisting}[caption=Parse Ground-Truth File]
+def parse_groundtruth(content):
+    for event, elem in content:
+ 	for key, value, in elem.items():
+            if key == 'id':
+                id_array.append(value)
+            elif key == 'hyperpartisan':
+                hyperpartisan_array.append(value)
+            elif key == 'bias':
+                bias_array.append(value)
+\end{lstlisting}
 \newpage 
 \subsection{Combine Data}
-Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library \textit{pandas} \cite{pandas} to combine both files into a single one. This, and especially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.\\
+Since both, the Groundtruth- and Trainingdata contain important information, it is necessary to merge them into one file. I decided to use Python's library \textit{pandas} \cite{pandas} to combine both files into a single one. This, and especially Pandas, allows us to read the file more quickly as well as to access individual rows and columns of the merged file in a targeted manner.
+\begin{lstlisting}[caption=Merge GroundTruth- and Training datasets]
+def write_to_csv_articles(title):
+    xml_gt = etree.iterparse(path_gt, tag='article')
+    xml_training = etree.iterparse(path_training, tag='article')
+    content_training = etree.iterparse(path_training, tag='article')
+    feature_extraction.parse_features(xml_training)
+    groundtruth_parser.parse_groundtruth(xml_gt)
+    content = content_parser.parse_content(content_training)
 
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\caption{Merge Groundtruth- and Trainingdatasets}
-	content = content\_parser.parse\_content(content\_training)\;
-	a\_id = feature\_extraction.get\_id\_array()\;
-	\BlankLine
-	\BlankLine
-	published = feature\_extraction.get\_published\_at\_array()\;
-	title = feature\_extraction.get\_title\_array()\;
-	bias = groundtruth\_parser.get\_bias\_array()\;
-	hyperpartisan = groundtruth\_parser.get\_hyperpartisan\_array()\;
-	\BlankLine
-	columns = \{"ArticleID": a\_id, "PublishedAt": published, "Title": title, "Bias": bias, "Content": content  "Hyperpartisan": hyperpartisan\}\;
-	\BlankLine
-	\BlankLine
-	tf = Pd.DataFrame(columns)\;
-	tf = tf[['ArticleID','Published', Title','Bias','Content','Hyperpartisan']]\;
-	tf.to\_csv(titlecsv,encoding='utf-8',index=False)\;
-\end{algorithm}
+    a_id = feature_extraction.get_id_array()
+    published = feature_extraction.get_published_at_array)
+    title = feature_extraction.get_title_array()
+    bias = groundtruth_parser.get_bias_array()
+    hyperpartisan = groundtruth_parser.get_hyperpartisan_array()
+
+    columns = {"ArticleID": a_id,
+               "PublishedAt": published,
+               "Title": title,
+               "Bias": bias,
+               "Content": content,
+               "Hyperpartisan": hyperpartisan}
+
+    table_frame = Pd.DataFrame(columns)
+    table_frame.to_csv(title, encoding='utf-8', index=False)
+\end{lstlisting}
+
 
 \subsection{Special Characters and Stop Word Removal}
-Since the GroundTruth- and Trainingdatasets have been combined into a single file, the next step  is to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles \cite{textclassification} are useful for training a classifier.\\
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	stop = stopwords.words('english')\;
-	\BlankLine
-	\BlankLine
-	df.Content = df.Content.apply(lambda x: ''.join([item for item in x.split() if item not in stop]))\;
-	df.Content = df.Content.map(lambda x: re.sub(r"[\^\ a-zA-Z0-9]+", '', x))\;
-	\caption{Remove special characters and stop words}
-\end{algorithm}
+Since the GroundTruth- and Trainingdatasets have been combined into a single file, the next step  is to remove special characters and stop words. Especially the removal of stopwords is necessary since not all words presented in a document, such as auxiliary verbs, conjunctions and articles \cite{textclassification} are useful for training a classifier.
+\begin{lstlisting}[caption=Special Characters and Stop Word Removal]
+stop = stopwords.words('english')
+df.Content = df.Content.map(lambda x: re.sub(r"[^a-zA-Z0-9]+", ' ', x))
+df.Content = df.Content.apply(lambda x: ' '.join([item for item in x.split() if item not in  stop]))
+\end{lstlisting}
 
 
 \subsection{Tokenization and Stemming}
 After cleaning the dataset, the words are tokenized in order to convert them into numerical vectors so that a classifier is able to work with them. Tokenization is definied as "The process of demarcating and possibly classifying sections of a string of input characters". The resulting tokens are then passed on to some other form of processing. The process can be considered a sub-task of parsing input.\\
 \noindent Stemming is the procedure of reducing the word to its grammatical root. The result is not necessarily a valid word of the language. For example, "recognized" would be converted to "recogniz". Still, the basic word almost always contains the very meaning of the word. Stemming is advantageous in that the algorithm used later now only has to fall back on a few different words instead of many, all of which have the same meaning.\\
 \\
-\noindent In order to implement Stemming and Tokenization, \textit{NLTK} \cite{nltk} package provides two functions, due to which only 3 lines of code are necessary.\\
+\noindent In order to implement Stemming and Tokenization, \textit{NLTK} \cite{nltk} package provides two functions, due to which only 3 lines of code are necessary.
+\begin{lstlisting}[caption=Tokenization and Stemming]
+import nltk
 
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	import nltk\;
-	df.Content = df.Content.apply(nltk.word\_tokenize)\;
-	df.Content = df.Content.apply(lambda x: [stemmer.stem(y) for y in x])\;
-	\caption{Special Character and Stopword Removal with Pandas and NLTK}
-\end{algorithm}
+df.Content = df.Content.apply(lambda x: ''.join([stemmer.stem(y) for y in x]))
+df.Content = df.Content.apply(nltk.word_tokenize)
+\end{lstlisting}
 
 \section{Text Representation}
 In order for the classifier to be able to work with the text, the first step is to transform the words into a feature vector representation. A document is a sequence of words \cite{word2vecdortmund} so a document can be presented by a One-Hot encoded vector, assigning the value 1 if the document contains the feature-word or 0 if the word does not appear in the document \cite{textclassification}. However, using this technique for word representation, resolves in a $V \cdot V$ Matrix, as we have $V$-dimensional vector for each out of $V$ words which can lead to huge memory issues. In addition this does not notion similarity between words. Therefore I will go into further detail for better approaches in the next 2 subchapters.
@@ -741,44 +786,40 @@ In order for the classifier to be able to work with the text, the first step is 
 %	\end{tabular}
 %	\caption{Top 10 terms by \Gls{tfidf} weight}
 %\end{table}
-A comparative approach I used in the course of my Bachelor Thesis is Term Frequency - Inverse Document Frequency. Using \gls{tfidf} allows to represent a word as a vector by assigning it weight which is computed through Term-Frequency multiplied with Inverse-Term-Frequency. Table 4.1 shows the 10 terms which have been assigned the highest \gls{tfidf} weights. Python's library \textit{scikit-learn} \cite{scikit-learn} provides two ways to implement \gls{tfidf} without having to program \gls{tf} and \gls{idf} by itself.
-In order to get a generally better overview, I will now explain the 2-step implementation, but note that the class \textit{sklearn.feature\_extraction.text.TfidfVectorizer} enables implementation in just one. \\
-\\ Term-Frequency, as mentioned in "Chapter 1 -- Principles", is a measure that denotes how often a term appears in a document. Inverse Document Frequency, on the other hand, reflects the importance of a term throughout a document corpus. To implement the TF-IDF measure, \textit{scikit-learn} provides the classes \textit{CountVectorizer} and \textit{TfidfTransformer} of the submodule \textit{sklearn.feature\_extraction.text} \cite{tfidf}. As an input example, I use the first article of the "byArticle" labelled dataset. \\
+A comparative approach I used in the course of my Bachelor Thesis is Term Frequency - Inverse Document Frequency. Using \gls{tfidf} allows to represent a word as a vector by assigning it weight which is computed through Term-Frequency multiplied with Inverse-Term-Frequency. Table 4.1 shows the 10 terms which have been assigned the highest \gls{tfidf} weights. 
 \newpage
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\KwIn{Text Corpus}
-	count\_vect = CountVectorizer()\;
-	content\_counts = count\_vect.fit\_transform(corpus)\;
-	\BlankLine
-	tfidf\_transformer = TfidfTransformer()\;
-	content\_tfidf = tfidf\_transformer.fit\_transform(content\_counts)\;
-	\caption{\gls{tfidf}}
-\end{algorithm}
-\noindent In order to calculate the \gls{tf} measure, the method \textit{fit\_transform()} of the class \textit{CountVectorizer} can be used, which the document corpus is passed as a parameter. \\
+Python's library \textit{scikit-learn} \cite{scikit-learn} provides two ways to implement \gls{tfidf} without having to program \gls{tf} and \gls{idf} by itself.
+In order to get a generally better overview, I will now explain the 2-step implementation, but note that the class \textit{sklearn.feature\_extraction.text.TfidfVectorizer} enables implementation in just one. \\
+\indent Term-Frequency, is a measure that denotes how often a term appears in a document. Inverse Document Frequency, on the other hand, reflects the importance of a term throughout a document corpus. To implement the TF-IDF measure, \textit{scikit-learn} provides the classes \textit{CountVectorizer} and \textit{TfidfTransformer} of the submodule \textit{sklearn.feature\_extraction.text} \cite{tfidf}.
+In order to calculate the \gls{tf} measure, the method \textit{fit\_transform()} of the class \textit{CountVectorizer} can be used, which the document corpus is passed as a parameter. \\
 \noindent \textit{fit\_transform()} learns a vocabulary dictionary of all tokens and then counts how many times a term \textit{t} occurs in a document \textit{d} and converts the text document into a token matrix.
 \noindent The calculation of the \gls{idf}-measure in the second step is similar to the calculation of the \gls{tf}-measure. Again, the method \textit{fit\_transform()} is called. In contrast to the method of the \textit{CountVectorizer}, the text document is no longer passed as a parameter, but the token matrix of \textit{CountVectorizer}. \\
-\noindent It should be noted that the shape of the finalized \gls{tfidf} matrix depends on the document corpus. The first time the conversion is carried out, the two objects of the respective classes learn the respective vocabulary through the keyword \textit{"fit\_"}. If a second text document should be converted to \gls{tfidf} vectors afterwards, which is supposed to be used in connection with the already converted text document, it is necessary to use the same \textit{CountVectorizer} and the same \textit{TfidfTransformer}. This is, because otherwise the error message "Dimension Mismatch" would occur in later prediction calls.
+\indent It should be noted that the shape of the finalized \gls{tfidf} matrix depends on the document corpus. The first time the conversion is carried out, the two objects of the respective classes learn the respective vocabulary through the keyword \textit{"fit\_"}. If a second text document should be converted to \gls{tfidf} vectors afterwards, which is supposed to be used in connection with the already converted text document, it is necessary to use the same \textit{CountVectorizer} and the same \textit{TfidfTransformer}. This is, because otherwise the error message "Dimension Mismatch" would occur in later prediction calls.
 Let's take the following example: \\
 \noindent If the two datasets labelled by article and publisher are converted with the same \textit{CountVectorizer} and \textit{TfidfTransformer}, we obtain the following dimensions:
 \begin{itemize}
 	\item By Publisher: (600000, 708863)
 	\item By Article: (645, 708863)	
 \end{itemize}
-
+\newpage
 \noindent If the two methods \textit{fit\_transform()} would be called for both datasets, \textit{CountVectorizer} and \textit{TfidfTransformer} would be initialized each time, which would result in the following dimensions:
 \begin{itemize}
 	\item By Publisher: (600000, 708863)
 	\item By Article: (645, 11485)	
 \end{itemize}
+\begin{lstlisting}[caption=\gls{tfidf}]
+def tf_idf_forContent(content):
+count_vect = CountVectorizer()
+tfidf_transformer = TfidfTransformer()
+
+content_counts = count_vect.fit_transform(content)
+content_tfidf = tfidf_transformer.fit_transform(content_counts)
+
+return content_tfidf
+\end{lstlisting}
 
 \newpage
 \subsection{Word2Vec} 
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	model = gensim.models.Word2Vec(vocab, min\_count=10, window=10, size=300, iter=10)\;
-	\caption{Word2Vec with gensim}
-\end{algorithm}
 %\begin{table}[h]
 %	\scriptsize
 %	\centering
@@ -798,34 +839,37 @@ Let's take the following example: \\
 For a further comparison and an approximation to the the later on used classification model, I did not only uf \gls{tfidf} as a Vector representation method as part of my Bachelor Thesis, but also Word Embeddings - especially the \textit{Word2Vec} model. \\
 Word2Vec represents words as vectors. Unlike the  \gls{tfidf} method, however, not only word frequencies and -priorities are considered, but also the connection of individual words to others. Again, several methods of implementation exist. 
 \noindent As part of my Bachelor Thesis, I decided to use  the library \textit{gensim} \cite{gensim} to implement my Word2Vec model. With \textit{gensim} it is  possible to do  unsupervised semantic modelling from plain text. This makes it possible to implement a Word"vec model using only a few lines of code without having to program Skip-Gram of \gls{cbow} yourself. 
- Algorithm 7 shows that the implementation of the model is straightforward, as it is pretty much the only step we need to program. By default, \textit{gensim} uses \gls{cbow} which can be  changed  by adding the following parameter to the parameters list: \textit{sg=1}. As for the other parameters, 18 more exist which can be viewed at \url{https://radimrehurek.com/gensim/models/word2vec.html}, but I decided to focus only on the important ones. \textit{Vocab} is our text corpus, which needs to be transformed into a list of tokenized sentences. \textit{Size} determines the dimension of the word vectors, \textit{window} the maximum distance between the current and predicted word within a sentence, \textit{min\_count}  how often a word must occur to be included in the vocabulary and \textit{iter} how many iterations  should be performed on the corpus. What exactly happens here is that a neural network with a single hidden layer is trained to predict the current word based on the context. The resulting vector consists of several features that describe the target word.\\
-\noindent 
+ Algorithm 7 shows that the implementation of the model is straightforward, as it is pretty much the only step we need to program. By default, \textit{gensim} uses \gls{cbow} which can be  changed  by adding the following parameter to the parameters list: \textit{sg=1}. As for the other parameters, 18 more exist which can be viewed at the official \text{scikit-learn} page \footnote{https://radimrehurek.com/gensim/models/word2vec.html}, but I decided to focus only on the important ones. \textit{Vocab} is our text corpus, which needs to be transformed into a list of tokenized sentences. \textit{Size} determines the dimension of the word vectors, \textit{window} the maximum distance between the current and predicted word within a sentence, \textit{min\_count}  how often a word must occur to be included in the vocabulary and \textit{iter} how many iterations  should be performed on the corpus. What exactly happens here is that a neural network with a single hidden layer is trained to predict the current word based on the context. The resulting vector consists of several features that describe the target word.
+ \begin{lstlisting}[caption=Word2Vec with gensim]
+ model = gensim.models.Word2Vec(vocab, min_count=10, window=10, size=300, iter=10)
+ \end{lstlisting}
+\indent 
 After the model has been trained it is possible to get information about the similarity of two words by calling the method $model.wv.similarity(word_1, word_2)$. Table 4.2 shows the 6 most similar words to "trump" of both datasets. This is possible by calculating the cosine similarity of two words in the vector space. As the range of the cosine similarity can go from [-1 to 1], words that are completely the same are assigned the value \textit{1} and words that are not similar at all are given the value \textit{-1}. 
 \newpage
-\noindent The resulting word vectors now have the dimension defined in the parameter \textit{size}. In order to be able to form features from them, I averaged the Word Embeddings of all words in a sentence (algorithm 8).\\
+\indent The resulting word vectors now have the dimension defined in the parameter \textit{size}. In order to be able to form features from them, I averaged the Word Embeddings of all words in a sentence (algorithm 8).
+\begin{lstlisting}[caption=sent\_vectorizer]
+def sent_vectorizer(sent, model):
+    sent_vec = []
+    numw = 0
+    for w in sent:
+        try:
+            if numw == 0:
+                sent_vec = model[w]
+            else:
+                sent_vec = np.add(sent_vec, model[w])
+            numw += 1
+        except:
+            pass
 
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\KwIn{text corpus, trained model}
-	sent\_vec = [] \;
-	numw =  0 \;
-	\For{w in sent}{
-		\If{numw == 0}{
-			sent\_vec = model[w]
-		}
-		\Else{
-			sent\_vect = np.add(sent\_vec, model[w])
-		}	
-	}
-	\Return np.asarray(sent\_vec) / numw
-	\caption{sent\_vectorizer}
-\end{algorithm}
+    return np.asarray(sent_vec) / numw
+\end{lstlisting}
 
 \section{Classification Methods}
 The given classification task in this thesis is of binary nature. Given a set of articles, it should be determined whether an article is hyperpartisan or not. For training different classifiers I used different approaches. \\
 
 \subsection{Classical Approach}
-In the first approach, the first step I performed was representing the articles using Word Embeddings and TFIDF Measure. The Word2Vec, TFIDFransformer and CountVectorizer were both trained on the by Publisher dataset, since it coontains 600.000  articles and therefore has more data to train these models. In the second step I did a GridSearch to get the optimal parameters for the classifiers based on the given data sets, whereupon in the third step, I performed training using the classifiers Multinomial Naive Bayes, Logistic Regression and Random Forest on the datasets labeled by Article and by Publisher. For implementating of these classifiers I used Python's library scikit learn, which makes it possible to use already implemented classifiers without having to program them from scratch. Here a classification algorithm is a Python object, which represents an estimator for classifications and implements the methods fit() and predict(). The aim is that the classifier instance learns from the defined model by passing the training dataset to the method fit().\\
+In the first approach, the first step I performed was representing the articles using Word Embeddings and TFIDF Measure. The Word2Vec, TFIDFransformer and CountVectorizer were both trained on the by Publisher dataset, since it coontains 600.000  articles and therefore has more data to train these models. In the second step I did a GridSearch to get the optimal parameters for the classifiers based on the given data sets, whereupon in the third step, I performed training using the classifiers Multinomial Naive Bayes, Logistic Regression and Random Forest on the datasets labeled by Article and by Publisher. For implementating of these classifiers I used Python's library scikit learn, which makes it possible to use already implemented classifiers without having to program them from scratch. Here a classification algorithm is a Python object, which represents an estimator for classifications and implements the methods fit() and predict(). The aim is that the classifier instance learns from the defined model by passing the training dataset to the method fit().
+\newpage
 \indent A simple implementation of GridSearch is provided by \textit{scikit-learn} through the class \textit{sklearn.model\_selection.GridSearchCV} \cite{codegridsearch}. This class evaluates all possible combinations of parameters when calling the method \textit{fit()} and keeps the best combination. The parameters that can be passed to the class include \textit{estimator}, which specifies the classifier, \textit{param\_grid}, which is the parameter set, \textit{scoring}, which specifies the measure to evaluate the test set, and \textit{cv} how many cross-validation splits to perform. \\
 %begin{algorithm}[H]
 %	\DontPrintSemicolon
@@ -845,43 +889,40 @@ In the first approach, the first step I performed was representing the articles 
 \noindent Here $\Theta$ is estimated by a smoothed version of the maximum likelihood, $N_{yi}=\sum_{x \in T}x_i$ is the number of times a feature $i$ appears in a sample of class $y$ in the training set, $N_y=\sum_{i=1}^{n}N_{yi}$ is the total count of all features for class $y$ and $\alpha$ incorporates the smoothing parameter due to which zero probabilities will be prevented.
 The \textit{MultinomialNB} classifier includes the parameters \textit{alpha}, \textit{fit\_prior} and \textit{class\_prior}, where \textit{alpha} specifies the smoothing value, \textit{fit\_prior} whether the class probalilities should be learned in advance and \textit{class\_prior} specifies the prior probabilities of the classes.\\
 \indent The Random Forest Classifier is a classification technique that creates multiple decision trees from randomly selected subsets of training data. For implementing the Random Forest Classifier, \textit{scikit-learn} provides the class \textit{sklearn.ensemble.Ran-domForestClassifier} \cite{coderandomforest}. Unlike the original publication \cite{randomforest}, the \textit{scikit-learn} classifier determines the final class by averaging the probabilistic forecasts as opposed to having each classifier vote in favour of a solitary class. The Random Forest classifier includes 17 parameters, of which I have included \textit{n\_estimators}, criterion, max\_depth, min\_samples\_leaf, max\_features and bootstrap. Here, n\_estimators determines the number of trees in the forest, \textit{criterion} which impurity measure to utilize, \textit{max\_depth} determines the maximum depth of a tree, \textit{min\_samples\_leaf} determines the base number of samples to be at a leaf node, \textit{max\_features} the quantity of features that must be considered in the search for the best partition and \textit{bootstrap} indicates whether bootstrap models are utilized when making trees.\\
-\indent The Logistic Regression classifier is a model for classification, where the probabilities depicting the potential results of a solitary class are modelled utilizing a logistic function. The provided classifier of \textit{scikit-learn} offers the possibility not only to classify binary, but also One-vs-Rest and multinomial. There are several solvers available for this, yet since our classification problem only refers to binary classification, I will only discuss those aspects of the logistic regression classifier in the following section. Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization \cite{logisticregression}. A solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out, that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}. \textit{Liblinear} uses a coordinate descent algorithm, the \textit{sag} solver a Stochastic Average Gradient descent, \textit{saga} is a variant of \textit{sag} and therefor supports the non-smooth penalty \textit{L1} and \textit{elasticnet} and the \textit{lbfgs} solver is an optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno algorithm.\\
+\indent The Logistic Regression classifier is a model for classification, where the probabilities depicting the potential results of a solitary class are modelled utilizing a logistic function. The provided classifier of \textit{scikit-learn} offers the possibility not only to classify binary, but also One-vs-Rest and multinomial. There are several solvers available for this, yet since our classification problem only refers to binary classification, I will only discuss those aspects of the logistic regression classifier in the following section. Scikit learns Logistic Regression Classifier provides L1, L2 and Elastic-Net Regularization \cite{logisticregression}. As solvers, \textit{liblinear}, \textit{newton-cg}, \textit{lbgfs}, \textit{sag} and \textit{saga} are available. \textit{Scikit-learn} points out, that \textit{liblinear} is a good algorithm for small datasets, whereas \textit{sag} and \textit{saga} are faster for large datasets. 
+\newpage \noindent Also, \textit{newton-cg}, \textit{lbgfs} and \textit{sag} only handle \textit{L2} penalty, whereas \textit{liblinear} also handles \textit{L1} penalty and \textit{saga} in addition \textit{elasticnet}. \textit{Liblinear} uses a coordinate descent algorithm, the \textit{sag} solver a Stochastic Average Gradient descent, \textit{saga} is a variant of \textit{sag} and therefor supports the non-smooth penalty \textit{L1} and \textit{elasticnet} and the \textit{lbfgs} solver is an optimization algorithm that approximates the Broyden–Fletcher–Goldfarb–Shanno algorithm.\\
 
 
 \subsection{Novel Approach using Bidirectional Encoder Representations from Transformers}
 In the second approach of my classification I used Google's model for Bidirectional Encoder Representations from Transformers. Here I do not pre-train the model like the group Clint Buchanan, but use the already pre-trained models and fine-tune using the data sets labelled by Article and by Publisher. Meanwhile many possibilities exist to use the Bert model, including TensorFlow Hub or a PyTorch \cite{pytorch} interface, whereby in this thesis the original GitHub Code was used.\\
-\indent In the official github repository (\url{https://github.com/google-research/bert}) both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for both lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper. The existing pre-trained models consist of a \textit{.zip} file, which contains the TensorFlow checkpoint for initializing the pre-trained weights, a vocab file to map WordPiece to word id, as well as a config file, which describes the hyperparameters of the model. \\ 
-\indent A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modified. \\
+\indent In the official github repository \footnote{\url{https://github.com/google-research/bert}}  both models, \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, were published. This includes the TensorFlow \cite{tensorflow} code, pre-trained checkpoints for both lowercase and uppercase versions of \gls{bert}$_{Base}$ and \gls{bert}$_{Large}$, as well as the TensorFlow code for replication of the most important fine tuning experiments from the paper. The existing pre-trained models consist of a \textit{.zip} file, which contains the TensorFlow checkpoint for initializing the pre-trained weights, a vocab file to map WordPiece to word id, as well as a config file, which describes the hyperparameters of the model. \\ 
+\indent A total of 15 python files have been published on GitHub, of which \textit{\_\_init\_\_.py}, \textit{modeling.py}, \textit{optimization.py}, \textit{tokenization.py} and \textit{run\_classifier.py} are required for classification tasks. Here \textit{run\_classifier.py} is the main file which has to be executed in order to perform fine-tuning and consists of the fine\_tuning code for the \gls{bert} model, as well as various classes. These different classes have been implemented specifically for the tasks mentioned in the paper and specify how to access the training-, development- and test data, which labels exist and creates the input examples for the \gls{bert} model. Since these classes have to be implemented in a differentiated way, it is therefore necessary to implement a separate class, which can be used within the framework of the data sets available in this thesis. However, it is largely possible to fall back on already implemented classes. For example, of class \textit{ColaProcessor}, only the methods \textit{ create\_examples} (Algorithm 14), as well as get\_labels must be modified. 
+\newpage
+\begin{lstlisting}[caption=Create\_examples in BERT]
+def _create_examples(self, lines, set_type):
+    """Creates examples for the training and dev sets."""
+    examples = []
+    for (i, line) in enumerate(lines):
+        if i == 0:
+            continue
+        guid = "%s-%s" % (set_type, line[0])
+        text_a = line[1]
+        label = line[2]
+        examples.append(InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
+    return examples
+\end{lstlisting}
+\indent A slightly modified version of the combined GroundTruth- and Training datasets will be passed to this new class, as only the article's content, the IDs and labels for the input examples to be generated are required. Since BERT uses \textit{.tsv} as the default file format, it is also necessary to save the modified file in this form. \\
+\noindent The execution of the \textit{run,\_classifier.py} file includes additional passing of 12 arguments (Listing 5.2), where \textit{train\_batch\_size}, \textit{learning\_rate} and \textit{num\_train\_epochs} represent the models hyperparameters. 
 
-\begin{algorithm}[H]
-	\DontPrintSemicolon
-	\KwIn{self, lines, set\_type}
-	examples = []\;
-	\For{i,line in enumerate(lines)}
-	{
-		\If{i == 0}
-		{
-			continue
-		}
-		guid = \%s-\%s" \% (set\_type, line[0])\;
-		text\_a = line[1]\;
-		label = line[2]\;
-		examples.append(InputExample(guid=guid, text\_a=text\_a, text\_b=None, label=label))\;
-	}
-	\Return examples
-	\caption{Create\_examples in \gls{bert}}
-\end{algorithm} 
-A slightly modified version of the combined GroundTruth- and Training datasets will be passed to this new class, as only the article's content, the IDs and labels for the input examples to be generated are required. Since BERT uses \textit{.tsv} as the default file format, it is also necessary to save the modified file in this form. \\
-\noindent The execution of the \textit{run,\_classifier.py} file includes additional passing of 12 arguments (Listing 5.2), where \textit{train\_batch\_size}, \textit{learning\_rate} and \textit{num\_train\_epochs} represent the models hyperparameters. \\
 \indent In a  single training epoch, the entire data set is passed through a neural network once. Hereby, a higher number of epochs is required to avoid under-fitting due to a small number of updated weights. However, too many epochs may lead to over-fitting. In the paper, the authors state, that a number of  3 or 4 epochs worked best across different tasks. I experienced that a number of 10 epochs slightly improved the model when trained on the Publisher record, while it made no real difference on the Article record. This is different from the paper, which states that the result with different parameters should not vary as much on large datasets as on small ones.  \\
 \indent Since it is not possible to transfer an entire data set into a neural network at once, batch size defines the total number of training examples contained in a single batch. Here, the paper refers  to an optimal number of 16 or 32. On the official GitHub page, however, it is pointed out that all experiments in the paper were fine-tuned on a cloud-TPU with 64GB RAM and using the same hyperparameters  on a GPU with 12 to 16GB RAM may lead to out-of-memory issues. Therefore in the same section, the maximum batch size for an associated sequence length and the associated Bert model is mentioned, whereas for the \gls{bert}$_{Base}$ model with a sequence length of 512 the corresponding maximum batch size is 6. However, on
-a GPU with 12GB RAM, I  experienced that using a batch size larger than 2 is not possible on the by Publisher labelled data set. Despite this, I decided not to use a smaller sequence length, since a length of 512 is already not enough for a complete article. \\
-\indent Learning rate tells the optimizer of a neural network how far it is supposed to set the weights in the opposite direction to the gradient for a mini batch. If the learning rate is low, training is more reliable, but  optimization will take a lot more time, whereas with a high learning rate, the training may not approach or even diverge. The authors of the paper refer to an optimal learning rate in relation to the Adam gradient \cite{adam} of 5e-5, 3-5 or 2-5. I trained the model with the parameters 5e-5, 3e-5, 2-5 and 1e-5 and the model produced the best results on both data sets with the learning rate 2e-5. \\
-\begin{lstlisting}[caption={Example: Calling \textit{run\_classifier} with the required flags},captionpos=b, frame = single]
+a GPU with 12GB RAM, I  experienced that using a batch size larger than 2 is not possible on the by Publisher labelled data set. Despite this, I decided not to use a smaller sequence length, since a length of 512 is already not enough for a complete article. 
+\newpage
+\begin{lstlisting}[caption=run\_classifier prompt with FLAGS]
 export BERT_BASE_DIR=/path_to_bert_model/uncased_L-12_H-768_A-12
 export DATA_DIR=/path_to_input_data/
 
-export python run_classifier.py \
+python run_classifier.py \
 --task_name=ba \
 --do_train=true \
 --do_eval=true \
@@ -895,17 +936,18 @@ export python run_classifier.py \
 --num_train_epochs=4.0 \
 --output_dir=/path_for_output_data/
 \end{lstlisting}
+\indent Learning rate tells the optimizer of a neural network how far it is supposed to set the weights in the opposite direction to the gradient for a mini batch. If the learning rate is low, training is more reliable, but  optimization will take a lot more time, whereas with a high learning rate, the training may not approach or even diverge. The authors of the paper refer to an optimal learning rate in relation to the Adam gradient \cite{adam} of 5e-5, 3-5 or 2-5. I trained the model with the parameters 5e-5, 3e-5, 2-5 and 1e-5 and the model produced the best results on both data sets with the learning rate 2e-5. 
 
 \chapter{Evaluation}
 The evaluation based on the test data set is hosted on TIRA \cite{tira}. TIRA is an "Evaluation as a Service" \cite{evaluationasaservice} and focuses on hosting common tasks to facilitate the delivery of software. Because of TIRA it is not possible to gain insight into the test data set in order not to influence the result.
 In order to test the classifiers on the test dataset, the organizers of the competition provided me with a virtual machine in TIRA. It is only possible to access the test data within the TIRA interface. To run the software, a shell-command must be passed in this interface, which contains the Python program, the path to the directory of the test dataset and the path for the output. In this connection, it was necessary that the passed file creates a .txt file as output, which consists of one column for the ID of the article and one column for the prediction. \\
-\noindent It is then possible for forward the run to the evaluation software, which then outputs Accuracy, Precision, Recall and F1-Score. When evaluated on the test data, the results are not immediately visible, but have to be unblinded by the organizers. Therefore it was important to test the classification software on publicly accessible datasets, to see if they work, since the runs on these datasets were not blinded. 
+\indent It is then possible to forward the run to the evaluation software, which then outputs Accuracy, Precision, Recall and F1-Score. When evaluated on the test data, the results are not immediately visible, but have to be unblinded by the organizers. Therefore it was important to test the classification software on publicly accessible datasets, to see if they work, since the runs on these datasets were not blinded. 
 \begin{figure}[h]
 	\centering
 	%PC:
-	%\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/tira3.png}
+	\includegraphics[width=0.7\linewidth]{C:/Users/Laris/Documents/Bachelorarbeit/Git/ThesisPaper/Pictures/tira3.png}
 	%Lap Top:
-	\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
+	%\includegraphics[width=0.9\linewidth]{C:/Users/Larissa/Documents/Uni/Bachelorarbeit/Git/ThesisPaper/Pictures/inputB.png}
 	\caption{TIRA Interface}
 \end{figure}
 
@@ -917,44 +959,57 @@ In order to test the classifiers on the test dataset, the organizers of the comp
 		Classifier & Accuracy & Precision & Recall &F1  \\
 		\midrule
 		Logistic Regression-Article$_{TFIDF}$ & 0.744 & 0.5654 & 0.361 & 0.441 \\
-		Logistic Regression-Article$_{WB}$ & 0.744 & 0.5411 & 0.556 & 0.548 \\
+		Logistic Regression-Article$_{WB}$ & 0.692 & 0.692 & 0.694 & 0.693 \\
 		Logistic Regression-Publisher$_{TFIDF}$ & 0.481 & 0.318 & 0.75 & 0.446 \\
 		Logistic Regression-Publisher$_{WB}$ & 0.543 & 0.3791 & \textbf{1.0} & 0.510 \\
 		Random Forest-Article$_{TFIDF}$ & 0.744 & 0.667 & 0.1677 & 0.267 \\
-		Random Forest-Article$_{WB}$ & \textbf{0.814} & 0.7737 & 0.472 & \textbf{0.586} \\
+		Random Forest-Article$_{WB}$ & \textbf{0.75} & 0.7854 & 0.688 & 0.733 \\
 		Random Forest-Publisher$_{TFIDF}$ & 0.636 & 0.427 & 0.889 & 0.577 \\
-		Random Forest-Publisher$_{WB}$ &  &  &  &  \\
+		Random Forest-Publisher$_{WB}$ & 0.646 & 0.593 & 0.93 & 0.725 \\
 		\gls{mnb}-Article$_{TFIDF}$ & 0.744 & \textbf{0.667} & 0.167 & 0.2667 \\
 		\gls{mnb}-Publisher$_{TFIDF}$ &  &  &  &  \\
 		BERT-Article & \textbf{0.705} & 0.25 & 0.028 & 0.05 \\
 		BERT-Publisher & 0.380 & 0.306 & 0.944 & 0.459 \\
 		\bottomrule
 	\end{tabular}
-\end{table}
-\begin{table}[h]
-	\centering
-	\begin{tabular}{c|c|c|c|c}
-		\toprule
-		Classifier & Accuracy & Precision & Recall &F1  \\
-		\midrule
-		Logistic Regression-Article$_{TFIDF}$ & 0.519 & 0.521 & 0.476 & 0.5 \\
-		Logistic Regression-Article$_{WB}$ & 0.521 & 0.554 & 0.219 & 0.314 \\
-		Logistic Regression-Publisher$_{TFIDF}$ & 0.584 & \textbf{0.562} & 0.771 & 0.65 \\
-		Logistic Regression-Publisher$_{WB}$ &  &  &  &  \\
-		Random Forest-Article$_{TFIDF}$ & 0.521 & 0.554 & 0.219 & 0.314 \\
-		Random Forest-Article$_{WB}$ & 0.551 & 0.561 & 0.465 & 0.509 \\
-		Random Forest-Publisher$_{TFIDF}$ & 0.529 & 0.529 & 0.532 & 0.530 \\
-		Random Forest-Publisher$_{WB}$ &  &  &  &  \\
-		\gls{mnb}-Article$_{TFIDF}$ & 0.507 & 0.516 & 0.217 & 0.306 \\
-		\gls{mnb}-Publisher$_{TFIDF}$ & 0.577 & 0.551 & \textbf{0.835}  & \textbf{0.663} \\
-		BERT-Article & \textbf{0.705} & 0.25 & 0.028 & 0.05 \\
-		BERT-Publisher & 0.380 & 0.306 & 0.944 & 0.459 \\
-		\bottomrule
-	\end{tabular}
+%\end{table}
+%\begin{table}[h]
+%	\centering
+%	\begin{tabular}{c|c|c|c|c}
+%		\toprule
+%		Classifier & Accuracy & Precision & Recall &F1  \\
+%		\midrule
+%		Logistic Regression-Article$_{TFIDF}$ & 0.519 & 0.521 & 0.476 & 0.5 \\
+%		Logistic Regression-Article$_{WB}$ & 0.521 & 0.554 & 0.219 & 0.314 \\
+%		Logistic Regression-Publisher$_{TFIDF}$ & 0.584 & \textbf{0.562} & 0.771 & 0.65 \\
+%		Logistic Regression-Publisher$_{WB}$ &  &  &  &  \\
+%		Random Forest-Article$_{TFIDF}$ & 0.521 & 0.554 & 0.219 & 0.314 \\
+%		Random Forest-Article$_{WB}$ & 0.551 & 0.561 & 0.465 & 0.509 \\
+%		Random Forest-Publisher$_{TFIDF}$ & 0.529 & 0.529 & 0.532 & 0.530 \\
+%		Random Forest-Publisher$_{WB}$ &  &  &  &  \\
+%		\gls{mnb}-Article$_{TFIDF}$ & 0.507 & 0.516 & 0.217 & 0.306 \\
+%		\gls{mnb}-Publisher$_{TFIDF}$ & 0.577 & 0.551 & \textbf{0.835}  & \textbf{0.663} \\
+%		BERT-Article & \textbf{0.705} & 0.25 & 0.028 & 0.05 \\
+%		BERT-Publisher & 0.380 & 0.306 & 0.944 & 0.459 \\
+%		\bottomrule
+%	\end{tabular}
 	\caption{Evaluation Results -- Article: Classifier has been trained on the by Article dataset; -Publisher: Classifier has been trained on the by Publisher dataset; -WB: Word Embeddings have been used; -TFIDF: TFIDF has been used}
 \end{table}
-For the evaluation I used different models for comparison. A total of 12 types of classifiers were used for comparing different methods of classification. Among these, each classifier mentioned in Chapter 5 was trained on the by Article and on the by Publisher datasets, as well as each of these using \gls{tfidf} and Word Embeddings to represent the article. As a final comparison step, the \gls{bert} model was taken in to see if it stands out from the classical classifiers. Table 6.2 shows the results. The results refer to the evaluation on the test data set labelled by Article, as this was the basis for the results of the competition. 
+For the evaluation I used different models for comparison. A total of 12 types of classifiers were used for comparing different methods of classification. Among these, each classifier mentioned in Chapter 5 was trained on the by Article and on the by Publisher datasets, as well as each of these using \gls{tfidf} and Word Embeddings to represent the article. As a final comparison step, the \gls{bert} model was taken in to see if it stands out from the classical classifiers. Table 6.2 shows the results. The results refer to the evaluation on the test data set labelled by Article, as this was the basis for the results of the competition. \\
+\indent As a comparison to the scores of the other teams, the Accuracy Measure is considered, since this was the main measure in relation to the competition. It turns out that the Random Forest Classifier which was trained on the basis of Word Embeddings and the by Article labelled data set, performed best with an Accuracy Score of 0.75, which would result in 12th place in the competition.\footnote{Leaderboard: https://pan.webis.de/semeval19/semeval19-web/leaderboard.html} In comparison, the winners achieved a score of 0.822.\\
+\indent Overall, the text representation was better with Word Embeddings than with the TfIdf Measures. This can be explained by the fact that Word Embeddings include semantic connections, which plays an important role in text classification. \\
+\indent It can also be seen that the classifiers performed better if they were trained on the by Article labelled data set than on the by Publishers ones. This is probably due to the fact that this record contained more accurate hyperpartisan features than the by Publisher ones. I therefore suspect that the classifiers would have done even better if a hand labelled dataset the size of the by Publisher labelled record had been available. 
+\newpage
+\indent Interestingly enough, the BERT model trained on the Publisher dataset performed astonishingly poor, with having an Accuracy Score of 0.38 compareds. The Accuracy Score of the Bert model, which was trained on the basis of the data set labelled by Articles, scores 0.705, quite similar to the group Bertha von Suttner, who received a score of 0.771. This shows that it makes sense to pre-train the BERT model on the basis of the available data sets and not only to fine-tune it on the basis of the pre-trained models. 
+
 \chapter{Conclusion}
+The goal of this Bachelor Thesis was to develop a program that allows to recognize if a news article is hyperpartisan or not. Two different approaches were used. In the first one classical classification techniques were used. These included Word Embeddings using Word2Vec and the Term Frequency-Inverse Term Frenquency measure for the machine representation of an article as well as Multinomial Naive Bayes, Logistic Regression and Random Forest for classifying. As a second approach I used the \gls{bert} model by fine-tuning on the by article labelled dataset based on the pre-trained BERT models. \\
+\indent It turned out among the classical approaches that it plays a role to what extent the article was represented. In contrast to \gls{tfidf}, Word Embeddings do not only deal with word frequencies and priorities, but also with semantic features. In this context it is not surprising that the group "Vernon Fernwick" from the competition reaches second place by including handmade features. \\
+\indent In addition, it turned out that the quality of the labels plays a special role. The data record labelled by the publisher, performed worse than the data record labelled by the article. This is probably due to the fact that the publisher's dataset, was not labelled by hand, and also contains articles which were labelled as Hyperpartisan when they were not. This leads to a wrong learning of features.\\
+\indent The newly used BERT approach did not improve the performance of the classification within the scope of this classification task. The model trained on the publisher dataset came off surprisingly badly with an accuracy of 0.38 based. However, the competition's group Clint Buchanan showed that the \gls{bert} model can achieve better performance by using different implementation approaches.\\
+\indent Overall, it can be said that the classifiers described here, as well as those of the competition, produced good results. This suggests that it is quite feasible to use computers to recognize hyperpartisan articles and support people in doing so.
+An approach as to how such a classifier could be used would be to integrate it into the Internet browser as an add-on. This could show people from the beginning whether an article is likely to be hyperpartisan or not. This would possibly influence their opinion about this article, whereupon spreading of Fake News might decrease.
+
 
 \bibliography{BA}{}
 \bibliographystyle{plain}
