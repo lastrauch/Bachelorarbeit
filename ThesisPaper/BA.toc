@@ -1,37 +1,37 @@
-\contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {chapter}{\numberline {2}Related Work}{3}
-\contentsline {chapter}{\numberline {3}Fundamentals}{5}
-\contentsline {section}{\numberline {3.1}Text Representation}{5}
-\contentsline {subsection}{\numberline {3.1.1}Term Frequency-Inverse Document Frequency}{5}
-\contentsline {subsection}{\numberline {3.1.2}Word Embeddings}{6}
-\contentsline {section}{\numberline {3.2}Classification Methods}{7}
-\contentsline {subsection}{\numberline {3.2.1}Multinomial Naive Bayes Classifier}{7}
-\contentsline {subsection}{\numberline {3.2.2}Logistic Regression Classifier}{8}
-\contentsline {subsection}{\numberline {3.2.3}Decision Trees and Random Forest Classifier}{9}
-\contentsline {subsubsection}{Decision Trees}{9}
-\contentsline {subsubsection}{Random Forest Classifier}{10}
-\contentsline {subsection}{\numberline {3.2.4}Bidirectional Encoder Representation from Transformers}{11}
-\contentsline {subsubsection}{Transfer Learning}{11}
-\contentsline {subsubsection}{\gls {bert} Model}{18}
-\contentsline {section}{\numberline {3.3}Evaluation}{19}
-\contentsline {subsection}{\numberline {3.3.1}Evaluation Measures}{20}
-\contentsline {subsection}{\numberline {3.3.2}Cross Validation}{21}
-\contentsline {subsection}{\numberline {3.3.3}Grid Search}{21}
-\contentsline {chapter}{\numberline {4}Data Description}{22}
-\contentsline {section}{\numberline {4.1}Dataset labeled by-Publisher}{23}
-\contentsline {section}{\numberline {4.2}Dataset labeled by-Article}{24}
-\contentsline {chapter}{\numberline {5}Classification Techniques}{25}
-\contentsline {section}{\numberline {5.1}Data Preparation}{25}
-\contentsline {subsection}{\numberline {5.1.1}File Parsing}{26}
-\contentsline {subsection}{\numberline {5.1.2}Information Filtering}{26}
-\contentsline {subsection}{\numberline {5.1.3}Combining Data}{27}
-\contentsline {subsection}{\numberline {5.1.4}Special Characters and Stop Word Removal}{27}
-\contentsline {subsection}{\numberline {5.1.5}Tokenization and Stemming}{28}
-\contentsline {section}{\numberline {5.2}Text Representation}{28}
-\contentsline {subsection}{\numberline {5.2.1}Term Frequency-Inverse Document Frequency}{28}
-\contentsline {subsection}{\numberline {5.2.2}Word2Vec}{31}
-\contentsline {section}{\numberline {5.3}Classification Methods}{32}
-\contentsline {subsection}{\numberline {5.3.1}Classical Approach}{32}
-\contentsline {subsection}{\numberline {5.3.2}Novel Approach using Bidirectional Encoder Representations from Transformers}{34}
-\contentsline {chapter}{\numberline {6}Evaluation}{37}
-\contentsline {chapter}{\numberline {7}Conclusion}{40}
+\contentsline {chapter}{\numberline {1}Introduction}{1}% 
+\contentsline {chapter}{\numberline {2}Related Work}{3}% 
+\contentsline {chapter}{\numberline {3}Fundamentals}{5}% 
+\contentsline {section}{\numberline {3.1}Text Representation}{5}% 
+\contentsline {subsection}{\numberline {3.1.1}Term Frequency-Inverse Document Frequency}{5}% 
+\contentsline {subsection}{\numberline {3.1.2}Word Embeddings}{6}% 
+\contentsline {section}{\numberline {3.2}Classification Methods}{7}% 
+\contentsline {subsection}{\numberline {3.2.1}Multinomial Naive Bayes Classifier}{7}% 
+\contentsline {subsection}{\numberline {3.2.2}Logistic Regression Classifier}{8}% 
+\contentsline {subsection}{\numberline {3.2.3}Decision Trees and Random Forest Classifier}{9}% 
+\contentsline {subsubsection}{Decision Trees}{9}% 
+\contentsline {subsubsection}{Random Forest Classifier}{10}% 
+\contentsline {subsection}{\numberline {3.2.4}Bidirectional Encoder Representation from Transformers}{11}% 
+\contentsline {subsubsection}{Transfer Learning}{11}% 
+\contentsline {subsubsection}{\gls {bert} Model}{18}% 
+\contentsline {section}{\numberline {3.3}Evaluation}{19}% 
+\contentsline {subsection}{\numberline {3.3.1}Evaluation Measures}{20}% 
+\contentsline {subsection}{\numberline {3.3.2}Cross Validation}{21}% 
+\contentsline {subsection}{\numberline {3.3.3}Grid Search}{21}% 
+\contentsline {chapter}{\numberline {4}Data Description}{22}% 
+\contentsline {section}{\numberline {4.1}Dataset labeled by-Publisher}{23}% 
+\contentsline {section}{\numberline {4.2}Dataset labeled by-Article}{24}% 
+\contentsline {chapter}{\numberline {5}Classification Techniques}{25}% 
+\contentsline {section}{\numberline {5.1}Data Preparation}{25}% 
+\contentsline {subsection}{\numberline {5.1.1}File Parsing}{26}% 
+\contentsline {subsection}{\numberline {5.1.2}Information Filtering}{26}% 
+\contentsline {subsection}{\numberline {5.1.3}Combining Data}{27}% 
+\contentsline {subsection}{\numberline {5.1.4}Special Characters and Stop Word Removal}{27}% 
+\contentsline {subsection}{\numberline {5.1.5}Tokenization and Stemming}{28}% 
+\contentsline {section}{\numberline {5.2}Text Representation}{28}% 
+\contentsline {subsection}{\numberline {5.2.1}Term Frequency-Inverse Document Frequency}{28}% 
+\contentsline {subsection}{\numberline {5.2.2}Word2Vec}{31}% 
+\contentsline {section}{\numberline {5.3}Classification Methods}{32}% 
+\contentsline {subsection}{\numberline {5.3.1}Classical Approach}{32}% 
+\contentsline {subsection}{\numberline {5.3.2}Novel Approach using Bidirectional Encoder Representations from Transformers}{34}% 
+\contentsline {chapter}{\numberline {6}Evaluation}{37}% 
+\contentsline {chapter}{\numberline {7}Conclusion}{40}% 

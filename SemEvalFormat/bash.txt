@@ -1,0 +1,1 @@
+python Prediction_TfIdf.py -inputDataset /home/lstrauch/Bachelorarbeit/env/SemEvalFormat/articles.xml -outputDir /home/lstrauch/Bachelorarbeit/env/SemEvalFormat/test.txt

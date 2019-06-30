@@ -85,6 +85,12 @@ Alexis Conneau, Douwe Kiela, Holger Schwenk, Lo{\"{\i}}c Barrault, and Antoine
   natural language inference data.
 \newblock {\em CoRR}, abs/1705.02364, 2017.
 
+\bibitem{notsure}
+Hamza Shaban Ellie~Hall Craig~Silverman, Lauren~Strapagiel and Jeremy
+  Singer-Vine.
+\newblock Hyperpartisan facebook pages are publishing false and misleading
+  information at an alarming rate.
+
 \bibitem{bert}
 Jacob Devlin, Ming{-}Wei Chang, Kenton Lee, and Kristina Toutanova.
 \newblock {BERT:} pre-training of deep bidirectional transformers for language
