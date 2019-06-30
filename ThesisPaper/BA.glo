@@ -1,5 +1,6 @@
 \glossaryentry{Recurrent Neural Network?\glossentry{rnn}|setentrycounter[]{page}\glsnumberformat}{iv}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{iv}
+\glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{v}
 \glossaryentry{NLP?\glossentry{nlp}|setentrycounter[]{page}\glsnumberformat}{2}
 \glossaryentry{NLP?\glossentry{nlp}|setentrycounter[]{page}\glsnumberformat}{2}
 \glossaryentry{NLP?\glossentry{nlp}|setentrycounter[]{page}\glsnumberformat}{2}
@@ -65,6 +66,7 @@
 \glossaryentry{MLM?\glossentry{mlm}|setentrycounter[]{page}\glsnumberformat}{19}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{19}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{19}
+\glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{19}
 \glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{28}
 \glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{28}
 \glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{29}
@@ -80,6 +82,7 @@
 \glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{31}
 \glossaryentry{CBOW?\glossentry{cbow}|setentrycounter[]{page}\glsnumberformat}{31}
 \glossaryentry{CBOW?\glossentry{cbow}|setentrycounter[]{page}\glsnumberformat}{31}
+\glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{32}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{34}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{34}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{34}
@@ -90,7 +93,12 @@
 \glossaryentry{Multinomial NB?\glossentry{mnb}|setentrycounter[]{page}\glsnumberformat}{38}
 \glossaryentry{Multinomial NB?\glossentry{mnb}|setentrycounter[]{page}\glsnumberformat}{38}
 \glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{38}
+\glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{38}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{38}
+\glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{38}
+\glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{38}
+\glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{39}
+\glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{39}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{40}
 \glossaryentry{TF-IDF?\glossentry{tfidf}|setentrycounter[]{page}\glsnumberformat}{40}
 \glossaryentry{BERT?\glossentry{bert}|setentrycounter[]{page}\glsnumberformat}{40}
