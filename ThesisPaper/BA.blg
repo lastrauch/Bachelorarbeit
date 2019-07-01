@@ -1,17 +1,5 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: BA.aux
 The style file: plain.bst
 Database file #1: BA.bib
-I was expecting a `,' or a `}'---line 810 of file BA.bib
- :  
- :  publisher = {BuzzFeedNews},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Name 1 in "Craig Silverman, Lauren Strapagiel, Hamza Shaban, Ellie Hall, and Jeremy Singer-Vine" has a comma at the end for entry notsure
-while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Craig Silverman, Lauren Strapagiel, Hamza Shaban, Ellie Hall, and Jeremy Singer-Vine" for entry notsure
-while executing---line 1049 of file plain.bst
-Name 1 in "Craig Silverman, Lauren Strapagiel, Hamza Shaban, Ellie Hall, and Jeremy Singer-Vine" has a comma at the end for entry notsure
-while executing---line 1090 of file plain.bst
-Too many commas in name 1 of "Craig Silverman, Lauren Strapagiel, Hamza Shaban, Ellie Hall, and Jeremy Singer-Vine" for entry notsure
-while executing---line 1090 of file plain.bst
-(There were 5 error messages)
+Warning--I didn't find a database entry for "logisticregression"
+(There was 1 warning)

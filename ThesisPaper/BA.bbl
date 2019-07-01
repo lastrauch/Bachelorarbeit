@@ -85,12 +85,6 @@ Alexis Conneau, Douwe Kiela, Holger Schwenk, Lo{\"{\i}}c Barrault, and Antoine
   natural language inference data.
 \newblock {\em CoRR}, abs/1705.02364, 2017.
 
-\bibitem{notsure}
-Hamza Shaban Ellie~Hall Craig~Silverman, Lauren~Strapagiel and Jeremy
-  Singer-Vine.
-\newblock Hyperpartisan facebook pages are publishing false and misleading
-  information at an alarming rate.
-
 \bibitem{bert}
 Jacob Devlin, Ming{-}Wei Chang, Kenton Lee, and Kristina Toutanova.
 \newblock {BERT:} pre-training of deep bidirectional transformers for language
@@ -115,11 +109,6 @@ Yoshua~Bengio Dzmitry~Bahdanau, Kyunghyun~Cho.
 \newblock Neural machine translation by jointly learning to align and
   translate.
 \newblock {\em CoRR}, 2014.
-
-\bibitem{parse}
-Elementree.
-\newblock
-  \url{https://github.com/python/cpython/blob/3.7/Lib/xml/etree/ElementTree.py}.
 
 \bibitem{ELMAN1990179}
 Jeffrey~L. Elman.
@@ -231,10 +220,6 @@ Minh{-}Thang Luong, Hieu Pham, and Christopher~D. Manning.
 \newblock Effective approaches to attention-based neural machine translation.
 \newblock {\em CoRR}, abs/1508.04025, 2015.
 
-\bibitem{iterparse}
-Class iterparse.
-\newblock \url{https://lxml.de/api/lxml.etree.iterparse-class.html}.
-
 \bibitem{pre2}
 Bryan McCann, James Bradbury, Caiming Xiong, and Richard Socher.
 \newblock Learned in translation: Contextualized word vectors.
@@ -304,30 +289,13 @@ Xin Rong.
 \newblock word2vec parameter learning explained.
 \newblock {\em CoRR}, abs/1411.2738, 2014.
 
-\bibitem{coderandomforest}
-sklearn.ensemble.randomforestclassifier.
+\bibitem{notsure}
+Craig Silverman, Lauren Strapagiel, Hamza Shaban, Ellie Hall, and Jeremy
+  Singer-Vine.
+\newblock Hyperpartisan facebook pages are publishing false and misleading
+  information at an alarming rate.
 \newblock
-  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/ensemble/forest.py#L758}.
-
-\bibitem{tfidf}
-sklearn.feature\_extraction.text.
-\newblock
-  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb5b2012412888b69e73d76f2df2b50b6/sklearn/feature_extraction/text.py}.
-
-\bibitem{logisticregression}
-sklearn.linear\_model.
-\newblock
-  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/linear_model/logistic.py#L1202}.
-
-\bibitem{codegridsearch}
-sklearn.model\_selection.gridsearchcv.
-\newblock
-  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/model_selection/_search.py#L828}.
-
-\bibitem{codemulinomialnb}
-sklearn.naive\_bayes.multinomialnb.
-\newblock
-  \url{https://github.com/scikit-learn/scikit-learn/blob/7813f7efb/sklearn/naive_bayes.py#L636}.
+  https://www.buzzfeednews.com/article/craigsilverman/partisan-fb-pages-analysis.
 
 \bibitem{dopout}
 Nitish Srivastava, Geoffrey Hinton, Alex Krizhevsky, Ilya Sutskever, and Ruslan
